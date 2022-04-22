@@ -1,0 +1,95 @@
+/* Base16 Atelier Cave Light - Theme */
+/* by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/cave) */
+/* Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16) */
+
+/* Atelier-Cave Comment */
+.highlight .comment,
+/* 注释 */
+.highlight .quote {
+  color: #adafae;
+  font-size: 12px;
+}
+
+/* Atelier-Cave Red */
+.highlight .variable,
+.highlight .template-variable,
+.highlight .attribute,
+.highlight .tag,
+.highlight .name,
+.highlight .regexp,
+.highlight .link,
+.highlight .name,
+.highlight .name,
+.highlight .selector-id,
+.highlight .selector-class,
+/* title: 类名, 函数名 */
+.highlight .title {
+  color: #e971a3;
+}
+
+/* number: 数字 */
+/* built_in: print(), input(), len() */
+/* params: 函数括号里的参数 */
+/* literal: None, True, False */
+.highlight .number {
+  color: rgb(32, 138, 204);
+}
+
+.highlight .meta,
+.highlight .built_in,
+.highlight .builtin-name,
+.highlight .literal,
+.highlight .type,
+.highlight .params {
+  color: #ac72ff;
+}
+
+/* String: """"""所组成的注释及字符串 */
+.highlight .string,
+.highlight .symbol,
+.highlight .bullet {
+  color: #2a9263;
+}
+
+
+.highlight .section {
+  color: #8392de;
+}
+
+/* keyword: class, def, return, while */
+.highlight .keyword,
+.highlight .selector-tag {
+  color: #cc866f;
+
+}
+
+.highlight .deletion,
+.highlight .addition {
+  color: #19171c;
+  display: inline-block;
+  width: 100%;
+}
+
+.highlight .deletion {
+  background-color: #be4678;
+}
+
+.highlight .addition {
+  background-color: #2a9292;
+}
+
+.highlight {
+  display: block;
+  overflow-x: auto;
+  /* background: #efecf4; */
+  color: #d6cce4;
+  padding: 0.5em;
+}
+
+.highlight .emphasis {
+  font-style: italic;
+}
+
+.highlight .strong {
+  font-weight: bold;
+}

@@ -225,13 +225,14 @@
 <h3 id="4-死锁"><a href="#4-死锁" class="headerlink" title="4) 死锁"></a>4) 死锁</h3><p>死锁与正常阻塞不同, 死锁是两方都在等待对方先释放, 互不相让对抗到底. </p>
 <h2 id="5-进程调度"><a href="#5-进程调度" class="headerlink" title="5. 进程调度"></a>5. 进程调度</h2><p>在一般情况下, 进程数都会大于 CPU 数, 另外系统进程也需要 CPU, 因此需要按一定的策略, 合理地分配 CPU 给处于就绪状态的某一个进程.<br>调度程序的主要目标是: 最大限度地利用 CPU 时间, 因此需要从调度时机, 调度策略, 调度方式来分析.</p>
 <h3 id="1-调度时机"><a href="#1-调度时机" class="headerlink" title="1) 调度时机"></a>1) 调度时机</h3><p>什么时候什么情况下进行程序调度. 分为分时调度策略, 实时调度策略</p>
-<h3 id="2-调度策略"><a href="#2-调度策略" class="headerlink" title="2) 调度策略"></a>2) 调度策略</h3><h3 id="3-调度方式"><a href="#3-调度方式" class="headerlink" title="3) 调度方式"></a>3) 调度方式</h3><h4 id="linux第三次作业"><a href="#linux第三次作业" class="headerlink" title="linux第三次作业"></a>linux第三次作业</h4><details ><summary>点击显隐第二次</summary><div class="fold-content"><p>1.使用vim 编辑器创建文件num并在文件中写入如下内容：<br>apple<br>student<br>no<br>Yes<br>解: vi num 添加<br>2.请写出统计文件num中单词数、行数以及字符数的命令。<br>解: wc num, 结果 4 4 21 num; 表示单词 4 个, 行数 4 个, 字符数 21 个.<br>3.请写出将num中单词数、行数以及字符数重定向到文件num1中的命令。<br>解: echo 4 4 21 num &gt; num1<br>4.请写出将num中单词数、行数以及字符数追加到文件num2中的命令。<br>解: echo 4 4 21 num &gt;&gt; num2<br>5.请写出创建文件&#x2F;num3,并写出查找&#x2F;num3的命令。<br>解: 创建文件:  touch num3, 查找文件: find &#x2F;home&#x2F;koinl -name num3<br>6.请写出静态查看系统所有进程的命令，同时输出前两行。<br>解: ps -ef<br>7.请写出动态查看系统进程的命令。<br>解: top<br>8.请写出查看当前系统时间的命令，并将当前时间修改为”20220501 18:25:25”<br>解: 查看时间: date. 修改时间: date -s “2022-05-01 18:25:25”</p>
+<h3 id="2-调度策略"><a href="#2-调度策略" class="headerlink" title="2) 调度策略"></a>2) 调度策略</h3><p>要在所有可运行的进程里面选择最值得运行的进程进行运行, 主要凭依 policy, priority, counter, rt_priority.</p>
+<h3 id="3-调度方式"><a href="#3-调度方式" class="headerlink" title="3) 调度方式"></a>3) 调度方式</h3><h4 id="linux第三次作业"><a href="#linux第三次作业" class="headerlink" title="linux第三次作业"></a>linux第三次作业</h4><details ><summary>点击显隐第二次</summary><div class="fold-content"><p>1.使用vim 编辑器创建文件num并在文件中写入如下内容：<br>apple<br>student<br>no<br>Yes<br>解: vi num 添加<br>2.请写出统计文件num中单词数、行数以及字符数的命令。<br>解: wc num, 结果 4 4 21 num; 表示单词 4 个, 行数 4 个, 字符数 21 个.<br>3.请写出将num中单词数、行数以及字符数重定向到文件num1中的命令。<br>解: echo 4 4 21 num &gt; num1<br>4.请写出将num中单词数、行数以及字符数追加到文件num2中的命令。<br>解: echo 4 4 21 num &gt;&gt; num2<br>5.请写出创建文件&#x2F;num3,并写出查找&#x2F;num3的命令。<br>解: 创建文件:  touch num3, 查找文件: find &#x2F;home&#x2F;koinl -name num3<br>6.请写出静态查看系统所有进程的命令，同时输出前两行。<br>解: ps -ef<br>7.请写出动态查看系统进程的命令。<br>解: top<br>8.请写出查看当前系统时间的命令，并将当前时间修改为”20220501 18:25:25”<br>解: 查看时间: date. 修改时间: date -s “2022-05-01 18:25:25”</p>
 </div></details>
                 </div>
                 
                         <div class="post-footer__meta">
                             <p>
-                                更新于 2022-04-26 13:47:57 星期二
+                                更新于 2022-04-26 13:50:25 星期二
                             </p>
                         </div>
                         <div class="post-entry__tags">

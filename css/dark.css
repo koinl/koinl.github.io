@@ -3,7 +3,6 @@
   :root {
     --color-mode: 'dark';
   }
-
   :root:not([data-user-color-scheme]) {
     --main-color: #bb86fc;
     --bg-color: #121212;
@@ -11,44 +10,37 @@
     --bg-menu: #363636;
     --bg-tag-color: #696969;
     --bg-codeblock: #000;
-    --bg-code: rgba(240, 246, 252, 0.149);
+    --bg-code: rgba(240,246,252,0.149);
     --body-color: rgba(205, 205, 205, 0.801);
     --title-color: rgba(210, 210, 210, 0.884);
-    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255,255,255,0.1);
     --header-right-dropdown-menus-a-hover-color: #8d888770;
   }
-
   :root:not([data-user-color-scheme]) blockquote {
-    border-left: 0.25em solid rgba(255, 255, 255, 0.5);
-    color: rgba(255, 255, 255, 0.5);
+    border-left: 0.25em solid rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.5);
   }
-
   :root:not([data-user-color-scheme]) .post__license {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255,255,255,0.2);
   }
-
   :root:not([data-user-color-scheme]) .post__content img {
     opacity: 0.8;
     -webkit-filter: brightness(0.8) contrast(1.2);
     filter: brightness(0.8) contrast(1.2);
   }
-
   :root:not([data-user-color-scheme]) .post__content img:hover {
     opacity: 1;
     -webkit-filter: none;
     filter: none;
   }
-
   :root:not([data-user-color-scheme]) .sliding-fold,
   :root:not([data-user-color-scheme]) details {
     background: #333;
   }
-
   :root:not([data-user-color-scheme]) table tr:not(.code):not(.gutter):nth-child(2n) {
     background-color: #272727;
   }
 }
-
 [data-user-color-scheme="dark"] {
   --color-mode: 'dark';
   --main-color: #bb86fc;
@@ -57,137 +49,33 @@
   --bg-menu: #363636;
   --bg-tag-color: #696969;
   --bg-codeblock: #000;
-  --bg-code: rgba(240, 246, 252, 0.149);
-  --body-color: rgba(255, 255, 255, 0.8);
-  --title-color: rgba(252, 252, 252, 0.9);
-  --border-color: rgba(255, 255, 255, 0.1);
+  --bg-code: rgba(240,246,252,0.149);
+  --body-color: rgba(255,255,255,0.8);
+  --title-color: rgba(252,252,252,0.9);
+  --border-color: rgba(255,255,255,0.1);
   --header-right-dropdown-menus-a-hover-color: #b994c770;
 }
-
 [data-user-color-scheme="dark"] blockquote {
-  border-left: 0.25em solid rgba(255, 255, 255, 0.5);
-  color: rgba(255, 255, 255, 0.5);
+  border-left: 0.25em solid rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.5);
 }
-
 [data-user-color-scheme="dark"] .post__license {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255,255,255,0.2);
 }
-
 [data-user-color-scheme="dark"] .post__content img {
   opacity: 0.8;
   -webkit-filter: brightness(0.8) contrast(1.2);
   filter: brightness(0.8) contrast(1.2);
 }
-
 [data-user-color-scheme="dark"] .post__content img:hover {
   opacity: 1;
   -webkit-filter: none;
   filter: none;
 }
-
 [data-user-color-scheme="dark"] .sliding-fold,
 [data-user-color-scheme="dark"] details {
   /* background: #333; */
 }
-
 [data-user-color-scheme="dark"] table tr:not(.code):not(.gutter):nth-child(2n) {
   background-color: #272727;
-}
-
-
-/* Comment */
-.highlight .comment,
-.highlight .quote {
-  color: #d4d0ab;
-}
-
-/* Red */
-.highlight .variable,
-.highlight .template-variable,
-.highlight .tag,
-.highlight .name,
-.highlight .selector-id,
-.highlight .selector-class,
-.highlight .regexp,
-.highlight .deletion {
-  color: #ffa07a;
-}
-
-/* Orange */
-.highlight .number,
-.highlight .built_in,
-.highlight .builtin-name,
-.highlight .literal,
-.highlight .type,
-.highlight .params,
-.highlight .meta,
-.highlight .link {
-  color: #f5ab35;
-}
-
-/* Yellow */
-.highlight .attribute {
-  color: #ffd700;
-}
-
-/* Green */
-.highlight .string,
-.highlight .symbol,
-.highlight .bullet,
-.highlight .addition {
-  color: #abe338;
-}
-
-/* Blue */
-.highlight .title,
-.highlight .section {
-  color: #00e0e0;
-}
-
-/* Purple */
-.highlight .keyword,
-.highlight .selector-tag {
-  color: #dcc6e0;
-}
-
-.highlight {
-  display: block;
-  overflow-x: auto;
-  background: #2b2b2b;
-  color: #f8f8f2;
-  padding: 0.5em;
-}
-
-.highlight .emphasis {
-  font-style: italic;
-}
-
-.highlight .strong {
-  font-weight: bold;
-}
-
-@media screen and (-ms-high-contrast: active) {
-
-  .highlight .addition,
-  .highlight .attribute,
-  .highlight .built_in,
-  .highlight .builtin-name,
-  .highlight .bullet,
-  .highlight .comment,
-  .highlight .link,
-  .highlight .literal,
-  .highlight .meta,
-  .highlight .number,
-  .highlight .params,
-  .highlight .string,
-  .highlight .symbol,
-  .highlight .type,
-  .highlight .quote {
-    color: highlight;
-  }
-
-  .highlight .keyword,
-  .highlight .selector-tag {
-    font-weight: bold;
-  }
 }

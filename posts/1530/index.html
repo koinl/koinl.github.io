@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- 哼哼, 我就是全宇宙最幼稚愚蠢自私 (划掉) 最天真可爱无敌帅的锦鲤未离是也! ! !  -->
+
+<head>
+    <meta charset="utf-8">
+    
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            
+                
+                    <link rel="shortcut icon" href="/img/tubiao.png">
+                    
+                        
+                            <link rel="icon" type="image/png" sizes="16x16"
+                                href="/img/tubiao.png">
+                            
+                                
+                                    <link rel="icon" type="image/png" sizes="32x32"
+                                        href="/img/tubiao.png">
+                                    
+                                        
+                                            <link rel="apple-touch-icon" sizes="180x180"
+                                                href="/img/tubiao.png">
+                                            
+                                                
+                                                    <link rel="mask-icon"
+                                                        href="/img/tubiao.png">
+                                                    
+                                                        
+                                                                
+                                                                    <title>
+                                                                        
+                                                                            第十三章  大规模数据库架构 | 
+                                                                                    锦鲤未离
+                                                                    </title>
+                                                                    
+                                                                        <meta name="keywords" content="SqlServer">
+                                                                        
+                                                                            
+                                                                                    
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+                                                                                        
+                                                                                            
+<link rel="stylesheet" href="/css/dark.css">
+
+                                                                                                
+<script src="/js/darkmode.js"></script>
+
+                                                                                                    
+
+
+
+                                                                                                        
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                    
+                    <a href="/home/" class="navbar-menu button">
+                        主页
+                    </a>
+                    
+                    <a href="/categories-koinl/" class="navbar-menu button">
+                        分类
+                    </a>
+                    
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                    
+                    <a href="/search/" class="navbar-menu button">
+                        搜索
+                    </a>
+                    
+                    <a href="/bulletin-board/" class="navbar-menu button">
+                        公告
+                    </a>
+                    
+            </div>
+            
+                
+                    <a href="/search/" id="btn-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="0" height="0"
+                            fill="currentColor" stroke="currentColor" stroke-width="0">
+                            <path
+                                d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z">
+                            </path>
+                        </svg>
+                    </a>
+                    
+                        
+                            <a href="javaScript:void(0);" id="btn-toggle-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                            </a>
+                            
+                                
+                                    <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24'
+                                            height='24' fill="none" stroke="currentColor" stroke-width="0.7"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path fill="currentColor"
+                                                d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z">
+                                            </path>
+                                        </svg></a>
+                                    <div class="dropdown-menus" id="dropdown-menus">
+                                        
+                                            <a href="/" class="dropdown-menu button">
+                                                首页
+                                            </a>
+                                            
+                                            <a href="/home/" class="dropdown-menu button">
+                                                主页
+                                            </a>
+                                            
+                                            <a href="/categories-koinl/" class="dropdown-menu button">
+                                                分类
+                                            </a>
+                                            
+                                            <a href="/friends/" class="dropdown-menu button">
+                                                友链
+                                            </a>
+                                            
+                                            <a href="/search/" class="dropdown-menu button">
+                                                搜索
+                                            </a>
+                                            
+                                            <a href="/bulletin-board/" class="dropdown-menu button">
+                                                公告
+                                            </a>
+                                            
+                                    </div>
+                                    
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第十三章  大规模数据库架构
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/01/" class="post-meta__date button">
+                创建于 2022-01-21 11:44:33 星期五
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
+                    学习
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                文章目录
+            </div>
+            
+        </div>
+        
+
+            <article
+                class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                                        
+                </div>
+                <div class="post__content">
+                    <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
+<h1 id="第十三章-大规模数据库架构"><a href="#第十三章-大规模数据库架构" class="headerlink" title="第十三章  大规模数据库架构"></a>第十三章  大规模数据库架构</h1><p>1.分布式数据库:物理上分散,逻辑上集中<br>目标:本地自治,非集中式管理,高可用性(最基本特征)<br>                    位置独立性,分片独立性,复制独立性(分布透明性)<br>                    分布式查询,事务管理(复杂性)<br>                数据分布:数据分片:水平,垂直,导出,混合<br>                         数据分配:集中,分割(更新事务),全复制(事务更新少,数据少),混合<br>                体系结构:全局外模式<br>                        全局概念模式<br>                        分片模式<br>                        分配模式<br>                        局部概念模式<br>                        局部内模式<br>                        局部数据库<br>2.并行数据库:结构:共享内存结构<br>                  共享磁盘结构<br>                  无共享结构<br>                  层次结构<br>              数据划分与并行计算:合理划分可以使响应速度变化,处理性能更优<br>数据划分:一维数据划分:轮转法:整个关系<br>                                    散列法:点查询,连接查询,散列函数选择是关键点<br>                                    范围划分法:范围查询,点查询数据分布不均匀<br>                      多维数据划分:MAGIC多维划分法<br>                                  CMD多维划分法<br>                                  BERD多维划分法<br>               并行算法:并行排序<br>                        并行连接:划分连接,分片-复制连接<br>                        其他的关系操作:选择,除重,投影,聚集<br>3.云数据库:服务类型:IaaS:将基础设施作为服务<br>                    PaaS:将平台作为服务<br>SaaS:将软件作为服务</p>
+<p>分布式查询:导致数据传输量大的主要原因是数据间的连接操作和 并 操作,半连接操作可用减少场地之间的数据传输量<br>分布式事务管理:恢复控制:基于 两 阶段 的提交协议,协调者与参与者<br>              并发控制:封锁协议:三级封锁协议<br>          为了保证全局事务的原子性，参与事务执行的所有场地或者全部提交，或者全 回滚 &#x2F; 撤销 。<br>两阶段封锁协议保证事务的调度可串行性<br>第二节：并行数据库<br>共享内存, 共享磁盘, 无共享, 层次结构<br>数据划分与并行计算:合理划分可以使响应速度变化,处理性能更优<br>:一维数据划分<br>多维数据划分<br>第三节：云计算数据库架构<br>云计算通过集中所有的计算资源，采用硬件 虚拟化 技术，为使用者提供强大的计算能力、存储和宽带等资源。<br>第四节 ：XML数据库</p>
+
+                </div>
+                <div class="post-footer__meta">
+                    <p>
+                        更新于 2022-03-28 21:12:38 星期一
+                    </p>
+                </div>
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/ee9e/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第十四章  数据仓库与数据挖掘
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/e5ff/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第十一章  故障管理
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+    
+        
+            <p class="footer-copyright">
+                Copyright © 2022&nbsp;-&nbsp;2022
+                    <a href="/">
+                        Koi_NL
+                    </a>
+            </p>
+            
+                
+                                    <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+                                        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+                                            charset="utf-8"></script>
+                                    </p>
+</footer>
+    </div>
+    
+        <script defer
+            src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+        <script>
+            window.lazyLoadOptions = {
+                elements_selector: ".lazy",
+                threshold: 0
+            };
+        </script>
+        
+            
+                    
+                                        
+                                                
+                                                        <script type="text/javascript"
+                                                            src="https://cdn.jsdelivr.net/gh/fei1099771017/fei1099771017.github.io@master/js/mouse-click-love.js"></script>
+                                                        <script type="text/javascript" color="183,109,220" opacity='0.7'
+                                                            zIndex="-2" count="200"
+                                                            src="https://cdn.jsdelivr.net/gh/fei1099771017/fei1099771017.github.io@master/js/cobweb.js"></script>
+                                                        <script type="text/javascript"
+                                                            src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+                                                        <script type="text/javascript"
+                                                            src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+                                                        <script type="text/javascript"
+                                                            src="/js/clipboard_use.js"></script>
+</body>
+
+</html>

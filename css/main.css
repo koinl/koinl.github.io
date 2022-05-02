@@ -1688,12 +1688,6 @@ details>summary {
   outline: none;
 }
 
-.sliding-fold .fold-content,
-details .fold-content {
-  /* margin-top: 20px; */
-  background-color: #f5f5f56e;
-}
-
 .sliding-fold .fold-content>:first-child,
 details .fold-content>:first-child {
   margin-top: 0;

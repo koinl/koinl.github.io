@@ -444,7 +444,7 @@ figure {
   padding: 0;
   margin: 0;
   margin-bottom: 20px;
-  transition: all 0.6s;
+  transition: all 0.3s;
 }
 
 table {
@@ -482,7 +482,6 @@ figure table td.code {
   margin-bottom: 20px;
   padding: 0.4rem;
   width: auto;
-  border-radius: 3px;
 }
 
 .highlight pre {
@@ -1728,6 +1727,12 @@ details .fold-content>:last-child {
 .sliding-fold .fold-content {
   -webkit-transition: all 0.375s;
   transition: all 0.375s;
+}
+
+.fold-content p {
+  font-size: 13px;
+  -webkit-appearance: searchfield;
+  border-left: groove;
 }
 
 .blockquote-note {

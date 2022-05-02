@@ -1,76 +1,67 @@
-/* Base16 Atelier Cave Dark - Theme */
-/* by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/cave) */
-/* Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16) */
+/* a11y-dark theme */
+/* Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css */
+/* @author: ericwbailey */
 
-/* Atelier-Cave Comment */
+/* Comment */
 .highlight .comment,
 .highlight .quote {
-  color: #7e7887;
+  color: #d4d0ab;
 }
 
-/* Atelier-Cave Red */
+/* Red */
 .highlight .variable,
 .highlight .template-variable,
-.highlight .attribute,
-.highlight .regexp,
-.highlight .link,
 .highlight .tag,
 .highlight .name,
 .highlight .selector-id,
-.highlight .selector-class {
-  color: #be4678;
+.highlight .selector-class,
+.highlight .regexp,
+.highlight .deletion {
+  color: #ffa07a;
 }
 
-/* Atelier-Cave Orange */
+/* Orange */
 .highlight .number,
-.highlight .meta,
 .highlight .built_in,
 .highlight .builtin-name,
 .highlight .literal,
 .highlight .type,
-.highlight .params {
-  color: #aa573c;
+.highlight .params,
+.highlight .meta,
+.highlight .link {
+  color: #f5ab35;
 }
 
-/* Atelier-Cave Green */
+/* Yellow */
+.highlight .attribute {
+  color: #ffd700;
+}
+
+/* Green */
 .highlight .string,
 .highlight .symbol,
-.highlight .bullet {
-  color: #2a9292;
+.highlight .bullet,
+.highlight .addition {
+  color: #abe338;
 }
 
-/* Atelier-Cave Blue */
+/* Blue */
 .highlight .title,
 .highlight .section {
-  color: #576ddb;
+  color: #00e0e0;
 }
 
-/* Atelier-Cave Purple */
+/* Purple */
 .highlight .keyword,
 .highlight .selector-tag {
-  color: #955ae7;
-}
-
-.highlight .deletion,
-.highlight .addition {
-  color: #19171c;
-  display: inline-block;
-  width: 100%;
-}
-
-.highlight .deletion {
-  background-color: #be4678;
-}
-
-.highlight .addition {
-  background-color: #2a9292;
+  color: #dcc6e0;
 }
 
 .highlight {
   display: block;
   overflow-x: auto;
-  /* background: #19171c; */
-  color: #8b8792;
+  background: #2b2b2b;
+  color: #f8f8f2;
   padding: 0.5em;
 }
 
@@ -80,4 +71,29 @@
 
 .highlight .strong {
   font-weight: bold;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .highlight .addition,
+  .highlight .attribute,
+  .highlight .built_in,
+  .highlight .builtin-name,
+  .highlight .bullet,
+  .highlight .comment,
+  .highlight .link,
+  .highlight .literal,
+  .highlight .meta,
+  .highlight .number,
+  .highlight .params,
+  .highlight .string,
+  .highlight .symbol,
+  .highlight .type,
+  .highlight .quote {
+        color: highlight;
+    }
+
+    .highlight .keyword,
+    .highlight .selector-tag {
+        font-weight: bold;
+    }
 }

@@ -160,20 +160,20 @@
         </a>
         <div class="toc-menus" id="toc-menus">
             <div class="toc-title">
-                文章目录
-            </div>
-            
+                 文章目录
         </div>
         
+    </div>
+    
 
-            <article
-                class="post post__with-toc content-card">
-                <div class="post__header">
-                    
-                                        
-                </div>
-                <div class="post__content">
-                    <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
+        <article
+            class="post post__with-toc content-card">
+            <div class="post__header">
+                
+                                    
+            </div>
+            <div class="post__content">
+                <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
 <h1 id="第三章-程序流程控制"><a href="#第三章-程序流程控制" class="headerlink" title="第三章  程序流程控制"></a>第三章  程序流程控制</h1><ol>
 <li>顺序结构<br>a &#x3D; input(‘请输入a值: ‘);<br>b &#x3D; input(‘请输入b值: ‘);<br>c &#x3D; input(‘请输入c值: ‘);<br>d &#x3D; b * b - 4 * a * c;<br>x &#x3D; [(-b + sqrt(d)) &#x2F; (2 * a), (-b - sqrt(d)) &#x2F; (2 * a)];<br>disp([‘x1的值是: ‘,num2str(x(1)), ‘, x2的值是: ‘,num2str(x(2))])</li>
 <li>选择结构<br>% 需求: x在1<del>9内, y &#x3D; x + 10; x在10</del>29内, y &#x3D; x - 10; 否则, 输出错误信息<br>x &#x3D; input(‘请输入x的值: ‘);<br>if x &gt;&#x3D; 1 &amp;&amp; x &lt;&#x3D; 9<br> y &#x3D; x + 10;<br> y<br>elseif x &gt;&#x3D; 10 &amp;&amp; x &lt;&#x3D; 19<br> y &#x3D; x - 10;<br> y<br>else<br> disp(‘错误信息’)<br>end</li>
@@ -181,10 +181,10 @@
 <li>switch<br>% 需求: n &#x2F; 10, 当结果为0, 输出零蛋; 当结果为1, 2,<br>% 输出他们的乘4; 当结果为3, 4, 5, 输出’最终结果是: 开平方’<br>% 当结果为5~9, 输出开根号, 当结果为10+, 输出错误信息<br>n &#x3D; input(‘请输入想要输入的值: ‘);<br>switch rem(n, 10)<br> case 0<br> disp(‘零蛋’);<br> case {1, 2}<br> disp(n * 4);<br> case {3, 4, 5}<br> disp([‘最终结果是: ‘,num2str(sqrt(n))]);<br> case num2cell(6:9)<br> n &#x3D; n &#x2F; 2;<br> otherwise<br> disp(‘错误信息’);<br>end<br>n</li>
 </ol>
 
-                </div>
-                <div class="post-footer__meta">
-                    <p>
-                        更新于 2022-03-28 21:12:38 星期一
+            </div>
+            <div class="post-footer__meta">
+                <p>
+                    更新于 2022-03-28 21:12:38 星期一
                     </p>
                 </div>
             </article>
@@ -204,37 +204,36 @@
                                 </div>
                                 <div>
                                     <div class="nav__label">
-                                        上一篇
-                                    </div>
-                                    <div class="nav__title">
-                                        第四章 绘图[未完成]
-                                    </div>
+                                         上一篇
+            </div>
+            <div class="nav__title">
+                第四章 绘图[未完成]
+            </div>
+            </div>
+            </a>
+            
+                </div>
+                <div class="nav__next">
+                    
+                        <a href="/posts/9e15/" class="nav__link">
+                            <div>
+                                <div class="nav__label">
+                                    下一篇
                                 </div>
-                            </a>
-                            
-                    </div>
-                    <div class="nav__next">
+                                <div class="nav__title">
+                                    应用篇-第一章  图形对象句柄[未完成]
+                                </div>
+                            </div>
+                            <div>
+                                <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                    <path
+                                        d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                        fill="#808080"></path>
+                                </svg>
+                            </div>
+                        </a>
                         
-                            <a href="/posts/9e15/" class="nav__link">
-                                <div>
-                                    <div class="nav__label">
-                                        下一篇
-                                    </div>
-                                    <div class="nav__title">
-                                        应用篇-第一章  图形对象句柄[未完成]
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            
-                    </div>
+                </div>
                 </div>
                 
 </main>

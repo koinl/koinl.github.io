@@ -3,17 +3,14 @@
     const darkModeStorageKey = 'user-color-scheme';
     const darkModeMediaQueryKey = '--color-mode';
     const rootElementDarkModeAttributeName = 'data-user-color-scheme';
-
     const setLS = (k, v) => {
         try {
             localStorage.setItem(k, v);
-        } catch (e) {}
-    };
-
-    const removeLS = (k) => {
+        } catch (e) { }
+    }; const removeLS = (k) => {
         try {
             localStorage.removeItem(k);
-        } catch (e) {}
+        } catch (e) { }
     };
 
     const getLS = (k) => {

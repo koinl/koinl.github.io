@@ -222,10 +222,15 @@
                 <div class="post__content">
                     <p>您需要准备: 1 部手机, 1 部电脑, 1 根数据线. </p>
 <p>您需要保证: a. 电脑和手机处在同一 wifi 下; b. 手机与电脑使用数据线连接起来; c. 打开手机的开发者模式, 在其中已经找到 USB 调试并已经打开它. </p>
-<p>首先, 您需要在电脑上下载 <a target="_blank" rel="noopener" href="https://github.com/Genymobile/scrcpy">scrcpy</a>, 再将下载后的资源解压缩到您喜欢的路径.<br>其次, 打开 cmd 后转到您解压缩后的路径, 输入 <code>adb tcpip 5555</code>回车, 再输入 <code>adb connect 192.168.235.11:5555</code> 回车, 若分别显示 <code>restarting in TCP mode port: 5555</code> 和 <code>connected to 192.168.235.11:5555</code> 则成功.<br>再次, 拔掉数据线.<br>最后, 运行 scrcpy.exe 程序即可. </p>
-<blockquote>
-<p>mod 键是快捷键的修饰键, 默认是左 Alt, 但是变成 Ctrl 在我看来更能方便些, 因此我预备使用命令 <code>scrcpy --shortcut-mod=lctrl,rctrl</code> 来改变为左右的 Ctrl 键.</p>
+<ol>
+<li>首先, 您需要在电脑上下载 <a target="_blank" rel="noopener" href="https://github.com/Genymobile/scrcpy">scrcpy</a>, 再将下载后的资源解压缩到您喜欢的路径. </li>
+<li>其次, 打开 cmd 后转到您解压缩后的路径, 输入 <code>adb tcpip 5555</code> 回车, 再输入 <code>adb connect 192.168.235.11:5555</code> 回车, 若分别显示 <code>restarting in TCP mode port: 5555</code> 和 <code>connected to 192.168.235.11:5555</code> 则成功. </li>
+<li>再次, 拔掉数据线. </li>
+<li>最后, 在 cmd 中输入 <code>scrcpy --shortcut-mod=lctrl,rctrl</code> 即可. <blockquote>
+<p>mod 键是快捷键的修饰键, 默认是左 Alt, 但在我看来变成 Ctrl 更能方便些, 因此我预备使用命令 <code>scrcpy --shortcut-mod=lctrl,rctrl</code> 来改变修饰键为左 Ctrl 键和右的 Ctrl 键.</p>
 </blockquote>
+</li>
+</ol>
 <table>
 <thead>
 <tr>
@@ -238,7 +243,7 @@
 <td align="center">mod + f</td>
 </tr>
 <tr>
-<td align="center">重置大小, 清楚黑边</td>
+<td align="center">重置大小, 清除黑边</td>
 <td align="center">mod + g, mod + w</td>
 </tr>
 <tr>
@@ -254,19 +259,15 @@
 <td align="center">mod + s, mod + h, 右键</td>
 </tr>
 <tr>
-<td align="center">下拉通知面板</td>
-<td align="center">mod + n &amp; mod + n + n</td>
+<td align="center">下拉, 下拉二层, 收起通知面板</td>
+<td align="center">mod + n, mod + n + n, mod + Shift + n</td>
 </tr>
 <tr>
-<td align="center">收起通知面板</td>
-<td align="center">mod + Shift + n</td>
-</tr>
-<tr>
-<td align="center">复制, 剪贴, 粘贴</td>
+<td align="center">复制, 剪贴, 粘贴文本, 图片等内容</td>
 <td align="center">mod + c, mod + x, mod + v</td>
 </tr>
 <tr>
-<td align="center">暗, 亮, 旋转设备屏幕</td>
+<td align="center">关闭, 打开, 旋转设备屏幕</td>
 <td align="center">mod + o, mod + Shift + o, mod + r</td>
 </tr>
 </tbody></table>
@@ -274,7 +275,7 @@
                 </div>
                 <div class="post-footer__meta">
                     <p>
-                        更新于 2022-05-03 08:30:03 星期二
+                        更新于 2022-05-03 08:51:11 星期二
                     </p>
                 </div>
             </article>

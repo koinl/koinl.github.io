@@ -170,6 +170,25 @@
             <div class="post__header">
                 
                                     
+                                        <div class="post__expire" id="post-expired-notify">
+                                            <p>
+                                                本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
+                                            </p>
+                                        </div>
+                                        <script>
+                                            (() => {
+                                                var update = Date.parse("2022-03-28"),
+                                                    date = new Date(),
+                                                    now = date.getTime(),
+                                                    expire = now - update,
+                                                    expire_days = Math.floor(expire / (24 * 3600 * 1000));
+                                                if (expire_days >= 15) {
+                                                    document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                                                    document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+                                                }
+                                            })();
+                                        </script>
+                                        
             </div>
             <div class="post__content">
                 <p>请注意!<br>请注意!<br>请注意!<br>本篇只有选择与填空题!<br>大题请:<br>点击 “大题中转站” 进入.</p>

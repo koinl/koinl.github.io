@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- 哼哼, 我就是全宇宙最幼稚愚蠢自私 (划掉) 最天真可爱无敌帅的锦鲤未离是也! ! !  -->
+
+<head>
+    <meta charset="utf-8">
+    
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <link rel="shortcut icon" href="/img/tubiao.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="/img/tubiao.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="/img/tubiao.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/tubiao.png">
+            <link rel="mask-icon" href="/img/tubiao.png">
+            
+                <title>
+                    
+                        第二章  进程管理 | 
+                                锦鲤未离
+                </title>
+                
+                        
+
+                                <link rel="stylesheet" href="/css/main.css">
+                                <link rel="stylesheet" id="hl-default-theme" href="/css/highlight-main.css"
+                                    media="none">
+                                <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight-dark.css" media="none">
+                                <link rel="stylesheet" href="/css/dark.css">
+                                <script src="/js/darkmode.js"></script>
+
+
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+
+        <div class="navbar__menus">
+
+            <a href="/" class="navbar-menu button">
+                首页
+            </a>
+
+            <a href="/home/" class="navbar-menu button">
+                主页
+            </a>
+
+            <a href="/categories-koinl/" class="navbar-menu button">
+                分类
+            </a>
+
+            <a href="/friends/" class="navbar-menu button">
+                友链
+            </a>
+
+            <a href="/search/" class="navbar-menu button">
+                搜索
+            </a>
+
+            <a href="/bulletin-board/" class="navbar-menu button">
+                公告
+            </a>
+
+        </div>
+
+
+        <a href="javaScript:void(0);" id="btn-toggle-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </a>
+
+
+        <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path fill="currentColor"
+                    d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z">
+                </path>
+            </svg></a>
+        <div class="dropdown-menus" id="dropdown-menus">
+
+            <a href="/" class="dropdown-menu button">
+                首页
+            </a>
+
+            <a href="/home/" class="dropdown-menu button">
+                主页
+            </a>
+
+            <a href="/categories-koinl/" class="dropdown-menu button">
+                分类
+            </a>
+
+            <a href="/friends/" class="dropdown-menu button">
+                友链
+            </a>
+
+            <a href="/search/" class="dropdown-menu button">
+                搜索
+            </a>
+
+            <a href="/bulletin-board/" class="dropdown-menu button">
+                公告
+            </a>
+
+        </div>
+
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第二章  进程管理
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/04/" class="post-meta__date button">
+                创建于 2022-04-26 12:38:31 星期二
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/Linux/" class="button">
+                    Linux
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%BF%9B%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 进程概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="toc-text">2. 进程控制块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-text">1) 进程状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-text">2) 进程标识符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E9%97%B4%E5%85%B3%E7%B3%BB"><span class="toc-text">3) 进程间关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F"><span class="toc-text">3. 进程的组织方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%A3%E5%88%97%E8%A1%A8"><span class="toc-text">1) 散列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-text">2) 双向循环链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AF%E8%BF%90%E8%A1%8C%E9%98%9F%E5%88%97"><span class="toc-text">3) 可运行队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%AD%89%E5%BE%85%E9%98%9F%E5%88%97"><span class="toc-text">4) 等待队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5"><span class="toc-text">4. 进程的互斥与同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BA%92%E6%96%A5"><span class="toc-text">1) 互斥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%8C%E6%AD%A5"><span class="toc-text">2) 同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6"><span class="toc-text">3) 信号量机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%AD%BB%E9%94%81"><span class="toc-text">4) 死锁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-text">5. 进程调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%B0%83%E5%BA%A6%E6%97%B6%E6%9C%BA"><span class="toc-text">1) 调度时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5"><span class="toc-text">2) 调度策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%B0%83%E5%BA%A6%E6%96%B9%E5%BC%8F"><span class="toc-text">3) 调度方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-text">6. 进程间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BF%A1%E5%8F%B7%E9%80%9A%E4%BF%A1"><span class="toc-text">1) 信号通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1"><span class="toc-text">2) 管道通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BA%BF%E7%A8%8B"><span class="toc-text">7. 线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux第三次作业</span></a></li></ol></li></ol></li></ol>
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                 文章目录
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%BF%9B%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 进程概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="toc-text">2. 进程控制块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-text">1) 进程状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-text">2) 进程标识符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E9%97%B4%E5%85%B3%E7%B3%BB"><span class="toc-text">3) 进程间关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F"><span class="toc-text">3. 进程的组织方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%A3%E5%88%97%E8%A1%A8"><span class="toc-text">1) 散列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-text">2) 双向循环链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AF%E8%BF%90%E8%A1%8C%E9%98%9F%E5%88%97"><span class="toc-text">3) 可运行队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%AD%89%E5%BE%85%E9%98%9F%E5%88%97"><span class="toc-text">4) 等待队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5"><span class="toc-text">4. 进程的互斥与同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BA%92%E6%96%A5"><span class="toc-text">1) 互斥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%8C%E6%AD%A5"><span class="toc-text">2) 同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6"><span class="toc-text">3) 信号量机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%AD%BB%E9%94%81"><span class="toc-text">4) 死锁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-text">5. 进程调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%B0%83%E5%BA%A6%E6%97%B6%E6%9C%BA"><span class="toc-text">1) 调度时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5"><span class="toc-text">2) 调度策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%B0%83%E5%BA%A6%E6%96%B9%E5%BC%8F"><span class="toc-text">3) 调度方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-text">6. 进程间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BF%A1%E5%8F%B7%E9%80%9A%E4%BF%A1"><span class="toc-text">1) 信号通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1"><span class="toc-text">2) 管道通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BA%BF%E7%A8%8B"><span class="toc-text">7. 线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux第三次作业</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+
+        <article
+            class="post post__with-toc content-card">
+            <div class="post__header">
+                
+                                    
+            </div>
+            <div class="post__content">
+                <p>本章将介绍进程的原理以及在 Linux 内核中的实现, 进程调度的原理与实现, 进程的各种同步原语以及通信机制</p>
+<h2 id="1-进程概述"><a href="#1-进程概述" class="headerlink" title="1. 进程概述"></a>1. 进程概述</h2><p>执行一个程序时, 对操作系统来讲就是创建了一个进程, 在某个时刻进程的内容被称作进程映像. </p>
+<p>进程由程序 (正文段, 用户数据段) + 系统数据段实现, 使用命令 <code>ps -e</code> 在查看进程及其相关信息, 使用命令 pstrees 来查看系统的树状结构, 另外, <code>ps -elH</code> 命令也可以显示进程的树状结构. </p>
+<p>进程是处于执行期的程序及其它所包含的所有资源的总称, 这些信息用一个结构体来描述, 称为进程控制块 ( PCB ) . </p>
+<h2 id="2-进程控制块"><a href="#2-进程控制块" class="headerlink" title="2. 进程控制块"></a>2. 进程控制块</h2><p>PCB 中的信息供系统调度和进程本身使用, 是进程存在与运行的唯一标识, 就是进程标识符 ( PID ) , init 的 PID 为 1, 其他都是 init 的后代. 当创建一个进程时, 新建一个 PCB, 进程结束时收回 PCB. </p>
+<p>在本节中主要讨论进程状态, 标识符和进程间的关系. </p>
+<h3 id="1-进程状态"><a href="#1-进程状态" class="headerlink" title="1) 进程状态"></a>1) 进程状态</h3><p>捕获进程产生至消亡的动态变化过程. 分为运行态, 就绪态, 阻塞态, 分别代表正在运行, 准备运行, 不能运行.<br>但在具体操作系统中, 因为运行只能一个, 就绪的进程会有好多个, 为了管理的方便, 将就绪与运行态合称为就绪态; 准备运行的好多个进程放在一个队列里面, 称为等待 (睡眠) 态, 除此之外, 还有暂停态与僵死态, 具体如下:</p>
+<blockquote>
+<p>就绪态: 进程正在或准备运行.<br>浅度睡眠态: 进程正在睡眠或被堵塞, 待资源可用时被唤醒, 或由其他进程唤醒.<br>深度睡眠态: 不能被其他进程唤醒.<br>暂停态: 暂停进程.<br>僵死态: 进程结束但未释放 PCB. </p>
+</blockquote>
+<h3 id="2-进程标识符"><a href="#2-进程标识符" class="headerlink" title="2) 进程标识符"></a>2) 进程标识符</h3><p>每个进程都有唯一的进程标识符, 每个进程都是与某一个用户组, 因此由 UID 和 GID 分别表示用户标识符与组标识符. </p>
+<h3 id="3-进程间关系"><a href="#3-进程间关系" class="headerlink" title="3) 进程间关系"></a>3) 进程间关系</h3><p>主要有 3 中, 分别为父子进程, 进程组, 进程会话. </p>
+<p>进程调用 fork() 函数成功创建子进程时, 形成父子进程关系.<br>进程可以通过 setpgid() 加入或创建进程组.<br>进程会话是一个或一组进程组的集合, SID 代表会话标识符. </p>
+<p>通常, PCB 中包含以下信息:</p>
+<blockquote>
+<p>待补充…</p>
+</blockquote>
+<h2 id="3-进程的组织方式"><a href="#3-进程的组织方式" class="headerlink" title="3. 进程的组织方式"></a>3. 进程的组织方式</h2><p>为了对系统中处于不同状态的进程进行管理, 有如下方式.</p>
+<h3 id="1-散列表"><a href="#1-散列表" class="headerlink" title="1) 散列表"></a>1) 散列表</h3><p>称 pidhash, 如果知道进程号, 可以通过 hash 表很快找到该进程. </p>
+<h3 id="2-双向循环链表"><a href="#2-双向循环链表" class="headerlink" title="2) 双向循环链表"></a>2) 双向循环链表</h3><p>反应进程创建的顺序, 反应进程的亲属关系. </p>
+<h3 id="3-可运行队列"><a href="#3-可运行队列" class="headerlink" title="3) 可运行队列"></a>3) 可运行队列</h3><p>全称可运行状态进程的双向循环队列链表. 容纳了系统中所有可以运行 ( TASK_RUNNING) 的进程. </p>
+<h3 id="4-等待队列"><a href="#4-等待队列" class="headerlink" title="4) 等待队列"></a>4) 等待队列</h3><p>容纳了状态为 TASK_INTERRUPTIBLE 和 TASKUN_INTERRUPTIBLE 的进程. </p>
+<h2 id="4-进程的互斥与同步"><a href="#4-进程的互斥与同步" class="headerlink" title="4. 进程的互斥与同步"></a>4. 进程的互斥与同步</h2><h3 id="1-互斥"><a href="#1-互斥" class="headerlink" title="1) 互斥"></a>1) 互斥</h3><p>间接制约关系. 现象为一个进程正在访问临界资源, 另一个要访问该资源的进程必须等待.<br>例: 进程 B 需要访问打印机, 但此刻进程 A 占用了打印机, 进程 B 会被阻塞, 直到进程 A 释放了打印机资源, 进程 B 才可以进行. </p>
+<h3 id="2-同步"><a href="#2-同步" class="headerlink" title="2) 同步"></a>2) 同步</h3><p>直接制约关系.<br>例: 进程 A 需要从缓冲区读取进程 B 产生的信息. 当缓冲区为空时, 进程 B 因读取不到信息而堵塞; 当进程 A 产生信息放入缓冲区时, 进程 B 才会被唤醒.<br>用于保证多个进程在执行次序上的协调关系的机制称为进程同步机制, 应该遵循下列原则: 空闲让进, 忙则等待, 有限等待, 让权等待. </p>
+<h3 id="3-信号量机制"><a href="#3-信号量机制" class="headerlink" title="3) 信号量机制"></a>3) 信号量机制</h3><p>信号量本质上是一个非负的整数计数器, 用来控制对公共资源的访问.<br>除了初始化外, 对信号量只能有两个操作: P 操作与 V 操作, 分别代表申请资源与释放资源的操作, 每分别执行一次, 信号量的值分别减少增加 1.</p>
+<ul>
+<li>用 P, V 实现进程的互斥</li>
+<li>用…     该待补充</li>
+</ul>
+<h3 id="4-死锁"><a href="#4-死锁" class="headerlink" title="4) 死锁"></a>4) 死锁</h3><p>死锁与正常阻塞不同, 死锁是两方都在等待对方先释放, 互不相让对抗到底. </p>
+<h2 id="5-进程调度"><a href="#5-进程调度" class="headerlink" title="5. 进程调度"></a>5. 进程调度</h2><p>在一般情况下, 进程数都会大于 CPU 数, 另外系统进程也需要 CPU, 因此需要按一定的策略, 合理地分配 CPU 给处于就绪状态的某一个进程.<br>调度程序的主要目标是: 最大限度地利用 CPU 时间, 因此需要从调度时机, 调度策略, 调度方式来分析.</p>
+<h3 id="1-调度时机"><a href="#1-调度时机" class="headerlink" title="1) 调度时机"></a>1) 调度时机</h3><p>什么时候什么情况下进行程序调度. 分为分时调度策略, 实时调度策略</p>
+<h3 id="2-调度策略"><a href="#2-调度策略" class="headerlink" title="2) 调度策略"></a>2) 调度策略</h3><p>要在所有可运行的进程里面选择最值得运行的进程进行运行, 主要凭依 policy, priority, counter, rt_priority.</p>
+<blockquote>
+<p>其中, policy 是进程的调度策略, 用于区分实时和普通两种进程; priority 是进程的优先级; counter 是进程剩余的时间片, 它的大小完全由 priority 决定; rt_priority 是实时优先级, 用于实时进程间的选择</p>
+</blockquote>
+<h3 id="3-调度方式"><a href="#3-调度方式" class="headerlink" title="3) 调度方式"></a>3) 调度方式</h3><h2 id="6-进程间通信"><a href="#6-进程间通信" class="headerlink" title="6. 进程间通信"></a>6. 进程间通信</h2><p>进程间通信的方式有以下几种通信方式: 信号, 管道</p>
+<h3 id="1-信号通信"><a href="#1-信号通信" class="headerlink" title="1) 信号通信"></a>1) 信号通信</h3><p>用于指出某事件的发生.</p>
+<h3 id="2-管道通信"><a href="#2-管道通信" class="headerlink" title="2) 管道通信"></a>2) 管道通信</h3><p>半双工通信方式, 只能进行单向流动, 通常用于具有亲缘关系进程间的通信</p>
+<h2 id="7-线程"><a href="#7-线程" class="headerlink" title="7. 线程"></a>7. 线程</h2><h4 id="linux第三次作业"><a href="#linux第三次作业" class="headerlink" title="linux第三次作业"></a>linux第三次作业</h4><details ><summary>点击显隐第二次</summary><div class="fold-content"><p>1.使用vim 编辑器创建文件num并在文件中写入如下内容：<br>apple<br>student<br>no<br>Yes<br>解: vi num 添加<br>2.请写出统计文件num中单词数、行数以及字符数的命令。<br>解: wc num, 结果 4 4 21 num; 表示单词 4 个, 行数 4 个, 字符数 21 个.<br>3.请写出将num中单词数、行数以及字符数重定向到文件num1中的命令。<br>解: echo 4 4 21 num &gt; num1<br>4.请写出将num中单词数、行数以及字符数追加到文件num2中的命令。<br>解: echo 4 4 21 num &gt;&gt; num2<br>5.请写出创建文件&#x2F;num3,并写出查找&#x2F;num3的命令。<br>解: 创建文件:  touch num3, 查找文件: find &#x2F;home&#x2F;koinl -name num3<br>6.请写出静态查看系统所有进程的命令，同时输出前两行。<br>解: ps -ef<br>7.请写出动态查看系统进程的命令。<br>解: top<br>8.请写出查看当前系统时间的命令，并将当前时间修改为”20220501 18:25:25”<br>解: 查看时间: date. 修改时间: date -s “2022-05-01 18:25:25”</p>
+</div></details>
+            </div>
+            <div class="post-footer__meta">
+                <p>
+                    更新于 2022-04-27 16:08:25 星期三
+                    </p>
+                </div>
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/mmvc/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                         上一篇
+            </div>
+            <div class="nav__title">
+                将手机投屏到电脑
+            </div>
+            </div>
+            </a>
+            
+                </div>
+                <div class="nav__next">
+                    
+                        <a href="/posts/ln01/" class="nav__link">
+                            <div>
+                                <div class="nav__label">
+                                    下一篇
+                                </div>
+                                <div class="nav__title">
+                                    第一章  操作基础
+                                </div>
+                            </div>
+                            <div>
+                                <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                    <path
+                                        d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                        fill="#808080"></path>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+    <a href="#" class="button" id="b2t" aria-label="navbar.top" title="navbar.top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/">Koi_NL</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/fei1099771017/fei1099771017.github.io@master/js/mouse-click-love.js"></script>
+    <script type="text/javascript" color="183,109,220" opacity='0.7' zIndex="-2" count="200"
+        src="https://cdn.jsdelivr.net/gh/fei1099771017/fei1099771017.github.io@master/js/cobweb.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- 哼哼, 我就是全宇宙最幼稚愚蠢自私 (划掉) 最天真可爱无敌帅的锦鲤未离是也! ! !  -->
+
+<head>
+    <meta charset="utf-8">
+    
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <link rel="shortcut icon" href="/img/tubiao.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="/img/tubiao.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="/img/tubiao.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/tubiao.png">
+            <link rel="mask-icon" href="/img/tubiao.png">
+            
+                <title>
+                    
+                        第十一章  故障管理 | 
+                                锦鲤未离
+                </title>
+                
+                    <meta name="keywords" content="SqlServer">
+                    
+                        
+
+                                <link rel="stylesheet" href="/css/main.css">
+                                <link rel="stylesheet" id="hl-default-theme" href="/css/highlight-main.css"
+                                    media="none">
+                                <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight-dark.css" media="none">
+                                <link rel="stylesheet" href="/css/dark.css">
+                                <script src="/js/darkmode.js"></script>
+
+
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+
+        <div class="navbar__menus">
+
+            <a href="/" class="navbar-menu button">
+                首页
+            </a>
+
+            <a href="/home/" class="navbar-menu button">
+                主页
+            </a>
+
+            <a href="/categories-koinl/" class="navbar-menu button">
+                分类
+            </a>
+
+            <a href="/friends/" class="navbar-menu button">
+                友链
+            </a>
+
+            <a href="/search/" class="navbar-menu button">
+                搜索
+            </a>
+
+            <a href="/bulletin-board/" class="navbar-menu button">
+                公告
+            </a>
+
+        </div>
+
+
+        <a href="javaScript:void(0);" id="btn-toggle-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </a>
+
+
+        <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path fill="currentColor"
+                    d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z">
+                </path>
+            </svg></a>
+        <div class="dropdown-menus" id="dropdown-menus">
+
+            <a href="/" class="dropdown-menu button">
+                首页
+            </a>
+
+            <a href="/home/" class="dropdown-menu button">
+                主页
+            </a>
+
+            <a href="/categories-koinl/" class="dropdown-menu button">
+                分类
+            </a>
+
+            <a href="/friends/" class="dropdown-menu button">
+                友链
+            </a>
+
+            <a href="/search/" class="dropdown-menu button">
+                搜索
+            </a>
+
+            <a href="/bulletin-board/" class="dropdown-menu button">
+                公告
+            </a>
+
+        </div>
+
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第十一章  故障管理
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/01/" class="post-meta__date button">
+                创建于 2022-01-20 17:58:30 星期四
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
+                    学习
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                 文章目录
+        </div>
+        
+    </div>
+    
+
+        <article
+            class="post post__with-toc content-card">
+            <div class="post__header">
+                
+                                    
+            </div>
+            <div class="post__content">
+                <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
+<h1 id="第十一章-故障管理"><a href="#第十一章-故障管理" class="headerlink" title="第十一章  故障管理"></a>第十一章  故障管理</h1><ol>
+<li>数据库故障类型:事务内部故障:预期的事务内部故障:事务回滚<br>非预期的事务内部故障:系统自主完成<br>系统故障:软故障,undo所有已提交的事务,redo所有未提交的事务<br>计算机病毒故障:防火墙,杀毒软件,备份<br>介质故障:硬故障:软件容错:备份与恢复技术<br>硬件容错:数据库镜像</li>
+<li>数据库的恢复:数据转储:静态转储<br>动态转储<br>动态转储+日志文件<br>数据转储分类:完全转储 差量转储 增量转储<br>登记日志文件<br>所有事务的修改操作,分为以记录为单位和以数据块为单位<br>检查点:大幅度减少完全恢复时需要执行的日志部分</li>
+<li>硬件容错方案<br>数据库存储保护技术:raid,<br>服务器容错技术,双机热备<br>数据库镜像与容灾技术:双机热备份模式,双机互备援模式<br>高可用,高保护,高性能操作模式</li>
+</ol>
+
+            </div>
+            <div class="post-footer__meta">
+                <p>
+                    更新于 2022-03-28 21:12:38 星期一
+                    </p>
+                </div>
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/1530/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                         上一篇
+            </div>
+            <div class="nav__title">
+                第十三章  大规模数据库架构
+            </div>
+            </div>
+            </a>
+            
+                </div>
+                <div class="nav__next">
+                    
+                        <a href="/posts/387a/" class="nav__link">
+                            <div>
+                                <div class="nav__label">
+                                    下一篇
+                                </div>
+                                <div class="nav__title">
+                                    第十二章  备份与恢复数据库
+                                </div>
+                            </div>
+                            <div>
+                                <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                    <path
+                                        d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                        fill="#808080"></path>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+    <a href="#" class="button" id="b2t" aria-label="navbar.top" title="navbar.top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/">Koi_NL</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/fei1099771017/fei1099771017.github.io@master/js/mouse-click-love.js"></script>
+    <script type="text/javascript" color="183,109,220" opacity='0.7' zIndex="-2" count="200"
+        src="https://cdn.jsdelivr.net/gh/fei1099771017/fei1099771017.github.io@master/js/cobweb.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+</body>
+
+</html>

@@ -171,7 +171,7 @@
                                                 now = date.getTime(),
                                                 expire = now - update,
                                                 expire_days = Math.floor(expire / (24 * 3600 * 1000));
-                                            if (expire_days >= 120) {
+                                            if (expire_days >= 30) {
                                                 document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
                                                 document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
                                             }

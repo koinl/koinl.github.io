@@ -144,35 +144,34 @@
         </div>
     </div>
 
-    
-        <aside class="post-side">
-            <div class="post-side__toc">
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="toc-text">方法重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB-1"><span class="toc-text">抽象类</span></a></li></ol>
-            </div>
-        </aside>
-        <a class="btn-toc button" id="btn-toc" tabindex="0">
-            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
-                    fill="currentColor"></path>
-            </svg>
-        </a>
-        <div class="toc-menus" id="toc-menus">
-            <div class="toc-title">
-                 文章目录
-            </div>
+
+    <aside class="post-side">
+        <div class="post-side__toc">
             <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="toc-text">方法重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB-1"><span class="toc-text">抽象类</span></a></li></ol>
         </div>
-        
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">
+             文章目录
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="toc-text">方法重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB-1"><span class="toc-text">抽象类</span></a></li></ol>
+    </div>
 
-            <article
-                class="post post__with-toc content-card">
-                <div class="post__header">
-                    
 
-                </div>
-                <div class="post__content">
-                    <p>本篇讲述了消息,多态与继承两种机制,抽象类接口与包.<span id="more"></span><br></p>
+    <article class="post post__with-toc content-card">
+        <div class="post__header">
+            
+
+        </div>
+        <div class="post__content">
+            <p>本篇讲述了消息,多态与继承两种机制,抽象类接口与包.<span id="more"></span><br></p>
 <h1 id="重点内容"><a href="#重点内容" class="headerlink" title="重点内容"></a>重点内容</h1><ol>
 <li>什么是消息?什么是公有消息和私有消息?</li>
 <li>什么是多态机制?重载与覆盖有什么区别?</li>
@@ -194,62 +193,60 @@
 <h2 id="抽象类-1"><a href="#抽象类-1" class="headerlink" title="抽象类"></a>抽象类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//抽象类</span><br><span class="line">abstract class Add_info &#123;</span><br><span class="line">	int x, y;</span><br><span class="line">	Add_info(int x, int y) &#123;</span><br><span class="line">		this.x = x;</span><br><span class="line">		this.y = y;</span><br><span class="line">	&#125;</span><br><span class="line">	abstract double show_add();</span><br><span class="line">&#125;</span><br><span class="line">//接口</span><br><span class="line">interface Del_info &#123;   // 接口不能有构造方法</span><br><span class="line">	double show_del();   // 接口的方法自动为公共抽象方法</span><br><span class="line">&#125;</span><br><span class="line">//继承抽象类与接口</span><br><span class="line">class AddInt extends Add_info implements Del_info&#123;	// 类必须实现继承的抽象方法</span><br><span class="line">	AddInt(int x, int y) &#123;</span><br><span class="line">		super(x, y);</span><br><span class="line">	&#125;</span><br><span class="line">	double show_add() &#123;</span><br><span class="line">		return x + y;</span><br><span class="line">	&#125;</span><br><span class="line">	public double show_del() &#123;   // 继承的接口方法必须是公共方法</span><br><span class="line">		return x - y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class C_name &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		AddInt a = new AddInt(25, 25);</span><br><span class="line">		System.out.println(a.show_add());	// 消息就是属性或方法的引用</span><br><span class="line">		System.out.println(a.show_del()); </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 
-                </div>
-                <div class="post-footer__meta">
-                    <p>
-                        更新于  2022-03-28 21:12:38 星期一
-                    </p>
-                </div>
-            </article>
+        </div>
+        <div class="post-footer__meta">
+            <p>
+                更新于  2022-03-28 21:12:38 星期一
+            </p>
+        </div>
+    </article>
 
-            
-                <div class="nav">
-                    <div class="nav__prev">
-                        
-                            <a href="/posts/28cc/" class="nav__link">
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="nav__label">
-                                         上一篇
-                                    </div>
-                                    <div class="nav__title">
-                                        封装机制与访问控制
-                                    </div>
-                                </div>
-                            </a>
-                            
-                    </div>
-                    <div class="nav__next">
-                        
-                            <a href="/posts/18bf/" class="nav__link">
-                                <div>
-                                    <div class="nav__label">
-                                        下一篇
-                                    </div>
-                                    <div class="nav__title">
-                                        递归调用
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            
-                    </div>
-                </div>
+    
+        <div class="nav">
+            <div class="nav__prev">
                 
+                    <a href="/posts/28cc/" class="nav__link">
+                        <div>
+                            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path
+                                    d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                    fill="#808080"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="nav__label">
+                                 上一篇
+                            </div>
+                            <div class="nav__title">
+                                封装机制与访问控制
+                            </div>
+                        </div>
+                    </a>
+                    
+            </div>
+            <div class="nav__next">
+                
+                    <a href="/posts/18bf/" class="nav__link">
+                        <div>
+                            <div class="nav__label">
+                                下一篇
+                            </div>
+                            <div class="nav__title">
+                                递归调用
+                            </div>
+                        </div>
+                        <div>
+                            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path
+                                    d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                    fill="#808080"></path>
+                            </svg>
+                        </div>
+                    </a>
+                    
+            </div>
+        </div>
+        
 </main>
                 <footer class="footer">
     <a href="#" class="button" id="b2t" aria-label="navbar.top" title="navbar.top">

@@ -160,7 +160,24 @@
             class="post post__with-toc content-card">
             <div class="post__header">
                 
-                                    
+                                    <div class="post__expire" id="post-expired-notify">
+                                        <p>
+                                            本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
+                                        </p>
+                                    </div>
+                                    <script>
+                                        (() => {
+                                            var update = Date.parse("2022-04-25"),
+                                                date = new Date(),
+                                                now = date.getTime(),
+                                                expire = now - update,
+                                                expire_days = Math.floor(expire / (24 * 3600 * 1000));
+                                            if (expire_days >= 15) {
+                                                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                                                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+                                            }
+                                        })();
+                                    </script>
             </div>
             <div class="post__content">
                 <p>第一个, 掌握 Linux 系统的运行级别及其含义, 关机方法;<br>第二个, 理解 Linux 系统的常用命令.<br>分别需要进行联系: 管理文件和目录的命令, 文件备份与压缩命令, 有关磁盘空间命令, 管理使用者和设立权限的命令.<br>最后也是第三个, 需要会使用 Vim 编辑器.</p>

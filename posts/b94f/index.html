@@ -160,7 +160,24 @@
             class="post post__with-toc content-card">
             <div class="post__header">
                 
-                                    
+                                    <div class="post__expire" id="post-expired-notify">
+                                        <p>
+                                            本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
+                                        </p>
+                                    </div>
+                                    <script>
+                                        (() => {
+                                            var update = Date.parse("2022-03-28"),
+                                                date = new Date(),
+                                                now = date.getTime(),
+                                                expire = now - update,
+                                                expire_days = Math.floor(expire / (24 * 3600 * 1000));
+                                            if (expire_days >= 15) {
+                                                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                                                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+                                            }
+                                        })();
+                                    </script>
             </div>
             <div class="post__content">
                 <p>本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!<span id="more"></span><br></p>

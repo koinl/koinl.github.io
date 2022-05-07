@@ -187,6 +187,25 @@
         <div class="post__header">
             <!--  -->
             
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2022-04-18"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 10) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+
         </div>
         <div class="post__content">
             <p>程序的基本结构是分为顺序结构, 分支结构与循环结构这三种的.<br>关于分支结构, 为 if…elif…else 的程序解释和三目运算符.<br>关于循环结构, 会阐遍历循环 for 和无限循环 while 这两者.<br>不过在此之前, 用少量的篇幅简要地介绍下数据的类型等. <span id="more"></span><br></p>

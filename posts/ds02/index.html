@@ -187,6 +187,25 @@
         <div class="post__header">
             <!--  -->
             
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2022-05-07"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 10) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+
         </div>
         <div class="post__content">
             <p>在本篇中, 首先讲述了关于二叉树的相关知识, 第二讲述了关于最优二叉树 (哈夫曼树) 所建立的哈夫曼编码. 第三阐述了树与二叉树的关系与转换</p>

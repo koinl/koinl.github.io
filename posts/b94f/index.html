@@ -11,56 +11,133 @@
             <meta name="HandheldFriendly" content="True">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-            <link rel="shortcut icon" href="/img/tubiao.png">
-            <link rel="icon" type="image/png" sizes="16x16" href="/img/tubiao.png">
-            <link rel="icon" type="image/png" sizes="32x32" href="/img/tubiao.png">
-            <link rel="apple-touch-icon" sizes="180x180" href="/img/tubiao.png">
-            <link rel="mask-icon" href="/img/tubiao.png">
-            <link rel="stylesheet" href="/css/main.css">
-            <link rel="stylesheet" id="hl-default-theme" href="/css/highlight-main.css" media="none">
-            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight-dark.css" media="none">
-            <link rel="stylesheet" href="/css/dark.css">
-            <script src="/js/darkmode.js"></script>
             
-                <title>
-                    第五章  文件操作 | 锦鲤未离
-                </title>
-                <meta name="keywords" content="学习">
                 
+                    <link rel="shortcut icon" href="/img/tubiao.png">
+                    
+                        
+                            <link rel="icon" type="image/png" sizes="16x16"
+                                href="/img/tubiao.png">
+                            
+                                
+                                    <link rel="icon" type="image/png" sizes="32x32"
+                                        href="/img/tubiao.png">
+                                    
+                                        
+                                            <link rel="apple-touch-icon" sizes="180x180"
+                                                href="/img/tubiao.png">
+                                            
+                                                
+                                                    <link rel="mask-icon"
+                                                        href="/img/tubiao.png">
+                                                    
+                                                        
+                                                                
+                                                                    <title>
+                                                                        
+                                                                            第五章  文件操作 | 
+                                                                                    锦鲤未离
+                                                                    </title>
+                                                                    
+                                                                        <meta name="keywords" content="Python">
+                                                                        
+                                                                            
+                                                                                    
+<link rel="stylesheet" href="/css/main.css">
+
+                                                                                        
+                                                                                            
+                                                                                                            <link
+                                                                                                                rel="stylesheet"
+                                                                                                                id="hl-default-theme"
+                                                                                                                href="/css/highlight-main.css"
+                                                                                                                media="none"
+                                                                                                                >
+                                                                                                            
+                                                                                                                <link
+                                                                                                                    rel="stylesheet"
+                                                                                                                    id="hl-dark-theme"
+                                                                                                                    href="/css/highlight-dark.css"
+                                                                                                                    media="none">
+                                                                                                                
+                                                                                                                    
+                                                                                                                        
+
+                                                                                                                            
+                                                                                                                                
+<link rel="stylesheet" href="/css/dark.css">
+
+                                                                                                                                    
+<script src="/js/darkmode.js"></script>
+
+                                                                                                                                        
+
+
+
+                                                                                                                                            
 <meta name="generator" content="Hexo 6.1.0"></head>
 
 <body>
     <div id="app">
         <header class="header">
-    <div class="header__left"><a href="/" class="button"> <span class="logo__text">🏠</span></a></div>
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
     <div class="header__right">
-        <div class="navbar__menus"> <a href="/" class="navbar-menu button">首页</a>
-            <a href="/home/" class="navbar-menu button"> 主页 </a>
-            <a href="/friends/" class="navbar-menu button"> 友链 </a>
-            <a href="/search/" class="navbar-menu button"> 搜索 </a>
-            <a href="/bulletin-board/" class="navbar-menu button"> 公告 </a>
-        </div>
-        <a href="javaScript:void(0);" id="btn-toggle-dark">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg> </a>
-        <a class="dropdown-icon button" id="btn-dropdown" tabindex="0">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none"
-                stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
-                <path fill="currentColor"
-                    d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z">
-                </path>
-            </svg></a>
-        <div class="dropdown-menus" id="dropdown-menus">
-            <a href="/" class="dropdown-menu button"> 首页 </a>
-            <a href="/home/" class="dropdown-menu button"> 主页 </a>
-            <a href="/friends/" class="dropdown-menu button"> 友链 </a>
-            <a href="/search/" class="dropdown-menu button"> 搜索 </a>
-            <a href="/bulletin-board/" class="dropdown-menu button"> 公告 </a>
-        </div>
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/home/" class="navbar-menu button">主页</a>
+                
+                    <a href="/categories-koinl/" class="navbar-menu button">分类</a>
+                
+                    <a href="/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/search/" class="navbar-menu button">搜索</a>
+                
+                    <a href="/bulletin-board/" class="navbar-menu button">公告</a>
+                
+            </div>
+        
+        
+
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="0" height="0" fill="currentColor" stroke="currentColor" stroke-width="0"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/home/" class="dropdown-menu button">主页</a>
+                
+                    <a href="/categories-koinl/" class="dropdown-menu button">分类</a>
+                
+                    <a href="/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/search/" class="dropdown-menu button">搜索</a>
+                
+                    <a href="/bulletin-board/" class="dropdown-menu button">公告</a>
+                
+            </div>
+        
     </div>
 </header>
+
     
             <main class="main">
     
@@ -78,37 +155,39 @@
                     学习
                 </a>
                 
+
         </div>
     </div>
 
-
-    <aside class="post-side">
-        <div class="post-side__toc">
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">文件的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80open"><span class="toc-text">打开open</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%86%99-read-write"><span class="toc-text">读写 read, write</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD-close"><span class="toc-text">关闭 close</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD"><span class="toc-text">文件备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">文件和文件夹的操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B-%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D-%E5%8F%AF%E6%B7%BB%E5%8A%A0%E6%88%96%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">例: 批量修改文件名, 可添加或删除指定字符串</span></a></li></ol>
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                post.toc
+            </div>
             <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">文件的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80open"><span class="toc-text">打开open</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%86%99-read-write"><span class="toc-text">读写 read, write</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD-close"><span class="toc-text">关闭 close</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD"><span class="toc-text">文件备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">文件和文件夹的操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B-%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D-%E5%8F%AF%E6%B7%BB%E5%8A%A0%E6%88%96%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">例: 批量修改文件名, 可添加或删除指定字符串</span></a></li></ol>
         </div>
-    </aside>
-    <a class="btn-toc button" id="btn-toc" tabindex="0">
-        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
-                fill="currentColor"></path>
-        </svg>
-    </a>
-    <div class="toc-menus" id="toc-menus">
-        <div class="toc-title">
-            文章目录
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">文件的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80open"><span class="toc-text">打开open</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%86%99-read-write"><span class="toc-text">读写 read, write</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD-close"><span class="toc-text">关闭 close</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD"><span class="toc-text">文件备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">文件和文件夹的操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B-%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D-%E5%8F%AF%E6%B7%BB%E5%8A%A0%E6%88%96%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">例: 批量修改文件名, 可添加或删除指定字符串</span></a></li></ol>
-    </div>
+        
 
-
-    <article class="post post__with-toc content-card">
-        <div class="post__header">
-            <!--  -->
-
-        </div>
-        <div class="post__content">
-            <p>本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!<span id="more"></span><br></p>
+            <article
+                class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                                        
+                </div>
+                <div class="post__content">
+                    <p>本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!<span id="more"></span><br></p>
 <h1 id="第五章-文件操作"><a href="#第五章-文件操作" class="headerlink" title="第五章  文件操作"></a>第五章  文件操作</h1><h2 id="文件的基本操作"><a href="#文件的基本操作" class="headerlink" title="文件的基本操作"></a>文件的基本操作</h2><h3 id="打开open"><a href="#打开open" class="headerlink" title="打开open"></a>打开open</h3><p><code>f = open(&#39;name&#39;, &#39;mode&#39;)</code><br>f为文件对象<br>name: 目标文件名的字符串或路径<br>mode: 访问模式:只读: r, 如果文件不存在, 报错; 可省<br>　　　　　 　 　写入: w, 文件无则创建;<br>　　　　　 　 　追加: a, 文件无则创建;<br>但凡带 +, 可读写; 但凡带 b, 为二进制格式</p>
 <h3 id="读写-read-write"><a href="#读写-read-write" class="headerlink" title="读写 read, write"></a>读写 read, write</h3><p>读: </p>
 <ul>
@@ -130,60 +209,68 @@
 <li>获取目录列表: os.listdir()<h2 id="例-批量修改文件名-可添加或删除指定字符串"><a href="#例-批量修改文件名-可添加或删除指定字符串" class="headerlink" title="例: 批量修改文件名, 可添加或删除指定字符串"></a>例: 批量修改文件名, 可添加或删除指定字符串</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"># 设置增删字符串的标识, 1为添加, 2为删除</span><br><span class="line">flag = 1</span><br><span class="line"># 获取指定目录的所有文件列表</span><br><span class="line">file_list = os.listdir()</span><br><span class="line"># 将原有文件名增删指定字符串, 构造新名字</span><br><span class="line">for name in file_list:</span><br><span class="line">	if flag == 1:</span><br><span class="line">		new_name = &#x27;Python_&#x27; + name</span><br><span class="line">	elif flag == 2:</span><br><span class="line">		new_name = name[len(&#x27;Python_&#x27;):]</span><br><span class="line"># 进行重命名</span><br><span class="line">	os.rename(name, new_name)</span><br></pre></td></tr></table></figure></li>
 </ul>
 
-        </div>
-        <div class="post-footer__meta">
-            <p>
-                更新于 2022-03-28 21:12:38 星期一
-            </p>
-        </div>
-    </article>
+                </div>
+                
+                        <div class="post-footer__meta">
+                            <p>
+                                post.updated2022-03-28 21:12:38 星期一
+                            </p>
+                        </div>
+                        <div class="post-entry__tags">
+                            <a href="/tags/Python/"
+                                    class="post-tags__link button"># Python</a>
+                                
+                        </div>
+            </article>
 
-    
-        <div class="nav">
-            <div class="nav__prev">
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/ad95/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第十六章  项目_学员管理系统
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/py01/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第一章  程序基本结构
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
                 
-                    <a href="/posts/ad95/" class="nav__link">
-                        <div>
-                            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                                <path
-                                    d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
-                                    fill="#808080"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="nav__label">
-                                 上一篇
-                            </div>
-                            <div class="nav__title">
-                                第十六章  项目_学员管理系统
-                            </div>
-                        </div>
-                    </a>
-                    
-            </div>
-            <div class="nav__next">
-                
-                    <a href="/posts/py01/" class="nav__link">
-                        <div>
-                            <div class="nav__label">
-                                下一篇
-                            </div>
-                            <div class="nav__title">
-                                第一章  程序基本结构
-                            </div>
-                        </div>
-                        <div>
-                            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                                <path
-                                    d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
-                                    fill="#808080"></path>
-                            </svg>
-                        </div>
-                    </a>
-                    
-            </div>
-        </div>
-        
 </main>
                 <footer class="footer">
     <a href="#" class="button" id="b2t" aria-label="navbar.top" title="navbar.top">
@@ -194,29 +281,46 @@
         </svg>
     </a>
     
-        <p class="footer-copyright"> Copyright © 2022&nbsp;-&nbsp;2022<a href="/"> Koi_NL </a></p>
-
-        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
-            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        </p>
+        
+            <p class="footer-copyright">
+                Copyright © 2022&nbsp;-&nbsp;2022
+                    <a href="/">
+                        Koi_NL
+                    </a>
+            </p>
+            
+                
+                                    <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+                                        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+                                            charset="utf-8"></script>
+                                    </p>
 </footer>
     </div>
-    <script>
-        window.onload = () => {
-            document.querySelectorAll('.sliding-fold').forEach((item) => {
-                item.querySelector('summary').onclick = () => {
-                    item.classList.toggle("collapsed");
-                    item.classList.toggle("expanded");
-                };
-            });
-        };
-    </script>
-    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/mouse-click-love.js"></script>
-    <script type="text/javascript" color="183,109,220" opacity='0.7' zIndex="-2" count="200"
-        src="/js/cobweb.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
-    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+    
+        <script defer
+            src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+        <script>
+            window.lazyLoadOptions = {
+                elements_selector: ".lazy",
+                threshold: 0
+            };
+        </script>
+        
+            
+                    
+                                        
+                                                
+                                                        <script type="text/javascript"
+                                                            src="https://cdn.jsdelivr.net/gh/fei1099771017/fei1099771017.github.io@master/js/mouse-click-love.js"></script>
+                                                        <script type="text/javascript" color="183,109,220" opacity='0.7'
+                                                            zIndex="-2" count="200"
+                                                            src="https://cdn.jsdelivr.net/gh/fei1099771017/fei1099771017.github.io@master/js/cobweb.js"></script>
+                                                        <script type="text/javascript"
+                                                            src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+                                                        <script type="text/javascript"
+                                                            src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+                                                        <script type="text/javascript"
+                                                            src="/js/clipboard_use.js"></script>
 </body>
 
 </html>

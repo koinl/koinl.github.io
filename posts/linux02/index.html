@@ -47,14 +47,12 @@
                                         
                                             
 
+                                                <link rel="stylesheet" href="/css/main.css">
+
+                                                <link rel="stylesheet" href="/css/dark.css">
 
 
-                                                
-<link rel="stylesheet" href="/css/style/dark.css">
-
-                                                    
-<script src="/js/darkmode.js"></script>
-
+                                                <script src="/js/darkmode.js"></script>
 
 
 
@@ -187,25 +185,6 @@
         <div class="post__header">
             <!--  -->
             
-    <div class="post__expire" id="post-expired-notify">
-        <p>
-            本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
-        </p>
-    </div>
-    <script>
-        (() => {
-            var update = Date.parse("2022-05-07"),
-                date = new Date(),
-                now = date.getTime(),
-                expire = now - update,
-                expire_days = Math.floor(expire/(24*3600*1000));
-            if (expire_days >= 10) {
-                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
-                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
-            }
-        })();
-    </script>
-
         </div>
         <div class="post__content">
             <p>本章将介绍进程的原理以及在 Linux 内核中的实现, 进程调度的原理与实现, 进程的各种同步原语以及通信机制</p>

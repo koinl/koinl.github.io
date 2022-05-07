@@ -3,20 +3,28 @@
 
 <head>
     <meta charset="utf-8">
-
     
-
             <meta name="renderer" content="webkit">
             <meta name="force-rendering" content="webkit">
             <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
             <meta name="HandheldFriendly" content="True">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="/css/style/note.css" media="none" onload="this.media='all'">
+
             <link rel="shortcut icon" href="/img/tubiao.png">
             <link rel="icon" type="image/png" sizes="16x16" href="/img/tubiao.png">
             <link rel="icon" type="image/png" sizes="32x32" href="/img/tubiao.png">
             <link rel="apple-touch-icon" sizes="180x180" href="/img/tubiao.png">
             <link rel="mask-icon" href="/img/tubiao.png">
+
+            <link rel="stylesheet" id="hl-default-theme" href="/css/highlight-main.css" media="none"
+                onload="this.media='all'">
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight-dark.css" media="none">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/dark.css">
+            <script src="/js/darkmode.js"></script>
 
             
                 <title>
@@ -31,16 +39,7 @@
                     
 
 
-                        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight-main.css" media="none"
-                            onload="this.media='all'">
-                        <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight-dark.css" media="none">
 
-                        <link rel="stylesheet" href="/css/main.css">
-
-                        <link rel="stylesheet" href="/css/dark.css">
-
-
-                        <script src="/js/darkmode.js"></script>
 
 
 
@@ -204,7 +203,16 @@
     </div>
 
 
-    
+        <script>
+        window.onload = () => {
+            document.querySelectorAll('.sliding-fold').forEach((item) => {
+                item.querySelector('summary').onclick = () => {
+                    item.classList.toggle("collapsed");
+                    item.classList.toggle("expanded");
+                };
+            });
+        };
+    </script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
         <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="/js/clipboard_use.js"></script>

@@ -146,25 +146,33 @@
             <main class="main">
     
 
-<div class="post-title">
-    <h1 class="post-title__text">
-        第三章  组合数据类型
-    </h1>
-    <div class="post-title__meta">
-        <a href="/archives/2022/04/" class="post-meta__date button">2022-04-16</a>
-        
-    <span class="separate-dot"></span><a href="/categories/Python/" class="button">Python</a>
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第三章  组合数据类型
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/04/" class="post-meta__date button">
+                创建于  2022-04-16 19:04:06 星期六
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/Python/" class="button">
+                    Python
+                </a>
+                
 
- 
+        </div>
     </div>
-</div>
 
+    
 
-
-<article class="post content-card">
-    <div class="post__header"></div>
-    <div class="post__content">
-        <p>组合数据类型, 分为序列类型, 集合类型和映射类型. </p>
+            <article
+                class="post content-card">
+                <div class="post__header">
+                    
+                        
+                </div>
+                <div class="post__content">
+                    <p>组合数据类型, 分为序列类型, 集合类型和映射类型. </p>
 <h2 id="序列类型"><a href="#序列类型" class="headerlink" title="序列类型"></a>序列类型</h2><p>序列类型有列表与集合, 列表常用操作如下:</p>
 <details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ll = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line"><span class="comment"># 列表增有追加, 逐增与按下标添加 3 种方法</span></span><br><span class="line">ll.append(<span class="number">10</span>); ll.extend((<span class="number">15</span>, <span class="number">20</span>)); ll.insert(<span class="number">0</span>, <span class="number">0</span>); <span class="built_in">print</span>(ll)</span><br><span class="line"><span class="comment"># 删有按元素删与按下标删, 清空与删除 4 种方式, 其中 pop() 不指定默认最后一个</span></span><br><span class="line">ll.remove(<span class="number">15</span>); ll.pop(<span class="number">0</span>); <span class="built_in">print</span>(ll); <span class="comment"># ll.clear(); # del ll;</span></span><br><span class="line"><span class="comment"># 改: 按下标改 1 种方式</span></span><br><span class="line">ll[<span class="number">0</span>] = <span class="number">20</span>; <span class="built_in">print</span>(ll)</span><br><span class="line"><span class="comment"># 查: 查数据, 查下标, 查长度, 查最大 / 小值, 查次数 5 种方式</span></span><br><span class="line"><span class="built_in">print</span>(ll[<span class="number">5</span>]); <span class="built_in">print</span>(ll.index(<span class="number">5</span>)); <span class="built_in">print</span>(<span class="built_in">len</span>(ll)); <span class="built_in">print</span>(<span class="built_in">max</span>(ll)); <span class="built_in">print</span>(ll.count(<span class="number">20</span>))</span><br><span class="line"><span class="comment"># 序列类型独有操作</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">520</span> <span class="keyword">in</span> ll); <span class="built_in">print</span>(ll + [<span class="number">123</span>]); <span class="built_in">print</span>(ll * <span class="number">2</span>)</span><br><span class="line"><span class="comment"># 列表类型独有操作</span></span><br><span class="line"><span class="built_in">print</span>(ll.copy())    <span class="comment"># 复制</span></span><br><span class="line"><span class="built_in">print</span>(ll.reverse())    <span class="comment"># 反转</span></span><br></pre></td></tr></table></figure></div></details>
 
@@ -211,54 +219,62 @@
 
 <details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></div></details>
 
-    </div>
-     
-    <div class="post-footer__meta"><p>更新于 2022-04-16</p></div> 
-    <div class="post-entry__tags"></div> 
-</article>
+                </div>
+                
+                    <div class="post-footer__meta"><p>更新于 2022-04-16</p></div>
+                        <div class="post-entry__tags"></div>
+            </article>
 
-
-    <div class="nav">
-        <div class="nav__prev">
             
-                <a href="/posts/ln01/" class="nav__link">
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/ln01/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        Previous Post
+                                    </div>
+                                    <div class="nav__title">
+                                        第一章  操作基础
+                                    </div>
+                                </div>
+                            </a>
+                            
                     </div>
-                    <div>
-                        <div class="nav__label">
-                            Previous Post
-                        </div>
-                        <div class="nav__title">
-                            第一章  操作基础
-                        </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/py02/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        Next Post
+                                    </div>
+                                    <div class="nav__title">
+                                        第二章  函数
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
                     </div>
-                </a>
-            
-        </div>
-        <div class="nav__next">
-            
-                <a href="/posts/py02/" class="nav__link">
-                    <div>
-                        <div class="nav__label">
-                            Next Post
-                        </div>
-                        <div class="nav__title">
-                            第二章  函数
-                        </div>
-                    </div>
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
-                    </div>
-                </a>
-            
-        </div>
-    </div>
+                </div>
+                
 
-
-
-
-
+                    
 </main>
 
                 <footer class="footer">

@@ -146,25 +146,33 @@
             <main class="main">
     
 
-<div class="post-title">
-    <h1 class="post-title__text">
-        第一章  程序基本结构
-    </h1>
-    <div class="post-title__meta">
-        <a href="/archives/2022/02/" class="post-meta__date button">2022-02-06</a>
-        
-    <span class="separate-dot"></span><a href="/categories/Python/" class="button">Python</a>
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第一章  程序基本结构
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/02/" class="post-meta__date button">
+                创建于  2022-02-06 20:14:44 星期日
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/Python/" class="button">
+                    Python
+                </a>
+                
 
- 
+        </div>
     </div>
-</div>
 
+    
 
-
-<article class="post content-card">
-    <div class="post__header"></div>
-    <div class="post__content">
-        <p>程序的基本结构是分为顺序结构, 分支结构与循环结构这三种的.<br>关于分支结构, 为 if…elif…else 的程序解释和三目运算符.<br>关于循环结构, 会阐遍历循环 for 和无限循环 while 这两者.<br>不过在此之前, 用少量的篇幅简要地介绍下数据的类型等. <span id="more"></span><br></p>
+            <article
+                class="post content-card">
+                <div class="post__header">
+                    
+                        
+                </div>
+                <div class="post__content">
+                    <p>程序的基本结构是分为顺序结构, 分支结构与循环结构这三种的.<br>关于分支结构, 为 if…elif…else 的程序解释和三目运算符.<br>关于循环结构, 会阐遍历循环 for 和无限循环 while 这两者.<br>不过在此之前, 用少量的篇幅简要地介绍下数据的类型等. <span id="more"></span><br></p>
 <h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1. 数据类型"></a>1. 数据类型</h2><p>数据类型分为数字类型, 字符类型与组合类型. </p>
 <ul>
 <li><p>数字类型<br>数字类型有两种, 为整数与小数, 在 Python 中称为整数与浮点数<br>数字类型的操作: +-*&#x2F; 依次为加减乘除, 另有三个需要注意下: &#x2F;&#x2F; 获取整数商, % 获取余数, ** 次幂<br>另有一些内置函数: abs() 求绝对值, round() 四舍五入, pow() 与 ** 等同. </p>
@@ -260,54 +268,62 @@
 <li>羊车门问题. 羊车门问题描述: 有3扇关闭的门, 一扇门后停着汽车, 另外两扇门后是山羊, 主持人知道每扇门后是什么. 参赛者首先选择一扇门, 在开启它之前, 主持人会从另外两扇门中打开一扇门, 露出门后的山羊. 此时, 允许参赛者更换自己的选择. 请问, 参赛者更换选择后, 能否增加猜中汽车的机会?</li>
 </ol>
 <details ><summary>点击显/隐羊车门问题代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> *</span><br><span class="line">old_choose, new_choose = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):    <span class="comment"># 测试 10000 次</span></span><br><span class="line">    car = randint(<span class="number">0</span>, <span class="number">2</span>)    <span class="comment"># 车随机三扇门里面</span></span><br><span class="line">    choose = randint(<span class="number">0</span>, <span class="number">2</span>)    <span class="comment"># 选择随机一扇门</span></span><br><span class="line">    <span class="keyword">if</span> choose == car:    <span class="comment"># 不更改选择得到车</span></span><br><span class="line">        old_choose += <span class="number">1</span>    <span class="comment"># 坚持选择计数器 +1</span></span><br><span class="line">    <span class="keyword">if</span> choose != car:    <span class="comment"># 反之则反</span></span><br><span class="line">        new_choose += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(old_choose / <span class="number">10000</span> * <span class="number">100</span>, <span class="string">&#x27;%&#x27;</span>, new_choose / <span class="number">10000</span> * <span class="number">100</span>, <span class="string">&#x27;%&#x27;</span>)    <span class="comment"># 33.83 % 66.17 %</span></span><br></pre></td></tr></table></figure></div></details>
-    </div>
-     
-    <div class="post-footer__meta"><p>更新于 2022-04-18</p></div> 
-    <div class="post-entry__tags"></div> 
-</article>
+                </div>
+                
+                    <div class="post-footer__meta"><p>更新于 2022-04-18</p></div>
+                        <div class="post-entry__tags"></div>
+            </article>
 
-
-    <div class="nav">
-        <div class="nav__prev">
             
-                <a href="/posts/b94f/" class="nav__link">
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/b94f/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        Previous Post
+                                    </div>
+                                    <div class="nav__title">
+                                        第五章  文件操作
+                                    </div>
+                                </div>
+                            </a>
+                            
                     </div>
-                    <div>
-                        <div class="nav__label">
-                            Previous Post
-                        </div>
-                        <div class="nav__title">
-                            第五章  文件操作
-                        </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/f1d8/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        Next Post
+                                    </div>
+                                    <div class="nav__title">
+                                        第四章  类与对象
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
                     </div>
-                </a>
-            
-        </div>
-        <div class="nav__next">
-            
-                <a href="/posts/f1d8/" class="nav__link">
-                    <div>
-                        <div class="nav__label">
-                            Next Post
-                        </div>
-                        <div class="nav__title">
-                            第四章  类与对象
-                        </div>
-                    </div>
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
-                    </div>
-                </a>
-            
-        </div>
-    </div>
+                </div>
+                
 
-
-
-
-
+                    
 </main>
 
                 <footer class="footer">

@@ -97,9 +97,9 @@ function loadDataSearch(searchDataFile, skeys) {
                 const dataTitle = data.title.trim().toLowerCase();
                 const dataContent = data.content
                     ? data.content
-                        .trim()
-                        .replace(/<[^>]+>/g, '')
-                        .toLowerCase()
+                          .trim()
+                          .replace(/<[^>]+>/g, '')
+                          .toLowerCase()
                     : '';
                 let dataWeight = 0;
 
@@ -163,14 +163,14 @@ function loadDataSearch(searchDataFile, skeys) {
 
             if (resultCount !== 0) {
                 const finishTime = performance.now();
-                setNotice(`找到 ${resultCount} 个相关结果 (在 ${Math.round((finishTime - startTime) * 100) / 100} 秒内)`);
+                setNotice(`${resultCount} related results found (in ${Math.round((finishTime - startTime) * 100) / 100} ms)`);
                 resultArray.sort((a, b) => {
                     return b[1] - a[1];
                 });
                 createPosts(resultArray);
             } else {
                 const finishTime = performance.now();
-                setNotice(`未找到相关结果 (在 ${Math.round((finishTime - startTime) * 100) / 100} 秒内)`);
+                setNotice(`No related result found (in ${Math.round((finishTime - startTime) * 100) / 100} ms)`);
                 clearPosts();
             }
         });

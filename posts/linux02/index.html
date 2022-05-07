@@ -1,156 +1,170 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+<!-- 哼哼, 我就是全宇宙最幼稚愚蠢自私 (划掉) 最天真可爱无敌帅的锦鲤未离是也! ! !  -->
+
+<head>
     <meta charset="utf-8">
-
     
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <link rel="shortcut icon" href="/img/tubiao.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="/img/tubiao.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="/img/tubiao.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/tubiao.png">
+            <link rel="mask-icon" href="/img/tubiao.png">
+            
+                <title>
+                    第二章  进程管理 | 
+                        锦鲤未离
+                </title>
+                
+                        
 
-    <!-- 渲染优化 -->
-    <meta name="renderer" content="webkit">
-    <meta name="force-rendering" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="HandheldFriendly" content="True" >
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!--icon-->
-
-    
-    
-    
-    
-    
-
-
-    <!-- meta -->
-
-
-<title>第二章  进程管理 | 锦鲤未离</title>
-
-
-
-
-
-    <!-- OpenGraph -->
- 
-    <meta name="description" content="本章将介绍进程的原理以及在 Linux 内核中的实现, 进程调度的原理与实现, 进程的各种同步原语以及通信机制 1. 进程概述执行一个程序时, 对操作系统来讲就是创建了一个进程, 在某个时刻进程的内容被称作进程映像.  进程由程序 (正文段, 用户数据段) + 系统数据段实现, 使用命令 ps -e 在查看进程及其相关信息, 使用命令 pstrees 来查看系统的树状结构, 另外, ps -elH">
-<meta property="og:type" content="article">
-<meta property="og:title" content="第二章  进程管理">
-<meta property="og:url" content="http://example.com/posts/linux02/index.html">
-<meta property="og:site_name" content="锦鲤未离">
-<meta property="og:description" content="本章将介绍进程的原理以及在 Linux 内核中的实现, 进程调度的原理与实现, 进程的各种同步原语以及通信机制 1. 进程概述执行一个程序时, 对操作系统来讲就是创建了一个进程, 在某个时刻进程的内容被称作进程映像.  进程由程序 (正文段, 用户数据段) + 系统数据段实现, 使用命令 ps -e 在查看进程及其相关信息, 使用命令 pstrees 来查看系统的树状结构, 另外, ps -elH">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-26T04:38:31.710Z">
-<meta property="article:modified_time" content="2022-05-07T02:18:26.787Z">
-<meta property="article:author" content="Koi_NL">
-<meta name="twitter:card" content="summary_large_image">
+                                <link rel="stylesheet" href="/css/main.css">
+                                <link rel="stylesheet" id="hl-default-theme" href="/css/highlight-main.css"
+                                    media="none">
+                                <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight-dark.css" media="none">
+                                <link rel="stylesheet" href="/css/dark.css">
+                                <script src="/js/darkmode.js"></script>
 
 
-    
-<link rel="stylesheet" href="/css/style/main.css">
- 
 
-    
-    
-        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
-        
-    
-
-    
-    
-
-    
-
-     
-
-    <!-- custom head -->
 
 <meta name="generator" content="Hexo 6.1.0"></head>
 
-    <body>
-        <div id="app">
-            <header class="header">
+<body>
+    <div id="app">
+        <header class="header">
     <div class="header__left">
         <a href="/" class="button">
-            <span class="logo__text">Demo</span>
+            <span class="logo__text">🏠</span>
         </a>
     </div>
     <div class="header__right">
-        
-            <div class="navbar__menus">
-                
-                    <a href="/" class="navbar-menu button">首页</a>
-                
-                    <a href="/tags/" class="navbar-menu button">标签</a>
-                
-                    <a href="/archives/" class="navbar-menu button">归档</a>
-                
-                    <a href="/friends/" class="navbar-menu button">友链</a>
-                
-                    <a href="/page/" class="navbar-menu button">Page</a>
-                
-            </div>
-        
-        
-        
-    <a href="/search/" id="btn-search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
-    </a>
+
+        <div class="navbar__menus">
+
+            <a href="/" class="navbar-menu button">
+                首页
+            </a>
+
+            <a href="/home/" class="navbar-menu button">
+                主页
+            </a>
 
 
-        
-        
 
-        
-            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
-            <div class="dropdown-menus" id="dropdown-menus">
-                
-                    <a href="/" class="dropdown-menu button">首页</a>
-                
-                    <a href="/tags/" class="dropdown-menu button">标签</a>
-                
-                    <a href="/archives/" class="dropdown-menu button">归档</a>
-                
-                    <a href="/friends/" class="dropdown-menu button">友链</a>
-                
-                    <a href="/page/" class="dropdown-menu button">Page</a>
-                
-            </div>
-        
+            <a href="/friends/" class="navbar-menu button">
+                友链
+            </a>
+
+            <a href="/search/" class="navbar-menu button">
+                搜索
+            </a>
+
+            <a href="/bulletin-board/" class="navbar-menu button">
+                公告
+            </a>
+
+        </div>
+
+
+        <a href="javaScript:void(0);" id="btn-toggle-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </a>
+
+
+        <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path fill="currentColor"
+                    d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z">
+                </path>
+            </svg></a>
+        <div class="dropdown-menus" id="dropdown-menus">
+
+            <a href="/" class="dropdown-menu button">
+                首页
+            </a>
+
+            <a href="/home/" class="dropdown-menu button">
+                主页
+            </a>
+
+
+
+            <a href="/friends/" class="dropdown-menu button">
+                友链
+            </a>
+
+            <a href="/search/" class="dropdown-menu button">
+                搜索
+            </a>
+
+            <a href="/bulletin-board/" class="dropdown-menu button">
+                公告
+            </a>
+
+        </div>
+
     </div>
 </header>
-
-
+    
             <main class="main">
     
 
-<div class="post-title">
-    <h1 class="post-title__text">
-        第二章  进程管理
-    </h1>
-    <div class="post-title__meta">
-        <a href="/archives/2022/04/" class="post-meta__date button">2022-04-26</a>
-        
-    <span class="separate-dot"></span><a href="/categories/Linux/" class="button">Linux</a>
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第二章  进程管理
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/04/" class="post-meta__date button">
+                创建于  2022-04-26 12:38:31 星期二
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/Linux/" class="button">
+                    Linux
+                </a>
+                
 
- 
-        
-    
-    
-
-
- 
-
- 
+        </div>
     </div>
-</div>
 
 
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%BF%9B%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 进程概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="toc-text">2. 进程控制块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-text">1) 进程状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-text">2) 进程标识符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E9%97%B4%E5%85%B3%E7%B3%BB"><span class="toc-text">3) 进程间关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F"><span class="toc-text">3. 进程的组织方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%A3%E5%88%97%E8%A1%A8"><span class="toc-text">1) 散列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-text">2) 双向循环链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AF%E8%BF%90%E8%A1%8C%E9%98%9F%E5%88%97"><span class="toc-text">3) 可运行队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%AD%89%E5%BE%85%E9%98%9F%E5%88%97"><span class="toc-text">4) 等待队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5"><span class="toc-text">4. 进程的互斥与同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BA%92%E6%96%A5"><span class="toc-text">1) 互斥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%8C%E6%AD%A5"><span class="toc-text">2) 同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6"><span class="toc-text">3) 信号量机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%AD%BB%E9%94%81"><span class="toc-text">4) 死锁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-text">5. 进程调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%B0%83%E5%BA%A6%E6%97%B6%E6%9C%BA"><span class="toc-text">1) 调度时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5"><span class="toc-text">2) 调度策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%B0%83%E5%BA%A6%E6%96%B9%E5%BC%8F"><span class="toc-text">3) 调度方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-text">6. 进程间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BF%A1%E5%8F%B7%E9%80%9A%E4%BF%A1"><span class="toc-text">1) 信号通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1"><span class="toc-text">2) 管道通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BA%BF%E7%A8%8B"><span class="toc-text">7. 线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux第三次作业</span></a></li></ol></li></ol></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">
+             文章目录
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%BF%9B%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 进程概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="toc-text">2. 进程控制块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-text">1) 进程状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%9B%E7%A8%8B%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-text">2) 进程标识符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E9%97%B4%E5%85%B3%E7%B3%BB"><span class="toc-text">3) 进程间关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F"><span class="toc-text">3. 进程的组织方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%A3%E5%88%97%E8%A1%A8"><span class="toc-text">1) 散列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-text">2) 双向循环链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%AF%E8%BF%90%E8%A1%8C%E9%98%9F%E5%88%97"><span class="toc-text">3) 可运行队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%AD%89%E5%BE%85%E9%98%9F%E5%88%97"><span class="toc-text">4) 等待队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5"><span class="toc-text">4. 进程的互斥与同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BA%92%E6%96%A5"><span class="toc-text">1) 互斥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%8C%E6%AD%A5"><span class="toc-text">2) 同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6"><span class="toc-text">3) 信号量机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%AD%BB%E9%94%81"><span class="toc-text">4) 死锁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-text">5. 进程调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%B0%83%E5%BA%A6%E6%97%B6%E6%9C%BA"><span class="toc-text">1) 调度时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5"><span class="toc-text">2) 调度策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%B0%83%E5%BA%A6%E6%96%B9%E5%BC%8F"><span class="toc-text">3) 调度方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-text">6. 进程间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BF%A1%E5%8F%B7%E9%80%9A%E4%BF%A1"><span class="toc-text">1) 信号通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1"><span class="toc-text">2) 管道通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BA%BF%E7%A8%8B"><span class="toc-text">7. 线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux第三次作业</span></a></li></ol></li></ol></li></ol>
+    </div>
 
-<article class="post content-card">
-    <div class="post__header"></div>
-    <div class="post__content">
-        <p>本章将介绍进程的原理以及在 Linux 内核中的实现, 进程调度的原理与实现, 进程的各种同步原语以及通信机制</p>
+
+    <article class="post post__with-toc content-card">
+        <div class="post__header">
+            <!--  -->
+
+        </div>
+        <div class="post__content">
+            <p>本章将介绍进程的原理以及在 Linux 内核中的实现, 进程调度的原理与实现, 进程的各种同步原语以及通信机制</p>
 <h2 id="1-进程概述"><a href="#1-进程概述" class="headerlink" title="1. 进程概述"></a>1. 进程概述</h2><p>执行一个程序时, 对操作系统来讲就是创建了一个进程, 在某个时刻进程的内容被称作进程映像. </p>
 <p>进程由程序 (正文段, 用户数据段) + 系统数据段实现, 使用命令 <code>ps -e</code> 在查看进程及其相关信息, 使用命令 pstrees 来查看系统的树状结构, 另外, <code>ps -elH</code> 命令也可以显示进程的树状结构. </p>
 <p>进程是处于执行期的程序及其它所包含的所有资源的总称, 这些信息用一个结构体来描述, 称为进程控制块 ( PCB ) . </p>
@@ -191,111 +205,88 @@
 <h3 id="2-管道通信"><a href="#2-管道通信" class="headerlink" title="2) 管道通信"></a>2) 管道通信</h3><p>半双工通信方式, 只能进行单向流动, 通常用于具有亲缘关系进程间的通信</p>
 <h2 id="7-线程"><a href="#7-线程" class="headerlink" title="7. 线程"></a>7. 线程</h2><h4 id="linux第三次作业"><a href="#linux第三次作业" class="headerlink" title="linux第三次作业"></a>linux第三次作业</h4><blockquote><p><strong>点击显隐第二次</strong></p><p>1.使用vim 编辑器创建文件num并在文件中写入如下内容：<br>apple<br>student<br>no<br>Yes<br>解: vi num 添加<br>2.请写出统计文件num中单词数、行数以及字符数的命令。<br>解: wc num, 结果 4 4 21 num; 表示单词 4 个, 行数 4 个, 字符数 21 个.<br>3.请写出将num中单词数、行数以及字符数重定向到文件num1中的命令。<br>解: echo 4 4 21 num &gt; num1<br>4.请写出将num中单词数、行数以及字符数追加到文件num2中的命令。<br>解: echo 4 4 21 num &gt;&gt; num2<br>5.请写出创建文件&#x2F;num3,并写出查找&#x2F;num3的命令。<br>解: 创建文件:  touch num3, 查找文件: find &#x2F;home&#x2F;koinl -name num3<br>6.请写出静态查看系统所有进程的命令，同时输出前两行。<br>解: ps -ef<br>7.请写出动态查看系统进程的命令。<br>解: top<br>8.请写出查看当前系统时间的命令，并将当前时间修改为”20220501 18:25:25”<br>解: 查看时间: date. 修改时间: date -s “2022-05-01 18:25:25”</p>
 </blockquote>
-    </div>
-     
-    <div class="post-footer__meta"><p>更新于 2022-05-07</p></div> 
-    <div class="post-entry__tags"></div> 
-</article>
-
-
-    <div class="nav">
-        <div class="nav__prev">
-            
-                <a href="/posts/mmvc/" class="nav__link">
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
-                    </div>
-                    <div>
-                        <div class="nav__label">
-                            Previous Post
-                        </div>
-                        <div class="nav__title">
-                            将手机投屏到电脑
-                        </div>
-                    </div>
-                </a>
-            
         </div>
-        <div class="nav__next">
-            
-                <a href="/posts/linux01/" class="nav__link">
-                    <div>
-                        <div class="nav__label">
-                            Next Post
-                        </div>
-                        <div class="nav__title">
-                            第一章  操作基础
-                        </div>
-                    </div>
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
-                    </div>
-                </a>
-            
+        <div class="post-footer__meta">
+            <p>
+                更新于  2022-05-07 10:18:26 星期六
+            </p>
         </div>
-    </div>
-
-
-
-
-
-</main>
-
-            <footer class="footer">
-    
-    
-
+    </article>
 
     
-     
- 
-
- 
-    
+        <div class="nav">
+            <div class="nav__prev">
+                
+                    <a href="/posts/mmvc/" class="nav__link">
+                        <div>
+                            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path
+                                    d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                    fill="#808080"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="nav__label">
+                                 上一篇
+                            </div>
+                            <div class="nav__title">
+                                将手机投屏到电脑
+                            </div>
+                        </div>
+                    </a>
+                    
+            </div>
+            <div class="nav__next">
+                
+                    <a href="/posts/linux01/" class="nav__link">
+                        <div>
+                            <div class="nav__label">
+                                下一篇
+                            </div>
+                            <div class="nav__title">
+                                第一章  操作基础
+                            </div>
+                        </div>
+                        <div>
+                            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path
+                                    d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                    fill="#808080"></path>
+                            </svg>
+                        </div>
+                    </a>
+                    
+            </div>
+        </div>
         
+</main>
+                <footer class="footer">
+    <a href="#" class="button" id="b2t" aria-label="navbar.top" title="navbar.top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+    
         <p class="footer-copyright">
-            Copyright © 2022 <a href="/">锦鲤未离</a>
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/">Koi_NL</a>
         </p>
-    
-    
-    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
 </footer>
+    </div>
 
-        </div>
-         
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/fei1099771017/fei1099771017.github.io@master/js/mouse-click-love.js"></script>
+    <script type="text/javascript" color="183,109,220" opacity='0.7' zIndex="-2" count="200"
+        src="https://cdn.jsdelivr.net/gh/fei1099771017/fei1099771017.github.io@master/js/cobweb.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+</body>
 
- 
-
- 
-
- 
-
- 
-
-
-
- 
-
-
-
- 
-
-
-    
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-
-
-
-    </body>
 </html>

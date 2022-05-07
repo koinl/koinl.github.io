@@ -163,16 +163,33 @@
         </div>
     </div>
 
-    
 
-            <article
-                class="post content-card">
-                <div class="post__header">
-                    
-                        
-                </div>
-                <div class="post__content">
-                    <p>程序, 等于数据结构与算法. 在本标签下, 会讲述有关于数据结构 (逻辑结构, 存储结构和运算) 的基本知识. 逻辑结构分为线性结构 (线性表) 和非线性结构 (树, 与图) 的讲述. 存储结构包括 (顺序存储, 链式存储, 索引存储与散列存储) . 而有关于处理这些数据的基本技术即运算则 (如查找于排序) 在算法标签下讲述.</p>
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-text">1. 线性表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-text">2. 线性表的存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">3. 线性表的操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%A1%BA%E5%BA%8F%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">1) 顺序表操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8D%95%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">3. 单链表操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A0%88"><span class="toc-text">2. 栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%98%9F%E5%88%97"><span class="toc-text">3. 队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">4. 字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B"><span class="toc-text">5. 综合案例</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">
+            文章目录
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-text">1. 线性表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-text">2. 线性表的存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">3. 线性表的操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%A1%BA%E5%BA%8F%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">1) 顺序表操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8D%95%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">3. 单链表操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A0%88"><span class="toc-text">2. 栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%98%9F%E5%88%97"><span class="toc-text">3. 队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">4. 字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B"><span class="toc-text">5. 综合案例</span></a></li></ol>
+    </div>
+
+    <article class="post content-card">
+        <div class="post__header">
+            
+                
+        </div>
+        <div class="post__content">
+            <p>程序, 等于数据结构与算法. 在本标签下, 会讲述有关于数据结构 (逻辑结构, 存储结构和运算) 的基本知识. 逻辑结构分为线性结构 (线性表) 和非线性结构 (树, 与图) 的讲述. 存储结构包括 (顺序存储, 链式存储, 索引存储与散列存储) . 而有关于处理这些数据的基本技术即运算则 (如查找于排序) 在算法标签下讲述.</p>
 <h2 id="1-线性表"><a href="#1-线性表" class="headerlink" title="1. 线性表"></a>1. 线性表</h2><p>线性表是指由有限个同类元素组成的, 且相邻元素之间有序偶关系. </p>
 <h2 id="2-线性表的存储"><a href="#2-线性表的存储" class="headerlink" title="2. 线性表的存储"></a>2. 线性表的存储</h2><p>线性表的存储有顺序存储和链表存储两种方式.<br>顺序存储按顺序依次存储, 列表和元组可以实现顺序表.<br>链表存储除了原有的数据外, 还有存放后继元素地址的指针域.<br>顺序表的操作会引起大量数据移动, 效率很低, 根本原因是数据的逻辑关系是通过物理关系来表示的; 链式存储不要求物理上相邻 (毕竟指针也不是吃干饭的) , 这就使链表相比顺序表效率更高. </p>
 <h2 id="3-线性表的操作"><a href="#3-线性表的操作" class="headerlink" title="3. 线性表的操作"></a>3. 线性表的操作</h2><h2 id="1-顺序表操作"><a href="#1-顺序表操作" class="headerlink" title="1) 顺序表操作"></a>1) 顺序表操作</h2><p>参阅列表与元组的操作即可.</p>
@@ -202,62 +219,60 @@
 </ol>
 <p>甲和乙在玩一个扑克游戏——小猫钓鱼。游戏规则：将一副扑克牌平均分成两份，每人拿一分。甲先拿出手中第一张扑克牌放在桌上，然后乙也拿出手中第一张扑克牌，并放在甲刚才打出的扑克牌的上面，两人交替出牌。出牌时，如果某人打出的牌与桌上某张牌的牌面相同，可将两张相同的牌及其中间所夹的牌全部拿走，并依次放到自己手中牌的末尾。当任意一人手中当牌出完时，游戏结束，对方获胜。</p>
 <details ><summary>点击显/隐小猫钓鱼的代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">q1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]  <span class="comment"># 小猫钓鱼主程序，初始化，以各自三张牌为例分牌：甲方（q1）牌为1,2,3 乙方（q2）牌为2,5,1</span></span><br><span class="line">q2 = [<span class="number">2</span>, <span class="number">5</span>, <span class="number">1</span>]</span><br><span class="line">s = []</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">先分析一波: 玩家手牌为队列, 桌子为栈. 因此流程为 甲出队列 - 牌入栈 - 乙出队列 - 牌入栈</span></span><br><span class="line"><span class="string">胜利结果为: 一人手牌为空</span></span><br><span class="line"><span class="string">有个特殊情况: 若有相同牌, 需全部出栈并加入队列, 反之仅仅牌入栈</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">i = <span class="number">0</span>  <span class="comment"># 计数器, 用来记录是当前是谁出了牌</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pai_ru_zhan</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">global</span> q1, q2, s, i</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> n <span class="keyword">in</span> s:  <span class="comment"># 若有相同牌</span></span><br><span class="line">        s.append(n)  <span class="comment"># 牌需先入栈</span></span><br><span class="line">        <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">1</span>:  <span class="comment"># 根据出牌计数器来判断是谁出的牌</span></span><br><span class="line">            q1 = s[s.index(n):] + q1  <span class="comment"># 将两数及其中间的牌全部出栈并加入队列</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            q2 = s[s.index(n):] + q2  <span class="comment"># 将两数及其中间的牌全部出栈并加入队列</span></span><br><span class="line">        s = s[:s.index(n)]  <span class="comment"># 牌被拿走后所剩下的牌</span></span><br><span class="line">    <span class="keyword">else</span>:  <span class="comment"># 反之仅仅牌入栈</span></span><br><span class="line">        s.append(n)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    pai_ru_zhan(q1.pop())  <span class="comment"># 甲出队列后调用牌入栈函数</span></span><br><span class="line">    pai_ru_zhan(q2.pop())  <span class="comment"># 甲出队列后调用牌入栈函数</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(q1) == <span class="number">0</span> <span class="keyword">or</span> <span class="built_in">len</span>(q2) == <span class="number">0</span>:  <span class="comment"># 胜利结果为: 一人手牌为空</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(q1) &gt; <span class="built_in">len</span>(q2):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;胜利结果为: 甲胜利, 此刻甲手牌为<span class="subst">&#123;q1&#125;</span>, 乙手牌为<span class="subst">&#123;q2&#125;</span>, 桌上牌为<span class="subst">&#123;s&#125;</span>&#x27;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;胜利结果为: 乙胜利, 此刻乙手牌为<span class="subst">&#123;q2&#125;</span>, 甲手牌为<span class="subst">&#123;q1&#125;</span>, 桌上牌为<span class="subst">&#123;s&#125;</span>&#x27;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div></details>
-                </div>
+        </div>
+        
+            <div class="post-footer__meta"><p>更新于 2022-04-18</p></div>
+                <div class="post-entry__tags"></div>
+    </article>
+
+    
+        <div class="nav">
+            <div class="nav__prev">
                 
-                    <div class="post-footer__meta"><p>更新于 2022-04-18</p></div>
-                        <div class="post-entry__tags"></div>
-            </article>
+                    <a href="/posts/ds02/" class="nav__link">
+                        <div>
+                            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path
+                                    d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                    fill="#808080"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="nav__label">
+                                Previous Post
+                            </div>
+                            <div class="nav__title">
+                                第二章  树和二叉树
+                            </div>
+                        </div>
+                    </a>
+                    
+            </div>
+            <div class="nav__next">
+                
+                    <a href="/posts/38f2/" class="nav__link">
+                        <div>
+                            <div class="nav__label">
+                                Next Post
+                            </div>
+                            <div class="nav__title">
+                                三级考试(数据库篇)错题整理(选择题, 填空题篇)
+                            </div>
+                        </div>
+                        <div>
+                            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path
+                                    d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                    fill="#808080"></path>
+                            </svg>
+                        </div>
+                    </a>
+                    
+            </div>
+        </div>
+        
 
             
-                <div class="nav">
-                    <div class="nav__prev">
-                        
-                            <a href="/posts/ds02/" class="nav__link">
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="nav__label">
-                                        Previous Post
-                                    </div>
-                                    <div class="nav__title">
-                                        第二章  树和二叉树
-                                    </div>
-                                </div>
-                            </a>
-                            
-                    </div>
-                    <div class="nav__next">
-                        
-                            <a href="/posts/38f2/" class="nav__link">
-                                <div>
-                                    <div class="nav__label">
-                                        Next Post
-                                    </div>
-                                    <div class="nav__title">
-                                        三级考试(数据库篇)错题整理(选择题, 填空题篇)
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            
-                    </div>
-                </div>
-                
-
-                    
 </main>
 
                 <footer class="footer">

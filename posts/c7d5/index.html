@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+
+    
+
+            <!-- 渲染优化 -->
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+            <link rel="shortcut icon" href="/img/tubiao.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="/img/tubiao.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="/img/tubiao.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/tubiao.png">
+            <link rel="mask-icon" href="/img/tubiao.png">
+
+            
+                <title>
+                    第一章  数据库应用系统开发方法 | 
+                        锦鲤未离
+                </title>
+                <meta name="keywords" content="SqlServer">
+
+                
+
+
+
+                        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight-main.css" media="none"
+                            onload="this.media='all'">
+                        <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight-dark.css" media="none">
+                        <link rel="stylesheet" href="/css/main.css">
+                        <link rel="stylesheet" href="/css/dark.css">
+                        <script src="/js/darkmode.js"></script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                Demo
+            </span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                    
+                    <a href="/tags/" class="navbar-menu button">
+                        标签
+                    </a>
+                    
+                    <a href="/archives/" class="navbar-menu button">
+                        归档
+                    </a>
+                    
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                    
+                    <a href="/page/" class="navbar-menu button">
+                        Page
+                    </a>
+                    
+            </div>
+            
+
+
+
+                
+
+                        
+                            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24'
+                                    fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path fill="currentColor"
+                                        d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z">
+                                    </path>
+                                </svg></a>
+                            <div class="dropdown-menus" id="dropdown-menus">
+                                
+                                    <a href="/" class="dropdown-menu button">
+                                        首页
+                                    </a>
+                                    
+                                    <a href="/tags/" class="dropdown-menu button">
+                                        标签
+                                    </a>
+                                    
+                                    <a href="/archives/" class="dropdown-menu button">
+                                        归档
+                                    </a>
+                                    
+                                    <a href="/friends/" class="dropdown-menu button">
+                                        友链
+                                    </a>
+                                    
+                                    <a href="/page/" class="dropdown-menu button">
+                                        Page
+                                    </a>
+                                    
+                            </div>
+                            
+    </div>
+</header>
+
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第一章  数据库应用系统开发方法
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/01/" class="post-meta__date button">
+                2022-01-18
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
+                    学习
+                </a>
+                
+
+
+        </div>
+    </div>
+
+    
+
+            <article
+                class="post content-card">
+                <div class="post__header">
+                    
+                </div>
+                <div class="post__content">
+                    <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
+<h1 id="第一章-数据库应用系统开发方法"><a href="#第一章-数据库应用系统开发方法" class="headerlink" title="第一章  数据库应用系统开发方法"></a>第一章  数据库应用系统开发方法</h1><h1 id="DBS"><a href="#DBS" class="headerlink" title="DBS:"></a>DBS:</h1><h1 id="DBAS"><a href="#DBAS" class="headerlink" title="DBAS:"></a>DBAS:</h1><h1 id="DBAS生命周期-即数据库应用系统生命周期"><a href="#DBAS生命周期-即数据库应用系统生命周期" class="headerlink" title="DBAS生命周期(即数据库应用系统生命周期):"></a>DBAS生命周期(即数据库应用系统生命周期):</h1><h2 id="规划与分析"><a href="#规划与分析" class="headerlink" title="规划与分析"></a>规划与分析</h2><h3 id="系统规划与定义"><a href="#系统规划与定义" class="headerlink" title="系统规划与定义"></a>系统规划与定义</h3><ul>
+<li>任务陈述</li>
+<li>确定任务目标</li>
+<li>确定范围与边界</li>
+<li>确定用户视图<h3 id="可行性分析"><a href="#可行性分析" class="headerlink" title="可行性分析"></a>可行性分析</h3></li>
+<li>技术, 经济, 操作可行性</li>
+<li>开发方案选择<h3 id="项目规划"><a href="#项目规划" class="headerlink" title="项目规划"></a>项目规划</h3></li>
+<li>项目环境</li>
+<li>项目团队</li>
+<li>项目活动</li>
+<li>项目成本预算</li>
+<li>项目进度计划<h2 id="需求分析-第二章会涉及"><a href="#需求分析-第二章会涉及" class="headerlink" title="需求分析:第二章会涉及"></a>需求分析:第二章会涉及</h2></li>
+<li>系统需求 </li>
+<li>DFD:数据流(数据的流入流出)(箭头)处理(数据变换)(矩形框)数据存储(存储数据的地方)(圆角矩形框)外部项(数据的来源和去处)(圆角框)</li>
+<li>数据需求分析 </li>
+<li>功能需求分析:数据处理&#x2F;业务规则</li>
+<li>性能需求分析:响应时间,吞吐量,并发访问用户数,tps代价值</li>
+<li>其他需求分析:安全:防止被非法用户攻击存储:数据总量<h2 id="系统设计-第三章会涉及"><a href="#系统设计-第三章会涉及" class="headerlink" title="系统设计:第三章会涉及"></a>系统设计:第三章会涉及</h2></li>
+<li>概念设计 </li>
+<li>逻辑设计 </li>
+<li>物理设计 <h2 id="实现与部署"><a href="#实现与部署" class="headerlink" title="实现与部署:"></a>实现与部署:</h2></li>
+<li>建立数据库结构</li>
+<li>数据装载(数据加载)</li>
+<li>事务和应用程序的编码及测试</li>
+<li>系统集成</li>
+<li>测试与运行</li>
+<li>系统部署<h2 id="运行管理与维护-第十章会涉及"><a href="#运行管理与维护-第十章会涉及" class="headerlink" title="运行管理与维护:第十章会涉及"></a>运行管理与维护:第十章会涉及</h2></li>
+<li>日常维护:备份恢复,完整安全性维护,存储空间管理,并发控制</li>
+<li>系统监控与分析</li>
+<li>系统性能优化调整</li>
+<li>系统进化升级</li>
+</ul>
+
+                </div>
+                <div class="post-footer__meta">
+                    <p>
+                        post.updated2022-03-28
+                    </p>
+                </div>
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/347f/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        post.prev
+                                    </div>
+                                    <div class="nav__title">
+                                        第二章  需求分析
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/hello/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        post.next
+                                    </div>
+                                    <div class="nav__title">
+                                        好消息! Koi_NL 移动端上线.
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+
+                <footer class="footer">
+    
+
+            
+                
+                    <p class="footer-copyright">
+                        Copyright © 2022 <a href="/">
+                                锦鲤未离
+                            </a>
+                    </p>
+                    
+                        
+                                            <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme -
+                                                <a href="https://github.com/ChrAlpha/hexo-theme-cards"
+                                                    target="_blank">Cards</a></p>
+</footer>
+    </div>
+
+
+    
+
+
+</body>
+
+</html>

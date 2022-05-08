@@ -130,10 +130,14 @@
             第六章  数组
         </h1>
         <div class="post-title__meta">
-            <a href="/archives/2022/01/" class="post-meta__date button">2022-01-27</a>
+            <a href="/archives/2022/01/" class="post-meta__date button">
+                2022-01-27
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
+                    学习
+                </a>
                 
-    <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">学习</a>
-
 
 
         </div>
@@ -145,7 +149,6 @@
                 class="post content-card">
                 <div class="post__header">
                     
-                        
                 </div>
                 <div class="post__content">
                     <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
@@ -199,9 +202,11 @@
 <p>4.二分查找程序<br>     class CommonBinarySearch {<br>          int commonBinarySearch(int[] arr,int key){<br>                int low &#x3D; 0;<br>                int high &#x3D; arr.length - 1;<br>                int middle &#x3D; (low+high)&#x2F;2;            &#x2F;&#x2F;定义middle<br>                if(key &lt; arr[low] || key &gt; arr[high] || low &gt; high){<br>                    return -1;<br>                }<br>                while(low &lt;&#x3D; high){<br>                    middle &#x3D; (low + high) &#x2F; 2;<br>                    if(arr[middle] &gt; key){<br>                        &#x2F;&#x2F;比关键字大则关键字在左区域<br>                        high &#x3D; middle - 1;<br>                    }else if(arr[middle] &lt; key){<br>                        &#x2F;&#x2F;比关键字小则关键字在右区域<br>                        low &#x3D; middle + 1;<br>                    }else{<br>                        return middle;<br>                    }<br>                }<br>                return -1;        &#x2F;&#x2F;最后仍然没有找到，则返回-1<br>            }<br>     }</p>
 
                 </div>
-                
-                    <div class="post-footer__meta"><p>更新于 2022-03-28</p></div>
-                        <div class="post-entry__tags"><a href="/tags/Java/" class="post-tags__link button"># Java</a></div>
+                <div class="post-footer__meta">
+                    <p>
+                        更新于 2022-03-28
+                    </p>
+                </div>
             </article>
 
             

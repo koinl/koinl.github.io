@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+
+    
+
+            <!-- 渲染优化 -->
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+            <!--icon-->
+            
+                
+                        
+                                
+                                        
+                                                
+                                                        
+
+                                                                <!-- meta -->
+                                                                
+
+                                                                    <title>
+                                                                        
+                                                                            第十章  数据库运行管理与维护及其优化 | 
+                                                                                    锦鲤未离
+                                                                    </title>
+
+                                                                    
+                                                                        <meta name="keywords" content="SqlServer">
+                                                                        
+
+                                                                            
+
+                                                                                    
+<link rel="stylesheet" href="/css/style/main.css">
+
+
+                                                                                        
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/a11y-light.css" media="none" onload="this.media='all'">
+        
+    
+
+
+
+                                                                                            
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Demo</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/page/" class="navbar-menu button">Page</a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/page/" class="dropdown-menu button">Page</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第十章  数据库运行管理与维护及其优化
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/01/" class="post-meta__date button">2022-01-20</a>
+                
+    <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">学习</a>
+
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                文章目录
+            </div>
+            
+        </div>
+        
+
+            <article
+                class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                        
+                </div>
+                <div class="post__content">
+                    <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
+<h1 id="第十章-数据库运行管理与维护及其优化"><a href="#第十章-数据库运行管理与维护及其优化" class="headerlink" title="第十章  数据库运行管理与维护及其优化"></a>第十章  数据库运行管理与维护及其优化</h1><p>1.运行维护工作:<br>日常维护:数据库转储与恢复,数据库安全性,完整性控制,存储控件管理,并发控制<br>系统监控与分析<br>系统性能优化调整<br>系统进化升级<br>数据库的重组和重构<br>2.运行状态监控:构架体系(即数据库存储空间管理)<br>              性能:数据库运行环境:外部调整:CPU和网络<br>                                        内存<br>                                        磁盘I&#x2F;O<br>                                        减少竞争<br>                   参数调整<br>                   模式调整:反规范化:(派生)冗余,组新表,分割表,增汇总表<br>                   存储优化:索引视图<br>                           聚集<br>                   查询优化:使用:索引,临时表,存储过程<br>                           避免:排序,顺序存取,避免正则表达式,外连接,游标,大事务</p>
+<p>实现死锁检测的是什么图?  (事务等待)图<br>事务的acid特性:一致性<br>　　　　　　　　隔离性:正在访问被另访问<br>当数据库系统中存在死锁时,通常选择1个或几个死锁事务,怎么样这些事务(撤销)
+                           </p>
+
+                </div>
+                <div class="post-footer__meta"><p>更新于 2022-03-28</p></div>
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/387a/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        Previous Post
+                                    </div>
+                                    <div class="nav__title">
+                                        第十二章  备份与恢复数据库
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/e411/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        Next Post
+                                    </div>
+                                    <div class="nav__title">
+                                        第九章  安全管理
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+
+                <footer class="footer">
+    
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2022 <a href="/">锦鲤未离</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+    </div>
+ 
+
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/clipboard_use.js"></script>
+</body>
+
+</html>

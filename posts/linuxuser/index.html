@@ -1,64 +1,78 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
+    <head>
     <meta charset="utf-8">
 
     
 
-            <!-- 渲染优化 -->
-            <meta name="renderer" content="webkit">
-            <meta name="force-rendering" content="webkit">
-            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-            <meta name="HandheldFriendly" content="True">
-            <meta name="apple-mobile-web-app-capable" content="yes">
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-            <!--icon-->
-            
-                
-                        
-                                
-                                        
-                                                
-                                                        
+    <!--icon-->
 
-                                                                <!-- meta -->
-                                                                
-
-                                                                    <title>
-                                                                        
-                                                                            第某章  用户管理 | 
-                                                                                    锦鲤未离
-                                                                    </title>
-
-                                                                    
-
-                                                                            
-
-                                                                                    
-<link rel="stylesheet" href="/css/style/main.css">
-
-
-                                                                                        
     
-        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/a11y-light.css" media="none" onload="this.media='all'">
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>第某章  用户管理 | 锦鲤未离</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="用户信息一般保存在 &#x2F;etc&#x2F;passwd 与 &#x2F;etc&#x2F;shadow 中; 组信息一般保存在 &#x2F;etc&#x2F;group 与 &#x2F;etc&#x2F;gshadow 中. 其中, UID 的 koinl:x:1000:1000:koinl:&#x2F;home&#x2F;koinl:&#x2F;bin&#x2F;bash 分别表示 用户名:密码:UID:GID:用户描述信息:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第某章  用户管理">
+<meta property="og:url" content="http://example.com/posts/linuxuser/index.html">
+<meta property="og:site_name" content="锦鲤未离">
+<meta property="og:description" content="用户信息一般保存在 &#x2F;etc&#x2F;passwd 与 &#x2F;etc&#x2F;shadow 中; 组信息一般保存在 &#x2F;etc&#x2F;group 与 &#x2F;etc&#x2F;gshadow 中. 其中, UID 的 koinl:x:1000:1000:koinl:&#x2F;home&#x2F;koinl:&#x2F;bin&#x2F;bash 分别表示 用户名:密码:UID:GID:用户描述信息:">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-19T02:18:56.116Z">
+<meta property="article:modified_time" content="2022-05-19T03:56:53.367Z">
+<meta property="article:author" content="Koi_NL">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
         
     
 
+    
+    
 
+    
 
-                                                                                            
+     
 
+    <!-- custom head -->
 
 <meta name="generator" content="Hexo 6.1.0"></head>
 
-<body>
-    <div id="app">
-        <header class="header">
+    <body>
+        <div id="app">
+            <header class="header">
     <div class="header__left">
         <a href="/" class="button">
-            <span class="logo__text">锦鲤未离</span>
+            <span class="logo__text">Demo</span>
         </a>
     </div>
     <div class="header__right">
@@ -110,48 +124,33 @@
             <main class="main">
     
 
-    <div class="post-title">
-        <h1 class="post-title__text">
-            第某章  用户管理
-        </h1>
-        <div class="post-title__meta">
-            <a href="/archives/2022/05/" class="post-meta__date button">2022-05-19</a>
-                
+<div class="post-title">
+    <h1 class="post-title__text">
+        第某章  用户管理
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/05/" class="post-meta__date button">2022-05-19</a>
+        
     <span class="separate-dot"></span><a href="/categories/Linux/" class="button">Linux</a>
 
-
-        </div>
-    </div>
-
-    
-        <aside class="post-side">
-            <div class="post-side__toc">
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">一. 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text">1. 创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2. 修改用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">3. 删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">4. 修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">5. 查看用户信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-text">二. 组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%BB%84"><span class="toc-text">1. 创建组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%BB%84"><span class="toc-text">2. 修改组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%BB%84"><span class="toc-text">3. 删除组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E7%BB%84"><span class="toc-text">4. 查看组</span></a></li></ol></li></ol>
-            </div>
-        </aside>
-        <a class="btn-toc button" id="btn-toc" tabindex="0">
-            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
-                    fill="currentColor"></path>
-            </svg>
-        </a>
-        <div class="toc-menus" id="toc-menus">
-            <div class="toc-title">
-                文章目录
-            </div>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">一. 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text">1. 创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2. 修改用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">3. 删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">4. 修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">5. 查看用户信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-text">二. 组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%BB%84"><span class="toc-text">1. 创建组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%BB%84"><span class="toc-text">2. 修改组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%BB%84"><span class="toc-text">3. 删除组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E7%BB%84"><span class="toc-text">4. 查看组</span></a></li></ol></li></ol>
-        </div>
+ 
         
+    
+    
 
-            <article
-                class="post post__with-toc content-card">
-                <div class="post__header">
-                    
-                        
-                </div>
-                <div class="post__content">
-                    <p>用户信息一般保存在 &#x2F;etc&#x2F;passwd 与 &#x2F;etc&#x2F;shadow 中; 组信息一般保存在 &#x2F;etc&#x2F;group 与 &#x2F;etc&#x2F;gshadow 中.</p>
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>用户信息一般保存在 &#x2F;etc&#x2F;passwd 与 &#x2F;etc&#x2F;shadow 中; 组信息一般保存在 &#x2F;etc&#x2F;group 与 &#x2F;etc&#x2F;gshadow 中.</p>
 <p>其中, UID 的 <code>koinl:x:1000:1000:koinl:/home/koinl:/bin/bash</code> 分别表示 <code>用户名:密码:UID:GID:用户描述信息:用户主目录:用户默认登录 Shell</code> ;<br>其二, GID 的 <code>koinl:x:1000:</code> 分别表示 <code>组名:密码:GID:组成员</code>.</p>
 <p>在 UID 中, 0 表示超级用户 root, 系统用户 UID 的数字范围为 1<del>499, 普通用户的数字范围为 499</del>65535.<br>在 GID 中, 0 表示超级组 root, 系统组 GID 的数字范围为 1<del>499, 普通组的数字范围为 499</del>65535.</p>
 <p>在下述中, 会阐述下关于增删改用户与组的命令以及修改用户密码的命令.</p>
@@ -177,43 +176,52 @@
 <p>小背诵:<br>用户 user 组 group,<br>增删改 add del mod,<br>用户中, u g 定改 ID, l 改名<br>组中, g 顶改 ID, n 改名</p>
 </blockquote>
 
-                </div>
-                <div class="post-footer__meta"><p>更新于 2022-05-19</p></div>
-            </article>
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-05-19</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
 
+
+    <div class="nav">
+        <div class="nav__prev">
             
-                <div class="nav">
-                    <div class="nav__prev">
-                        
+        </div>
+        <div class="nav__next">
+            
+                <a href="/posts/linux0mouasdas/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            第某章  逻辑卷管理
+                        </div>
                     </div>
-                    <div class="nav__next">
-                        
-                            <a href="/posts/linux0mouasdas/" class="nav__link">
-                                <div>
-                                    <div class="nav__label">
-                                        Next Post
-                                    </div>
-                                    <div class="nav__title">
-                                        第某章  逻辑卷管理
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
                     </div>
-                </div>
-                
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
 </main>
 
-                <footer class="footer">
+            <footer class="footer">
     
+    
+
+
+    
+     
+ 
+
+ 
     
         
         <p class="footer-copyright">
@@ -224,13 +232,41 @@
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
 
-    </div>
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
  
 
 
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
-        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script type="text/javascript" src="/js/clipboard_use.js"></script>
-</body>
 
+ 
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
 </html>

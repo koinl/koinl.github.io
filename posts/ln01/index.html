@@ -1,64 +1,78 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
+    <head>
     <meta charset="utf-8">
 
     
 
-            <!-- 渲染优化 -->
-            <meta name="renderer" content="webkit">
-            <meta name="force-rendering" content="webkit">
-            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-            <meta name="HandheldFriendly" content="True">
-            <meta name="apple-mobile-web-app-capable" content="yes">
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-            <!--icon-->
-            
-                
-                        
-                                
-                                        
-                                                
-                                                        
+    <!--icon-->
 
-                                                                <!-- meta -->
-                                                                
-
-                                                                    <title>
-                                                                        
-                                                                            第一章  操作基础 | 
-                                                                                    锦鲤未离
-                                                                    </title>
-
-                                                                    
-
-                                                                            
-
-                                                                                    
-<link rel="stylesheet" href="/css/style/main.css">
-
-
-                                                                                        
     
-        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/a11y-light.css" media="none" onload="this.media='all'">
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>第一章  操作基础 | 锦鲤未离</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="linux第一次作业点击显&#x2F;隐第一次1.请写出进入管理员账户的命令。解: su2.请写出创建文件file的命令。解: touch file3.请分别写出创建目录file1、集联创建目录&#x2F;file2&#x2F;test2、创建目录file3的同时给用户、组以及其他人均赋予读写权限的命令。解: mkdir file1; mkdir -p file2&#x2F;test2; mkdir -m 666 f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一章  操作基础">
+<meta property="og:url" content="http://example.com/posts/ln01/index.html">
+<meta property="og:site_name" content="锦鲤未离">
+<meta property="og:description" content="linux第一次作业点击显&#x2F;隐第一次1.请写出进入管理员账户的命令。解: su2.请写出创建文件file的命令。解: touch file3.请分别写出创建目录file1、集联创建目录&#x2F;file2&#x2F;test2、创建目录file3的同时给用户、组以及其他人均赋予读写权限的命令。解: mkdir file1; mkdir -p file2&#x2F;test2; mkdir -m 666 f">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-25T06:30:53.430Z">
+<meta property="article:modified_time" content="2022-05-12T07:14:01.278Z">
+<meta property="article:author" content="Koi_NL">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
         
     
 
+    
+    
 
+    
 
-                                                                                            
+     
 
+    <!-- custom head -->
 
 <meta name="generator" content="Hexo 6.1.0"></head>
 
-<body>
-    <div id="app">
-        <header class="header">
+    <body>
+        <div id="app">
+            <header class="header">
     <div class="header__left">
         <a href="/" class="button">
-            <span class="logo__text">锦鲤未离</span>
+            <span class="logo__text">Demo</span>
         </a>
     </div>
     <div class="header__right">
@@ -110,48 +124,33 @@
             <main class="main">
     
 
-    <div class="post-title">
-        <h1 class="post-title__text">
-            第一章  操作基础
-        </h1>
-        <div class="post-title__meta">
-            <a href="/archives/2022/04/" class="post-meta__date button">2022-04-25</a>
-                
+<div class="post-title">
+    <h1 class="post-title__text">
+        第一章  操作基础
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/04/" class="post-meta__date button">2022-04-25</a>
+        
     <span class="separate-dot"></span><a href="/categories/Linux/" class="button">Linux</a>
 
-
-        </div>
-    </div>
-
-    
-        <aside class="post-side">
-            <div class="post-side__toc">
-                <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux第一次作业</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux第二次作业</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux第三次作业</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#linux-%E7%AC%AC%E5%9B%9B%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux 第四次作业</span></a></li></ol>
-            </div>
-        </aside>
-        <a class="btn-toc button" id="btn-toc" tabindex="0">
-            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
-                    fill="currentColor"></path>
-            </svg>
-        </a>
-        <div class="toc-menus" id="toc-menus">
-            <div class="toc-title">
-                文章目录
-            </div>
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux第一次作业</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux第二次作业</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#linux%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux第三次作业</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#linux-%E7%AC%AC%E5%9B%9B%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-text">linux 第四次作业</span></a></li></ol>
-        </div>
+ 
         
+    
+    
 
-            <article
-                class="post post__with-toc content-card">
-                <div class="post__header">
-                    
-                        
-                </div>
-                <div class="post__content">
-                    <h4 id="linux第一次作业"><a href="#linux第一次作业" class="headerlink" title="linux第一次作业"></a>linux第一次作业</h4><details ><summary>点击显/隐第一次</summary><div class="fold-content"><p>1.请写出进入管理员账户的命令。<br>解: <code>su</code><br>2.请写出创建文件file的命令。<br>解: <code>touch file</code><br>3.请分别写出创建目录file1、集联创建目录&#x2F;file2&#x2F;test2、创建目录file3的同时给用户、组以及其他人均赋予读写权限的命令。<br>解: <code>mkdir file1; mkdir -p file2/test2; mkdir -m 666 file3</code><br>4.当前工作目录在主用户，请分别写出改变工作目录到根目录“&#x2F;”、到“file2&#x2F;test2”目录下的命令。<br>解: <code>cd /; cd /home/koinl/file2/test2</code><br>5.请写出查看目录&#x2F;文件所处位置的命令。<br> 解:<code>pwd</code><br>6.请写出以长列表的方式查看根目录下都有哪些文件的命令。<br>解:<code>ll</code><br>7.请写出将第（1）题所创建的目录file1复制到目录file2中的命令。<br>解:<code>cp -r file1 file2</code><br>8.请写出将第（1）题所创建的目录file2移动到目录file3中的命令。<br> 解:<code>mv file2 file3</code><br>9.请写出删除所创建文件file命令。<br> 解:<code>rm file</code><br>10.请写出删除所创建目录file2命令。<br> 解:<code>rm -r file2</code></p>
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h4 id="linux第一次作业"><a href="#linux第一次作业" class="headerlink" title="linux第一次作业"></a>linux第一次作业</h4><details ><summary>点击显/隐第一次</summary><div class="fold-content"><p>1.请写出进入管理员账户的命令。<br>解: <code>su</code><br>2.请写出创建文件file的命令。<br>解: <code>touch file</code><br>3.请分别写出创建目录file1、集联创建目录&#x2F;file2&#x2F;test2、创建目录file3的同时给用户、组以及其他人均赋予读写权限的命令。<br>解: <code>mkdir file1; mkdir -p file2/test2; mkdir -m 666 file3</code><br>4.当前工作目录在主用户，请分别写出改变工作目录到根目录“&#x2F;”、到“file2&#x2F;test2”目录下的命令。<br>解: <code>cd /; cd /home/koinl/file2/test2</code><br>5.请写出查看目录&#x2F;文件所处位置的命令。<br> 解:<code>pwd</code><br>6.请写出以长列表的方式查看根目录下都有哪些文件的命令。<br>解:<code>ll</code><br>7.请写出将第（1）题所创建的目录file1复制到目录file2中的命令。<br>解:<code>cp -r file1 file2</code><br>8.请写出将第（1）题所创建的目录file2移动到目录file3中的命令。<br> 解:<code>mv file2 file3</code><br>9.请写出删除所创建文件file命令。<br> 解:<code>rm file</code><br>10.请写出删除所创建目录file2命令。<br> 解:<code>rm -r file2</code></p>
 </div></details>
 
 <h4 id="linux第二次作业"><a href="#linux第二次作业" class="headerlink" title="linux第二次作业"></a>linux第二次作业</h4><details ><summary>点击显隐第二次</summary><div class="fold-content"><p>1.设置用户权限<br>（1）在主目录下创建目录test，进入目录test创建文件file，并且以长列表的形式显示文件的权限信息。<br>解: 创建目录: <code>mkdir test</code>, 进入目录: <code>cd test</code>, 创建文件: <code>touch file</code>, 长列表: <code>ll</code>.</p>
@@ -191,62 +190,66 @@
 <p> 第一种方法:<br> 1.fdisk  &#x2F;dev&#x2F;sda<br> 2.n       (新建一个分区为&#x2F;dev&#x2F;sda6)<br> 3.t        (修改分区的id)<br> 4.82     (swap的id为82)<br> 5.w       (重写分区表)<br> 6.partprobe  (同步内存和分区表信息)<br> 7.mkswap &#x2F;dev&#x2F;sda6   (格式化成swap分区)<br> 8.swapon &#x2F;dev&#x2F;sda6   (打开swap分区)<br> 9.vim &#x2F;etc&#x2F;fstab           (在fstab中增加一条记录如下)<br> &#x2F;dev&#x2F;hda6    swap   swap defaults 0 0<br> 10.mount -a</p>
 <p> 第二种方法:<br> 1.dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;opt&#x2F;swapfile bs&#x3D;1M count&#x3D;1000   (创建一个1G的文件作为交换分区使用)<br> 2.mkswap &#x2F;opt&#x2F;swapfile   (格式化成swap分区)<br> 3.swapon &#x2F;opt&#x2F;swapfile   (打开swap分区)<br> 4.vim &#x2F;etc&#x2F;fstab           (在fstab中增加一条记录如下)<br> &#x2F;opt&#x2F;swapfile    swap   swap defaults 0 0<br> 5.mount -a</p>
 
-                </div>
-                <div class="post-footer__meta"><p>更新于 2022-05-12</p></div>
-            </article>
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-05-12</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
 
+
+    <div class="nav">
+        <div class="nav__prev">
             
-                <div class="nav">
-                    <div class="nav__prev">
-                        
-                            <a href="/posts/mmvc/" class="nav__link">
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="nav__label">
-                                        Previous Post
-                                    </div>
-                                    <div class="nav__title">
-                                        将手机投屏到电脑
-                                    </div>
-                                </div>
-                            </a>
-                            
+                <a href="/posts/mmvc/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
                     </div>
-                    <div class="nav__next">
-                        
-                            <a href="/posts/py03/" class="nav__link">
-                                <div>
-                                    <div class="nav__label">
-                                        Next Post
-                                    </div>
-                                    <div class="nav__title">
-                                        第三章  组合数据类型
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            将手机投屏到电脑
+                        </div>
                     </div>
-                </div>
-                
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/posts/py03/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            第三章  组合数据类型
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
 </main>
 
-                <footer class="footer">
+            <footer class="footer">
     
+    
+
+
+    
+     
+ 
+
+ 
     
         
         <p class="footer-copyright">
@@ -257,13 +260,41 @@
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
 
-    </div>
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
  
 
 
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
-        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script type="text/javascript" src="/js/clipboard_use.js"></script>
-</body>
 
+ 
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
 </html>

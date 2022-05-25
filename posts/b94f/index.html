@@ -1,66 +1,81 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
+    <head>
     <meta charset="utf-8">
 
     
 
-            <!-- 渲染优化 -->
-            <meta name="renderer" content="webkit">
-            <meta name="force-rendering" content="webkit">
-            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-            <meta name="HandheldFriendly" content="True">
-            <meta name="apple-mobile-web-app-capable" content="yes">
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-            <!--icon-->
-            
-                
-                        
-                                
-                                        
-                                                
-                                                        
+    <!--icon-->
 
-                                                                <!-- meta -->
-                                                                
-
-                                                                    <title>
-                                                                        
-                                                                            第五章  文件操作 | 
-                                                                                    锦鲤未离
-                                                                    </title>
-
-                                                                    
-                                                                        <meta name="keywords" content="Python">
-                                                                        
-
-                                                                            
-
-                                                                                    
-<link rel="stylesheet" href="/css/style/main.css">
-
-
-                                                                                        
     
-        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/a11y-light.css" media="none" onload="this.media='all'">
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>第五章  文件操作 | 锦鲤未离</title>
+
+
+    <meta name="keywords" content="Python">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第五章  文件操作">
+<meta property="og:url" content="http://example.com/posts/b94f/index.html">
+<meta property="og:site_name" content="锦鲤未离">
+<meta property="og:description" content="本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-10T06:37:24.004Z">
+<meta property="article:modified_time" content="2022-03-28T13:12:38.972Z">
+<meta property="article:author" content="Koi_NL">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
         
     
 
+    
+    
 
+    
 
-                                                                                            
+     
 
+    <!-- custom head -->
 
 <meta name="generator" content="Hexo 6.1.0"></head>
 
-<body>
-    <div id="app">
-        <header class="header">
+    <body>
+        <div id="app">
+            <header class="header">
     <div class="header__left">
         <a href="/" class="button">
-            <span class="logo__text">锦鲤未离</span>
+            <span class="logo__text">Demo</span>
         </a>
     </div>
     <div class="header__right">
@@ -112,48 +127,33 @@
             <main class="main">
     
 
-    <div class="post-title">
-        <h1 class="post-title__text">
-            第五章  文件操作
-        </h1>
-        <div class="post-title__meta">
-            <a href="/archives/2022/02/" class="post-meta__date button">2022-02-10</a>
-                
+<div class="post-title">
+    <h1 class="post-title__text">
+        第五章  文件操作
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/02/" class="post-meta__date button">2022-02-10</a>
+        
     <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">学习</a>
 
-
-        </div>
-    </div>
-
-    
-        <aside class="post-side">
-            <div class="post-side__toc">
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">文件的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80open"><span class="toc-text">打开open</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%86%99-read-write"><span class="toc-text">读写 read, write</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD-close"><span class="toc-text">关闭 close</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD"><span class="toc-text">文件备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">文件和文件夹的操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B-%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D-%E5%8F%AF%E6%B7%BB%E5%8A%A0%E6%88%96%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">例: 批量修改文件名, 可添加或删除指定字符串</span></a></li></ol>
-            </div>
-        </aside>
-        <a class="btn-toc button" id="btn-toc" tabindex="0">
-            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
-                    fill="currentColor"></path>
-            </svg>
-        </a>
-        <div class="toc-menus" id="toc-menus">
-            <div class="toc-title">
-                文章目录
-            </div>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">文件的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80open"><span class="toc-text">打开open</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%86%99-read-write"><span class="toc-text">读写 read, write</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD-close"><span class="toc-text">关闭 close</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD"><span class="toc-text">文件备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">文件和文件夹的操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B-%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D-%E5%8F%AF%E6%B7%BB%E5%8A%A0%E6%88%96%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">例: 批量修改文件名, 可添加或删除指定字符串</span></a></li></ol>
-        </div>
+ 
         
+    
+    
 
-            <article
-                class="post post__with-toc content-card">
-                <div class="post__header">
-                    
-                        
-                </div>
-                <div class="post__content">
-                    <p>本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!<span id="more"></span><br></p>
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!<span id="more"></span><br></p>
 <h1 id="第五章-文件操作"><a href="#第五章-文件操作" class="headerlink" title="第五章  文件操作"></a>第五章  文件操作</h1><h2 id="文件的基本操作"><a href="#文件的基本操作" class="headerlink" title="文件的基本操作"></a>文件的基本操作</h2><h3 id="打开open"><a href="#打开open" class="headerlink" title="打开open"></a>打开open</h3><p><code>f = open(&#39;name&#39;, &#39;mode&#39;)</code><br>f为文件对象<br>name: 目标文件名的字符串或路径<br>mode: 访问模式:只读: r, 如果文件不存在, 报错; 可省<br>　　　　　 　 　写入: w, 文件无则创建;<br>　　　　　 　 　追加: a, 文件无则创建;<br>但凡带 +, 可读写; 但凡带 b, 为二进制格式</p>
 <h3 id="读写-read-write"><a href="#读写-read-write" class="headerlink" title="读写 read, write"></a>读写 read, write</h3><p>读: </p>
 <ul>
@@ -175,62 +175,66 @@
 <li>获取目录列表: os.listdir()<h2 id="例-批量修改文件名-可添加或删除指定字符串"><a href="#例-批量修改文件名-可添加或删除指定字符串" class="headerlink" title="例: 批量修改文件名, 可添加或删除指定字符串"></a>例: 批量修改文件名, 可添加或删除指定字符串</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"># 设置增删字符串的标识, 1为添加, 2为删除</span><br><span class="line">flag = 1</span><br><span class="line"># 获取指定目录的所有文件列表</span><br><span class="line">file_list = os.listdir()</span><br><span class="line"># 将原有文件名增删指定字符串, 构造新名字</span><br><span class="line">for name in file_list:</span><br><span class="line">	if flag == 1:</span><br><span class="line">		new_name = &#x27;Python_&#x27; + name</span><br><span class="line">	elif flag == 2:</span><br><span class="line">		new_name = name[len(&#x27;Python_&#x27;):]</span><br><span class="line"># 进行重命名</span><br><span class="line">	os.rename(name, new_name)</span><br></pre></td></tr></table></figure></li>
 </ul>
 
-                </div>
-                <div class="post-footer__meta"><p>更新于 2022-03-28</p></div>
-            </article>
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-03-28</p></div> 
+    <div class="post-entry__tags"><a href="/tags/Python/" class="post-tags__link button"># Python</a></div> 
+</article>
 
+
+    <div class="nav">
+        <div class="nav__prev">
             
-                <div class="nav">
-                    <div class="nav__prev">
-                        
-                            <a href="/posts/ad95/" class="nav__link">
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="nav__label">
-                                        Previous Post
-                                    </div>
-                                    <div class="nav__title">
-                                        第十六章  项目_学员管理系统
-                                    </div>
-                                </div>
-                            </a>
-                            
+                <a href="/posts/ad95/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
                     </div>
-                    <div class="nav__next">
-                        
-                            <a href="/posts/py01/" class="nav__link">
-                                <div>
-                                    <div class="nav__label">
-                                        Next Post
-                                    </div>
-                                    <div class="nav__title">
-                                        第一章  程序基本结构
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            第十六章  项目_学员管理系统
+                        </div>
                     </div>
-                </div>
-                
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/posts/py01/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            第一章  程序基本结构
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
 </main>
 
-                <footer class="footer">
+            <footer class="footer">
     
+    
+
+
+    
+     
+ 
+
+ 
     
         
         <p class="footer-copyright">
@@ -241,13 +245,41 @@
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
 
-    </div>
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
  
 
 
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
-        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script type="text/javascript" src="/js/clipboard_use.js"></script>
-</body>
 
+ 
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
 </html>

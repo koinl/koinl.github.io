@@ -1,64 +1,78 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
+    <head>
     <meta charset="utf-8">
 
     
 
-            <!-- 渲染优化 -->
-            <meta name="renderer" content="webkit">
-            <meta name="force-rendering" content="webkit">
-            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-            <meta name="HandheldFriendly" content="True">
-            <meta name="apple-mobile-web-app-capable" content="yes">
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-            <!--icon-->
-            
-                
-                        
-                                
-                                        
-                                                
-                                                        
+    <!--icon-->
 
-                                                                <!-- meta -->
-                                                                
-
-                                                                    <title>
-                                                                        
-                                                                            第某章  turtle 库 | 
-                                                                                    锦鲤未离
-                                                                    </title>
-
-                                                                    
-
-                                                                            
-
-                                                                                    
-<link rel="stylesheet" href="/css/style/main.css">
-
-
-                                                                                        
     
-        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/a11y-light.css" media="none" onload="this.media='all'">
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>第某章  turtle 库 | 锦鲤未离</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="点击显&#x2F;隐函数的定义与调用 首先, 熟悉几个辅助操作 (美化效果, 非必要):   setup(800, 350, 200, 200) 窗口宽度, 窗口高度, 若值小数, 表示比例; 窗口与屏幕的左侧距离, 窗口与屏幕顶部的距离, 若值 None, 位于中央 penup(); fd(-300) 画笔在中央, 向左移动一些距离更美观 hideturtle(); done() 隐藏画笔的形状且不自动关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第某章  turtle 库">
+<meta property="og:url" content="http://example.com/posts/py0nnn/index.html">
+<meta property="og:site_name" content="锦鲤未离">
+<meta property="og:description" content="点击显&#x2F;隐函数的定义与调用 首先, 熟悉几个辅助操作 (美化效果, 非必要):   setup(800, 350, 200, 200) 窗口宽度, 窗口高度, 若值小数, 表示比例; 窗口与屏幕的左侧距离, 窗口与屏幕顶部的距离, 若值 None, 位于中央 penup(); fd(-300) 画笔在中央, 向左移动一些距离更美观 hideturtle(); done() 隐藏画笔的形状且不自动关">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-11T00:40:37.079Z">
+<meta property="article:modified_time" content="2022-05-11T02:28:35.798Z">
+<meta property="article:author" content="Koi_NL">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
         
     
 
+    
+    
 
+    
 
-                                                                                            
+     
 
+    <!-- custom head -->
 
 <meta name="generator" content="Hexo 6.1.0"></head>
 
-<body>
-    <div id="app">
-        <header class="header">
+    <body>
+        <div id="app">
+            <header class="header">
     <div class="header__left">
         <a href="/" class="button">
-            <span class="logo__text">锦鲤未离</span>
+            <span class="logo__text">Demo</span>
         </a>
     </div>
     <div class="header__right">
@@ -110,48 +124,33 @@
             <main class="main">
     
 
-    <div class="post-title">
-        <h1 class="post-title__text">
-            第某章  turtle 库
-        </h1>
-        <div class="post-title__meta">
-            <a href="/archives/2022/05/" class="post-meta__date button">2022-05-11</a>
-                
+<div class="post-title">
+    <h1 class="post-title__text">
+        第某章  turtle 库
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/05/" class="post-meta__date button">2022-05-11</a>
+        
     <span class="separate-dot"></span><a href="/categories/Python/" class="button">Python</a>
 
-
-        </div>
-    </div>
-
-    
-        <aside class="post-side">
-            <div class="post-side__toc">
-                
-            </div>
-        </aside>
-        <a class="btn-toc button" id="btn-toc" tabindex="0">
-            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
-                    fill="currentColor"></path>
-            </svg>
-        </a>
-        <div class="toc-menus" id="toc-menus">
-            <div class="toc-title">
-                文章目录
-            </div>
-            
-        </div>
+ 
         
+    
+    
 
-            <article
-                class="post post__with-toc content-card">
-                <div class="post__header">
-                    
-                        
-                </div>
-                <div class="post__content">
-                    <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"></div></details>
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"></div></details>
 <p>首先, 熟悉几个辅助操作 (美化效果, 非必要): </p>
 <ul>
 <li><code>setup(800, 350, 200, 200)</code> 窗口宽度, 窗口高度, 若值小数, 表示比例; 窗口与屏幕的左侧距离, 窗口与屏幕顶部的距离, 若值 None, 位于中央</li>
@@ -170,62 +169,66 @@
 <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">koch</span>(<span class="params">size, n</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        fd(size)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> angle <span class="keyword">in</span> [<span class="number">0</span>, <span class="number">60</span>, -<span class="number">120</span>, <span class="number">60</span>]:</span><br><span class="line">           left(angle)</span><br><span class="line">           koch(size/<span class="number">3</span>, n-<span class="number">1</span>)</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    setup(<span class="number">800</span>, <span class="number">400</span>)</span><br><span class="line">    speed(<span class="number">0</span>)  <span class="comment"># 控制绘制速度</span></span><br><span class="line">    penup(); goto(-<span class="number">300</span>, -<span class="number">50</span>)    <span class="comment"># 抬起画笔, 向左 300, 向下 50; 与 fd() 区别是 fd() 只能一个参数</span></span><br><span class="line">    pendown(); koch(<span class="number">600</span>,<span class="number">2</span>)     <span class="comment"># 0阶科赫曲线长度大小，阶数</span></span><br><span class="line">    hideturtle(); done()</span><br></pre></td></tr></table></figure></div></details>
 
 <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">koch</span>(<span class="params">size, n</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        fd(size)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> angle <span class="keyword">in</span> [<span class="number">0</span>, <span class="number">60</span>, -<span class="number">120</span>, <span class="number">60</span>]:</span><br><span class="line">           left(angle)</span><br><span class="line">           koch(size/<span class="number">3</span>, n-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    speed(<span class="number">0</span>)  <span class="comment"># 控制绘制速度</span></span><br><span class="line">    penup(); goto(-<span class="number">300</span>, -<span class="number">50</span>)    <span class="comment"># 抬起画笔, 向左 300, 向下 50; 与 fd() 区别是 fd() 只能一个参数</span></span><br><span class="line">    pendown()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        koch(<span class="number">400</span>, <span class="number">3</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">            right(<span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">    hideturtle(); done()</span><br></pre></td></tr></table></figure></div></details>
-                </div>
-                <div class="post-footer__meta"><p>更新于 2022-05-11</p></div>
-            </article>
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-05-11</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
 
+
+    <div class="nav">
+        <div class="nav__prev">
             
-                <div class="nav">
-                    <div class="nav__prev">
-                        
-                            <a href="/posts/linux0mouasdas/" class="nav__link">
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="nav__label">
-                                        Previous Post
-                                    </div>
-                                    <div class="nav__title">
-                                        第某章  逻辑卷管理
-                                    </div>
-                                </div>
-                            </a>
-                            
+                <a href="/posts/linux0mouasdas/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
                     </div>
-                    <div class="nav__next">
-                        
-                            <a href="/posts/linux0mou/" class="nav__link">
-                                <div>
-                                    <div class="nav__label">
-                                        Next Post
-                                    </div>
-                                    <div class="nav__title">
-                                        第某章  逻辑卷管理
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            第某章  逻辑卷管理
+                        </div>
                     </div>
-                </div>
-                
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/posts/linux0mou/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            第某章  逻辑卷管理
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
 </main>
 
-                <footer class="footer">
+            <footer class="footer">
     
+    
+
+
+    
+     
+ 
+
+ 
     
         
         <p class="footer-copyright">
@@ -236,13 +239,41 @@
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
 
-    </div>
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
  
 
 
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
-        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script type="text/javascript" src="/js/clipboard_use.js"></script>
-</body>
 
+ 
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
 </html>

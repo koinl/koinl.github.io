@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+
+    
+
+            <!-- 渲染优化 -->
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+            <!--icon-->
+            
+                
+                        
+                                
+                                        
+                                                
+                                                        
+
+                                                                <!-- meta -->
+                                                                
+
+                                                                    <title>
+                                                                        
+                                                                            第某章  turtle 库 | 
+                                                                                    锦鲤未离
+                                                                    </title>
+
+                                                                    
+
+                                                                            
+
+                                                                                    
+<link rel="stylesheet" href="/css/style/main.css">
+
+
+                                                                                        
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
+        
+    
+
+                                                                                            
+                                                                                                
+
+                                                                                                    
+
+                                                                                                         
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Demo</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/page/" class="navbar-menu button">Page</a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/page/" class="dropdown-menu button">Page</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        第某章  turtle 库
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/05/" class="post-meta__date button">2022-05-11</a>
+        
+    <span class="separate-dot"></span><a href="/categories/Python/" class="button">Python</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"></div></details>
+<p>首先, 熟悉几个辅助操作 (美化效果, 非必要): </p>
+<ul>
+<li><code>setup(800, 350, 200, 200)</code> 窗口宽度, 窗口高度, 若值小数, 表示比例; 窗口与屏幕的左侧距离, 窗口与屏幕顶部的距离, 若值 None, 位于中央</li>
+<li><code>penup(); fd(-300)</code> 画笔在中央, 向左移动一些距离更美观</li>
+<li><code>hideturtle(); done()</code> 隐藏画笔的形状且不自动关闭</li>
+<li><code>pensize(5)</code> 含义为画笔尺寸为 5. </li>
+<li><code>pencolor(&quot;red&quot;)</code> 含义为画笔颜色为红色.</li>
+<li><code>speed(0)</code> 控制绘制速度</li>
+</ul>
+<details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *; <span class="keyword">from</span> datetime <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">drawLine</span>(<span class="params">Bool</span>):   <span class="comment">#绘制单段数码管</span></span><br><span class="line">    pendown() <span class="keyword">if</span> Bool <span class="keyword">else</span> penup()    <span class="comment"># 落下画笔 如果 画 否则 抬起画笔, 别名 pd() 与 pu(), 或者 down() 与 up()</span></span><br><span class="line">    fd(<span class="number">40</span>)    <span class="comment"># 画笔前进一个距离, 别名 forward(), 负数表示相反距离前进, 亦可用 backward() 表示</span></span><br><span class="line">    right(<span class="number">90</span>)    <span class="comment"># 画笔向右旋转90度</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">drawDigit</span>(<span class="params">i</span>): <span class="comment">#根据数字绘制七段数码管</span></span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">8</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    left(<span class="number">90</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    left(<span class="number">180</span>)    <span class="comment"># 向左旋转180度</span></span><br><span class="line">    penup(); fd(<span class="number">20</span>)    <span class="comment"># 画笔前进20步 = 每个数字间留有空隙</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">drawDate</span>(<span class="params">date</span>):  <span class="comment">#获得要输出的数字</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> date:</span><br><span class="line">        drawDigit(<span class="built_in">eval</span>(i))  <span class="comment">#注意: 通过eval()函数将数字变为整数</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    setup(<span class="number">800</span>, <span class="number">350</span>, <span class="number">200</span>, <span class="number">200</span>) </span><br><span class="line">    penup(); fd(-<span class="number">300</span>)  </span><br><span class="line">    drawDate(datetime.now().strftime(<span class="string">&#x27;%Y%m%d&#x27;</span>))</span><br><span class="line">    hideturtle(); done()</span><br></pre></td></tr></table></figure></div></details>
+
+
+<details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *; <span class="keyword">from</span> datetime <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">drawLine</span>(<span class="params">draw</span>):   <span class="comment">#绘制单段数码管</span></span><br><span class="line">    penup(); fd(<span class="number">5</span>)    <span class="comment"># 给每个数码管之间空下小隙</span></span><br><span class="line">    pendown() <span class="keyword">if</span> draw <span class="keyword">else</span> penup()    <span class="comment"># 落下画笔 如果 画 否则 抬起画笔, 别名 pd() 与 pu(), 或者 down() 与 up()</span></span><br><span class="line">    fd(<span class="number">40</span>)    <span class="comment"># 画笔前进一个距离, 别名 forward(), 负数表示相反距离前进</span></span><br><span class="line">    penup(); fd(<span class="number">5</span>)</span><br><span class="line">    right(<span class="number">90</span>)    <span class="comment"># 画笔向右旋转90度</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">drawDigit</span>(<span class="params">i</span>): <span class="comment">#根据数字绘制七段数码管</span></span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">8</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    left(<span class="number">90</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    drawLine(<span class="literal">True</span>) <span class="keyword">if</span> i <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>] <span class="keyword">else</span> drawLine(<span class="literal">False</span>)</span><br><span class="line">    left(<span class="number">180</span>); penup(); fd(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">drawDate</span>(<span class="params">date</span>):  <span class="comment">#获得要输出的数字</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> date:</span><br><span class="line">        <span class="keyword">if</span> i == <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">            write(<span class="string">&#x27;年&#x27;</span>, font=(<span class="string">&quot;Arial&quot;</span>, <span class="number">18</span>, <span class="string">&quot;normal&quot;</span>)); fd(<span class="number">40</span>)</span><br><span class="line">        <span class="keyword">elif</span> i == <span class="string">&#x27;=&#x27;</span>:</span><br><span class="line">            write(<span class="string">&#x27;月&#x27;</span>, font=(<span class="string">&quot;Arial&quot;</span>, <span class="number">18</span>, <span class="string">&quot;normal&quot;</span>)); fd(<span class="number">40</span>)</span><br><span class="line">        <span class="keyword">elif</span> i == <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">            write(<span class="string">&#x27;日&#x27;</span>, font=(<span class="string">&quot;Arial&quot;</span>, <span class="number">18</span>, <span class="string">&quot;normal&quot;</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            drawDigit(<span class="built_in">eval</span>(i))</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    setup(<span class="number">800</span>, <span class="number">350</span>, <span class="number">200</span>, <span class="number">200</span>)    <span class="comment"># 窗口宽度, 窗口高度, 若值小数, 表示比例; 窗口与屏幕的左侧距离, 窗口与屏幕顶部的距离, 若值 None, 位于中央</span></span><br><span class="line">    penup(); fd(-<span class="number">300</span>)    <span class="comment"># 画笔在中央, 向左移动一些距离更美观</span></span><br><span class="line">    pensize(<span class="number">5</span>)    <span class="comment"># 画笔尺寸, 别名 width()</span></span><br><span class="line">    drawDate(datetime.now().strftime(<span class="string">&#x27;%Y-%m=%d+&#x27;</span>))</span><br><span class="line">    hideturtle(); done()</span><br></pre></td></tr></table></figure></div></details>
+
+
+<details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">koch</span>(<span class="params">size, n</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        fd(size)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> angle <span class="keyword">in</span> [<span class="number">0</span>, <span class="number">60</span>, -<span class="number">120</span>, <span class="number">60</span>]:</span><br><span class="line">           left(angle)</span><br><span class="line">           koch(size/<span class="number">3</span>, n-<span class="number">1</span>)</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    setup(<span class="number">800</span>, <span class="number">400</span>)</span><br><span class="line">    speed(<span class="number">0</span>)  <span class="comment"># 控制绘制速度</span></span><br><span class="line">    penup(); goto(-<span class="number">300</span>, -<span class="number">50</span>)    <span class="comment"># 抬起画笔, 向左 300, 向下 50; 与 fd() 区别是 fd() 只能一个参数</span></span><br><span class="line">    pendown(); koch(<span class="number">600</span>,<span class="number">2</span>)     <span class="comment"># 0阶科赫曲线长度大小，阶数</span></span><br><span class="line">    hideturtle(); done()</span><br></pre></td></tr></table></figure></div></details>
+
+<details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">koch</span>(<span class="params">size, n</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        fd(size)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> angle <span class="keyword">in</span> [<span class="number">0</span>, <span class="number">60</span>, -<span class="number">120</span>, <span class="number">60</span>]:</span><br><span class="line">           left(angle)</span><br><span class="line">           koch(size/<span class="number">3</span>, n-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    speed(<span class="number">0</span>)  <span class="comment"># 控制绘制速度</span></span><br><span class="line">    penup(); goto(-<span class="number">300</span>, -<span class="number">50</span>)    <span class="comment"># 抬起画笔, 向左 300, 向下 50; 与 fd() 区别是 fd() 只能一个参数</span></span><br><span class="line">    pendown()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        koch(<span class="number">400</span>, <span class="number">3</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">            right(<span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">    hideturtle(); done()</span><br></pre></td></tr></table></figure></div></details>
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-05-11</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/posts/linux0mouasdas/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            第某章  逻辑卷管理
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/posts/linux0mou/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            第某章  逻辑卷管理
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+                <footer class="footer">
+    
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2022 <a href="/">锦鲤未离</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+    </div>
+    
+
+         
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+            
+
+ 
+
+
+    
+
+
+                
+
+                    
+
+                        
+
+                            
+
+                                
+
+
+
+
+</body>
+
+</html>

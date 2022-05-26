@@ -20,12 +20,12 @@
 
                 <title>
                     
-                        第八章  数据库后台编程技术 | 
+                        第三章  图 | 
                                 锦鲤未离
                 </title>
 
                 
-                    <meta name="keywords" content="学习">
+                    <meta name="keywords" content="Data Structure">
                     
 
                         
@@ -148,14 +148,14 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第八章  数据库后台编程技术
+            第三章  图
         </h1>
         <div class="post-title__meta">
-            <a href="/archives/2022/01/" class="post-meta__date button">
-    创建于2022-01-19
+            <a href="/archives/2022/05/" class="post-meta__date button">
+    创建于2022-05-25
 </a>
                 
-    <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">学习</a>
+    <span class="separate-dot"></span><a href="/categories/Data-Structure/" class="button">Data Structure</a>
 
 
 
@@ -171,27 +171,21 @@
 
                 </div>
                 <div class="post__content">
-                    <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
-<h1 id="第八章-数据库后台编程技术"><a href="#第八章-数据库后台编程技术" class="headerlink" title="第八章  数据库后台编程技术"></a>第八章  数据库后台编程技术</h1><h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><ol>
-<li>创建:<code>create proc</code> proc_name<br><br>　 　@var type,@var1 type <code>output</code><br><br>　 　<code>as</code><br><br>　 　<code>begin</code><br><br>　 　sql_statement<br><br>　 　<code>end</code></li>
-<li>执行:<code>exec</code> proc_name @var&#x3D;<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2></li>
-<li>分类:标量函数:<code>create function</code> fun_name<code>(</code>@var type<code>)</code><br><br>　　  　　    　　<code>returns</code> type<br><br>　　  　　    　　<code>as</code><br><br>　　  　　    　　<code>begin</code><br><br>　　  　　    　　sql_statement<br><br>　　  　　    　　<code>end</code><br><br>　 　表值函数:内嵌表值函数:<code>create function</code> fun_name<code>(</code>@var type<code>)</code><br><br>　　　　　　　　  　　 　   　<code>returns table</code><br><br>　　　　　　　　  　　 　   　<code>as</code><br><br>　　　　　　　　  　　 　   　<code>begin</code><br><br>　　　　　　　　  　　 　   　<code>return(</code>sql_statement<code>)</code><br><br>　　　　　　　　  　　 　   　<code>end</code><br><br>　　 　　 　多语句表值函数:<code>create function</code> fun_name<code>(</code>@var type<code>)</code><br><br>　　　　　　　　  　　 　   　<code>returns</code> @tb_name <code>table(</code>col_name<code>)</code><br><br>　　　　　　　　  　　 　   　<code>as</code><br><br>　　　　　　　　  　　 　   　<code>begin</code><br><br>　　　　　　　　  　　 　   　sql_statement<br><br>　　　　　　　　  　　 　   　<code>return</code><br><br>　　　　　　　　  　　 　   　<code>end</code><br><h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2></li>
-<li>创建:<code>create trigger</code> tri_name<br><br><code>on</code> tb_name<br><br><code>&#123;for | instead of&#125;</code> <code>&#123;insert | update | delete&#125;</code><br><br><code>as</code><br><br><code>begin</code><br><br>sql_statement<br><br><code>end</code></li>
+                    <p>关于图的存储方式分为邻接矩阵和邻接表两种;<br>关于图的遍历方式分为深度优先遍历和广度优先遍历;<br>对于无向图, 其所有生成树里面必有一颗边所加权值最小的树, 称为最小生成树. 最小生成树的实现算法有克鲁斯卡尔和普利姆算法, 其英文分别为 Kruskal, Prim.<br>迪杰斯特拉和弗洛伊德算法, 其英文分别为 Dijkstra, Floyd.</p>
+<h2 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>对于无向图, 有直接连线为 1, 无连线为 0.<br>对于有向图, 自身为 0, 可到达为 1, 不可到达为 ∞</p>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p>例: </p>
+<p>深度优先遍历如下所示: </p>
+<ol>
+<li>访问 0</li>
+<li>访问 0 的邻接点 1</li>
+<li>访问 1 的邻接点 <h3 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h3></li>
 </ol>
-<h2 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h2><ol>
-<li>声明:<code>declare</code> cur_name <code>cursor</code><br><br> 　   　<code>for</code> sql_statement</li>
-<li>打开:<code>open</code> cur_name</li>
-<li>提取:<code>fetch</code> <code>first | last | next | prior | absolute | relative</code><br><code>from</code> cur_name</li>
-<li>关闭:<code>close</code> cur_name</li>
-<li>释放:<code>deallocate</code> cur_name</li>
-<li>全局变量:@@fetch_status</li>
-</ol>
-
+<h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2>
                 </div>
 
                 <div class="post-footer__meta">
     <p>
-        更新于2022-03-28
+        更新于2022-05-25
     </p>
 </div>
 
@@ -201,35 +195,16 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/e411/" class="nav__link">
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="nav__label">
-                                        上一篇
-                                    </div>
-                                    <div class="nav__title">
-                                        第九章  安全管理
-                                    </div>
-                                </div>
-                            </a>
-                            
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/ac9d/" class="nav__link">
+                            <a href="/posts/linuxuser/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        第六章  数据库及其对象.md
+                                        第某章  用户管理
                                     </div>
                                 </div>
                                 <div>

@@ -165,7 +165,7 @@
     
         <aside class="post-side">
             <div class="post-side__toc">
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-text">主机名</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#systemctl-%E5%91%BD%E4%BB%A4"><span class="toc-text">systemctl 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-text">主机名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ping"><span class="toc-text">ping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#traceroute"><span class="toc-text">traceroute</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip"><span class="toc-text">ip</span></a></li></ol>
             </div>
         </aside>
         <a class="btn-toc button" id="btn-toc" tabindex="0">
@@ -179,7 +179,7 @@
             <div class="toc-title">
                 post.toc
             </div>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-text">主机名</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#systemctl-%E5%91%BD%E4%BB%A4"><span class="toc-text">systemctl 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-text">主机名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ping"><span class="toc-text">ping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#traceroute"><span class="toc-text">traceroute</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip"><span class="toc-text">ip</span></a></li></ol>
         </div>
         
 
@@ -190,12 +190,10 @@
 
                 </div>
                 <div class="post__content">
-                    <p>网络配置文件: vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33</p>
-<p>源程序:<br>oTYPE&#x3D;”Ethernet”<br>PROXY_METHOD&#x3D;”none”<br>BROWSER_ONLY&#x3D;”no”<br>BOOTPROTO&#x3D;”dhcp”<br>DEFROUTE&#x3D;”yes”<br>IPV4_FAILURE_FATAL&#x3D;”no”<br>IPV6INIT&#x3D;”yes”<br>IPV6_AUTOCONF&#x3D;”yes”<br>IPV6_DEFROUTE&#x3D;”yes”<br>IPV6_FAILURE_FATAL&#x3D;”no”<br>IPV6_ADDR_GEN_MODE&#x3D;”stable-privacy”<br>NAME&#x3D;”ens33”<br>UUID&#x3D;”6bf39c75-5e3b-4499-af27-7db5c701ea5e”<br>DEVICE&#x3D;”ens33”<br>ONBOOT&#x3D;”yes”</p>
-<p>修改版:<br>ONBOOT&#x3D;”yes”网卡是否启动<br>BOOTPROTO&#x3D;”static”<br>IPADOR&#x3D;192.168.85.132<br>GATEWAY&#x3D;192.168.85.2 网关<br>NETMASK&#x3D;255.255.255.0 子网掩码<br>DNS1&#x3D;8.8.8.8域名解析器</p>
-<p>修改结果:<br>oTYPE&#x3D;”Ethernet”<br>PROXY_METHOD&#x3D;”none”<br>BROWSER_ONLY&#x3D;”no”<br>BOOTPROTO&#x3D;”static”<br>DEFROUTE&#x3D;”yes”<br>IPV4_FAILURE_FATAL&#x3D;”no”<br>IPV6INIT&#x3D;”yes”<br>IPV6_AUTOCONF&#x3D;”yes”<br>IPV6_DEFROUTE&#x3D;”yes”<br>IPV6_FAILURE_FATAL&#x3D;”no”<br>IPV6_ADDR_GEN_MODE&#x3D;”stable-privacy”<br>NAME&#x3D;”ens33”<br>UUID&#x3D;”6bf39c75-5e3b-4499-af27-7db5c701ea5e”<br>DEVICE&#x3D;”ens33”<br>ONBOOT&#x3D;”yes”<br>IPADOR&#x3D;192.168.85.132<br>GATEWAY&#x3D;192.168.85.2<br>NETMASK&#x3D;255.255.255.0<br>DNS1&#x3D;8.8.8.8</p>
-<p>若出现, 则连接成功<br>[root@localhost koinl]# ifconfig<br>ens33: flags&#x3D;4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500<br>        inet 192.168.85.132  netmask 255.255.255.0  broadcast 192.168.85.255</p>
-<p>##nmcli</p>
+                    <p>关于 Linux 的网络配置, 可分为配置网络 IP 临时 [ifconfig, ip] 与 永久 [nmcli], 网络链接配置文件</p>
+<p>网络配置文件: vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33</p>
+<p>网卡本身</p>
+<p>网卡的连接配置<br>##nmcli</p>
 <table>
 <thead>
 <tr>
@@ -209,7 +207,7 @@
 </tr>
 <tr>
 <td>nmcli device status</td>
-<td>显示设备状态</td>
+<td>设备状况</td>
 </tr>
 <tr>
 <td>nmcli device show ens33 &#x2F; nmcli d show ens33</td>
@@ -290,9 +288,11 @@
 </tr>
 </tbody></table>
 <ul>
-<li><p>创建名为 conn2 的连接配置, 指定静态 ip 地址, 不自动连接.<br>nmcli c a autoconnect no ifname ens33 ipv4.method manual  type Ethernet ipv4.addresses 192.168.85.136&#x2F;24 gw4 192.168.85.2 con-name conn2</p>
+<li><p>创建名为 conn2 的连接配置, 指定静态 ip 地址, 不自动连接.<br>nmcli c a ifname ens33 ipv4.method manual  type Ethernet ipv4.addresses 192.168.85.136&#x2F;24 gw4 192.168.85.2 autoconnect no con-name conn2</p>
 </li>
 <li><p>经查看, 可知 conn2 连接已存在, 但未关联到某个设备上.<br>nmcli c s</p>
+</li>
+<li><p>查看 配置文件 conn2<br>cat &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-conn2</p>
 </li>
 <li><p>首先禁用 ens33 连接, 再启用 conn2 连接. 这就是 两个网络情况下切换网络的方法.<br>nmcli c d ens33<br>nmcli c u conn2</p>
 </li>
@@ -308,9 +308,12 @@
 </li>
 <li><p>将网络恢复原先状态<br>nmcli c d conn2</p>
 </li>
-<li><h2 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h2></li>
 </ul>
-<p>hostname<br>hostname new_name</p>
+<h2 id="systemctl-命令"><a href="#systemctl-命令" class="headerlink" title="systemctl 命令"></a>systemctl 命令</h2><p>systemctl start 服务名<br>stop,status,restart,enable,disable</p>
+<h2 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h2><p>hostname<br>hostname new_name</p>
+<h2 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h2><p>ping -c 3 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a><br>检测 IP 连通性</p>
+<h2 id="traceroute"><a href="#traceroute" class="headerlink" title="traceroute"></a>traceroute</h2><p>traceroute -q 4 <a target="_blank" rel="noopener" href="http://www.38.com/">www.38.com</a></p>
+<h2 id="ip"><a href="#ip" class="headerlink" title="ip"></a>ip</h2><p>ip a show ens33</p>
 
                 </div>
 
@@ -390,7 +393,10 @@
                     onload="this.media='all'">
                 
 
-
+<script type="text/javascript"
+                src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+            <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+            <script type="text/javascript" src="/js/clipboard_use.js"></script>
 
 
 </body>

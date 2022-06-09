@@ -20,11 +20,13 @@
 
                 <title>
                     
-                        归档：2022/5 | 
+                        第六章  用户管理 | 
                                 锦鲤未离
                 </title>
 
                 
+                    <meta name="keywords" content="Linux">
+                    
 
                         
 
@@ -33,6 +35,13 @@
 
 
                                     
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/a11y-light.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/a11y-dark.css" media="none">
+        
+    
+
                                         
                                             
 
@@ -134,83 +143,112 @@
     </div>
 </header>
 
-    <div class="cover">
-        <div class="cover__logo">
-            
-                <img no-lazy alt="author Image" class="cover__avatar" src="/img/touxiang.png">
-            
-        </div>
-        
-        
-            <div class="cover__intro">
-                <p>锦鲤未离 (KoiNL)</p>
- 
-            </div>
-        
-    </div>
-
             <main class="main">
     
-        <div class="post-list">
-            
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第六章  用户管理
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/06/" class="post-meta__date button">
+    创建于2022-06-09
+</a>
                 
-                    <div class='post-entry content-card'>
-                        <div class="post-entry__header">
-    
-</div>
-<div class="post-entry__content">
-    <h2 class="post-entry__title">
-        将手机投屏到电脑
-    </h2>
-    
-</div>
-<div class="post-entry__meta">
-    <a href="/archives/2022/05/" class="post-meta__date button">
-    创建于2022-05-02
-</a>
-        
-    <span class="separate-dot"></span><a href="/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="button">小技巧</a>
+    <span class="separate-dot"></span><a href="/categories/Linux/" class="button">Linux</a>
 
 
-</div>
-<a href="/posts/mmvc/" class="post-entry__link">
-    将手机投屏到电脑
-</a>
-                    </div>
-                    
-                        
+
         </div>
-        
-            <div class="nav">
-                <div class="nav__prev">
-                    
-                        <a href="/archives/2022/05/" class="nav__link">
-                            <div>
-                                <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                                    <path
-                                        d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
-                                        fill="#808080"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="nav__label">
-                                    上一页
-                                </div>
-                                <div class="nav__title">
-                                    page.pagination
-                                </div>
-                            </div>
-                        </a>
-                        
-                </div>
-                <div class="nav__next">
-                    
-                </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                post.toc
             </div>
             
-                
+        </div>
+        
 
+            <article
+                class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+
+                </div>
+                <div class="post__content">
+                    <p>linux软件包管理<br>一、软件包管理——rpm命令管理<br>1、linux软件安装<br>2、RPM包管理-rpm命令管理<br>3、RPM安装<br>rpm -ivh 包全名<br>rpm -Uvh<br>rpm -e 包名<br>4、RPM包校验<br>5、RPM文件提取<br>二、软件包管理——yum在线管理<br>1、 IP地址配置和网络yum源<br>2、yum命令<br>查询<br>yum list</p>
+<p>查询所有可用软件包列表</p>
+<p>yum search 关键字</p>
+<p>搜索服务器上所有和关键字相关的包</p>
+<p>②安装<br>yum -y install 包名</p>
+<p>install 安装<br>-y 自动回答yes</p>
+<p>③升级<br>yum -y update 包名</p>
+<p>update ——升级<br>-y——自动回答yes0</p>
+<p>④卸载（尽量不要卸载，避免系统错误）<br>yum -y remove 包名</p>
+<p>remove——卸载<br>-y——自动回答yes</p>
+<p>2）yum软件组管理命令<br>① yum group list</p>
+<p>列出所有可用软件组列表</p>
+<p>② yum groupinstall 软件组名</p>
+<p>安装指定软件组，组名可以由grouplist查询<br>如果组名中有空格号，软件组名需要用双引号括起来</p>
+<p>③ yum groupremove 软件组名</p>
+<p>卸载指定软件组<br>————————————————</p>
+<p>3、光盘yum源搭建<br>4、源码包的安装管理<br>5、软件的脚本安装包(通常是源码包)</p>
+
+                </div>
+
+                <div class="post-footer__meta">
+    <p>
+        更新于2022-06-09
+    </p>
+</div>
+
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/linux08/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第八章  网络配置与管理
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
 </main>
+
                 <footer class="footer">
     
         <a href="#" class="button" id="b2t" aria-label="navbar.top" title="navbar.top">

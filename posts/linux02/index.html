@@ -20,7 +20,7 @@
 
                 <title>
                     
-                        第某章  用户管理 | 
+                        第二章  进程管理 | 
                                 锦鲤未离
                 </title>
 
@@ -148,11 +148,11 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第某章  用户管理
+            第二章  进程管理
         </h1>
         <div class="post-title__meta">
-            <a href="/archives/2022/05/" class="post-meta__date button">
-    创建于2022-05-19
+            <a href="/archives/2022/06/" class="post-meta__date button">
+    创建于2022-06-09
 </a>
                 
     <span class="separate-dot"></span><a href="/categories/Linux/" class="button">Linux</a>
@@ -165,7 +165,7 @@
     
         <aside class="post-side">
             <div class="post-side__toc">
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">一. 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text">1. 创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2. 修改用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">3. 删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">4. 修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">5. 查看用户信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-text">二. 组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%BB%84"><span class="toc-text">1. 创建组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%BB%84"><span class="toc-text">2. 修改组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%BB%84"><span class="toc-text">3. 删除组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E7%BB%84"><span class="toc-text">4. 查看组</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">一. 进程管理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E9%9D%99%E6%80%81%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">1. 查看静态系统进程命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9F%A5%E7%9C%8B%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">2. 查看动态系统进程命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">二. 进程启动命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C-at-%E5%91%BD%E4%BB%A4"><span class="toc-text">1. 定时执行 at 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%91%A8%E6%9C%9F%E6%89%A7%E8%A1%8C-cron-%E5%91%BD%E4%BB%A4"><span class="toc-text">2. 周期执行 cron 命令</span></a></li></ol></li></ol>
             </div>
         </aside>
         <a class="btn-toc button" id="btn-toc" tabindex="0">
@@ -179,7 +179,7 @@
             <div class="toc-title">
                 post.toc
             </div>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">一. 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text">1. 创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2. 修改用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">3. 删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">4. 修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">5. 查看用户信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-text">二. 组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%BB%84"><span class="toc-text">1. 创建组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%BB%84"><span class="toc-text">2. 修改组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%BB%84"><span class="toc-text">3. 删除组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E7%BB%84"><span class="toc-text">4. 查看组</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">一. 进程管理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E9%9D%99%E6%80%81%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">1. 查看静态系统进程命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9F%A5%E7%9C%8B%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">2. 查看动态系统进程命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">二. 进程启动命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C-at-%E5%91%BD%E4%BB%A4"><span class="toc-text">1. 定时执行 at 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%91%A8%E6%9C%9F%E6%89%A7%E8%A1%8C-cron-%E5%91%BD%E4%BB%A4"><span class="toc-text">2. 周期执行 cron 命令</span></a></li></ol></li></ol>
         </div>
         
 
@@ -190,37 +190,19 @@
 
                 </div>
                 <div class="post__content">
-                    <p>用户信息一般保存在 &#x2F;etc&#x2F;passwd 与 &#x2F;etc&#x2F;shadow 中; 组信息一般保存在 &#x2F;etc&#x2F;group 与 &#x2F;etc&#x2F;gshadow 中.</p>
-<p>其中, UID 的 <code>koinl:x:1000:1000:koinl:/home/koinl:/bin/bash</code> 分别表示 <code>用户名:密码:UID:GID:用户描述信息:用户主目录:用户默认登录 Shell</code> ;<br>其二, GID 的 <code>koinl:x:1000:</code> 分别表示 <code>组名:密码:GID:组成员</code>.</p>
-<p>在 UID 中, 0 表示超级用户 root, 系统用户 UID 的数字范围为 1<del>499, 普通用户的数字范围为 499</del>65535.<br>在 GID 中, 0 表示超级组 root, 系统组 GID 的数字范围为 1<del>499, 普通组的数字范围为 499</del>65535.</p>
-<p>在下述中, 会阐述下关于增删改用户与组的命令以及修改用户密码的命令.</p>
-<h2 id="一-用户管理"><a href="#一-用户管理" class="headerlink" title="一. 用户管理"></a>一. 用户管理</h2><h3 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1. 创建用户"></a>1. 创建用户</h3><p>useradd om,<br>-u 选项可以指定 UID; -g 选项可以指定 GID 与属组;<br>-G 选项可以指定附属组, -d 选项可以指定主目录.</p>
-<details ><summary>点击显/隐创建用户代码</summary><div class="fold-content"><p>[root@localhost koinl]# useradd -u 1234 -g koinl u1<br>[root@localhost koinl]# id u1<br>uid&#x3D;1234(u1) gid&#x3D;1000(koinl) groups&#x3D;1000(koinl)<br>可以得到创建后的信息: <code>uid=1234(u1) gid=1000(koinl) groups=1000(koinl)</code></p>
-</div></details>
-
-<h3 id="2-修改用户"><a href="#2-修改用户" class="headerlink" title="2. 修改用户"></a>2. 修改用户</h3><p>usermod om,<br>-l 选项仅修改名称 (主目录名称不会改变); -g 选项可以修改 GID; -u 选项可以修改 UID<br>-G 选项可以指定附属组, -d 选项可以指定主目录.</p>
-<details ><summary>点击显/隐修改用户代码</summary><div class="fold-content"><p>已知旧用户信息: <code>uid=1202(koi) gid=1202(koi) groups=1202(koi)</code><br>[root@localhost koinl]# usermod -l KOI -g u1 -u 1220 koi<br>[root@localhost koinl]# id KOI<br>uid&#x3D;1220(KOI) gid&#x3D;1200(u1) groups&#x3D;1200(u1)<br>可以得到修改后的信息: <code>uid=1220(KOI) gid=1200(u1) groups=1200(u1)</code></p>
-</div></details>
-
-<h3 id="3-删除用户"><a href="#3-删除用户" class="headerlink" title="3. 删除用户"></a>3. 删除用户</h3><p>userdel om,<br>-r 选项连同主目录一起删除</p>
-<h3 id="4-修改密码"><a href="#4-修改密码" class="headerlink" title="4. 修改密码"></a>4. 修改密码</h3><p>passwd om,<br>-d 选项可以设置成为无密码</p>
-<h3 id="5-查看用户信息"><a href="#5-查看用户信息" class="headerlink" title="5. 查看用户信息"></a>5. 查看用户信息</h3><p>关于仅需查看 UID GID 属组, <code>id u1</code> 足矣, 若需要查看详细的用户信息, 查看文件即可.例: <code>cat /etc/passwd | tail -5</code></p>
-<h2 id="二-组管理"><a href="#二-组管理" class="headerlink" title="二. 组管理"></a>二. 组管理</h2><h3 id="1-创建组"><a href="#1-创建组" class="headerlink" title="1. 创建组"></a>1. 创建组</h3><p>groupadd student,<br>-g 选项可以指定 GID;</p>
-<h3 id="2-修改组"><a href="#2-修改组" class="headerlink" title="2. 修改组"></a>2. 修改组</h3><p>groupmod student,<br>-n 选项可以修改名称; -g 选项可以修改 GID;</p>
-<details ><summary>点击显/隐修改组代码</summary><div class="fold-content"><p>已知旧组信息: <code>STUDENT:x:1349:</code><br>[root@localhost koinl]# groupmod -n stu -g 1299 STUDENT<br>[root@localhost koinl]# cat &#x2F;etc&#x2F;group | tail -1<br>stu:x:1299:<br>可以得到修改后的信息: <code>stu:x:1299:</code></p>
-</div></details>
-
-<h3 id="3-删除组"><a href="#3-删除组" class="headerlink" title="3. 删除组"></a>3. 删除组</h3><p>groupdel student, 组中必须无用户</p>
-<h3 id="4-查看组"><a href="#4-查看组" class="headerlink" title="4. 查看组"></a>4. 查看组</h3><p>与查看用户信息类似, 同样使用 <code>cat /etc/group | tail -5</code>即可.</p>
-<blockquote>
-<p>小背诵:<br>用户 user 组 group,<br>增删改 add del mod,<br>用户中, u g 定改 ID, l 改名<br>组中, g 顶改 ID, n 改名</p>
-</blockquote>
+                    <p>6.请写出静态查看系统所有进程的命令，同时输出前两行。<br>解: <code>ps -aux | head -2</code></p>
+<p>7.请写出动态查看系统进程的命令。<br>解: <code>top</code><br>1.设置 at 调度, 要求在两天后上午 9 点创建目录 &#x2F;test.<br>第一步: <code>at 9am+2 days</code><br>第二步: <code>mkdir /test</code><br>第三步: Ctrl + D 退出. </p>
+<p>2.设置 cron 调度, 要求在每周一的 8 点执行关机操作.<br>第一步: <code>crontab -e</code><br>第二步: <code>0 8 * * 1 shutdown -h now</code>1,2,3以及1-5, 分时日月星期命令</p>
+<h2 id="一-进程管理命令"><a href="#一-进程管理命令" class="headerlink" title="一. 进程管理命令"></a>一. 进程管理命令</h2><h3 id="1-查看静态系统进程命令"><a href="#1-查看静态系统进程命令" class="headerlink" title="1. 查看静态系统进程命令"></a>1. 查看静态系统进程命令</h3><p>ps -aux | head -2</p>
+<h3 id="2-查看动态系统进程命令"><a href="#2-查看动态系统进程命令" class="headerlink" title="2. 查看动态系统进程命令"></a>2. 查看动态系统进程命令</h3><p>top</p>
+<h2 id="二-进程启动命令"><a href="#二-进程启动命令" class="headerlink" title="二. 进程启动命令"></a>二. 进程启动命令</h2><h3 id="1-定时执行-at-命令"><a href="#1-定时执行-at-命令" class="headerlink" title="1. 定时执行 at 命令"></a>1. 定时执行 at 命令</h3><p>at 9am+2 days<br>mkdir test</p>
+<h3 id="2-周期执行-cron-命令"><a href="#2-周期执行-cron-命令" class="headerlink" title="2. 周期执行 cron 命令"></a>2. 周期执行 cron 命令</h3><p>crontab -e<br>0 8 * * 1 shutdown -h now，分时日月星期</p>
 
                 </div>
 
                 <div class="post-footer__meta">
     <p>
-        更新于2022-05-19
+        更新于2022-06-09
     </p>
 </div>
 
@@ -230,7 +212,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/ds03/" class="nav__link">
+                            <a href="/posts/linux03/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -244,7 +226,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        第三章  图
+                                        第三章  存储管理
                                     </div>
                                 </div>
                             </a>
@@ -252,13 +234,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/linux0mouasdas/" class="nav__link">
+                            <a href="/posts/linux09/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        第某章  逻辑卷管理
+                                        安全管理
                                     </div>
                                 </div>
                                 <div>

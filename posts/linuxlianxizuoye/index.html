@@ -202,8 +202,8 @@
 <p>（7）为其他用户添加对此目录的写权限<br>解: <code>chmod o+w test</code></p>
 <p>2.改变文件的所有者<br>（1）查看目录test及其文件的所属用户和用户组。<br>解: <code>ll</code>, 其中第三行是所属用户, 第四行是所属组. </p>
 <p>（2）把目录test及其下所有文件的所有者改为om,所属组改为student。<br>解: <code>chown -R om:student test</code></p>
-<details ><summary>(#&$*#@*$</summary><div class="fold-content"><p>[root@localhost koinl]# useradd student    # 新建用户 student<br>[root@localhost koinl]# chown student num    # 改变 num 的属主为 student</p>
-<p>root@localhost koinl]# groupadd om    # 新建组 om<br>[root@localhost koinl]# chgrp om test1</p>
+<details ><summary>(#&$*#@*$</summary><div class="fold-content"><p>[root@localhost koinl]# useradd student    # 新建用户 om<br>[root@localhost koinl]# chown om test    # 改变 test 的属主为 om</p>
+<p>root@localhost koinl]# groupadd student    # 新建组 student<br>[root@localhost koinl]# chgrp student test1</p>
 </div></details>
 <p>（3）删除目录test及其下的文件。<br>解; <code>rm -r test</code></p></div></details>
 
@@ -276,7 +276,7 @@
 
                 <div class="post-footer__meta">
     <p>
-        更新于2022-06-09
+        更新于2022-06-16
     </p>
 </div>
 

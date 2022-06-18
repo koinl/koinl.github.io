@@ -165,7 +165,7 @@
     
         <aside class="post-side">
             <div class="post-side__toc">
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">一. 进程管理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E9%9D%99%E6%80%81%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">1. 查看静态系统进程命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9F%A5%E7%9C%8B%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">2. 查看动态系统进程命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">二. 进程启动命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C-at-%E5%91%BD%E4%BB%A4"><span class="toc-text">1. 定时执行 at 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%91%A8%E6%9C%9F%E6%89%A7%E8%A1%8C-cron-%E5%91%BD%E4%BB%A4"><span class="toc-text">2. 周期执行 cron 命令</span></a></li></ol></li></ol>
+                
             </div>
         </aside>
         <a class="btn-toc button" id="btn-toc" tabindex="0">
@@ -179,7 +179,7 @@
             <div class="toc-title">
                 post.toc
             </div>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">一. 进程管理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E9%9D%99%E6%80%81%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">1. 查看静态系统进程命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9F%A5%E7%9C%8B%E5%8A%A8%E6%80%81%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">2. 查看动态系统进程命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%BF%9B%E7%A8%8B%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">二. 进程启动命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C-at-%E5%91%BD%E4%BB%A4"><span class="toc-text">1. 定时执行 at 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%91%A8%E6%9C%9F%E6%89%A7%E8%A1%8C-cron-%E5%91%BD%E4%BB%A4"><span class="toc-text">2. 周期执行 cron 命令</span></a></li></ol></li></ol>
+            
         </div>
         
 
@@ -193,16 +193,12 @@
                     <p>6.请写出静态查看系统所有进程的命令，同时输出前两行。<br>解: <code>ps -aux | head -2</code></p>
 <p>7.请写出动态查看系统进程的命令。<br>解: <code>top</code><br>1.设置 at 调度, 要求在两天后上午 9 点创建目录 &#x2F;test.<br>第一步: <code>at 9am+2 days</code><br>第二步: <code>mkdir /test</code><br>第三步: Ctrl + D 退出. </p>
 <p>2.设置 cron 调度, 要求在每周一的 8 点执行关机操作.<br>第一步: <code>crontab -e</code><br>第二步: <code>0 8 * * 1 shutdown -h now</code>1,2,3以及1-5, 分时日月星期</p>
-<h2 id="一-进程管理命令"><a href="#一-进程管理命令" class="headerlink" title="一. 进程管理命令"></a>一. 进程管理命令</h2><h3 id="1-查看静态系统进程命令"><a href="#1-查看静态系统进程命令" class="headerlink" title="1. 查看静态系统进程命令"></a>1. 查看静态系统进程命令</h3><p>ps -aux | head -2</p>
-<h3 id="2-查看动态系统进程命令"><a href="#2-查看动态系统进程命令" class="headerlink" title="2. 查看动态系统进程命令"></a>2. 查看动态系统进程命令</h3><p>top</p>
-<h2 id="二-进程启动命令"><a href="#二-进程启动命令" class="headerlink" title="二. 进程启动命令"></a>二. 进程启动命令</h2><h3 id="1-定时执行-at-命令"><a href="#1-定时执行-at-命令" class="headerlink" title="1. 定时执行 at 命令"></a>1. 定时执行 at 命令</h3><p>at 9am+2 days<br>mkdir test</p>
-<h3 id="2-周期执行-cron-命令"><a href="#2-周期执行-cron-命令" class="headerlink" title="2. 周期执行 cron 命令"></a>2. 周期执行 cron 命令</h3><p>crontab -e<br>0 8 * * 1 shutdown -h now，分时日月星期</p>
 
                 </div>
 
                 <div class="post-footer__meta">
     <p>
-        更新于2022-06-11
+        更新于2022-06-18
     </p>
 </div>
 

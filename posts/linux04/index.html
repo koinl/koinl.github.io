@@ -20,7 +20,7 @@
 
                 <title>
                     
-                        第某章  逻辑卷管理 | 
+                        第四章  逻辑卷管理 | 
                                 锦鲤未离
                 </title>
 
@@ -148,7 +148,7 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第某章  逻辑卷管理
+            第四章  逻辑卷管理
         </h1>
         <div class="post-title__meta">
             <a href="/archives/2022/06/" class="post-meta__date button">
@@ -190,19 +190,9 @@
 
                 </div>
                 <div class="post__content">
-                    <p>逻辑卷的管理, 嘛, 磁盘空间的动态管理.<br>可分为创建与管理逻辑卷. </p>
-<p>例: 创建一个VG (名为 wgroup) 和LV ( lv名为 wshare), PE大小8M, LV中PE个数100,文件系统格式为ext4<br>解: 先创建一个主分区 sda4, 再然后创建 PV: <code>pvcreate /dev/sda4</code> , 第三步创建 VG: <code>vgcreate -s 8M wgroup /dev/sda4</code> , 第四步创建 LV: <code>lvcreate -L 100 -n wshare /dev/wgroup</code> , 第五步格式化: <code>mkfs -t ext4 /dev/wgroup/wshare</code> .</p>
-<p>例2: 新建一个LV, 名称为home, 大小为1000M, 格式为ext4, 将home逻辑卷从1000M扩容到1500M<br>解: 假定 home 改名为上题 wshare.<br>扩容: <code>lvextend -L +500M /dev/wgroup/wshare</code> 或者 <code>lvextend -L 1500M /dev/wgroup/wshare</code> .</p>
-<p>增删改<br>pvcreate pvremove</p>
-<p>pvcreate &#x2F;dev&#x2F;sda5<br>pvremove &#x2F;dev&#x2F;sda5</p>
-<p>pvscan<br>pvdisplay</p>
-<p>vgcreate -s 8MB scvg &#x2F;dev&#x2F;sda4 &#x2F;dev&#x2F;sda5<br>vgextend scvg &#x2F;dev&#x2F;sda5<br>vgreduce scvg &#x2F;dev&#x2F;sda5<br>vgremove scvg</p>
-<p>vgscan<br>vgdisplay</p>
-<p>lvcreate -L 1.5G -n userlv scvg<br>mkfs -t ext4 &#x2F;dev&#x2F;scvg&#x2F;userlv<br>mount &#x2F;dev&#x2F;scvg&#x2F;userlv &#x2F;mkdir_mulu&#x2F;a</p>
-<p>lvscan<br>lvdisplay</p>
-<p>lvresize -L +1M &#x2F;dev&#x2F;scvg&#x2F;userlv<br>resize2fs &#x2F;dev&#x2F;scvg&#x2F;userlv</p>
-<p>umount &#x2F;dev&#x2F;scvg&#x2F;userlv<br>lvremove &#x2F;dev&#x2F;scvg&#x2F;userlv</p>
-<p>物理卷管理<br>1.硬盘分区<br>fdisk &#x2F;dev&#x2F;sda t 4 8e w<br>2.建立物理卷<br>pvcreate &#x2F;dev&#x2F;sda4<br>3.删除物理卷<br>pvremove &#x2F;dev&#x2F;sda4<br>卷组管理<br>1.创建卷组<br>-s PE 大小：指定 PE 的大小，单位可以是 MB,GB,TB 等。如果不写默认 PE 大小事 4MB<br>vgcreate -s 8M vg_koinl &#x2F;dev&#x2F;sda4 &#x2F;dev&#x2F;sda5<br>2.增加卷组<br>vgextend vg_koinl &#x2F;dev&#x2F;sda6<br>3.减少<br>vgreduce<br>4.删除<br>vgremove vg_koinl<br>逻辑卷管理<br>1.建立逻辑卷<br>-L 容量：指定逻辑卷大小，单位 MB，GB，TB 等<br>-l 个数：按照 PE 个数指定逻辑卷大小，这个参数需要换算容量，太麻烦<br>lvcreate -L 1.5G -n lv_koinl vg_koinl<br>2.挂载<br>mkfs -t ext4 &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl<br>mount &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl &#x2F;挂载目录&#x2F;<br>3.调整大小<br>-L 容量：安装容量调整大小，单位 KB，GB,TB 等。使用+代表增加空间，-号代表减少<br>空间。如果直接写容量，代表设定逻辑卷大小为指定大小。<br>-l 个数：按照 PE 个数调整逻辑卷大小<br>lvresize -L +500K &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl<br>df -h &#x2F;disklvm&#x2F;<br>resize2fs &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl<br>df -h &#x2F;disklvm&#x2F;<br>4.删除<br>umount &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl<br>e2fsck -f &#x2F;dev&#x2F;dd&#x2F;yy<br>lvremove &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl</p>
+                    <p>1、简介<br>LVM 是 Logical Volume Manager 的简称，中文就是逻辑卷管理。<br><img src="https://img-blog.csdnimg.cn/20190807200211507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg2MzM2MQ==,size_16,color_FFFFFF,t_70"><br>1）物理卷（PV，Physical Volume）：就是真正的物理硬盘或分区。<br>2）卷组（VG，Volume Group）：将多个物理卷整合起来就组成了卷组，组成同一个卷组的物理卷可以是同一个硬盘的不同分区，也可以是不同硬盘上的不同分区。我们可以把卷组想象为一个逻辑硬盘。<br>3）逻辑卷（LV，Logical Volume）：卷组是一个逻辑硬盘，硬盘必须分区之后才能使用，这个分区我们称作逻辑卷。逻辑卷可以格式化和写入数据。我们可以把逻辑卷想象成为分区。<br>4）物理扩展（PE，Physical Extend）：PE 是用来保存数据的最小单元，我们的数据实际上都是写入 PE 当中，PE 的大小是可以配置的，默认是 4MB。</p>
+<p>fdisk &#x2F;dev&#x2F;sda n… t 4 8e w    # 硬盘分区，分区id设置为8e<br>pvcreate &#x2F;dev&#x2F;sda4    # 把物理分区建立物理卷<br>vgcreate -s 4MB vg_name &#x2F;dev&#x2F;sda4 &#x2F;dev&#x2F;sda5    # 把物理卷整合为卷组,-s PE 大小：指定 PE 的大小，单位可以是 MB,GB,TB 等。如果不写默认 PE 大小事 4MB<br>    vgreduce vg_name &#x2F;dev&#x2F;sda5    # 添加减少卷组里的物理卷<br>lvcreate -L 512M -n lv_name vg_name    # 卷组划分为逻辑卷,-L 容量：指定逻辑卷大小，单位 MB，GB，TB 等，-l 个数：按照 PE 个数指定逻辑卷大小，这个参数需要换算容量，太麻烦<br>    lvresize -L +1M &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl    # 调整逻辑卷的大小。lvdisplay’s LV Size: 513M -&gt;大小改变了，但是 df -h &#x2F;disklvm&#x2F;‘s 文件系统：&#x2F;dev&#x2F;mapper&#x2F;scvg-userlv 的容量：512M<br>    resize2fs &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl    #df -h &#x2F;disklvm&#x2F;‘s 文件系统：&#x2F;dev&#x2F;mapper&#x2F;scvg-userlv 的容量：513M<br>    # 挂载<br>mount &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl &#x2F;挂载目录&#x2F;    # 挂载目录需存在且已格式化。mkdir &#x2F;挂载目录&#x2F;    mkfs -t ext4 &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl</p>
+<p>4.删除<br>umount &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl    # 卸载挂载<br>e2fsck -f &#x2F;dev&#x2F;dd&#x2F;yy    # 卸载文件系统<br>lvremove &#x2F;dev&#x2F;vg_koinl&#x2F;lv_koinl    # 删除逻辑卷<br>vgremove vg_koinl    # 删除卷组<br>pvremove &#x2F;dev&#x2F;sda4    # 删除物理卷</p>
 <table>
 <thead>
 <tr>
@@ -260,7 +250,7 @@
 
                 <div class="post-footer__meta">
     <p>
-        更新于2022-06-11
+        更新于2022-06-19
     </p>
 </div>
 

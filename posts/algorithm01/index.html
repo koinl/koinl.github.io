@@ -146,19 +146,27 @@
                 <div class="post__header">
                     
                 </div>
-                <div class="post__content">
-                    <p>排序是应用广泛的数据处理方法，本章详细地介绍了插入排序，交换排序与选择排序。最后从时间空间以及稳定性能上面对排序方法进行了总结。</p>
+
+                
+
+                    <div class="post-side__toc">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">一. 插入排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">1. 直接插入排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">2. 折半插入排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="toc-text">3. 希尔排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F"><span class="toc-text">二. 交换排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">1. 冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">2. 快速排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">三. 选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">1. 简单选择排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">2. 堆排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">四. 归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%8E%92%E5%BA%8F%E6%80%BB%E7%BB%93"><span class="toc-text">五. 排序总结</span></a></li></ol>
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <p>排序是应用广泛的数据处理方法，本章详细地介绍了插入排序，交换排序与选择排序。最后从时间空间以及稳定性能上面对排序方法进行了总结。</p>
 <h2 id="一-插入排序"><a href="#一-插入排序" class="headerlink" title="一. 插入排序"></a>一. 插入排序</h2><h3 id="1-直接插入排序"><a href="#1-直接插入排序" class="headerlink" title="1. 直接插入排序"></a>1. 直接插入排序</h3><p>例：[59, 12, 77, 64, 72, 69, 46, 89, 31, 65, 9]<br>解：第一轮：12 对比 59，需要交换。交换完成的矩阵为[12, 59, 77, 64…<br>第二轮：77 对比 12，不动；77 对比 59，不动。矩阵不变。<br>第三轮：64 对比 12，不动；64 对比 59，不动；64 对比 77，需要交换。交换完成的矩阵为[12, 59, 64, 77, 72, 69, 46, 89, 31, 65, 9]。<br>依此类推。</p>
 <h3 id="2-折半插入排序"><a href="#2-折半插入排序" class="headerlink" title="2. 折半插入排序"></a>2. 折半插入排序</h3><h3 id="3-希尔排序"><a href="#3-希尔排序" class="headerlink" title="3. 希尔排序"></a>3. 希尔排序</h3><p>例：[59, 12, 77, 64, 72, 69, 46, 89, 31, 65, 9]<br>解：第一轮：以步长为 5 开始分组，分组情况如下：<br>|59,12,77,64,72|<br>|69, 46, 89, 31, 65|<br>|9|。<br>分组结果如下：<br>|9,12,77,64,72|<br>|59, 46, 89, 31, 65|<br>|69|。<br>第二轮：以步长为 3 开始分组，分组情况如下：<br>|9, 12, 77|<br>|64, 72, 69|<br>|46, 89, 31|<br>|65, 9|。<br>分组结果如下：<br>|9, 12, 77|<br>|46, 72, 69|<br>|64, 89, 31|<br>|65, 9|。<br>第三轮：以步长为 1 开始分组，此时是简单插入排序。</p>
 <h2 id="二-交换排序"><a href="#二-交换排序" class="headerlink" title="二. 交换排序"></a>二. 交换排序</h2><h3 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1. 冒泡排序"></a>1. 冒泡排序</h3><p>例：[59, 12, 77, 64, 72, 69, 46, 89, 31, 65, 9]<br>解：第一轮：<br>[<code>59</code>, <code>12</code>, 77, 64, 72, 69, 46, 89, 31, 65, 9]<br>[12, <code>59</code>, <code>77</code>, 64, 72, 69, 46, 89, 31, 65, 9]<br>[12, 59, <code>77</code>, <code>64</code>, 72, 69, 46, 89, 31, 65, 9]<br>[12, 59, 64, <code>77</code>, <code>72</code>, 69, 46, 89, 31, 65, 9]<br>[12, 59, 64, 72, <code>77</code>, <code>69</code>, 46, 89, 31, 65, 9]<br>[12, 59, 64, 72, 69, <code>77</code>, <code>46</code>, 89, 31, 65, 9]<br>[12, 59, 64, 72, 69, 46, <code>77</code>, <code>89</code>, 31, 65, 9]<br>[12, 59, 64, 72, 69, 46, 77, <code>89</code>, <code>31</code>, 65, 9]<br>[12, 59, 64, 72, 69, 46, 77, 31, <code>89</code>, <code>65</code>, 9]<br>[12, 59, 64, 72, 69, 46, 77, 31, 65, <code>89</code>, <code>9</code>]<br>[12, 59, 64, 72, 69, 46, 77, 31, 65, 9, 81]<br>第二轮：<br>[12, <code>59</code>, <code>64</code>, 72, 69, 46, 77, 31, 65, 9, 81]</p>
 <h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2. 快速排序"></a>2. 快速排序</h3><p>例：[59, 12, 77, 64, 72, 69, 46, 89, 31, 65, 9]<br>解：选定基准值 key&#x3D;arr[0]&#x3D;59 为分界点。初始状态：start&#x3D;0, end&#x3D;10, key&#x3D;59。<br>第一轮：从右向左找到 a[end] 小于 key 的值：end&#x3D;10, a[end]&#x3D;9；从左向右找到 a[start] 大于 key 的值：start&#x3D;2, a[start]&#x3D;77。将他俩进行交换。交换完成的矩阵为：[59, 12, 9, 64, 72, 69, 46, 89, 31, 65, 77]<br>第二轮：从右向左找到 a[end] 小于 key 的值：end&#x3D;8, a[end]&#x3D;31；从左向右找到 a[start] 大于 key 的值：start&#x3D;3, a[start]&#x3D;64。将他俩进行交换。交换完成的矩阵为：[59, 12, 9, 31, 72, 69, 46, 89, 64, 65, 77]<br>第三轮：从右向左找到 a[end] 小于 key 的值：end&#x3D;6, a[end]&#x3D;46；从左向右找到 a[start] 大于 key 的值：start&#x3D;4, a[start]&#x3D;72。将他俩进行交换。交换完成的矩阵为：[59, 12, 9, 31, 46, 69, 72, 89, 64, 65, 77]<br>第四轮：从右向左找到 a[end] 小于 key 的值：end&#x3D;4, a[end]&#x3D;46；此时 end&#x3D;start&#x3D;4，故本轮循环结束，key 与 end进行交换。交换完成的矩阵为：[46, 12, 9, 31, 59, 69, 72, 89, 64, 65, 77]<br>以 59 为分界点，左边的序列为 [46, 12, 9, 31]；右边的序列为 [69, 72, 89, 64, 65, 77]；</p>
 <h2 id="三-选择排序"><a href="#三-选择排序" class="headerlink" title="三. 选择排序"></a>三. 选择排序</h2><h3 id="1-简单选择排序"><a href="#1-简单选择排序" class="headerlink" title="1. 简单选择排序"></a>1. 简单选择排序</h3><h3 id="2-堆排序"><a href="#2-堆排序" class="headerlink" title="2. 堆排序"></a>2. 堆排序</h3><h2 id="四-归并排序"><a href="#四-归并排序" class="headerlink" title="四. 归并排序"></a>四. 归并排序</h2><h2 id="五-排序总结"><a href="#五-排序总结" class="headerlink" title="五. 排序总结"></a>五. 排序总结</h2>
-                </div>
-                <div class="post-footer__meta">
-                    <p>
-                        更新于  2022-06-11 08:50:02 星期六
-                    </p>
-                </div>
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-06-11 08:50:02 星期六
+                            </p>
+                        </div>
 
             </article>
 

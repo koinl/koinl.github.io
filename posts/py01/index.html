@@ -146,8 +146,16 @@
                 <div class="post__header">
                     
                 </div>
-                <div class="post__content">
-                    <p>程序的基本结构是分为顺序结构, 分支结构与循环结构这三种的.<br>关于分支结构, 为 if…elif…else 的程序解释和三目运算符.<br>关于循环结构, 会阐遍历循环 for 和无限循环 while 这两者.<br>不过在此之前, 用少量的篇幅简要地介绍下数据的类型等. <span id="more"></span><br></p>
+
+                
+
+                    <div class="post-side__toc">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1. 数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84"><span class="toc-text">1. 分支结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="toc-text">2. 循环结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%81%8D%E5%8E%86%E5%BE%AA%E7%8E%AF-for"><span class="toc-text">1) 遍历循环 for</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF-while"><span class="toc-text">2) 条件循环 while</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">3. 异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-random-%E5%BA%93"><span class="toc-text">4. random 库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B"><span class="toc-text">5. 综合案例</span></a></li></ol>
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <p>程序的基本结构是分为顺序结构, 分支结构与循环结构这三种的.<br>关于分支结构, 为 if…elif…else 的程序解释和三目运算符.<br>关于循环结构, 会阐遍历循环 for 和无限循环 while 这两者.<br>不过在此之前, 用少量的篇幅简要地介绍下数据的类型等. <span id="more"></span><br></p>
 <h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1. 数据类型"></a>1. 数据类型</h2><p>数据类型分为数字类型, 字符类型与组合类型. </p>
 <ul>
 <li><p>数字类型<br>数字类型有两种, 为整数与小数, 在 Python 中称为整数与浮点数<br>数字类型的操作: +-*&#x2F; 依次为加减乘除, 另有三个需要注意下: &#x2F;&#x2F; 获取整数商, % 获取余数, ** 次幂<br>另有一些内置函数: abs() 求绝对值, round() 四舍五入, pow() 与 ** 等同. </p>
@@ -243,12 +251,12 @@
 <li>羊车门问题. 羊车门问题描述: 有3扇关闭的门, 一扇门后停着汽车, 另外两扇门后是山羊, 主持人知道每扇门后是什么. 参赛者首先选择一扇门, 在开启它之前, 主持人会从另外两扇门中打开一扇门, 露出门后的山羊. 此时, 允许参赛者更换自己的选择. 请问, 参赛者更换选择后, 能否增加猜中汽车的机会?</li>
 </ol>
 <details ><summary>点击显/隐羊车门问题代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> *</span><br><span class="line">old_choose, new_choose = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):    <span class="comment"># 测试 10000 次</span></span><br><span class="line">    car = randint(<span class="number">0</span>, <span class="number">2</span>)    <span class="comment"># 车随机三扇门里面</span></span><br><span class="line">    choose = randint(<span class="number">0</span>, <span class="number">2</span>)    <span class="comment"># 选择随机一扇门</span></span><br><span class="line">    <span class="keyword">if</span> choose == car:    <span class="comment"># 不更改选择得到车</span></span><br><span class="line">        old_choose += <span class="number">1</span>    <span class="comment"># 坚持选择计数器 +1</span></span><br><span class="line">    <span class="keyword">if</span> choose != car:    <span class="comment"># 反之则反</span></span><br><span class="line">        new_choose += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(old_choose / <span class="number">10000</span> * <span class="number">100</span>, <span class="string">&#x27;%&#x27;</span>, new_choose / <span class="number">10000</span> * <span class="number">100</span>, <span class="string">&#x27;%&#x27;</span>)    <span class="comment"># 33.83 % 66.17 %</span></span><br></pre></td></tr></table></figure></div></details>
-                </div>
-                <div class="post-footer__meta">
-                    <p>
-                        更新于  2022-04-18 11:02:38 星期一
-                    </p>
-                </div>
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-04-18 11:02:38 星期一
+                            </p>
+                        </div>
 
             </article>
 

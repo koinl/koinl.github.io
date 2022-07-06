@@ -146,8 +146,16 @@
                 <div class="post__header">
                     
                 </div>
-                <div class="post__content">
-                    <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"></div></details>
+
+                
+
+                    <div class="post-side__toc">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-jieba-%E5%BA%93"><span class="toc-text">4. jieba 库</span></a></li></ol>
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"></div></details>
 <p>首先, 熟悉几个辅助操作 (美化效果, 非必要): </p>
 <ul>
 <li><code>setup(800, 350, 200, 200)</code> 窗口宽度, 窗口高度, 若值小数, 表示比例; 窗口与屏幕的左侧距离, 窗口与屏幕顶部的距离, 若值 None, 位于中央</li>
@@ -213,12 +221,12 @@
 <p>常用的函数有两个，“cut(s, [cut_all&#x3D;True])” 与 “cut_for_search(s)”，分别为精确 [全] 模式与搜索引擎模式。</p>
 <p>但使用 cut 直接输出得到的结果是内存地址，因此使用 lcut[_for_search](s) 会好很多。其本质可见代码第 5 行。</p>
 <details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> jieba <span class="keyword">import</span> *</span><br><span class="line">setLogLevel(logging.INFO)    <span class="comment"># 不添加这个可正常运行但有报错：Building prefix dict from the default dictionary ...</span></span><br><span class="line"><span class="built_in">print</span>(lcut(<span class="string">&quot;锦鲤未离在中华人民共和国&quot;</span>))  <span class="comment"># [&#x27;锦鲤&#x27;, &#x27;未离&#x27;, &#x27;在&#x27;, &#x27;中华人民共和国&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(cut(<span class="string">&quot;锦鲤未离在中华人民共和国&quot;</span>))    <span class="comment"># &lt;generator object Tokenizer.cut at 0x0000022ED167CF48&gt;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(cut(<span class="string">&quot;锦鲤未离在中华人民共和国&quot;</span>)))    <span class="comment"># lcut()=list(cut())# [&#x27;锦鲤未离&#x27;, &#x27;在&#x27;, &#x27;中华人民共和国&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(lcut(<span class="string">&quot;锦鲤未离在中华人民共和国&quot;</span>, cut_all=<span class="literal">True</span>))  <span class="comment"># 全模式, [&#x27;锦鲤&#x27;, &#x27;未&#x27;, &#x27;离&#x27;, &#x27;在&#x27;, &#x27;中华&#x27;, &#x27;中华人民&#x27;, &#x27;中华人民共和国&#x27;, &#x27;华人&#x27;, &#x27;人民&#x27;, &#x27;人民共和国&#x27;, &#x27;共和&#x27;, &#x27;共和国&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(lcut_for_search(<span class="string">&quot;锦鲤未离在中华人民共和国&quot;</span>))  <span class="comment"># 搜索引擎常用的索引, [&#x27;锦鲤&#x27;, &#x27;未离&#x27;, &#x27;在&#x27;, &#x27;中华&#x27;, &#x27;华人&#x27;, &#x27;人民&#x27;, &#x27;共和&#x27;, &#x27;共和国&#x27;, &#x27;中华人民共和国&#x27;]</span></span><br><span class="line">add_word(<span class="string">&quot;锦鲤未离&quot;</span>)    <span class="comment"># 增加词汇</span></span><br><span class="line"><span class="built_in">print</span>(lcut(<span class="string">&quot;锦鲤未离在中华人民共和国&quot;</span>))  <span class="comment"># [&#x27;锦鲤未离&#x27;, &#x27;在&#x27;, &#x27;中华人民共和国&#x27;]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div></details>
-                </div>
-                <div class="post-footer__meta">
-                    <p>
-                        更新于  2022-06-04 10:53:56 星期六
-                    </p>
-                </div>
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-06-04 10:53:56 星期六
+                            </p>
+                        </div>
 
             </article>
 

@@ -55,6 +55,15 @@ body {
   }
 }
 
+.btn-copy {
+  background: #e0ffff00;
+  border: double;
+}
+
+.btn-copy .fa span {
+  color: var(--body-color);
+}
+
 article,
 aside,
 figure,

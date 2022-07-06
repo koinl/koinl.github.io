@@ -1212,7 +1212,7 @@ overflows table td {
   padding: 10px;
 }
 
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1px) {
   .header {
     position: -webkit-sticky;
     position: sticky;

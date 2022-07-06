@@ -60,7 +60,7 @@ body {
   border: double;
 }
 
-.btn-copy .fa span {
+.btn-copy span {
   color: var(--body-color);
 }
 

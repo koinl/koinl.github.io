@@ -1587,7 +1587,7 @@ overflows table td {
   }
 }
 
-.sliding-fold,
+/* .sliding-fold,
 details {
   display: block;
   padding: 16px;
@@ -1599,7 +1599,7 @@ details {
   box-shadow: 1px 2px 5px 0 rgba(0, 0, 0, 0.3);
   -webkit-transition: all 0.6s;
   transition: all 0.6s;
-}
+} */
 
 .sliding-fold>summary,
 details>summary {

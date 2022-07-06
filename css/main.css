@@ -1216,8 +1216,8 @@ overflows table td {
   .header {
     position: -webkit-sticky;
     position: sticky;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    /* -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px); */
   }
 }
 

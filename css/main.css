@@ -1648,6 +1648,7 @@ details {
 details>summary {
   cursor: pointer;
   outline: none;
+  text-decoration: underline;
 }
 
 .sliding-fold .fold-content,
@@ -1668,6 +1669,7 @@ details .fold-content>:last-child {
 .sliding-fold.collapsed>summary:after {
   float: right;
   content: "+";
+
 }
 
 .sliding-fold.collapsed .fold-content {

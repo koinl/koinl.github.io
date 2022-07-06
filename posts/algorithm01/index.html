@@ -34,7 +34,7 @@
 
                 <title>
                     
-                        标签 | 
+                        第一章  排序 | 
                                 锦鲤未离
                 </title>
 
@@ -46,6 +46,11 @@
                                 <link rel="stylesheet" href="/css/style/main.css">
 
                                 
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
+        
+    
+
 
                                     
 <meta name="generator" content="Hexo 6.1.0"></head>
@@ -137,86 +142,67 @@
     </div>
 </header>
     
-        <div class="cover">
-            <div class="cover__logo">
-                <img no-lazy alt="author Image" class="cover__avatar" src="/img/touxiang.png">
-            </div>
+            <main class="main">
+    
 
-
-            <div class="cover__intro">
-                <p>锦鲤未离 (Koi_NL)</p>
-            </div>
-            <div id="binft"></div>
-            <script>
-                var binft = function (r) {
-                    function t() {
-                        return b[Math.floor(Math.random() * b.length)]
-                    } function e() {
-                        return String.fromCharCode(94 * Math.random() + 33)
-                    } function n(r) {
-                        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
-                            var l = document.createElement("span"); l.textContent = e(), l.style.color = t(), n.appendChild(l)
-                        } return n
-                    } function i() {
-                        var t = o[c.skillI]; c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
-                    } var l = "", o = ["过去已成定局, 便不问过往, 吾独独视今朝"].map(function (r) {
-                        return r + ""
-                    }), a = 2, g = 1, s = 5, d = 75, b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"], c = {
-                        text: "", prefixP: -s, skillI: 0, skillP: 0, direction: "forward", delay: a, step: g
-                    }; i()
-                }; binft(document.getElementById('binft'));
-            </script>
-
-        </div>
+<div class="post-title">
+    <h1 class="post-title__text">
+        第一章  排序
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/06/" class="post-meta__date button">2022-06-10</a>
         
+    <span class="separate-dot"></span><a href="/categories/Algorithm/" class="button">Algorithm</a>
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>排序是应用广泛的数据处理方法，本章详细地介绍了插入排序，交换排序与选择排序。最后从时间空间以及稳定性能上面对排序方法进行了总结。</p>
+<h2 id="一-插入排序"><a href="#一-插入排序" class="headerlink" title="一. 插入排序"></a>一. 插入排序</h2><h3 id="1-直接插入排序"><a href="#1-直接插入排序" class="headerlink" title="1. 直接插入排序"></a>1. 直接插入排序</h3><p>例：[59, 12, 77, 64, 72, 69, 46, 89, 31, 65, 9]<br>解：第一轮：12 对比 59，需要交换。交换完成的矩阵为[12, 59, 77, 64…<br>第二轮：77 对比 12，不动；77 对比 59，不动。矩阵不变。<br>第三轮：64 对比 12，不动；64 对比 59，不动；64 对比 77，需要交换。交换完成的矩阵为[12, 59, 64, 77, 72, 69, 46, 89, 31, 65, 9]。<br>依此类推。</p>
+<h3 id="2-折半插入排序"><a href="#2-折半插入排序" class="headerlink" title="2. 折半插入排序"></a>2. 折半插入排序</h3><h3 id="3-希尔排序"><a href="#3-希尔排序" class="headerlink" title="3. 希尔排序"></a>3. 希尔排序</h3><p>例：[59, 12, 77, 64, 72, 69, 46, 89, 31, 65, 9]<br>解：第一轮：以步长为 5 开始分组，分组情况如下：<br>|59,12,77,64,72|<br>|69, 46, 89, 31, 65|<br>|9|。<br>分组结果如下：<br>|9,12,77,64,72|<br>|59, 46, 89, 31, 65|<br>|69|。<br>第二轮：以步长为 3 开始分组，分组情况如下：<br>|9, 12, 77|<br>|64, 72, 69|<br>|46, 89, 31|<br>|65, 9|。<br>分组结果如下：<br>|9, 12, 77|<br>|46, 72, 69|<br>|64, 89, 31|<br>|65, 9|。<br>第三轮：以步长为 1 开始分组，此时是简单插入排序。</p>
+<h2 id="二-交换排序"><a href="#二-交换排序" class="headerlink" title="二. 交换排序"></a>二. 交换排序</h2><h3 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1. 冒泡排序"></a>1. 冒泡排序</h3><p>例：[59, 12, 77, 64, 72, 69, 46, 89, 31, 65, 9]<br>解：第一轮：<br>[<code>59</code>, <code>12</code>, 77, 64, 72, 69, 46, 89, 31, 65, 9]<br>[12, <code>59</code>, <code>77</code>, 64, 72, 69, 46, 89, 31, 65, 9]<br>[12, 59, <code>77</code>, <code>64</code>, 72, 69, 46, 89, 31, 65, 9]<br>[12, 59, 64, <code>77</code>, <code>72</code>, 69, 46, 89, 31, 65, 9]<br>[12, 59, 64, 72, <code>77</code>, <code>69</code>, 46, 89, 31, 65, 9]<br>[12, 59, 64, 72, 69, <code>77</code>, <code>46</code>, 89, 31, 65, 9]<br>[12, 59, 64, 72, 69, 46, <code>77</code>, <code>89</code>, 31, 65, 9]<br>[12, 59, 64, 72, 69, 46, 77, <code>89</code>, <code>31</code>, 65, 9]<br>[12, 59, 64, 72, 69, 46, 77, 31, <code>89</code>, <code>65</code>, 9]<br>[12, 59, 64, 72, 69, 46, 77, 31, 65, <code>89</code>, <code>9</code>]<br>[12, 59, 64, 72, 69, 46, 77, 31, 65, 9, 81]<br>第二轮：<br>[12, <code>59</code>, <code>64</code>, 72, 69, 46, 77, 31, 65, 9, 81]</p>
+<h3 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2. 快速排序"></a>2. 快速排序</h3><p>例：[59, 12, 77, 64, 72, 69, 46, 89, 31, 65, 9]<br>解：选定基准值 key&#x3D;arr[0]&#x3D;59 为分界点。初始状态：start&#x3D;0, end&#x3D;10, key&#x3D;59。<br>第一轮：从右向左找到 a[end] 小于 key 的值：end&#x3D;10, a[end]&#x3D;9；从左向右找到 a[start] 大于 key 的值：start&#x3D;2, a[start]&#x3D;77。将他俩进行交换。交换完成的矩阵为：[59, 12, 9, 64, 72, 69, 46, 89, 31, 65, 77]<br>第二轮：从右向左找到 a[end] 小于 key 的值：end&#x3D;8, a[end]&#x3D;31；从左向右找到 a[start] 大于 key 的值：start&#x3D;3, a[start]&#x3D;64。将他俩进行交换。交换完成的矩阵为：[59, 12, 9, 31, 72, 69, 46, 89, 64, 65, 77]<br>第三轮：从右向左找到 a[end] 小于 key 的值：end&#x3D;6, a[end]&#x3D;46；从左向右找到 a[start] 大于 key 的值：start&#x3D;4, a[start]&#x3D;72。将他俩进行交换。交换完成的矩阵为：[59, 12, 9, 31, 46, 69, 72, 89, 64, 65, 77]<br>第四轮：从右向左找到 a[end] 小于 key 的值：end&#x3D;4, a[end]&#x3D;46；此时 end&#x3D;start&#x3D;4，故本轮循环结束，key 与 end进行交换。交换完成的矩阵为：[46, 12, 9, 31, 59, 69, 72, 89, 64, 65, 77]<br>以 59 为分界点，左边的序列为 [46, 12, 9, 31]；右边的序列为 [69, 72, 89, 64, 65, 77]；</p>
+<h2 id="三-选择排序"><a href="#三-选择排序" class="headerlink" title="三. 选择排序"></a>三. 选择排序</h2><h3 id="1-简单选择排序"><a href="#1-简单选择排序" class="headerlink" title="1. 简单选择排序"></a>1. 简单选择排序</h3><h3 id="2-堆排序"><a href="#2-堆排序" class="headerlink" title="2. 堆排序"></a>2. 堆排序</h3><h2 id="四-归并排序"><a href="#四-归并排序" class="headerlink" title="四. 归并排序"></a>四. 归并排序</h2><h2 id="五-排序总结"><a href="#五-排序总结" class="headerlink" title="五. 排序总结"></a>五. 排序总结</h2>
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-06-11</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
             
-<main class="main">
-    
-        
-            <div class="all-categories content-card">
-                
-                    <h2>
-                        标签
-                    </h2>
-                
-                
-                    
-                        <a class="" href="/categories/Algorithm/">
-                            <time>&nbsp;&nbsp;Algorithm</time>
-                            <span class="title">
-                                (1)
-                            </span>
-                        </a>
-                        <br />
-                    
-                        <a class="" href="/categories/Data-Structure/">
-                            <time>&nbsp;&nbsp;Data Structure</time>
-                            <span class="title">
-                                (3)
-                            </span>
-                        </a>
-                        <br />
-                    
-                        <a class="" href="/categories/Python/">
-                            <time>&nbsp;&nbsp;Python</time>
-                            <span class="title">
-                                (5)
-                            </span>
-                        </a>
-                        <br />
-                    
-                        <a class="" href="/categories/%E5%AD%A6%E4%B9%A0/">
-                            <time>&nbsp;&nbsp;学习</time>
-                            <span class="title">
-                                (16)
-                            </span>
-                        </a>
-                        <br />
-                    
-                
-            </div>
-        
-    
+        </div>
+        <div class="nav__next">
+            
+                <a href="/posts/py0nnnpillow/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            第某章  PIL 库
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
 </main>
 
                 <footer class="footer">

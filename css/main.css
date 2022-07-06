@@ -56,8 +56,12 @@ body {
 }
 
 .btn-copy {
+  cursor: pointer;
   background: #e0ffff00;
-  border: double;
+  border: solid;
+  color: #808080;
+  font-size: 13px;
+  margin: 0 6px 0 -10px;
 }
 
 .btn-copy span {

@@ -60,7 +60,7 @@
 .highlight {
   display: block;
   overflow-x: auto;
-  background: #fefefe;
+  /* background: #fefefe; */
   color: #545454;
   padding: 0.5em;
 }
@@ -74,6 +74,7 @@
 }
 
 @media screen and (-ms-high-contrast: active) {
+
   .highlight .addition,
   .highlight .attribute,
   .highlight .built_in,
@@ -89,11 +90,11 @@
   .highlight .symbol,
   .highlight .type,
   .highlight .quote {
-        color: highlight;
-    }
+    color: highlight;
+  }
 
-    .highlight .keyword,
-    .highlight .selector-tag {
-        font-weight: bold;
-    }
+  .highlight .keyword,
+  .highlight .selector-tag {
+    font-weight: bold;
+  }
 }

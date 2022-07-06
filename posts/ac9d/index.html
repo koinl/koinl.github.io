@@ -34,11 +34,13 @@
 
                 <title>
                     
-                        标签 | 
+                        第六章  数据库及其对象.md | 
                                 锦鲤未离
                 </title>
 
                 
+                    <meta name="keywords" content="SqlServer">
+                    
 
                         
 
@@ -46,6 +48,11 @@
                                 <link rel="stylesheet" href="/css/style/main.css">
 
                                 
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
+        
+    
+
 
                                     
 <meta name="generator" content="Hexo 6.1.0"></head>
@@ -137,70 +144,95 @@
     </div>
 </header>
     
-        <div class="cover">
-            <div class="cover__logo">
-                <img no-lazy alt="author Image" class="cover__avatar" src="/img/touxiang.png">
-            </div>
+            <main class="main">
+    
 
-
-            <div class="cover__intro">
-                <p>锦鲤未离 (Koi_NL)</p>
-            </div>
-            <div id="binft"></div>
-            <script>
-                var binft = function (r) {
-                    function t() {
-                        return b[Math.floor(Math.random() * b.length)]
-                    } function e() {
-                        return String.fromCharCode(94 * Math.random() + 33)
-                    } function n(r) {
-                        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
-                            var l = document.createElement("span"); l.textContent = e(), l.style.color = t(), n.appendChild(l)
-                        } return n
-                    } function i() {
-                        var t = o[c.skillI]; c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
-                    } var l = "", o = ["过去已成定局, 便不问过往, 吾独独视今朝"].map(function (r) {
-                        return r + ""
-                    }), a = 2, g = 1, s = 5, d = 75, b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"], c = {
-                        text: "", prefixP: -s, skillI: 0, skillP: 0, direction: "forward", delay: a, step: g
-                    }; i()
-                }; binft(document.getElementById('binft'));
-            </script>
-
-        </div>
+<div class="post-title">
+    <h1 class="post-title__text">
+        第六章  数据库及其对象.md
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/01/" class="post-meta__date button">2022-01-19</a>
         
+    <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">学习</a>
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
+<h1 id="第六章-数据库及其对象"><a href="#第六章-数据库及其对象" class="headerlink" title="第六章  数据库及其对象"></a>第六章  数据库及其对象</h1><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ol>
+<li>分类:系统数据库:master:数据库系统信息<br>　　 　　　   　　msdb:数据库作业信息<br>　　 　　　   　　<br>model:数据库模板信息<br>　　　 　　 　　<br>resource:只读数据库且不可见<br>　　 　　　   　　<br>tempdb:临时数据库<br><br>　    　用户数据库:数据文件:主要数据文件:.mdf<br><br> 　　　     　　　  　　  　　　次要数据文件:.ndf<br>　 　　　 　　　日志文件:事务日志文件:.ldf</li>
+<li>创建:<code>create database</code> db_name<br>　　<code>on　primary</code><br>　　<code>(</code>&lt;filespec&gt;<code>)</code><br>　　<code>log on</code><br>　　<code>(</code>&lt;filespec&gt;<code>)</code><br></li>
+</ol>
+<p><em>对&lt;filespec&gt;的解释:<code>name=</code>db_name_data<code>,</code><br>　　　　　　 　   　<code>filename=&#39;</code>C:\db_name_data.mdf<code>&#39;,</code><br>　　　　　 　 　　<code>size=</code>3MB<code>,</code><br>　　　　　 　 　　<code>maxsize=</code>{50MB|unlimited}<code>,</code><br>　　　　　 　 　　<code>filegrowth=</code>{1MB|10%}</em><br>3. 修改:<code>alter database</code> db_name<br><br>　　 <code>add file</code><br>　　 <code>add log file</code><br><br>　　 <code>modify name=</code><br>　　 <code>modify file</code><br><br>　　 <code>remove file</code><br><br>4. 分离:<code>exec sp_detach_db &#39;</code>db_name<code>&#39;,&#39;true&#39;</code><br>5. 附加:<br>6. 自增标识列:identity</p>
+<h2 id="架构-构架-模式"><a href="#架构-构架-模式" class="headerlink" title="架构(构架)(模式)"></a>架构(构架)(模式)</h2><ol>
+<li>创建:    <code>create schema</code> sc_name</li>
+<li>可以共享<h2 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h2></li>
+<li>创建:例:在分区列<font color="blue">colA_name</font>(<font color="green">int</font>)上创建左侧分区函数.<br>　　　(1)创建分区函数:<code>create partition function</code> pf_name<code>(</code><font color="green">int</font><code>)</code><br><br>　　　 　　 　　　　　<code>as range</code> left <code>for values(</code>1,10,100<code>）</code><br>　　　(2)创建分区方案:<code>create partition scheme</code> ps_name<br>　　　　　 　　 　　　<code>as partition</code> pf_name<br>　　　　　　　 　 　　<code>to (</code>test1,test2,test3,test4<code>)</code><br>　　　(3)使用分区建表:<code>create table</code> tb_name<br>　　　　　　　 　  　　<code>(</code>col_name type…<br> 　　　　　　 　　 　　<code>on</code> ps_name<code>(</code><font color="blue">colA_name</font><code>)</code></li>
+</ol>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><ol>
+<li>创建:<code>create [unique | [non]clustered] index</code> idx_name<br>　 　<code>on</code> tb_name<code>(</code>col_name<code>)</code><br>　 　<code>[with fillfactor=</code>x<code>]</code></li>
+<li>重复小列在前</li>
+</ol>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><ol>
+<li>索引视图来源必须是基本表</li>
+</ol>
+<p>讲一起使用的公共列值的多个表的数据行存储在一起的方法称为聚集</p>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-03-28</p></div> 
+    <div class="post-entry__tags"><a href="/tags/SqlServer/" class="post-tags__link button"># SqlServer</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
             
-<main class="main">
-    
-        
-            <div class="all-categories content-card">
-                
-                    <h2>
-                        标签
-                    </h2>
-                
-                
-                    
-                        <a class="" href="/categories/Python/">
-                            <time>&nbsp;&nbsp;Python</time>
-                            <span class="title">
-                                (5)
-                            </span>
-                        </a>
-                        <br />
-                    
-                        <a class="" href="/categories/%E5%AD%A6%E4%B9%A0/">
-                            <time>&nbsp;&nbsp;学习</time>
-                            <span class="title">
-                                (16)
-                            </span>
-                        </a>
-                        <br />
-                    
-                
-            </div>
-        
-    
+                <a href="/posts/beff/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            第八章  数据库后台编程技术
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/posts/b038/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            第五章  UML与DBAS
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
 </main>
 
                 <footer class="footer">

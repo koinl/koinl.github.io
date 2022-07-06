@@ -34,11 +34,13 @@
 
                 <title>
                     
-                        标签 | 
+                        第一章  数据库应用系统开发方法 | 
                                 锦鲤未离
                 </title>
 
                 
+                    <meta name="keywords" content="SqlServer">
+                    
 
                         
 
@@ -46,6 +48,11 @@
                                 <link rel="stylesheet" href="/css/style/main.css">
 
                                 
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
+        
+    
+
 
                                     
 <meta name="generator" content="Hexo 6.1.0"></head>
@@ -137,70 +144,95 @@
     </div>
 </header>
     
-        <div class="cover">
-            <div class="cover__logo">
-                <img no-lazy alt="author Image" class="cover__avatar" src="/img/touxiang.png">
-            </div>
+            <main class="main">
+    
 
-
-            <div class="cover__intro">
-                <p>锦鲤未离 (Koi_NL)</p>
-            </div>
-            <div id="binft"></div>
-            <script>
-                var binft = function (r) {
-                    function t() {
-                        return b[Math.floor(Math.random() * b.length)]
-                    } function e() {
-                        return String.fromCharCode(94 * Math.random() + 33)
-                    } function n(r) {
-                        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
-                            var l = document.createElement("span"); l.textContent = e(), l.style.color = t(), n.appendChild(l)
-                        } return n
-                    } function i() {
-                        var t = o[c.skillI]; c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
-                    } var l = "", o = ["过去已成定局, 便不问过往, 吾独独视今朝"].map(function (r) {
-                        return r + ""
-                    }), a = 2, g = 1, s = 5, d = 75, b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"], c = {
-                        text: "", prefixP: -s, skillI: 0, skillP: 0, direction: "forward", delay: a, step: g
-                    }; i()
-                }; binft(document.getElementById('binft'));
-            </script>
-
-        </div>
+<div class="post-title">
+    <h1 class="post-title__text">
+        第一章  数据库应用系统开发方法
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/01/" class="post-meta__date button">2022-01-18</a>
         
+    <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">学习</a>
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
+<h1 id="第一章-数据库应用系统开发方法"><a href="#第一章-数据库应用系统开发方法" class="headerlink" title="第一章  数据库应用系统开发方法"></a>第一章  数据库应用系统开发方法</h1><h1 id="DBS"><a href="#DBS" class="headerlink" title="DBS:"></a>DBS:</h1><h1 id="DBAS"><a href="#DBAS" class="headerlink" title="DBAS:"></a>DBAS:</h1><h1 id="DBAS生命周期-即数据库应用系统生命周期"><a href="#DBAS生命周期-即数据库应用系统生命周期" class="headerlink" title="DBAS生命周期(即数据库应用系统生命周期):"></a>DBAS生命周期(即数据库应用系统生命周期):</h1><h2 id="规划与分析"><a href="#规划与分析" class="headerlink" title="规划与分析"></a>规划与分析</h2><h3 id="系统规划与定义"><a href="#系统规划与定义" class="headerlink" title="系统规划与定义"></a>系统规划与定义</h3><ul>
+<li>任务陈述</li>
+<li>确定任务目标</li>
+<li>确定范围与边界</li>
+<li>确定用户视图<h3 id="可行性分析"><a href="#可行性分析" class="headerlink" title="可行性分析"></a>可行性分析</h3></li>
+<li>技术, 经济, 操作可行性</li>
+<li>开发方案选择<h3 id="项目规划"><a href="#项目规划" class="headerlink" title="项目规划"></a>项目规划</h3></li>
+<li>项目环境</li>
+<li>项目团队</li>
+<li>项目活动</li>
+<li>项目成本预算</li>
+<li>项目进度计划<h2 id="需求分析-第二章会涉及"><a href="#需求分析-第二章会涉及" class="headerlink" title="需求分析:第二章会涉及"></a>需求分析:第二章会涉及</h2></li>
+<li>系统需求 </li>
+<li>DFD:数据流(数据的流入流出)(箭头)处理(数据变换)(矩形框)数据存储(存储数据的地方)(圆角矩形框)外部项(数据的来源和去处)(圆角框)</li>
+<li>数据需求分析 </li>
+<li>功能需求分析:数据处理&#x2F;业务规则</li>
+<li>性能需求分析:响应时间,吞吐量,并发访问用户数,tps代价值</li>
+<li>其他需求分析:安全:防止被非法用户攻击存储:数据总量<h2 id="系统设计-第三章会涉及"><a href="#系统设计-第三章会涉及" class="headerlink" title="系统设计:第三章会涉及"></a>系统设计:第三章会涉及</h2></li>
+<li>概念设计 </li>
+<li>逻辑设计 </li>
+<li>物理设计 <h2 id="实现与部署"><a href="#实现与部署" class="headerlink" title="实现与部署:"></a>实现与部署:</h2></li>
+<li>建立数据库结构</li>
+<li>数据装载(数据加载)</li>
+<li>事务和应用程序的编码及测试</li>
+<li>系统集成</li>
+<li>测试与运行</li>
+<li>系统部署<h2 id="运行管理与维护-第十章会涉及"><a href="#运行管理与维护-第十章会涉及" class="headerlink" title="运行管理与维护:第十章会涉及"></a>运行管理与维护:第十章会涉及</h2></li>
+<li>日常维护:备份恢复,完整安全性维护,存储空间管理,并发控制</li>
+<li>系统监控与分析</li>
+<li>系统性能优化调整</li>
+<li>系统进化升级</li>
+</ul>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-03-28</p></div> 
+    <div class="post-entry__tags"><a href="/tags/SqlServer/" class="post-tags__link button"># SqlServer</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
             
-<main class="main">
-    
-        
-            <div class="all-categories content-card">
-                
-                    <h2>
-                        标签
-                    </h2>
-                
-                
-                    
-                        <a class="" href="/categories/Python/">
-                            <time>&nbsp;&nbsp;Python</time>
-                            <span class="title">
-                                (5)
-                            </span>
-                        </a>
-                        <br />
-                    
-                        <a class="" href="/categories/%E5%AD%A6%E4%B9%A0/">
-                            <time>&nbsp;&nbsp;学习</time>
-                            <span class="title">
-                                (16)
-                            </span>
-                        </a>
-                        <br />
-                    
-                
-            </div>
-        
-    
+                <a href="/posts/347f/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            第二章  需求分析
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+        </div>
+    </div>
+
+
+
+
+
 </main>
 
                 <footer class="footer">

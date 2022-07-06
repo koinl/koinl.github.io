@@ -34,11 +34,13 @@
 
                 <title>
                     
-                        标签 | 
+                        第十三章  大规模数据库架构 | 
                                 锦鲤未离
                 </title>
 
                 
+                    <meta name="keywords" content="SqlServer">
+                    
 
                         
 
@@ -46,6 +48,11 @@
                                 <link rel="stylesheet" href="/css/style/main.css">
 
                                 
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
+        
+    
+
 
                                     
 <meta name="generator" content="Hexo 6.1.0"></head>
@@ -137,70 +144,79 @@
     </div>
 </header>
     
-        <div class="cover">
-            <div class="cover__logo">
-                <img no-lazy alt="author Image" class="cover__avatar" src="/img/touxiang.png">
-            </div>
+            <main class="main">
+    
 
-
-            <div class="cover__intro">
-                <p>锦鲤未离 (Koi_NL)</p>
-            </div>
-            <div id="binft"></div>
-            <script>
-                var binft = function (r) {
-                    function t() {
-                        return b[Math.floor(Math.random() * b.length)]
-                    } function e() {
-                        return String.fromCharCode(94 * Math.random() + 33)
-                    } function n(r) {
-                        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
-                            var l = document.createElement("span"); l.textContent = e(), l.style.color = t(), n.appendChild(l)
-                        } return n
-                    } function i() {
-                        var t = o[c.skillI]; c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
-                    } var l = "", o = ["过去已成定局, 便不问过往, 吾独独视今朝"].map(function (r) {
-                        return r + ""
-                    }), a = 2, g = 1, s = 5, d = 75, b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"], c = {
-                        text: "", prefixP: -s, skillI: 0, skillP: 0, direction: "forward", delay: a, step: g
-                    }; i()
-                }; binft(document.getElementById('binft'));
-            </script>
-
-        </div>
+<div class="post-title">
+    <h1 class="post-title__text">
+        第十三章  大规模数据库架构
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/01/" class="post-meta__date button">2022-01-21</a>
         
+    <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">学习</a>
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
+<h1 id="第十三章-大规模数据库架构"><a href="#第十三章-大规模数据库架构" class="headerlink" title="第十三章  大规模数据库架构"></a>第十三章  大规模数据库架构</h1><p>1.分布式数据库:物理上分散,逻辑上集中<br>目标:本地自治,非集中式管理,高可用性(最基本特征)<br>                    位置独立性,分片独立性,复制独立性(分布透明性)<br>                    分布式查询,事务管理(复杂性)<br>                数据分布:数据分片:水平,垂直,导出,混合<br>                         数据分配:集中,分割(更新事务),全复制(事务更新少,数据少),混合<br>                体系结构:全局外模式<br>                        全局概念模式<br>                        分片模式<br>                        分配模式<br>                        局部概念模式<br>                        局部内模式<br>                        局部数据库<br>2.并行数据库:结构:共享内存结构<br>                  共享磁盘结构<br>                  无共享结构<br>                  层次结构<br>              数据划分与并行计算:合理划分可以使响应速度变化,处理性能更优<br>数据划分:一维数据划分:轮转法:整个关系<br>                                    散列法:点查询,连接查询,散列函数选择是关键点<br>                                    范围划分法:范围查询,点查询数据分布不均匀<br>                      多维数据划分:MAGIC多维划分法<br>                                  CMD多维划分法<br>                                  BERD多维划分法<br>               并行算法:并行排序<br>                        并行连接:划分连接,分片-复制连接<br>                        其他的关系操作:选择,除重,投影,聚集<br>3.云数据库:服务类型:IaaS:将基础设施作为服务<br>                    PaaS:将平台作为服务<br>SaaS:将软件作为服务</p>
+<p>分布式查询:导致数据传输量大的主要原因是数据间的连接操作和 并 操作,半连接操作可用减少场地之间的数据传输量<br>分布式事务管理:恢复控制:基于 两 阶段 的提交协议,协调者与参与者<br>              并发控制:封锁协议:三级封锁协议<br>          为了保证全局事务的原子性，参与事务执行的所有场地或者全部提交，或者全 回滚 &#x2F; 撤销 。<br>两阶段封锁协议保证事务的调度可串行性<br>第二节：并行数据库<br>共享内存, 共享磁盘, 无共享, 层次结构<br>数据划分与并行计算:合理划分可以使响应速度变化,处理性能更优<br>:一维数据划分<br>多维数据划分<br>第三节：云计算数据库架构<br>云计算通过集中所有的计算资源，采用硬件 虚拟化 技术，为使用者提供强大的计算能力、存储和宽带等资源。<br>第四节 ：XML数据库</p>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-03-28</p></div> 
+    <div class="post-entry__tags"><a href="/tags/SqlServer/" class="post-tags__link button"># SqlServer</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
             
-<main class="main">
-    
-        
-            <div class="all-categories content-card">
-                
-                    <h2>
-                        标签
-                    </h2>
-                
-                
-                    
-                        <a class="" href="/categories/Python/">
-                            <time>&nbsp;&nbsp;Python</time>
-                            <span class="title">
-                                (5)
-                            </span>
-                        </a>
-                        <br />
-                    
-                        <a class="" href="/categories/%E5%AD%A6%E4%B9%A0/">
-                            <time>&nbsp;&nbsp;学习</time>
-                            <span class="title">
-                                (16)
-                            </span>
-                        </a>
-                        <br />
-                    
-                
-            </div>
-        
-    
+                <a href="/posts/ee9e/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            第十四章  数据仓库与数据挖掘
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/posts/e5ff/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            第十一章  故障管理
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
 </main>
 
                 <footer class="footer">

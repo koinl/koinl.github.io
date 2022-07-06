@@ -34,12 +34,12 @@
 
                 <title>
                     
-                        第十四章  数据仓库与数据挖掘 | 
+                        第四章  类与对象 | 
                                 锦鲤未离
                 </title>
 
                 
-                    <meta name="keywords" content="SqlServer">
+                    <meta name="keywords" content="Java">
                     
 
                         
@@ -149,10 +149,10 @@
 
 <div class="post-title">
     <h1 class="post-title__text">
-        第十四章  数据仓库与数据挖掘
+        第四章  类与对象
     </h1>
     <div class="post-title__meta">
-        <a href="/archives/2022/01/" class="post-meta__date button">2022-01-21</a>
+        <a href="/archives/2022/01/" class="post-meta__date button">2022-01-29</a>
         
     <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">学习</a>
 
@@ -166,19 +166,40 @@
     <div class="post__header"></div>
     <div class="post__content">
         <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
-<h1 id="第十四章-数据仓库与数据挖掘"><a href="#第十四章-数据仓库与数据挖掘" class="headerlink" title="第十四章  数据仓库与数据挖掘"></a>第十四章  数据仓库与数据挖掘</h1><p>1.数据仓库<br>(1) 特性:面向主题:设计方法<br>集成:数据的抽取,转换,装载<br>不可更新<br>随时间变化<br>粒度:粒度与综合程度成正比<br>元数据:技术型和业务型<br>维护:实时延时和快照维护增量维护<br>(2) 设计方法:自底向上,自顶向下<br>2.OLAP:<br>即时OLAP,全局OLTP<br>基本操作:钻取,卷起<br>切片和切块,旋转<br>多维molap,关系rolap,混合 holap<br>3.数据挖掘<br>(1) 方法:关联挖掘:<br>分类挖掘:监督学习,知道怎么分,<br>样本集,训练集,测试集,验证集:分类算法,分类器<br>聚类挖掘:无监督学习靠系统分析分类,K-means:同一集合尽可能大,不同尽可能小<br>时间序列分析<br>4.知识发现<br>步骤:数据准备,数据挖掘,结果的解释评估</p>
+<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>类,是对对象的抽象,是创建对象的模板<br>类的修饰符只能是公共,抽象,终态这四个<br>公共类可以被任意包使用<br>抽象类<br>终态类不能被继承<br>定义类的格式:</p>
+<pre><code>[修饰符] class 类名 extends 超类名 implement 接口列表
+    &#123;
+        成员数据
+        [构造方法]
+        成员方法
+    &#125;
+</code></pre>
+<p>类中成员分为两种:成员变量和成员函数</p>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><p>对象,是事物的抽象,有对象标识,属性和方法.是类的实例<br>如何创建对象?下述第一+二步:声明引用变量+创建对象</p>
+<pre><code>类名 引用变量=new 类名();
+</code></pre>
+<p>第三步:初始化对象<br>有三种方法实现:默认初始化原则;赋值语句;构造方法</p>
+<h1 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h1><p>类的方法中方法名和类名相同的类方法.<br>构造方法的修饰符只能是公共,保护,私有这四个.</p>
+<h1 id="封装机制"><a href="#封装机制" class="headerlink" title="封装机制"></a>封装机制</h1><p>对该类的访问限制<br>以类修饰符来体现.<br>1.无修饰符:包中类<br>2.public:所有类(包外类import引入)<br>3.final:不能被继承<br>4.abstract</p>
+<h1 id="数据成员"><a href="#数据成员" class="headerlink" title="数据成员"></a>数据成员</h1><pre><code>[修饰符] 类型 成员列表
+</code></pre>
+<h1 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h1><pre><code>[修饰符] 类型 方法名(形参表) throws 异常表
+&#123;
+    语句
+&#125;
+</code></pre>
 
     </div>
      
     <div class="post-footer__meta"><p>更新于 2022-03-28</p></div> 
-    <div class="post-entry__tags"><a href="/tags/SqlServer/" class="post-tags__link button"># SqlServer</a></div> 
+    <div class="post-entry__tags"><a href="/tags/Java/" class="post-tags__link button"># Java</a></div> 
 </article>
 
 
     <div class="nav">
         <div class="nav__prev">
             
-                <a href="/posts/b4cc/" class="nav__link">
+                <a href="/posts/py01/" class="nav__link">
                     <div>
                         <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
                     </div>
@@ -187,7 +208,7 @@
                             Previous Post
                         </div>
                         <div class="nav__title">
-                            键盘输值
+                            第一章  程序基本结构
                         </div>
                     </div>
                 </a>
@@ -195,13 +216,13 @@
         </div>
         <div class="nav__next">
             
-                <a href="/posts/1530/" class="nav__link">
+                <a href="/posts/28cc/" class="nav__link">
                     <div>
                         <div class="nav__label">
                             Next Post
                         </div>
                         <div class="nav__title">
-                            第十三章  大规模数据库架构
+                            封装机制与访问控制
                         </div>
                     </div>
                     <div>

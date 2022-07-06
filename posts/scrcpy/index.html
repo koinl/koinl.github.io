@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+
+    
+
+            <!-- 渲染优化 -->
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+            <!--icon-->
+            <link rel="shortcut icon" href="/img/tubioa.png">
+
+
+            <link rel="icon" type="image/png" sizes="16x16" href="/img/tubioa.png">
+
+
+            <link rel="icon" type="image/png" sizes="32x32" href="/img/tubioa.png">
+
+
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/tubioa.png">
+
+
+            <link rel="mask-icon" href="/img/tubioa.png">
+
+            <!-- meta -->
+            
+                <title>
+                    将手机投屏到电脑 | 
+                        锦鲤未离
+                </title>
+
+                <meta name="keywords" content="">
+
+
+
+                <link rel="canonical" href="http://example.com/posts/scrcpy/">
+
+
+
+                <link rel="stylesheet" href="/css/style/main.css">
+
+                
+                    
+                                    <link rel="stylesheet" id="hl-default-theme"
+                                        href="/css/highlight/default.css"
+                                        media="none" onload="this.media='all'" >
+                                    
+                                            
+                                                
+
+                                                    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                Demo
+            </span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                    
+                    <a href="/tags/" class="navbar-menu button">
+                        标签
+                    </a>
+                    
+                    <a href="/archives/" class="navbar-menu button">
+                        归档
+                    </a>
+                    
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                    
+                    <a href="/page/" class="navbar-menu button">
+                        Page
+                    </a>
+                    
+            </div>
+            
+
+                
+                    <a href="/search/" id="btn-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24"
+                            fill="currentColor" stroke="currentColor" stroke-width="32">
+                            <path
+                                d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z">
+                            </path>
+                        </svg>
+                    </a>
+                    
+
+
+                        
+
+                                
+                                    <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24'
+                                            height='24' fill="none" stroke="currentColor" stroke-width="0.7"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path fill="currentColor"
+                                                d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z">
+                                            </path>
+                                        </svg></a>
+                                    <div class="dropdown-menus" id="dropdown-menus">
+                                        
+                                            <a href="/" class="dropdown-menu button">
+                                                首页
+                                            </a>
+                                            
+                                            <a href="/tags/" class="dropdown-menu button">
+                                                标签
+                                            </a>
+                                            
+                                            <a href="/archives/" class="dropdown-menu button">
+                                                归档
+                                            </a>
+                                            
+                                            <a href="/friends/" class="dropdown-menu button">
+                                                友链
+                                            </a>
+                                            
+                                            <a href="/page/" class="dropdown-menu button">
+                                                Page
+                                            </a>
+                                            
+                                    </div>
+                                    
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            将手机投屏到电脑
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/05/" class="post-meta__date button">
+                创建于  2022-05-02 18:52:21 星期一
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="button">
+                    小技巧
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+
+            <article
+                class="post content-card">
+                <div class="post__header">
+                    
+                </div>
+                <div class="post__content">
+                    <p>您需要准备: 1 部手机, 1 部电脑, 1 根数据线. </p>
+<p>您需要保证: a. 电脑和手机处在同一 wifi 下; b. 手机与电脑使用数据线连接起来; c. 打开手机的开发者模式, 在其中已经找到 USB 调试并已经打开它. </p>
+<ol>
+<li>首先, 您需要在电脑上下载 <a target="_blank" rel="noopener" href="https://github.com/Genymobile/scrcpy">scrcpy</a>, 再将下载后的资源解压缩到您喜欢的路径. </li>
+<li>其次, 打开 cmd 后转到您解压缩后的路径, 输入 <code>adb tcpip 5555</code> 回车, 再输入 <code>adb connect 192.168.235.11:5555</code> 回车, 若分别显示 <code>restarting in TCP mode port: 5555</code> 和 <code>connected to 192.168.235.11:5555</code> 则成功. </li>
+<li>再次, 拔掉数据线. </li>
+<li>最后, 在 cmd 中输入 <code>scrcpy --shortcut-mod=lctrl,rctrl</code> 即可. <blockquote>
+<p>mod 键是快捷键的修饰键, 默认是左 Alt, 但在我看来变成 Ctrl 更能方便些, 因此我预备使用命令 <code>scrcpy --shortcut-mod=lctrl,rctrl</code> 来改变修饰键为左 Ctrl 键和右的 Ctrl 键.</p>
+</blockquote>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">全屏</td>
+<td align="center">mod + f</td>
+</tr>
+<tr>
+<td align="center">重置大小, 清除黑边</td>
+<td align="center">mod + g, mod + w</td>
+</tr>
+<tr>
+<td align="center">左右旋转屏幕</td>
+<td align="center">mod + ←, mod + →</td>
+</tr>
+<tr>
+<td align="center">上下调节音量</td>
+<td align="center">mod + ↑, mod + ↓</td>
+</tr>
+<tr>
+<td align="center">切换应用, 返回主屏幕, 返回上一层</td>
+<td align="center">mod + s, mod + h, 右键</td>
+</tr>
+<tr>
+<td align="center">下拉, 下拉二层, 收起通知面板</td>
+<td align="center">mod + n, mod + n + n, mod + Shift + n</td>
+</tr>
+<tr>
+<td align="center">复制, 剪贴, 粘贴文本, 图片等内容</td>
+<td align="center">mod + c, mod + x, mod + v</td>
+</tr>
+<tr>
+<td align="center">关闭, 打开, 旋转设备屏幕</td>
+<td align="center">mod + o, mod + Shift + o, mod + r</td>
+</tr>
+</tbody></table>
+
+                </div>
+                <div class="post-footer__meta">
+                    <p>
+                        更新于  2022-06-25 10:18:21 星期六
+                    </p>
+                </div>
+
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/xinnnnnnnnnnn/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        新
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/py03/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第三章  组合数据类型
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/">Koi_NL</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+
+
+    
+            
+                <link rel="stylesheet" href="/css/style/note.css" media="none"
+                    onload="this.media='all'">
+                
+</body>
+
+</html>

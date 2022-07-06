@@ -1027,35 +1027,14 @@ overflows table td {
   margin-right: auto;
 }
 
-.cover .cover__avatar {
-  border-radius: 50%;
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 1rem auto;
-  transition: 2s;
-}
-
-.cover .cover__avatar:hover {
-  transition: 3s;
-  /* 定义旋转过渡时间 */
-  transform: rotate(-720deg);
-  /* 定义旋转的角度 */
-  /* 下面是兼容处理 */
-  -ms-transform: rotate(-720deg);
-  /* IE 9 */
-  -moz-transform: rotate(-720deg);
-  /* Firefox */
-  -webkit-transform: rotate(-720deg);
-  /* Safari and Chrome */
-  -o-transform: rotate(-720deg);
-  /* Opera */
-}
-
 /*头像呼吸光环和鼠标悬停旋转放大*/
 .cover .cover__avatar {
   border-radius: 50%;
   animation: light 4s ease-in-out infinite;
-  transition: 0.5s;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1rem auto;
+  transition: 2s;
 }
 
 .cover .cover__avatar:hover {

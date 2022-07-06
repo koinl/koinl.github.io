@@ -36,25 +36,26 @@
                         锦鲤未离
                 </title>
 
+                <meta name="keywords" content="Java">
+
+
+
+                <link rel="canonical" href="http://example.com/posts/d0c5/">
+
+
+
+                <link rel="stylesheet" href="/css/style/main.css">
+
                 
-                    <meta name="keywords" content="Java">
                     
-
-                        
-
-
-                                <link rel="stylesheet" href="/css/style/main.css">
-
-                                
+                                    <link rel="stylesheet" id="hl-default-theme"
+                                        href="/css/highlight/default.css"
+                                        media="none" onload="this.media='all'" >
                                     
-                                                    <link rel="stylesheet" id="hl-default-theme"
-                                                        href="/css/highlight/default.css"
-                                                        media="none" onload="this.media='all'" >
-                                                    
-                                                            
-                                                                
+                                            
+                                                
 
-                                                                    
+                                                    
 <meta name="generator" content="Hexo 6.1.0"></head>
 
 <body>
@@ -152,10 +153,14 @@
             程序流程控制
         </h1>
         <div class="post-title__meta">
-            <a href="/archives/2022/01/" class="post-meta__date button">创建于  2022-01-26 20:08:32 星期三</a>
+            <a href="/archives/2022/01/" class="post-meta__date button">
+                创建于  2022-01-26 20:08:32 星期三
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
+                    学习
+                </a>
                 
-    <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">学习</a>
-
 
         </div>
     </div>
@@ -176,7 +181,11 @@
 <h2 id="循环程序结构设计"><a href="#循环程序结构设计" class="headerlink" title="循环程序结构设计"></a>循环程序结构设计</h2><h2 id="递归调用"><a href="#递归调用" class="headerlink" title="递归调用"></a>递归调用</h2><p>示例程序1:Fibonacci数列的前38个数.<br>解:package p_name;<br> 　public class c_name {<br>　 　public static void main(String args[]) {<br>　　 　 　FibonacciRecursion f&#x3D;new FibonacciRecursion();<br>　　 　 　for(int i &#x3D; 1;i&lt;&#x3D;38&#x2F;2;i++)<br>　　 　 　{<br>　　　　　　　System.out.println(f.fiborecur(i));<br>　　 　 　}<br>　 　}<br>}<br>class FibonacciRecursion<br>　　 　 　{<br>　　　　　　　int fiborecur(int n)<br>　　　　　　　{<br>　　　　　　 　　　if(n&#x3D;&#x3D;1) return 1;<br>　　　　　　 　　　else if(n&#x3D;&#x3D;2) return 1;<br>　　　　　　 　　　else return fiborecur(n-1)+fiborecur(n-2);<br>　　　　　　　}<br>　　 　 　}</p>
 
                 </div>
-                <div class="post-footer__meta"><p>post.updated 2022-03-28 21:12:38 星期一</p></div>
+                <div class="post-footer__meta">
+                    <p>
+                        更新于  2022-03-28 21:12:38 星期一
+                    </p>
+                </div>
 
             </article>
 

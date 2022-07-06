@@ -219,7 +219,7 @@
 <p>4.二分查找程序<br>     class CommonBinarySearch {<br>          int commonBinarySearch(int[] arr,int key){<br>                int low &#x3D; 0;<br>                int high &#x3D; arr.length - 1;<br>                int middle &#x3D; (low+high)&#x2F;2;            &#x2F;&#x2F;定义middle<br>                if(key &lt; arr[low] || key &gt; arr[high] || low &gt; high){<br>                    return -1;<br>                }<br>                while(low &lt;&#x3D; high){<br>                    middle &#x3D; (low + high) &#x2F; 2;<br>                    if(arr[middle] &gt; key){<br>                        &#x2F;&#x2F;比关键字大则关键字在左区域<br>                        high &#x3D; middle - 1;<br>                    }else if(arr[middle] &lt; key){<br>                        &#x2F;&#x2F;比关键字小则关键字在右区域<br>                        low &#x3D; middle + 1;<br>                    }else{<br>                        return middle;<br>                    }<br>                }<br>                return -1;        &#x2F;&#x2F;最后仍然没有找到，则返回-1<br>            }<br>     }</p>
 
                 </div>
-                <div class="post-footer__meta"><p>更新於  2022-03-28 21:12:38 星期一</p></div>
+                <div class="post-footer__meta"><p>updated at  2022-03-28 21:12:38 星期一</p></div>
 
             </article>
 

@@ -165,7 +165,14 @@
 <h3 id="5-cp-命令-复制目录或文件"><a href="#5-cp-命令-复制目录或文件" class="headerlink" title="5) cp 命令: 复制目录或文件"></a>5) cp 命令: 复制目录或文件</h3><p>选项 -r 目录添加<br>cp 源文件 目录文件<br>7.请写出将第（1）题所创建的目录file1复制到目录file2中的命令。<br>解:<code>cp -r file1 file2</code></p>
 <h3 id="6-mv-命令-移动-x2F-改名-目录或文件"><a href="#6-mv-命令-移动-x2F-改名-目录或文件" class="headerlink" title="6) mv 命令: 移动 &#x2F; 改名 目录或文件"></a>6) mv 命令: 移动 &#x2F; 改名 目录或文件</h3><p>8.请写出将第（1）题所创建的目录file2移动到目录file3中的命令。<br> 解:<code>mv file2 file3</code></p>
 <h3 id="7-rm-命令-删除目录或文件"><a href="#7-rm-命令-删除目录或文件" class="headerlink" title="7) rm 命令: 删除目录或文件"></a>7) rm 命令: 删除目录或文件</h3><p>选项 -r 目录添加</p>
-<h3 id="8-vi-m-命令-文本编辑器"><a href="#8-vi-m-命令-文本编辑器" class="headerlink" title="8) vi(m) 命令: 文本编辑器"></a>8) vi(m) 命令: 文本编辑器</h3><h3 id="9-tar"><a href="#9-tar" class="headerlink" title="9) tar"></a>9) tar</h3><p>gzip hello.txt<br>-d 解压缩</p>
+<h3 id="8-vi-m-命令-文本编辑器"><a href="#8-vi-m-命令-文本编辑器" class="headerlink" title="8) vi(m) 命令: 文本编辑器"></a>8) vi(m) 命令: 文本编辑器</h3><p>1.使用vim 编辑器创建文件num并在文件中写入如下内容：<br>apple<br>student<br>no<br>Yes<br>解: vi num 添加</p>
+<p>2.请写出统计文件num中单词数、行数以及字符数的命令。<br>解: <code>wc num</code>, 结果 4 4 21 num; 表示单词 4 个, 行数 4 个, 字节数 21 个. </p>
+<p>2.5.查看文件.<br>解: <code>cat num</code>.</p>
+<p>3.请写出将num中单词数、行数以及字符数重定向到文件num1中的命令。<br>解: <code>wc num&gt;num2</code>, -wlc 也可以加, 分别表示单词行与字节, 字符可用用m</p>
+<p>4.请写出将num中单词数、行数以及字符数追加到文件num2中的命令。<br>解: <code>wc num&gt;&gt;num2</code></p>
+<p>5.请写出创建文件&#x2F;num3,并写出查找&#x2F;num3的命令。<br>解: 创建文件:  <code>touch /num3</code>, 查找文件: <code>find / -name /num3</code></p>
+<p>使用该行代码后会进入全屏幕文本编辑器中,<br>按 e 进入编辑模式, 待编辑完成后,<br>按 esc 退出该模式, :wq! 含义是: 强制 (! ) 保存 (w) 退出 (q) , 可拆卸</p>
+<h3 id="9-tar"><a href="#9-tar" class="headerlink" title="9) tar"></a>9) tar</h3><p>gzip hello.txt<br>-d 解压缩</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[koinl@localhost Public]$ ls</span><br><span class="line">hello.txt  images</span><br><span class="line">[koinl@localhost Public]$ gzip hello.txt    # 对其本体进行压缩</span><br><span class="line">[koinl@localhost Public]$ ls</span><br><span class="line">hello.txt.gz  images</span><br><span class="line">[koinl@localhost Public]$ gzip -d hello.txt.gz</span><br><span class="line">[koinl@localhost Public]$ ls</span><br><span class="line">hello.txt  images</span><br><span class="line">[koinl@localhost Public]$ gzip -c hello.txt &gt; hello.txt.gz</span><br><span class="line">[koinl@localhost Public]$ ls</span><br><span class="line">hello.txt  hello.txt.gz  images</span><br><span class="line">[koinl@localhost Public]$ gzip -c -d hello.txt.gz &gt; hello-gzip.txt</span><br><span class="line">[koinl@localhost Public]$ ls</span><br><span class="line">hello-gzip.txt  hello.txt  hello.txt.gz  images</span><br></pre></td></tr></table></figure>
 
 
@@ -177,7 +184,7 @@
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-07-06 16:22:15 星期三
+                                更新于  2022-07-06 16:22:33 星期三
                             </p>
                         </div>
 

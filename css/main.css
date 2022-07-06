@@ -558,6 +558,11 @@ overflows table td {
   word-wrap: break-word;
 }
 
+.post-entry__content:hover,
+.post-entry__title:hover {
+  color: gray;
+}
+
 .post-entry__content a,
 .post__content a {
   background-color: initial;

@@ -149,25 +149,28 @@
             <main class="main">
     
 
-<div class="post-title">
-    <h1 class="post-title__text">
-        第五章  文件操作
-    </h1>
-    <div class="post-title__meta">
-        <a href="/archives/2022/02/" class="post-meta__date button">2022-02-10</a>
-        
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第五章  文件操作
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/02/" class="post-meta__date button">2022-02-10</a>
+                
     <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">学习</a>
 
- 
+
+        </div>
     </div>
-</div>
 
+    
 
-
-<article class="post content-card">
-    <div class="post__header"></div>
-    <div class="post__content">
-        <p>本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!<span id="more"></span><br></p>
+            <article
+                class="post content-card">
+                <div class="post__header">
+                    
+                </div>
+                <div class="post__content">
+                    <p>本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!<span id="more"></span><br></p>
 <h1 id="第五章-文件操作"><a href="#第五章-文件操作" class="headerlink" title="第五章  文件操作"></a>第五章  文件操作</h1><h2 id="文件的基本操作"><a href="#文件的基本操作" class="headerlink" title="文件的基本操作"></a>文件的基本操作</h2><h3 id="打开open"><a href="#打开open" class="headerlink" title="打开open"></a>打开open</h3><p><code>f = open(&#39;name&#39;, &#39;mode&#39;)</code><br>f为文件对象<br>name: 目标文件名的字符串或路径<br>mode: 访问模式:只读: r, 如果文件不存在, 报错; 可省<br>　　　　　 　 　写入: w, 文件无则创建;<br>　　　　　 　 　追加: a, 文件无则创建;<br>但凡带 +, 可读写; 但凡带 b, 为二进制格式</p>
 <h3 id="读写-read-write"><a href="#读写-read-write" class="headerlink" title="读写 read, write"></a>读写 read, write</h3><p>读: </p>
 <ul>
@@ -191,54 +194,59 @@
 <h2 id="一二维数据的格式化和处理"><a href="#一二维数据的格式化和处理" class="headerlink" title="一二维数据的格式化和处理"></a>一二维数据的格式化和处理</h2><p>一二维数据数据的存储格式为 CSV 格式，后缀为 .csv。</p>
 <h3 id="一二维数据的表示和读写"><a href="#一二维数据的表示和读写" class="headerlink" title="一二维数据的表示和读写"></a>一二维数据的表示和读写</h3><p>导入CSV格式到列表<br>将二维列表美观地处理一下<br>一维数据写入 CSV 文件<br>二维数据写入 CSV 文件</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">price.csv 文件内容：</span></span><br><span class="line"><span class="string">现在是~,我应该~,听！</span></span><br><span class="line"><span class="string">早上！,睡觉！,呼噜</span></span><br><span class="line"><span class="string">中午！,吃饭！,嗷呜</span></span><br><span class="line"><span class="string">下午！,睡觉！,没错</span></span><br><span class="line"><span class="string">晚上！,熬夜！,哼哼</span></span><br><span class="line"><span class="string">price_write1.csv 文件内容：</span></span><br><span class="line"><span class="string">现在是~,我应该~,听！</span></span><br><span class="line"><span class="string">price_write2.csv 文件内容：</span></span><br><span class="line"><span class="string">现在是~,我应该~,听！</span></span><br><span class="line"><span class="string">早中晚！,睡吃睡！,呼呜酱</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;price.csv&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;导入CSV文件到列表&#x27;&#x27;&#x27;</span></span><br><span class="line">ls=[]</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> file:</span><br><span class="line">    line=line.replace(<span class="string">&#x27;\n&#x27;</span>,<span class="string">&#x27;&#x27;</span>)    <span class="comment"># [[...&#x27;听！\n&#x27;...: 去掉不必要的换行号</span></span><br><span class="line">    ls.append(line.split(<span class="string">&#x27;,&#x27;</span>))    <span class="comment"># 以split(&#x27;,&#x27;)方法从CSV文件中获取内容</span></span><br><span class="line"><span class="built_in">print</span>(ls)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;逐行处理CSV格式数据&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(ls)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(ls[<span class="number">0</span>])):</span><br><span class="line">        <span class="built_in">print</span>(ls[i][j],end=<span class="string">&quot;\t&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">file.close()</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;一维数据写入CSV文件&#x27;&#x27;&#x27;</span></span><br><span class="line">file_write1=<span class="built_in">open</span>(<span class="string">&#x27;price_write1.csv&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">ls=[<span class="string">&#x27;现在是~&#x27;</span>,<span class="string">&#x27;我应该~&#x27;</span>,<span class="string">&#x27;听！&#x27;</span>]</span><br><span class="line">file_write1.write(<span class="string">&#x27;,&#x27;</span>.join(ls)+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">file_write1.close()</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;二维数据写入CSV文件&#x27;&#x27;&#x27;</span></span><br><span class="line">file_write2=<span class="built_in">open</span>(<span class="string">&#x27;price_write2.csv&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">ls=[[<span class="string">&#x27;现在是~&#x27;</span>, <span class="string">&#x27;我应该~&#x27;</span>, <span class="string">&#x27;听！&#x27;</span>], [<span class="string">&#x27;早中晚！&#x27;</span>, <span class="string">&#x27;睡吃睡！&#x27;</span>, <span class="string">&#x27;呼呜酱&#x27;</span>]]</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> ls:</span><br><span class="line">    file_write2.write(<span class="string">&#x27;,&#x27;</span>.join(row)+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">file_write2.close()</span><br></pre></td></tr></table></figure>
-    </div>
-     
-    <div class="post-footer__meta"><p>更新于 2022-06-04</p></div> 
-    <div class="post-entry__tags"><a href="/tags/Python/" class="post-tags__link button"># Python</a></div> 
-</article>
+                </div>
+                <div class="post-footer__meta"><p>更新于 2022-06-04</p></div>
+                    <div class="post-entry__tags"><a href="/tags/Python/" class="post-tags__link button"># Python</a></div>
+            </article>
 
-
-    <div class="nav">
-        <div class="nav__prev">
             
-                <a href="/posts/tips/" class="nav__link">
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/tips/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        Previous Post
+                                    </div>
+                                    <div class="nav__title">
+                                        小贴士~
+                                    </div>
+                                </div>
+                            </a>
+                            
                     </div>
-                    <div>
-                        <div class="nav__label">
-                            Previous Post
-                        </div>
-                        <div class="nav__title">
-                            小贴士~
-                        </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/py01/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        Next Post
+                                    </div>
+                                    <div class="nav__title">
+                                        第一章  程序基本结构
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
                     </div>
-                </a>
-            
-        </div>
-        <div class="nav__next">
-            
-                <a href="/posts/py01/" class="nav__link">
-                    <div>
-                        <div class="nav__label">
-                            Next Post
-                        </div>
-                        <div class="nav__title">
-                            第一章  程序基本结构
-                        </div>
-                    </div>
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
-                    </div>
-                </a>
-            
-        </div>
-    </div>
-
-
-
-
-
+                </div>
+                
 </main>
 
                 <footer class="footer">

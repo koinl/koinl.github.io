@@ -1526,7 +1526,6 @@ overflows table td {
 
   .post__with-toc {
     max-width: calc(100vw / 4 * 3);
-    margin-left: 0;
   }
 }
 

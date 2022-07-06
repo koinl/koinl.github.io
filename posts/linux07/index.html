@@ -24,15 +24,15 @@
             <!-- meta -->
             
                 <title>
-                    将手机投屏到电脑 | 
+                    安全管理 | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="小技巧">
+                <meta name="keywords" content="Linux">
 
 
 
-                <link rel="canonical" href="http://example.com/posts/scrcpy/">
+                <link rel="canonical" href="http://example.com/posts/linux07/">
 
 
 
@@ -105,15 +105,15 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            将手机投屏到电脑
+            安全管理
         </h1>
         <div class="post-title__meta">
-            <a href="/archives/2022/05/" class="post-meta__date button">
-                创建于  2022-05-02 18:52:21 星期一
+            <a href="/archives/2022/06/" class="post-meta__date button">
+                创建于  2022-06-09 10:50:03 星期四
             </a>
             
-                <span class="separate-dot"></span><a href="/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="button">
-                    小技巧
+                <span class="separate-dot"></span><a href="/categories/Linux/" class="button">
+                    Linux
                 </a>
                 
 
@@ -155,62 +155,12 @@
 
                     
                         <div class="post__content">
-                            <p>您需要准备: 1 部手机, 1 部电脑, 1 根数据线. </p>
-<p>您需要保证: a. 电脑和手机处在同一 wifi 下; b. 手机与电脑使用数据线连接起来; c. 打开手机的开发者模式, 在其中已经找到 USB 调试并已经打开它. </p>
-<ol>
-<li>首先, 您需要在电脑上下载 <a target="_blank" rel="noopener" href="https://github.com/Genymobile/scrcpy">scrcpy</a>, 再将下载后的资源解压缩到您喜欢的路径. </li>
-<li>其次, 打开 cmd 后转到您解压缩后的路径, 输入 <code>adb tcpip 5555</code> 回车, 再输入 <code>adb connect 192.168.235.11:5555</code> 回车, 若分别显示 <code>restarting in TCP mode port: 5555</code> 和 <code>connected to 192.168.235.11:5555</code> 则成功. </li>
-<li>再次, 拔掉数据线. </li>
-<li>最后, 在 cmd 中输入 <code>scrcpy --shortcut-mod=lctrl,rctrl</code> 即可. <blockquote>
-<p>mod 键是快捷键的修饰键, 默认是左 Alt, 但在我看来变成 Ctrl 更能方便些, 因此我预备使用命令 <code>scrcpy --shortcut-mod=lctrl,rctrl</code> 来改变修饰键为左 Ctrl 键和右的 Ctrl 键.</p>
-</blockquote>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">操作</th>
-<th align="center">快捷键</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">全屏</td>
-<td align="center">mod + f</td>
-</tr>
-<tr>
-<td align="center">重置大小, 清除黑边</td>
-<td align="center">mod + g, mod + w</td>
-</tr>
-<tr>
-<td align="center">左右旋转屏幕</td>
-<td align="center">mod + ←, mod + →</td>
-</tr>
-<tr>
-<td align="center">上下调节音量</td>
-<td align="center">mod + ↑, mod + ↓</td>
-</tr>
-<tr>
-<td align="center">切换应用, 返回主屏幕, 返回上一层</td>
-<td align="center">mod + s, mod + h, 右键</td>
-</tr>
-<tr>
-<td align="center">下拉, 下拉二层, 收起通知面板</td>
-<td align="center">mod + n, mod + n + n, mod + Shift + n</td>
-</tr>
-<tr>
-<td align="center">复制, 剪贴, 粘贴文本, 图片等内容</td>
-<td align="center">mod + c, mod + x, mod + v</td>
-</tr>
-<tr>
-<td align="center">关闭, 打开, 旋转设备屏幕</td>
-<td align="center">mod + o, mod + Shift + o, mod + r</td>
-</tr>
-</tbody></table>
-
+                            <p>SELinux 模式共分为 3 种：<br>强制模式：Enforcing<br>许可模式：Permissive<br>禁用模式：Disabled</p>
+<details ><summary>点击显/隐</summary><div class="fold-content"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# getenforce    # 显示 SELinux 模式</span><br><span class="line">Enforcing</span><br><span class="line">[root@localhost ~]# setenforce 0    # 修改 SELinux 模式，未对配置文件使用</span><br><span class="line">[root@localhost ~]# getenforce</span><br><span class="line">Permissive</span><br><span class="line">[root@localhost ~]# reboot    # 重启，</span><br><span class="line">[root@localhost koinl]# getenforce    # 失效</span><br><span class="line">Enforcing</span><br><span class="line">[root@localhost koinl]# vi /etc/sysconfig/selinux     # 修改 SELinux 配置文件</span><br><span class="line">[root@localhost koinl]# getenforce    # 重启生效</span><br><span class="line">Enforcing</span><br><span class="line">[root@localhost koinl]# reboot</span><br><span class="line">[root@localhost koinl]# getenforce</span><br><span class="line">Permissive</span><br><span class="line">[root@localhost koinl]# semanage port -l | grep http    # 显示 SELinux 的 http 服务端口</span><br><span class="line">http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010</span><br><span class="line">http_cache_port_t              udp      3130</span><br><span class="line">http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000</span><br><span class="line">pegasus_http_port_t            tcp      5988</span><br><span class="line">pegasus_https_port_t           tcp      5989</span><br><span class="line">[root@localhost koinl]# semanage port -a -t http_cache_port_t -p udp 8888    # 修改第二个端口：增加一个 8888 的端口号</span><br><span class="line">[root@localhost koinl]# semanage port -l | grep http | head -2</span><br><span class="line">http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010</span><br><span class="line">http_cache_port_t              udp      8888, 3130</span><br><span class="line">[root@localhost koinl]# semanage port -d -t http_cache_port_t -p udp 8888    # 修改第二个端口：删除一个 8888 的端口号</span><br><span class="line">[root@localhost koinl]# semanage port -l | grep http | head -2</span><br><span class="line">http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010</span><br><span class="line">http_cache_port_t              udp      3130</span><br></pre></td></tr></table></figure></div></details>
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-06-25 10:18:21 星期六
+                                更新于  2022-06-23 16:15:12 星期四
                             </p>
                         </div>
 
@@ -220,7 +170,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/x/" class="nav__link">
+                            <a href="/posts/algorithm01/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -234,7 +184,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        新
+                                        第一章  排序
                                     </div>
                                 </div>
                             </a>
@@ -242,13 +192,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/linuxlianxizuoye/" class="nav__link">
+                            <a href="/posts/py0nnnpillow/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        第一章  操作基础
+                                        第某章  PIL 库
                                     </div>
                                 </div>
                                 <div>

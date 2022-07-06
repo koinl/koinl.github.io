@@ -1052,13 +1052,13 @@ overflows table td {
 }
 
 /*头像呼吸光环和鼠标悬停旋转放大*/
-.avatar {
+.cover .cover__avatar {
   border-radius: 50%;
   animation: light 4s ease-in-out infinite;
   transition: 0.5s;
 }
 
-.avatar:hover {
+.cover .cover__avatar:hover {
   transform: scale(1.15) rotate(720deg);
 }
 

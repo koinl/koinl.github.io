@@ -816,7 +816,7 @@ overflows table td {
 
 .post-entry {
   margin-bottom: var(--space);
-  position: inherit;
+  position: relative;
 }
 
 .post-entry:hover {

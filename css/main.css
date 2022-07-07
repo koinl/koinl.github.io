@@ -1076,7 +1076,6 @@ overflows table td {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 .cover .cover__intro button {
@@ -1084,7 +1083,7 @@ overflows table td {
   background: none;
   text-transform: uppercase;
   color: #999;
-  font-weight: bold;
+  font-size: initial;
   position: relative;
   outline: none;
   padding: 10px 20px;
@@ -1118,15 +1117,15 @@ overflows table td {
 }
 
 .cover .cover__intro button:hover::before {
-  border-top-color: #4361ee;
-  border-right-color: #4361ee;
+  border-top-color: #989899;
+  border-right-color: #989899;
   transition: width 0.3s ease-out, height 0.3s ease-out 0.3s;
   border-radius: 5px;
 }
 
 .cover .cover__intro button:hover::after {
-  border-bottom-color: #4361ee;
-  border-left-color: #4361ee;
+  border-bottom-color: #989899;
+  border-left-color: #989899;
   transition: border-color 0s ease-out 0.6s, width 0.3s ease-out 0.6s, height 0.3s ease-out 1s;
   border-radius: 5px;
 }

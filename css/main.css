@@ -9,7 +9,7 @@
   --body-color: #4c4d4e;
   --title-color: #50596c;
   --border-color: rgba(0, 0, 0, 0.1);
-  --space: 3.5rem;
+  --space: 2.5rem;
   --content-width: 776px;
 }
 
@@ -1046,7 +1046,7 @@ overflows table td {
 }
 
 .cover .cover__avatar:hover {
-  transform: scale(1.15) rotate(720deg);
+  transform: scale(1.15) rotate(-720deg);
 }
 
 @keyframes light {

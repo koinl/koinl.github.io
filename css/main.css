@@ -732,10 +732,10 @@ overflows table td {
   margin: 0 auto;
   margin-top: calc(2.25 * 16px + 32px);
   color: #444;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 5px;
-  -webkit-box-shadow: 1px 5px 15px 0 rgba(0, 0, 0, 0.3);
-  box-shadow: 1px 5px 15px 0 rgba(0, 0, 0, 0.3);
+  /* -webkit-box-shadow: 1px 5px 15px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 5px 15px 0 rgba(0, 0, 0, 0.3); */
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   -webkit-justify-content: flex-start;
@@ -789,6 +789,7 @@ overflows table td {
   border-radius: 100%;
   border: 2px solid #fff;
   background: #fff;
+  opacity: 0.6;
 }
 
 .links-list .links-content .links-right {

@@ -24,15 +24,15 @@
             <!-- meta -->
             
                 <title>
-                    第九章  安全管理 | 
+                    搜索 | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="学习">
+                <meta name="keywords" content="">
 
 
 
-                <link rel="canonical" href="http://example.com/posts/e411/">
+                <link rel="canonical" href="http://example.com/search%20-%20%E5%89%AF%E6%9C%AC/index.html">
 
 
 
@@ -100,120 +100,38 @@
 </header>
 
     
-            <main class="main">
-    
-
-    <div class="post-title">
-        <h1 class="post-title__text">
-            第九章  安全管理
-        </h1>
-        <div class="post-title__meta">
-            <a href="/archives/2022/01/" class="post-meta__date button">
-                创建于  2022-01-19 15:24:30 星期三
-            </a>
-            
-                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
-                    学习
-                </a>
-                
-
-        </div>
-    </div>
-
-    
-        <aside class="post-side">
-            <div class="post-side__toc">
-                
+        <div class="cover">
+            <div class="cover__logo">
+                <img no-lazy alt="author Image" class="cover__avatar" src="/img/avatar.png">
             </div>
-        </aside>
-        <a class="btn-toc button" id="btn-toc" tabindex="0">
-            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
-                    fill="currentColor"></path>
-            </svg>
-        </a>
-        <div class="toc-menus" id="toc-menus">
-            <div class="toc-title">
-                文章目录
+
+
+            <div class="cover__intro">
+                <button>锦鲤未离 (Koi_NL)</button>
             </div>
-            
+
         </div>
         
-
-            <article
-                class="post post__with-toc content-card">
-                <div class="post__header">
-                    
+            <main class="main">
+    <div class="content-card">
+        <h2>
+            搜索
+        </h2>
+        <div id="search">
+            <form class="search-form" autocomplete="off">
+                <div class="search-input">
+                    <input maxlength="80" type="search" class="search-input" id="search-input" name="s"
+                        placeholder="请输入关键字..." required>
                 </div>
-
-                
-                    文章目录
-                    <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
-                        
-                    </div>
-
-                    
-                        <div class="post__content">
-                            <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
-<h1 id="第九章-安全管理"><a href="#第九章-安全管理" class="headerlink" title="第九章  安全管理"></a>第九章  安全管理</h1>
-                        </div>
-                        <div class="post-footer__meta">
-                            <p>
-                                更新于  2022-03-28 21:12:38 星期一
-                            </p>
-                        </div>
-
-            </article>
-
-            
-                <div class="nav">
-                    <div class="nav__prev">
-                        
-                            <a href="/posts/540c/" class="nav__link">
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="nav__label">
-                                        上一篇
-                                    </div>
-                                    <div class="nav__title">
-                                        第十章  数据库运行管理与维护及其优化
-                                    </div>
-                                </div>
-                            </a>
-                            
-                    </div>
-                    <div class="nav__next">
-                        
-                            <a href="/posts/beff/" class="nav__link">
-                                <div>
-                                    <div class="nav__label">
-                                        下一篇
-                                    </div>
-                                    <div class="nav__title">
-                                        第八章  数据库后台编程技术
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            
-                    </div>
-                </div>
-                
+            </form>
+        </div>
+    </div>
+    <div class="search-result" id="search-result">
+        <div class="search-result__notice" id="search-result__notice"></div>
+        <div class="content-card search-result__list" id="search-result__list"></div>
+    </div>
+    <script>var searchDataFile = "/search.json";</script>
+    <script defer src="/js/local-search.js"></script>
 </main>
                 <footer class="footer">
 

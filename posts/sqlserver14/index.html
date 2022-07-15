@@ -24,15 +24,15 @@
             <!-- meta -->
             
                 <title>
-                    第十三章  大规模数据库架构 | 
+                    第十四章  数据仓库与数据挖掘 | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="学习">
+                <meta name="keywords" content="SqlServer">
 
 
 
-                <link rel="canonical" href="http://example.com/posts/1530/">
+                <link rel="canonical" href="http://example.com/posts/sqlserver14/">
 
 
 
@@ -76,15 +76,15 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第十三章  大规模数据库架构
+            第十四章  数据仓库与数据挖掘
         </h1>
         <div class="post-title__meta">
             <a href="/archives/2022/01/" class="post-meta__date button">
-                创建于  2022-01-21 11:44:33 星期五
+                创建于  2022-01-21 15:07:44 星期五
             </a>
             
-                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
-                    学习
+                <span class="separate-dot"></span><a href="/categories/SqlServer/" class="button">
+                    SqlServer
                 </a>
                 
 
@@ -126,14 +126,12 @@
 
                     
                         <div class="post__content">
-                            <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
-<h1 id="第十三章-大规模数据库架构"><a href="#第十三章-大规模数据库架构" class="headerlink" title="第十三章  大规模数据库架构"></a>第十三章  大规模数据库架构</h1><p>1.分布式数据库:物理上分散,逻辑上集中<br>目标:本地自治,非集中式管理,高可用性(最基本特征)<br>                    位置独立性,分片独立性,复制独立性(分布透明性)<br>                    分布式查询,事务管理(复杂性)<br>                数据分布:数据分片:水平,垂直,导出,混合<br>                         数据分配:集中,分割(更新事务),全复制(事务更新少,数据少),混合<br>                体系结构:全局外模式<br>                        全局概念模式<br>                        分片模式<br>                        分配模式<br>                        局部概念模式<br>                        局部内模式<br>                        局部数据库<br>2.并行数据库:结构:共享内存结构<br>                  共享磁盘结构<br>                  无共享结构<br>                  层次结构<br>              数据划分与并行计算:合理划分可以使响应速度变化,处理性能更优<br>数据划分:一维数据划分:轮转法:整个关系<br>                                    散列法:点查询,连接查询,散列函数选择是关键点<br>                                    范围划分法:范围查询,点查询数据分布不均匀<br>                      多维数据划分:MAGIC多维划分法<br>                                  CMD多维划分法<br>                                  BERD多维划分法<br>               并行算法:并行排序<br>                        并行连接:划分连接,分片-复制连接<br>                        其他的关系操作:选择,除重,投影,聚集<br>3.云数据库:服务类型:IaaS:将基础设施作为服务<br>                    PaaS:将平台作为服务<br>SaaS:将软件作为服务</p>
-<p>分布式查询:导致数据传输量大的主要原因是数据间的连接操作和 并 操作,半连接操作可用减少场地之间的数据传输量<br>分布式事务管理:恢复控制:基于 两 阶段 的提交协议,协调者与参与者<br>              并发控制:封锁协议:三级封锁协议<br>          为了保证全局事务的原子性，参与事务执行的所有场地或者全部提交，或者全 回滚 &#x2F; 撤销 。<br>两阶段封锁协议保证事务的调度可串行性<br>第二节：并行数据库<br>共享内存, 共享磁盘, 无共享, 层次结构<br>数据划分与并行计算:合理划分可以使响应速度变化,处理性能更优<br>:一维数据划分<br>多维数据划分<br>第三节：云计算数据库架构<br>云计算通过集中所有的计算资源，采用硬件 虚拟化 技术，为使用者提供强大的计算能力、存储和宽带等资源。<br>第四节 ：XML数据库</p>
+                            <h1 id="第十四章-数据仓库与数据挖掘"><a href="#第十四章-数据仓库与数据挖掘" class="headerlink" title="第十四章  数据仓库与数据挖掘"></a>第十四章  数据仓库与数据挖掘</h1><p>1.数据仓库<br>(1) 特性:面向主题:设计方法<br>集成:数据的抽取,转换,装载<br>不可更新<br>随时间变化<br>粒度:粒度与综合程度成正比<br>元数据:技术型和业务型<br>维护:实时延时和快照维护增量维护<br>(2) 设计方法:自底向上,自顶向下<br>2.OLAP:<br>即时OLAP,全局OLTP<br>基本操作:钻取,卷起<br>切片和切块,旋转<br>多维molap,关系rolap,混合 holap<br>3.数据挖掘<br>(1) 方法:关联挖掘:<br>分类挖掘:监督学习,知道怎么分,<br>样本集,训练集,测试集,验证集:分类算法,分类器<br>聚类挖掘:无监督学习靠系统分析分类,K-means:同一集合尽可能大,不同尽可能小<br>时间序列分析<br>4.知识发现<br>步骤:数据准备,数据挖掘,结果的解释评估</p>
 
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-03-28 21:12:38 星期一
+                                更新于  2022-07-15 17:31:56 星期五
                             </p>
                         </div>
 
@@ -143,7 +141,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/ee9e/" class="nav__link">
+                            <a href="/posts/sqlserver10/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -157,7 +155,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        第十四章  数据仓库与数据挖掘
+                                        『SQL Server』第十章  数据库运行管理与维护
                                     </div>
                                 </div>
                             </a>
@@ -165,13 +163,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/sqlserver07/" class="nav__link">
+                            <a href="/posts/sqlserver13/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        『SQL Server』第七章  高级数据库查询
+                                        第十三章  大规模数据库架构
                                     </div>
                                 </div>
                                 <div>

@@ -58,26 +58,6 @@
     </div>
     <div class="header__right">
         
-            <div class="navbar__menus">
-                
-                    <a href="/" class="navbar-menu button">
-                        首页
-                    </a>
-                    
-                    <a href="/home/" class="navbar-menu button">
-                        主页
-                    </a>
-                    
-                    <a href="/search/" class="navbar-menu button">
-                        搜索
-                    </a>
-                    
-                    <a href="/friends/" class="navbar-menu button">
-                        友链
-                    </a>
-                    
-            </div>
-            
 
                 <a href="javaScript:void(0);" id="btn-toggle-dark" aria-label="夜间模式"
                     title="夜间模式">
@@ -88,33 +68,6 @@
                 </a>
 
                 
-                    <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none"
-                            stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
-                            <path fill="currentColor"
-                                d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z">
-                            </path>
-                        </svg></a>
-                    <div class="dropdown-menus" id="dropdown-menus">
-                        
-                            <a href="/" class="dropdown-menu button">
-                                首页
-                            </a>
-                            
-                            <a href="/home/" class="dropdown-menu button">
-                                主页
-                            </a>
-                            
-                            <a href="/search/" class="dropdown-menu button">
-                                搜索
-                            </a>
-                            
-                            <a href="/friends/" class="dropdown-menu button">
-                                友链
-                            </a>
-                            
-                    </div>
-                    
     </div>
 </header>
     
@@ -173,13 +126,14 @@
 
                     
                         <div class="post__content">
-                            <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
-<h1 id="第十二章-备份与恢复数据库"><a href="#第十二章-备份与恢复数据库" class="headerlink" title="第十二章  备份与恢复数据库"></a>第十二章  备份与恢复数据库</h1><p>1.恢复数据库:类型:介质故障恢复<br>非介质故障恢复<br>模式:简单恢复模式<br>完整恢复模式<br>大容量日志恢复模式<br>2.备份数据库:数据库备份:完整数据库备份 钟情master,支持还原单个页,数据更改不频繁,量不大<br>                      差量数据库备份<br>           文件备份:文件备份<br>                   差异文件备份<br>           事务日志备份<br>完整数据库备份:完全转储:数据库+日志<br>              差量转储:<br>事务日志备份:纯日志备份 不可以first备份<br>           大容量操作日志备份<br>           结尾日志备份<br>1.备份的T-SQL语句:backup database db_name to 设备 with init(覆盖原有内容)…事务日志备份则使用log<br>2.恢复的T-SQL语句:restore database db_name from 设备</p>
+                            <h1 id="第十二章-备份与恢复数据库"><a href="#第十二章-备份与恢复数据库" class="headerlink" title="第十二章  备份与恢复数据库"></a>第十二章  备份与恢复数据库</h1><p>1.恢复数据库:类型:介质故障恢复<br>非介质故障恢复<br>模式:简单恢复模式<br>完整恢复模式<br>大容量日志恢复模式<br>2.备份数据库:数据库备份:完整数据库备份 钟情master,支持还原单个页,数据更改不频繁,量不大<br>                      差量数据库备份<br>           文件备份:文件备份<br>                   差异文件备份<br>           事务日志备份<br>完整数据库备份:完全转储:数据库+日志<br>              差量转储:<br>事务日志备份:纯日志备份 不可以first备份<br>           大容量操作日志备份<br>           结尾日志备份<br>1.备份的T-SQL语句:backup database db_name to 设备 with init(覆盖原有内容)…事务日志备份则使用log<br>2.恢复的T-SQL语句:restore database db_name from 设备</p>
+<p>简单恢复模式：无日志备份。<br>完整恢复模式：有日志备份<br>大容量日志恢复模式：有日志备份，完整恢复模式的附加模式</p>
+<p>BACKUP DATABASE db1 TO budb1 WITH DIFFERENTIAL,NOINIT<br>对数据库db1进行依次差异备份，被分到budb1设备上，保留该设备已有内容</p>
 
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-07-15 16:24:05 星期五
+                                更新于  2022-07-15 16:57:05 星期五
                             </p>
                         </div>
 

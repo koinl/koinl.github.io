@@ -1044,6 +1044,7 @@ overflows table td {
   height: 84px;
   margin: 0 auto 1rem auto;
   transition: 2s;
+  cursor: pointer;
 }
 
 .cover .cover__avatar:hover {
@@ -1089,6 +1090,8 @@ overflows table td {
   outline: none;
   padding: 10px 20px;
   box-sizing: border-box;
+  cursor: -webkit-grab;
+  cursor: grab;
 }
 
 .cover .cover__intro button::before,

@@ -24,15 +24,15 @@
             <!-- meta -->
             
                 <title>
-                    第七章  高级数据库查询 | 
+                    『SQL Server』第十章  数据库运行管理与维护 | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="学习">
+                <meta name="keywords" content="SqlServer">
 
 
 
-                <link rel="canonical" href="http://example.com/posts/b327/">
+                <link rel="canonical" href="http://example.com/posts/sqlserver10/">
 
 
 
@@ -101,15 +101,15 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第七章  高级数据库查询
+            『SQL Server』第十章  数据库运行管理与维护
         </h1>
         <div class="post-title__meta">
             <a href="/archives/2022/01/" class="post-meta__date button">
-                创建于  2022-01-19 10:55:30 星期三
+                创建于  2022-01-22 12:08:39 星期六
             </a>
             
-                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
-                    学习
+                <span class="separate-dot"></span><a href="/categories/SqlServer/" class="button">
+                    SqlServer
                 </a>
                 
 
@@ -151,13 +151,16 @@
 
                     
                         <div class="post__content">
-                            <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
-<h1 id="第七章-高级数据库查询"><a href="#第七章-高级数据库查询" class="headerlink" title="第七章  高级数据库查询"></a>第七章  高级数据库查询</h1><p>select<br>distinct<br>top n percent with ties<br>col_name<br>into ntb_name<br>form tb_name<br>where<br>group by<br>having<br>order by<br>compute<br>函数:选择函数:case when then…else end<br>日期函数:<br>排名函数:rank:1 2 2 4 4 4 7<br>dense_rank:1 2 2 3 3 3 4<br>row_number:<br>ntile:<br>运算:union  intersect except<br>子查询:where col_name not in (select col_name…)<br>where col_name not exists (select *…)<br>any all<br>开窗函数:over (partition by col_name)<br>共用表表达式 with…as</p>
+                            <h1 id="第十章-数据库运行管理与维护及其优化"><a href="#第十章-数据库运行管理与维护及其优化" class="headerlink" title="第十章  数据库运行管理与维护及其优化"></a>第十章  数据库运行管理与维护及其优化</h1><p>1.运行维护工作:<br>日常维护:数据库转储与恢复,数据库安全性完整性控制：新建数据库用户,存储控空间管理,并发控制<br>系统监控与分析<br>系统性能优化调整<br>系统进化升级<br>数据库的重组和重构<br>2.运行状态监控:构架体系(即数据库存储空间管理)<br>              性能:数据库运行环境:外部调整:CPU和网络<br>                                        内存<br>                                        磁盘I&#x2F;O<br>                                        减少竞争<br>                   参数调整<br>                   模式调整:反规范化:(派生)冗余,组新表,分割表,增汇总表<br>                   存储优化:建立索引视图和聚集<br>                   查询优化:使用:索引,临时表,存储过程<br>                           避免:排序,顺序存取,避免正则表达式,外连接,游标,大事务</p>
+<p>实现死锁检测的是什么图?  (事务等待)图<br>事务的acid特性:一致性<br>　　　　　　　　隔离性:其正在访问的数据却被其他进程修改<br>持久性：已提交的事务未能正确写入<br>当数据库系统中存在死锁时,通常选择1个或几个死锁事务,怎么样这些事务(撤销)</p>
+<p>一起查询的表，可以聚集文件<br>分组排序的表，可以散列文件，不适用于范围查询</p>
+<p>使用索引的原则：<br>经常搜索，连接，范围搜索，排序，where子句的列<br>主键
+                           </p>
 
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-03-28 21:12:38 星期一
+                                更新于  2022-07-15 10:35:10 星期五
                             </p>
                         </div>
 
@@ -167,7 +170,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/1be4/" class="nav__link">
+                            <a href="/posts/b4cc/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -181,7 +184,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        第三章  系统设计
+                                        键盘输值
                                     </div>
                                 </div>
                             </a>
@@ -189,13 +192,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/347f/" class="nav__link">
+                            <a href="/posts/ee9e/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        第二章  需求分析
+                                        第十四章  数据仓库与数据挖掘
                                     </div>
                                 </div>
                                 <div>

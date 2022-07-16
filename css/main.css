@@ -1759,6 +1759,11 @@ details .fold-content>:last-child {
   transition: all 0.375s;
 }
 
+.fold-content p {
+  font-style: italic;
+  font-family: none;
+}
+
 .blockquote-note {
   margin: 1rem 0;
   padding: 1rem;

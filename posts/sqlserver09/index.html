@@ -24,15 +24,15 @@
             <!-- meta -->
             
                 <title>
-                    第某章  random 库 | 
+                    『SQL Server』第九章  安全管理 | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="Python">
+                <meta name="keywords" content="SqlServer">
 
 
 
-                <link rel="canonical" href="http://example.com/posts/pythonrdom/">
+                <link rel="canonical" href="http://example.com/posts/sqlserver09/">
 
 
 
@@ -76,15 +76,15 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第某章  random 库
+            『SQL Server』第九章  安全管理
         </h1>
         <div class="post-title__meta">
             <a href="/archives/2022/07/" class="post-meta__date button">
-                创建于  2022-07-07 18:05:43 星期四
+                创建于  2022-07-17 09:14:49 星期日
             </a>
             
-                <span class="separate-dot"></span><a href="/categories/Python/" class="button">
-                    Python
+                <span class="separate-dot"></span><a href="/categories/SqlServer/" class="button">
+                    SqlServer
                 </a>
                 
 
@@ -126,19 +126,104 @@
 
                     
                         <div class="post__content">
-                            <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"></div></details>
-<p>时针).<br>import random<br>brandlist &#x3D; [‘华为’, ‘苹果’, ‘诺基亚’, ‘oppo’, ‘小米’]<br>random.seed(0)<br>name &#x3D; brandlist[random.randint(0, 4)]<br>print(name)</p>
-<p>random.seed()<br>改变随机生成器的种子，使得每次生成的随机数相同</p>
-<p>random.random()<br>生成0~1之间的随机浮点数</p>
-<p>random.uniform（a, b）<br>指定范围内的随机浮点数</p>
-<p>random.randint(a, b)<br>[a, b]内的随机整数</p>
-<p>random.randrange(start, stop, step)<br>有梯度的序列中随机取一个随机数</p>
-<p>random.shuffle()<br>打乱列表<br>————————————————<br>版权声明：本文为CSDN博主「我是小杨我就这样」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44478378/article/details/105136685">https://blog.csdn.net/weixin_44478378/article/details/105136685</a></p>
+                            <p>题1: 设 log1 是身份验证模式的数据库服务器登录账户，现在要授予该账户创建数据库的权限，请补全下列语句：<br>EXEC sp_addsrvrolemember ‘log1’, ‘____’<br>解析1:数据库主要的固定服务器级角色及权限如下表:</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">bulkadmin</td>
+<td align="center">执行 BULK INSERT 语句</td>
+</tr>
+<tr>
+<td align="center">dbcreator</td>
+<td align="center">创建修改删除和还原数据库对象√</td>
+</tr>
+<tr>
+<td align="center">diskadmin</td>
+<td align="center">管理磁盘文件</td>
+</tr>
+<tr>
+<td align="center">processadmin</td>
+<td align="center">管理运行的进程</td>
+</tr>
+<tr>
+<td align="center">serveradmin</td>
+<td align="center">配置服务器范围</td>
+</tr>
+<tr>
+<td align="center">setupadmin</td>
+<td align="center">增删链接服务器</td>
+</tr>
+<tr>
+<td align="center">sysadmin</td>
+<td align="center">系统管理员√</td>
+</tr>
+<tr>
+<td align="center">securityadmin</td>
+<td align="center">管理服务器登陆账户</td>
+</tr>
+</tbody></table>
+<p>例2: 只具有修改数据库全部用户表数据权限的系统角色是____<br>解析2: 下表是服务器级角色</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">db_owner</td>
+<td align="center">创建数据量对象; 配置,维护,删除数据库</td>
+</tr>
+<tr>
+<td align="center">db_accessadmin</td>
+<td align="center">增删用户</td>
+</tr>
+<tr>
+<td align="center">db_backupoperator</td>
+<td align="center">备份恢复数据库和日志</td>
+</tr>
+<tr>
+<td align="center">db_datareader</td>
+<td align="center">只读</td>
+</tr>
+<tr>
+<td align="center">db_datawriter</td>
+<td align="center">增删改</td>
+</tr>
+<tr>
+<td align="center">db_ddladmin</td>
+<td align="center">执行数据定义语言(DDL)</td>
+</tr>
+<tr>
+<td align="center">db_denydatareader</td>
+<td align="center">不可读</td>
+</tr>
+<tr>
+<td align="center">db_denydatawriter</td>
+<td align="center">不可增删改</td>
+</tr>
+<tr>
+<td align="center">db_securityadmin</td>
+<td align="center">管理数据库角色,角色成员以及数据库中语句和对象的权限</td>
+</tr>
+<tr>
+<td align="center">public</td>
+<td align="center">默认角色</td>
+</tr>
+</tbody></table>
+<p>对数据的访问是通过SQL server 的权限层次结构管理的.通过以下三种语句来管理这个权限层次结构.<br>用户 u1 在 数据库 db1 的查询表 t1 的权限, 此权限用户可以转授<br>GRANT SELETE ON db1(t1) TO u1 WITH GRANT OPTION<br>收回用户 u1 对表 t1 的数据更改权<br>REVOKE UPDATE ON t1 FROM|TO u1 CASCADE<br>拒绝用户 u1 对表 t1 的删除权限<br>DENY DELETE ON t1 TO u1</p>
+<p>用户 u1 在数据库 db1 中有建表权限<br>GRANT CREATE TABLE ON db1 TO u1<br>收回用户 u1 对数据库 db1 的创建视图权限<br>REVOKE CREATE VIEW FROM u1<br>美国国防部对强制存取控制的分级为:验证保护,强制保护,自主保护,最小保护,分别为ABCD级别.<br>yqzz 有气质罪</p>
+<p>DROP USER u1<br>CREATE LOGIN l1 WITH PASSWORD&#x3D;’a123’<br>DROP LOGIN l1<br>ALTER LOGIN u1 ENABLE</p>
 
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-07-07 18:06:45 星期四
+                                更新于  2022-07-13 10:11:56 星期三
                             </p>
                         </div>
 
@@ -148,7 +233,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/sqlserver06/" class="nav__link">
+                            <a href="/posts/sqlserver12/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -162,7 +247,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        『SQL Server』第六章  数据库及其对象.md
+                                        『SQL Server』第十二章  备份与恢复数据库
                                     </div>
                                 </div>
                             </a>
@@ -170,13 +255,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/py01/" class="nav__link">
+                            <a href="/posts/sqlserver02/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        第一章  程序基本结构
+                                        『SQL Server』第二章  需求分析
                                     </div>
                                 </div>
                                 <div>

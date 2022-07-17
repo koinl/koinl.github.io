@@ -24,15 +24,15 @@
             <!-- meta -->
             
                 <title>
-                    第某章  random 库 | 
+                    『SQL Server』第十一章  故障管理 | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="Python">
+                <meta name="keywords" content="SqlServer">
 
 
 
-                <link rel="canonical" href="http://example.com/posts/pythonrdom/">
+                <link rel="canonical" href="http://example.com/posts/sqlserver11/">
 
 
 
@@ -76,15 +76,15 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第某章  random 库
+            『SQL Server』第十一章  故障管理
         </h1>
         <div class="post-title__meta">
             <a href="/archives/2022/07/" class="post-meta__date button">
-                创建于  2022-07-07 18:05:43 星期四
+                创建于  2022-07-17 09:14:49 星期日
             </a>
             
-                <span class="separate-dot"></span><a href="/categories/Python/" class="button">
-                    Python
+                <span class="separate-dot"></span><a href="/categories/SqlServer/" class="button">
+                    SqlServer
                 </a>
                 
 
@@ -126,19 +126,16 @@
 
                     
                         <div class="post__content">
-                            <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"></div></details>
-<p>时针).<br>import random<br>brandlist &#x3D; [‘华为’, ‘苹果’, ‘诺基亚’, ‘oppo’, ‘小米’]<br>random.seed(0)<br>name &#x3D; brandlist[random.randint(0, 4)]<br>print(name)</p>
-<p>random.seed()<br>改变随机生成器的种子，使得每次生成的随机数相同</p>
-<p>random.random()<br>生成0~1之间的随机浮点数</p>
-<p>random.uniform（a, b）<br>指定范围内的随机浮点数</p>
-<p>random.randint(a, b)<br>[a, b]内的随机整数</p>
-<p>random.randrange(start, stop, step)<br>有梯度的序列中随机取一个随机数</p>
-<p>random.shuffle()<br>打乱列表<br>————————————————<br>版权声明：本文为CSDN博主「我是小杨我就这样」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44478378/article/details/105136685">https://blog.csdn.net/weixin_44478378/article/details/105136685</a></p>
+                            <h1 id="第十一章-故障管理"><a href="#第十一章-故障管理" class="headerlink" title="第十一章  故障管理"></a>第十一章  故障管理</h1><ol>
+<li>数据库故障类型:<br>事务内部故障:预期的事务内部故障:事务回滚<br>    非预期的事务内部故障:系统自主完成<br>系统故障:软故障,系统停止运行。undo所有已提交的事务,redo所有未提交的事务<br>计算机病毒故障:防火墙,杀毒软件,备份<br>介质故障:硬故障:软件容错:备份与恢复技术<br>硬件容错:数据库镜像</li>
+<li>数据库的恢复:数据转储:静态转储<br>动态转储<br>动态转储+日志文件<br>数据转储分类:完全转储 差量转储 增量转储<br>完全转储对所有数据进行转储，需要时间空间多<br>差量转储只是对上次完全转储后的进行转储，需要时间和空间较之完全转储会少，<br>增量转储对上次转储后的文件或数据块进行转储，需要的时间和空间较之差量转储更少。<br>但增量转储的恢复需要与完全转储相配合，因此恢复时间最长<br>登记日志文件<br>日志文件：记录所有事务的修改操作,分为以记录为单位和以数据块为单位<br>检查点:大幅度减少完全恢复时需要执行的日志部分，提高系统出现故障时的恢复效率</li>
+<li>硬件容错方案<br>数据库存储保护技术:raid,<br>服务器容错技术,双机热备<br>数据库镜像与容灾技术:双机热备份模式,双机互备援模式<br>高可用,高保护,高性能操作模式</li>
+</ol>
 
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-07-07 18:06:45 星期四
+                                更新于  2022-07-16 08:54:45 星期六
                             </p>
                         </div>
 
@@ -148,7 +145,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/sqlserver06/" class="nav__link">
+                            <a href="/posts/sqlserver10/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -162,7 +159,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        『SQL Server』第六章  数据库及其对象.md
+                                        『SQL Server』第十章  数据库运行管理与维护
                                     </div>
                                 </div>
                             </a>
@@ -170,13 +167,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/py01/" class="nav__link">
+                            <a href="/posts/sqlserver14/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        第一章  程序基本结构
+                                        『SQL Server』第十四章  数据仓库与数据挖掘
                                     </div>
                                 </div>
                                 <div>

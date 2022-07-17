@@ -24,15 +24,15 @@
             <!-- meta -->
             
                 <title>
-                    第某章  random 库 | 
+                    『SQL Server』第六章  数据库及其对象.md | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="Python">
+                <meta name="keywords" content="SqlServer">
 
 
 
-                <link rel="canonical" href="http://example.com/posts/pythonrdom/">
+                <link rel="canonical" href="http://example.com/posts/sqlserver06/">
 
 
 
@@ -76,15 +76,15 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第某章  random 库
+            『SQL Server』第六章  数据库及其对象.md
         </h1>
         <div class="post-title__meta">
             <a href="/archives/2022/07/" class="post-meta__date button">
-                创建于  2022-07-07 18:05:43 星期四
+                创建于  2022-07-17 09:14:49 星期日
             </a>
             
-                <span class="separate-dot"></span><a href="/categories/Python/" class="button">
-                    Python
+                <span class="separate-dot"></span><a href="/categories/SqlServer/" class="button">
+                    SqlServer
                 </a>
                 
 
@@ -94,7 +94,7 @@
     
         <aside class="post-side">
             <div class="post-side__toc">
-                
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84-%E6%9E%84%E6%9E%B6-%E6%A8%A1%E5%BC%8F"><span class="toc-text">架构(构架)(模式)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E8%A1%A8"><span class="toc-text">分区表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-text">视图</span></a></li></ol>
             </div>
         </aside>
         <a class="btn-toc button" id="btn-toc" tabindex="0">
@@ -108,7 +108,7 @@
             <div class="toc-title">
                 文章目录
             </div>
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84-%E6%9E%84%E6%9E%B6-%E6%A8%A1%E5%BC%8F"><span class="toc-text">架构(构架)(模式)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E8%A1%A8"><span class="toc-text">分区表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-text">视图</span></a></li></ol>
         </div>
         
 
@@ -121,24 +121,35 @@
                 
                     文章目录
                     <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
-                        
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84-%E6%9E%84%E6%9E%B6-%E6%A8%A1%E5%BC%8F"><span class="toc-text">架构(构架)(模式)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E8%A1%A8"><span class="toc-text">分区表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-text">视图</span></a></li></ol>
                     </div>
 
                     
                         <div class="post__content">
-                            <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"></div></details>
-<p>时针).<br>import random<br>brandlist &#x3D; [‘华为’, ‘苹果’, ‘诺基亚’, ‘oppo’, ‘小米’]<br>random.seed(0)<br>name &#x3D; brandlist[random.randint(0, 4)]<br>print(name)</p>
-<p>random.seed()<br>改变随机生成器的种子，使得每次生成的随机数相同</p>
-<p>random.random()<br>生成0~1之间的随机浮点数</p>
-<p>random.uniform（a, b）<br>指定范围内的随机浮点数</p>
-<p>random.randint(a, b)<br>[a, b]内的随机整数</p>
-<p>random.randrange(start, stop, step)<br>有梯度的序列中随机取一个随机数</p>
-<p>random.shuffle()<br>打乱列表<br>————————————————<br>版权声明：本文为CSDN博主「我是小杨我就这样」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44478378/article/details/105136685">https://blog.csdn.net/weixin_44478378/article/details/105136685</a></p>
+                            <h1 id="第六章-数据库及其对象"><a href="#第六章-数据库及其对象" class="headerlink" title="第六章  数据库及其对象"></a>第六章  数据库及其对象</h1><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ol>
+<li>分类:系统数据库:master:数据库系统信息　　 　　　   　　<br>msdb:数据库作业信息　　 　　　   　　<br>model:数据库模板信息　　　 　　 　　<br>resource:只读数据库且不可见　　 　　　   　　<br>tempdb:临时数据库<br>　    　用户数据库:数据文件:主要数据文件:.mdf<br> 　　　     　　　  　　  　　　次要数据文件:.ndf　 　　　 　　　日志文件:事务日志文件:.ldf</li>
+<li>创建:<code>create database</code> db_name　　<code>on　primary</code>　　<code>(</code>&lt;filespec&gt;<code>)</code>　　<code>log on</code>　　<code>(</code>&lt;filespec&gt;<code>)</code></li>
+</ol>
+<p><em>对&lt;filespec&gt;的解释:<code>name=</code>db_name_data<code>,</code>　　　　　　 　   　<code>filename=&#39;</code>C:\db_name_data.mdf<code>&#39;,</code>　　　　　 　 　　<code>size=</code>3MB<code>,</code>　　　　　 　 　　<code>maxsize=</code>{50MB|unlimited}<code>,</code>　　　　　 　 　　<code>filegrowth=</code>{1MB|10%}</em><br>要插入的表已存在: insert into t2 select * from t1<br>3. 修改:<code>alter database</code> db_name<br>　　 <code>add file</code>　　 <code>add log file</code><br>　　 <code>modify name=</code>　　 <code>modify file</code><br>　　 <code>remove file</code><br>4. 分离:<code>exec sp_detach_db &#39;</code>db_name<code>&#39;,&#39;true&#39;</code><br>5. 附加:<br>6. 自增标识列:identity</p>
+<h2 id="架构-构架-模式"><a href="#架构-构架-模式" class="headerlink" title="架构(构架)(模式)"></a>架构(构架)(模式)</h2><ol>
+<li>创建:    <code>create schema</code> sc_name</li>
+<li>可以共享<h2 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h2></li>
+<li>创建:例:在分区列<font color="blue">colA_name</font>(<font color="green">int</font>)上创建左侧分区函数.　　　(1)创建分区函数:<code>create partition function</code> pf_name<code>(</code><font color="green">int</font><code>)</code><br>　　　 　　 　　　　　<code>as range</code> left <code>for values(</code>1,10,100<code>）</code>　　　(2)创建分区方案:<code>create partition scheme</code> ps_name　　　　　 　　 　　　<code>as partition</code> pf_name　　　　　　　 　 　　<code>to (</code>test1,test2,test3,test4<code>)</code>　　　(3)使用分区建表:<code>create table</code> tb_name　　　　　　　 　  　　<code>(</code>col_name type… 　　　　　　 　　 　　<code>on</code> ps_name<code>(</code><font color="blue">colA_name</font><code>)</code></li>
+</ol>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><ol>
+<li>创建:<code>create [unique | [non]clustered] index</code> idx_name　 　<code>on</code> tb_name<code>(</code>col_name<code>)</code>　 　<code>[with fillfactor=</code>x<code>]</code></li>
+<li>重复小列在前<br>主索引为主键索引,辅索引提高查询效率,位图索引用于范围查询，哈希索引用于精确查询<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2></li>
+<li>索引视图来源必须是基本表,不适合建立在大量更新写操作高基数度的数据聚合(group by)</li>
+</ol>
+<p>讲一起使用的公共列值的多个表的数据行存储在一起的方法称为聚集</p>
+<p>设商品表有下列查询:<br>SELECT 商品号,商品名,单价<br>FROM 商品表 WHERE 类别 IN(‘食品’,’家电’)<br>ORDER BY 商品号<br>现建立索引:<br>CREATE INDEX idx1 ON 商品表(商品号)    # create unique index idx_name on tb_name(列名)<br>INCLUDE(商品名,单价)    # include(属性)<br>WHERE 类别&#x3D;’食品’ OR 类别&#x3D;’单价’    # where 约束条件</p>
+<p>将 t1 表的 c1 列 (int 类型)定义为标识列,初量和增量均为1<br>CREATE TABLE t1(c1 INT IDENTITY(1,1),…)</p>
+<p>直接增加已有文件的大小是扩大数据库空间的一种方法<br>ALTER DATABASE db1 MODIFY FILE(NAME&#x3D;db_datafile,SIZE&#x3D;200MB)</p>
 
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-07-07 18:06:45 星期四
+                                更新于  2022-07-15 15:37:50 星期五
                             </p>
                         </div>
 
@@ -148,7 +159,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/sqlserver06/" class="nav__link">
+                            <a href="/posts/sqlserver07/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -162,7 +173,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        『SQL Server』第六章  数据库及其对象.md
+                                        『SQL Server』第七章  高级数据库查询
                                     </div>
                                 </div>
                             </a>
@@ -170,13 +181,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/py01/" class="nav__link">
+                            <a href="/posts/pythonrdom/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        第一章  程序基本结构
+                                        第某章  random 库
                                     </div>
                                 </div>
                                 <div>

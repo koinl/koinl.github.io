@@ -24,15 +24,15 @@
             <!-- meta -->
             
                 <title>
-                    第某章  random 库 | 
+                    『SQL Server』第十章  数据库运行管理与维护 | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="Python">
+                <meta name="keywords" content="SqlServer">
 
 
 
-                <link rel="canonical" href="http://example.com/posts/pythonrdom/">
+                <link rel="canonical" href="http://example.com/posts/sqlserver10/">
 
 
 
@@ -76,15 +76,15 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第某章  random 库
+            『SQL Server』第十章  数据库运行管理与维护
         </h1>
         <div class="post-title__meta">
             <a href="/archives/2022/07/" class="post-meta__date button">
-                创建于  2022-07-07 18:05:43 星期四
+                创建于  2022-07-17 09:14:49 星期日
             </a>
             
-                <span class="separate-dot"></span><a href="/categories/Python/" class="button">
-                    Python
+                <span class="separate-dot"></span><a href="/categories/SqlServer/" class="button">
+                    SqlServer
                 </a>
                 
 
@@ -126,19 +126,16 @@
 
                     
                         <div class="post__content">
-                            <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"></div></details>
-<p>时针).<br>import random<br>brandlist &#x3D; [‘华为’, ‘苹果’, ‘诺基亚’, ‘oppo’, ‘小米’]<br>random.seed(0)<br>name &#x3D; brandlist[random.randint(0, 4)]<br>print(name)</p>
-<p>random.seed()<br>改变随机生成器的种子，使得每次生成的随机数相同</p>
-<p>random.random()<br>生成0~1之间的随机浮点数</p>
-<p>random.uniform（a, b）<br>指定范围内的随机浮点数</p>
-<p>random.randint(a, b)<br>[a, b]内的随机整数</p>
-<p>random.randrange(start, stop, step)<br>有梯度的序列中随机取一个随机数</p>
-<p>random.shuffle()<br>打乱列表<br>————————————————<br>版权声明：本文为CSDN博主「我是小杨我就这样」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44478378/article/details/105136685">https://blog.csdn.net/weixin_44478378/article/details/105136685</a></p>
+                            <h1 id="第十章-数据库运行管理与维护及其优化"><a href="#第十章-数据库运行管理与维护及其优化" class="headerlink" title="第十章  数据库运行管理与维护及其优化"></a>第十章  数据库运行管理与维护及其优化</h1><p>1.运行维护工作:<br>日常维护:数据库转储与恢复,数据库安全性完整性控制：新建数据库用户,存储控空间管理,并发控制<br>系统监控与分析<br>系统性能优化调整<br>系统进化升级<br>数据库的重组和重构<br>2.运行状态监控:构架体系(即数据库存储空间管理)<br>              性能:数据库运行环境:外部调整:CPU和网络<br>                                        内存<br>                                        磁盘I&#x2F;O<br>                                        减少竞争<br>                   参数调整<br>                   模式调整:反规范化:(派生)冗余,组新表,分割表,增汇总表<br>                   存储优化:建立索引视图和聚集<br>                   查询优化:使用:索引,临时表,存储过程<br>                           避免:排序,顺序存取,避免正则表达式,外连接,游标,大事务</p>
+<p>实现死锁检测的是什么图?  (事务等待)图<br>事务的acid特性:原子性：保持一致性，要么做，要么不做，必须全部反映与否<br>一致性：没有其他并发执行的事务，已提交的事务的更新数据结果能否能正确写入磁盘<br>　　　　　　　　隔离性:其正在访问的数据却被其他进程修改<br>持久性：已提交的事务必须能正确写入，对数据库的改变是永久的<br>当数据库系统中存在死锁时,通常选择1个或几个死锁事务,怎么样这些事务(撤销)</p>
+<p>一起查询的表，可以聚集文件<br>分组排序的表，可以散列文件，不适用于范围查询</p>
+<p>使用索引的原则：<br>经常搜索，连接，范围搜索，排序，where子句的列<br>主键
+                           </p>
 
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-07-07 18:06:45 星期四
+                                更新于  2022-07-16 08:54:12 星期六
                             </p>
                         </div>
 
@@ -148,7 +145,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/sqlserver06/" class="nav__link">
+                            <a href="/posts/sqlserver04/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -162,7 +159,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        『SQL Server』第六章  数据库及其对象.md
+                                        『SQL Server』第四章  应用系统功能设计
                                     </div>
                                 </div>
                             </a>
@@ -170,13 +167,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/py01/" class="nav__link">
+                            <a href="/posts/sqlserver11/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        第一章  程序基本结构
+                                        『SQL Server』第十一章  故障管理
                                     </div>
                                 </div>
                                 <div>

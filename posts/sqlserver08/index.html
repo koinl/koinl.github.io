@@ -24,15 +24,15 @@
             <!-- meta -->
             
                 <title>
-                    第某章  random 库 | 
+                    『SQL Server』第八章  数据库后台编程技术 | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="Python">
+                <meta name="keywords" content="SqlServer">
 
 
 
-                <link rel="canonical" href="http://example.com/posts/pythonrdom/">
+                <link rel="canonical" href="http://example.com/posts/sqlserver08/">
 
 
 
@@ -76,15 +76,15 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第某章  random 库
+            『SQL Server』第八章  数据库后台编程技术
         </h1>
         <div class="post-title__meta">
             <a href="/archives/2022/07/" class="post-meta__date button">
-                创建于  2022-07-07 18:05:43 星期四
+                创建于  2022-07-17 09:14:49 星期日
             </a>
             
-                <span class="separate-dot"></span><a href="/categories/Python/" class="button">
-                    Python
+                <span class="separate-dot"></span><a href="/categories/SqlServer/" class="button">
+                    SqlServer
                 </a>
                 
 
@@ -94,7 +94,7 @@
     
         <aside class="post-side">
             <div class="post-side__toc">
-                
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">存储过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">触发器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B8%E6%A0%87"><span class="toc-text">游标</span></a></li></ol>
             </div>
         </aside>
         <a class="btn-toc button" id="btn-toc" tabindex="0">
@@ -108,7 +108,7 @@
             <div class="toc-title">
                 文章目录
             </div>
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">存储过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">触发器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B8%E6%A0%87"><span class="toc-text">游标</span></a></li></ol>
         </div>
         
 
@@ -121,24 +121,33 @@
                 
                     文章目录
                     <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
-                        
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">存储过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">触发器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B8%E6%A0%87"><span class="toc-text">游标</span></a></li></ol>
                     </div>
 
                     
                         <div class="post__content">
-                            <details ><summary>点击显/隐函数的定义与调用</summary><div class="fold-content"></div></details>
-<p>时针).<br>import random<br>brandlist &#x3D; [‘华为’, ‘苹果’, ‘诺基亚’, ‘oppo’, ‘小米’]<br>random.seed(0)<br>name &#x3D; brandlist[random.randint(0, 4)]<br>print(name)</p>
-<p>random.seed()<br>改变随机生成器的种子，使得每次生成的随机数相同</p>
-<p>random.random()<br>生成0~1之间的随机浮点数</p>
-<p>random.uniform（a, b）<br>指定范围内的随机浮点数</p>
-<p>random.randint(a, b)<br>[a, b]内的随机整数</p>
-<p>random.randrange(start, stop, step)<br>有梯度的序列中随机取一个随机数</p>
-<p>random.shuffle()<br>打乱列表<br>————————————————<br>版权声明：本文为CSDN博主「我是小杨我就这样」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44478378/article/details/105136685">https://blog.csdn.net/weixin_44478378/article/details/105136685</a></p>
+                            <h1 id="第八章-数据库后台编程技术"><a href="#第八章-数据库后台编程技术" class="headerlink" title="第八章  数据库后台编程技术"></a>第八章  数据库后台编程技术</h1><h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><ol>
+<li>创建:<code>create proc</code> proc_name<br>　 　@var type,@var1 type <code>output</code><br>　 　<code>as</code><br>　 　<code>begin</code><br>　 　sql_statement<br>　 　<code>end</code></li>
+<li>执行:<code>exec</code> proc_name @var&#x3D;<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ol>
+<li>分类:标量函数:<code>create function</code> fun_name<code>(</code>@var type<code>)</code><br>　　  　　    　　<code>returns</code> type<br>　　  　　    　　<code>as</code><br>　　  　　    　　<code>begin</code><br>　　  　　    　　sql_statement<br>　　  　　    　　<code>end</code><br>CREATE FUNCTION 表(@总价 char(10))<br>RETURNS INT AS<br>BEGIN<br>RETURN(SELECT…)<br>END<br>　 　表值函数:内嵌表值函数:<code>create function</code> fun_name<code>(</code>@var type<code>)</code><br>　　　　　　　　  　　 　   　<code>returns table</code><br>　　　　　　　　  　　 　   　<code>as</code><br>　　　　　　　　  　　 　   　<code>begin</code><br>　　　　　　　　  　　 　   　<code>return(</code>sql_statement<code>)</code><br>　　　　　　　　  　　 　   　<code>end</code><br>　　 　　 　多语句表值函数:<code>create function</code> fun_name<code>(</code>@var type<code>)</code><br>　　　　　　　　  　　 　   　<code>returns</code> @tb_name <code>table(</code>col_name<code>)</code><br>　　　　　　　　  　　 　   　<code>as</code><br>　　　　　　　　  　　 　   　<code>begin</code><br>　　　　　　　　  　　 　   　sql_statement<br>　　　　　　　　  　　 　   　<code>return</code><br>　　　　　　　　  　　 　   　<code>end</code><h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2></li>
+</ol>
+</li>
+<li>创建:<code>create trigger</code> tri_name<br><code>on</code> tb_name<br><code>&#123;for | instead of&#125;</code> <code>&#123;insert | update | delete&#125;</code><br><code>as</code><br><code>begin</code><br>sql_statement<br><code>end</code></li>
+</ol>
+<h2 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h2><ol>
+<li>声明:<code>declare</code> cur_name <code>cursor</code><br> 　   　<code>for</code> sql_statement</li>
+<li>打开:<code>open</code> cur_name</li>
+<li>提取:<code>fetch</code> <code>first | last | next | prior | absolute n | relative n</code><br><code>from</code> cur_name into 变量名</li>
+<li>关闭:<code>close</code> cur_name</li>
+<li>释放:<code>deallocate</code> cur_name</li>
+<li>全局变量:@@fetch_status</li>
+</ol>
+<p>create proc p1…<br>调用:exec p1 default,20</p>
 
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-07-07 18:06:45 星期四
+                                更新于  2022-07-13 15:09:30 星期三
                             </p>
                         </div>
 
@@ -148,7 +157,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/sqlserver06/" class="nav__link">
+                            <a href="/posts/sqlserver02/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -162,7 +171,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        『SQL Server』第六章  数据库及其对象.md
+                                        『SQL Server』第二章  需求分析
                                     </div>
                                 </div>
                             </a>
@@ -170,13 +179,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/py01/" class="nav__link">
+                            <a href="/posts/38f2/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        第一章  程序基本结构
+                                        三级考试(数据库篇)错题整理(选择题, 填空题篇)
                                     </div>
                                 </div>
                                 <div>

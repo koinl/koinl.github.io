@@ -1862,4 +1862,8 @@ details .fold-content>:last-child {
   stroke: #e00;
 }
 
-.wenzhangmulu {}
+.wenzhangmulu {
+  padding-left: 35px;
+  font-style: oblique;
+  font-family: monospace;
+}

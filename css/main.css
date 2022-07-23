@@ -516,6 +516,7 @@ pre {
 table {
   border-spacing: 0;
   border-collapse: collapse;
+  font-family: serif;
 }
 
 table th:not(.code):not(.gutter) {
@@ -536,7 +537,8 @@ table tr:not(.code):not(.gutter):nth-child(2n) {
 
 table td:not(.code):not(.gutter),
 table th:not(.code):not(.gutter) {
-  padding: 6px 13px;
+  /* padding: 6px 13px; */
+  padding: 2px 24px;
   border: 1px solid var(--border-color);
 }
 

@@ -47,7 +47,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.8;
-  background-image: radial-gradient(circle at top right, #9bcbde7a, #c095955e, #0288d100);
+  /* background-image: radial-gradient(circle at top right, #9bcbde7a, #c095955e, #0288d100); */
 }
 
 @media screen and (max-width: 650px) {

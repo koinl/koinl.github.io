@@ -5,7 +5,7 @@
   --bg-content-color: #fff;
   --bg-menu: #eceef2;
   --bg-tag-color: #f4f4f4;
-  --bg-code: #eee;
+  --bg-code: #eeeeee2f;
   --bg-codeblock: #f8f8f8;
   --body-color: #4c4d4e;
   --title-color: #50596c;
@@ -531,7 +531,7 @@ table tr:not(.code):not(.gutter):not(.highlight) {
 }
 
 table tr:not(.code):not(.gutter):nth-child(2n) {
-  background-color: #f6f8fa;
+  /* background-color: #f6f8fa; */
 }
 
 table td:not(.code):not(.gutter),

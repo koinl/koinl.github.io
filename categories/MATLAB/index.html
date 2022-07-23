@@ -18,12 +18,12 @@
             <link rel="mask-icon" href="/img/icon.png">
             
                 <title>
-                    递归调用 | 
+                    分类：MATLAB | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="学习">
-                <link rel="canonical" href="http://example.com/posts/18bf/">
+                <meta name="keywords" content="">
+                <link rel="canonical" href="">
                 <link rel="stylesheet" href="/css/main.css">
                 <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
                 <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
@@ -54,139 +54,183 @@
     </div>
 </header>
     
-            <main class="main">
-    
-
-    <div class="post-title">
-        <h1 class="post-title__text">
-            递归调用
-        </h1>
-        <div class="post-title__meta">
-            <a href="/archives/2022/01/" class="post-meta__date button">
-                创建于  2022-01-29 10:59:28 星期六
-            </a>
-            
-                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
-                    学习
+        <div class="cover">
+            <div class="cover__logo">
+                <a href="https://koinl.github.io/home/" aria-label="前往主页" title="前往主页"
+                    target="_self">
+                    <img no-lazy alt="author Image" class="cover__avatar" src="/img/avatar.png">
                 </a>
-                
-
-        </div>
-    </div>
-
-    
-        <aside class="post-side">
-            <div class="post-side__toc">
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E7%B4%AF%E5%8A%A0%E5%92%8C"><span class="toc-text">使用递归算法求解累加和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E7%B4%AF%E4%B9%98%E7%A7%AF"><span class="toc-text">使用递归算法求解累乘积</span></a></li></ol>
             </div>
-        </aside>
-        <a class="btn-toc button" id="btn-toc" tabindex="0">
-            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
-                    fill="currentColor"></path>
-            </svg>
-        </a>
-        <div class="toc-menus" id="toc-menus">
-            <div class="toc-title">
-                文章目录
+
+
+            <div class="cover__intro">
+                <a href="https://koinl.github.io/search/" aria-label="前往搜索" title="前往搜索"
+                    target="_self">
+                    <button>锦鲤未离 (Koi_NL)</button></a>
             </div>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E7%B4%AF%E5%8A%A0%E5%92%8C"><span class="toc-text">使用递归算法求解累加和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E7%B4%AF%E4%B9%98%E7%A7%AF"><span class="toc-text">使用递归算法求解累乘积</span></a></li></ol>
+
         </div>
         
-
-            <article
-                class="post post__with-toc content-card">
-                <div class="post__header">
-                    
-                </div>
-
-                
-                    <div class="wenzhangmulu">文章目录</div>
-                    <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
-                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E7%B4%AF%E5%8A%A0%E5%92%8C"><span class="toc-text">使用递归算法求解累加和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E7%B4%AF%E4%B9%98%E7%A7%AF"><span class="toc-text">使用递归算法求解累乘积</span></a></li></ol>
-                    </div>
-
-                    
-                        <div class="post__content">
-                            <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
-<h1 id="递归调用"><a href="#递归调用" class="headerlink" title="递归调用"></a>递归调用</h1><h2 id="使用递归算法求解累加和"><a href="#使用递归算法求解累加和" class="headerlink" title="使用递归算法求解累加和"></a>使用递归算法求解累加和</h2><pre><code>class CumSum &#123;
-    int sum;
-    int cumsum(int n) &#123;
-    if(n==0)
-        sum=0;
-        else sum=n+cumsum(n-1);
-        return sum;
-    &#125;
-&#125;
-</code></pre>
-<h2 id="使用递归算法求解累乘积"><a href="#使用递归算法求解累乘积" class="headerlink" title="使用递归算法求解累乘积"></a>使用递归算法求解累乘积</h2><pre><code>class CumProd &#123;
-    int p;
-    int cumprod(int n) &#123;
-        if(n==0)
-            p=1;
-        else p=n*cumprod(n-1);
-        return p;
-    &#125;
-&#125;
-</code></pre>
-
-                        </div>
-                        <div class="post-footer__meta">
-                            <p>
-                                更新于  2022-03-28 21:12:38 星期一
-                            </p>
-                        </div>
-
-            </article>
-
+            <main class="main">
+    
+        <div class="post-list">
             
-                <div class="nav">
-                    <div class="nav__prev">
-                        
-                            <a href="/posts/20c3/" class="nav__link">
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="nav__label">
-                                        上一篇
-                                    </div>
-                                    <div class="nav__title">
-                                        消息, 继承与多态
-                                    </div>
-                                </div>
-                            </a>
-                            
+                
+                    <div class='post-entry content-card'>
+                        <div class="post-entry__header">
+    
+</div>
+<div class="post-entry__content">
+    <h2 class="post-entry__title">
+        应用篇-第二章  图形对用户界面设计[未完成]
+    </h2>
+    
+                    <p>
+                        本章节讲了集合的格式与特点与常用操作
+
+                    </p>
+                    
+</div>
+<div class="post-entry__meta">
+    <a href="/archives/2022/02/" class="post-meta__date button">
+        创建于  2022-02-21 19:42:16 星期一
+    </a>
+    
+        <span class="separate-dot"></span><a href="/categories/MATLAB/" class="button">
+            MATLAB
+        </a>
+        
+
+</div>
+<a href="/posts/matlabyyp02/" class="post-entry__link">
+    看到这条的你一定是个大帅比吧！
+</a>
                     </div>
-                    <div class="nav__next">
+                    
+                    <div class='post-entry content-card'>
+                        <div class="post-entry__header">
+    
+</div>
+<div class="post-entry__content">
+    <h2 class="post-entry__title">
+        第五章  数据分析与多项式计算[未完成]
+    </h2>
+    
+                    <p>
                         
-                            <a href="/posts/464c/" class="nav__link">
-                                <div>
-                                    <div class="nav__label">
-                                        下一篇
-                                    </div>
-                                    <div class="nav__title">
-                                        第六章  数组
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24">
-                                        <path
-                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
-                                            fill="#808080"></path>
-                                    </svg>
-                                </div>
-                            </a>
-                            
+                    </p>
+                    
+</div>
+<div class="post-entry__meta">
+    <a href="/archives/2022/02/" class="post-meta__date button">
+        创建于  2022-02-20 14:51:40 星期日
+    </a>
+    
+        <span class="separate-dot"></span><a href="/categories/MATLAB/" class="button">
+            MATLAB
+        </a>
+        
+
+</div>
+<a href="/posts/matlab05/" class="post-entry__link">
+    看到这条的你一定是个大帅比吧！
+</a>
                     </div>
-                </div>
+                    
+                    <div class='post-entry content-card'>
+                        <div class="post-entry__header">
+    
+</div>
+<div class="post-entry__content">
+    <h2 class="post-entry__title">
+        第四章 绘图[未完成]
+    </h2>
+    
+                    <p>
+                        
+                    </p>
+                    
+</div>
+<div class="post-entry__meta">
+    <a href="/archives/2022/02/" class="post-meta__date button">
+        创建于  2022-02-20 14:08:35 星期日
+    </a>
+    
+        <span class="separate-dot"></span><a href="/categories/MATLAB/" class="button">
+            MATLAB
+        </a>
+        
+
+</div>
+<a href="/posts/matlab04/" class="post-entry__link">
+    看到这条的你一定是个大帅比吧！
+</a>
+                    </div>
+                    
+                    <div class='post-entry content-card'>
+                        <div class="post-entry__header">
+    
+</div>
+<div class="post-entry__content">
+    <h2 class="post-entry__title">
+        第三章  程序流程控制[未完成]
+    </h2>
+    
+                    <p>
+                        
+                    </p>
+                    
+</div>
+<div class="post-entry__meta">
+    <a href="/archives/2022/02/" class="post-meta__date button">
+        创建于  2022-02-20 12:01:14 星期日
+    </a>
+    
+        <span class="separate-dot"></span><a href="/categories/MATLAB/" class="button">
+            MATLAB
+        </a>
+        
+
+</div>
+<a href="/posts/matlab03/" class="post-entry__link">
+    看到这条的你一定是个大帅比吧！
+</a>
+                    </div>
+                    
+                    <div class='post-entry content-card'>
+                        <div class="post-entry__header">
+    
+</div>
+<div class="post-entry__content">
+    <h2 class="post-entry__title">
+        应用篇-第一章  图形对象句柄[未完成]
+    </h2>
+    
+                    <p>
+                        本章节讲了集合的格式与特点与常用操作. 
+
+                    </p>
+                    
+</div>
+<div class="post-entry__meta">
+    <a href="/archives/2022/02/" class="post-meta__date button">
+        创建于  2022-02-19 19:03:06 星期六
+    </a>
+    
+        <span class="separate-dot"></span><a href="/categories/MATLAB/" class="button">
+            MATLAB
+        </a>
+        
+
+</div>
+<a href="/posts/matlab09/" class="post-entry__link">
+    看到这条的你一定是个大帅比吧！
+</a>
+                    </div>
+                    
+                        
+        </div>
+        
                 
 </main>
                 <footer class="footer">

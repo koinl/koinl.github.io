@@ -18,12 +18,12 @@
             <link rel="mask-icon" href="/img/icon.png">
             
                 <title>
-                    消息, 继承与多态 | 
+                    第三章  程序流程控制[未完成] | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="学习">
-                <link rel="canonical" href="http://example.com/posts/20c3/">
+                <meta name="keywords" content="MATLAB">
+                <link rel="canonical" href="http://example.com/posts/matlab03/">
                 <link rel="stylesheet" href="/css/main.css">
                 <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
                 <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
@@ -59,15 +59,15 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            消息, 继承与多态
+            第三章  程序流程控制[未完成]
         </h1>
         <div class="post-title__meta">
-            <a href="/archives/2022/01/" class="post-meta__date button">
-                创建于  2022-01-29 11:20:11 星期六
+            <a href="/archives/2022/02/" class="post-meta__date button">
+                创建于  2022-02-20 12:01:14 星期日
             </a>
             
-                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
-                    学习
+                <span class="separate-dot"></span><a href="/categories/MATLAB/" class="button">
+                    MATLAB
                 </a>
                 
 
@@ -77,7 +77,7 @@
     
         <aside class="post-side">
             <div class="post-side__toc">
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="toc-text">方法重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB-1"><span class="toc-text">抽象类</span></a></li></ol>
+                
             </div>
         </aside>
         <a class="btn-toc button" id="btn-toc" tabindex="0">
@@ -91,7 +91,7 @@
             <div class="toc-title">
                 文章目录
             </div>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="toc-text">方法重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB-1"><span class="toc-text">抽象类</span></a></li></ol>
+            
         </div>
         
 
@@ -104,37 +104,22 @@
                 
                     <div class="wenzhangmulu">文章目录</div>
                     <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
-                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="toc-text">方法重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB-1"><span class="toc-text">抽象类</span></a></li></ol>
+                        
                     </div>
 
                     
                         <div class="post__content">
-                            <p>本篇讲述了消息,多态与继承两种机制,抽象类接口与包.<span id="more"></span><br></p>
-<h1 id="重点内容"><a href="#重点内容" class="headerlink" title="重点内容"></a>重点内容</h1><ol>
-<li>什么是消息?什么是公有消息和私有消息?</li>
-<li>什么是多态机制?重载与覆盖有什么区别?</li>
-<li>什么是继承机制?它的特征是什么?</li>
-<li>什么是抽象类?使用时要注意哪些问题?</li>
-<li>什么是接口?使用时要注意哪些问题?</li>
-<li>什么是包?包的作用是哪些?</li>
-</ol>
-<h1 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h1><p>消息就是属性与方法的引用.<br>当有一批消息同属于一个对象时,由外界发送给对象的消息称为公有消息;由对象发送给自身的消息称为私有消息,外界不必了解它.</p>
-<h1 id="多态机制"><a href="#多态机制" class="headerlink" title="多态机制"></a>多态机制</h1><p>多态指同名而不同内容的方法共存的情况.<br>当在同一类中定义,称为重载.<br>当在父子类中定义,称为覆盖.</p>
-<h1 id="继承机制"><a href="#继承机制" class="headerlink" title="继承机制"></a>继承机制</h1><p>继承使子类具有父类(超类,基类)的全部或部分的属性和方法.<br>继承提供了软件复用功能与多重继承(接口)机制.<br>属性的继承,方法的继承<br>属性的隐藏,方法的覆盖<br>this用来访问当前对象,super用来访问当前对象的直接父类对象.</p>
-<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><p>1.声明抽象类注意事项:<br>不能与final修饰一个类<br>2.定义抽象类注意事项:<br>抽象类的属性, 构造方法, 和非抽象方法与类相同;<br>抽象类的抽象方法前须修饰符;且只能修饰public.protected<br>3.类实现抽象方法注意事项:<br>必须实现构造方法和抽象方法</p>
-<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>1.定义接口注意事项:<br>接口的属性默认终静态;接口的所有方法是公共抽象方法.<br>无构造方法;<br>2.类实现接口注意事项:<br>方法必须显式使用public符.</p>
-<h1 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h1><ol>
-<li>实现方法的重载.</li>
-<li>实现方法的覆盖.</li>
-<li>实现属性的隐藏.</li>
-<li>实现抽象类, 多重继承机制.<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class C_name extends Parent_name&#123;</span><br><span class="line">	int a = 4;</span><br><span class="line">	double add(double x) &#123;</span><br><span class="line">		return x + 4;</span><br><span class="line">	&#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Parent_name p = new Parent_name();</span><br><span class="line">		C_name c = new C_name();</span><br><span class="line">		//重载</span><br><span class="line">		System.out.println(p.add(2.3)+&quot; &quot;+p.add(2, 10));</span><br><span class="line">		// 依次为属性的继承, 属性的隐藏, 方法的继承, 方法的覆盖</span><br><span class="line">		System.out.println(p.a+&quot; &quot;+c.a+&quot; &quot;+p.add(2.3)+&quot; &quot;+c.add(2.3));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Parent_name &#123;</span><br><span class="line">	int a = 3;</span><br><span class="line">	double b = 5;</span><br><span class="line"></span><br><span class="line">	double add(double x) &#123;</span><br><span class="line">		return x + 3;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	int add(int x, int y) &#123;</span><br><span class="line">		return x + y;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="抽象类-1"><a href="#抽象类-1" class="headerlink" title="抽象类"></a>抽象类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//抽象类</span><br><span class="line">abstract class Add_info &#123;</span><br><span class="line">	int x, y;</span><br><span class="line">	Add_info(int x, int y) &#123;</span><br><span class="line">		this.x = x;</span><br><span class="line">		this.y = y;</span><br><span class="line">	&#125;</span><br><span class="line">	abstract double show_add();</span><br><span class="line">&#125;</span><br><span class="line">//接口</span><br><span class="line">interface Del_info &#123;   // 接口不能有构造方法</span><br><span class="line">	double show_del();   // 接口的方法自动为公共抽象方法</span><br><span class="line">&#125;</span><br><span class="line">//继承抽象类与接口</span><br><span class="line">class AddInt extends Add_info implements Del_info&#123;	// 类必须实现继承的抽象方法</span><br><span class="line">	AddInt(int x, int y) &#123;</span><br><span class="line">		super(x, y);</span><br><span class="line">	&#125;</span><br><span class="line">	double show_add() &#123;</span><br><span class="line">		return x + y;</span><br><span class="line">	&#125;</span><br><span class="line">	public double show_del() &#123;   // 继承的接口方法必须是公共方法</span><br><span class="line">		return x - y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class C_name &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		AddInt a = new AddInt(25, 25);</span><br><span class="line">		System.out.println(a.show_add());	// 消息就是属性或方法的引用</span><br><span class="line">		System.out.println(a.show_del()); </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+                            <h1 id="第三章-程序流程控制"><a href="#第三章-程序流程控制" class="headerlink" title="第三章  程序流程控制"></a>第三章  程序流程控制</h1><ol>
+<li>顺序结构<br>a &#x3D; input(‘请输入a值: ‘);<br>b &#x3D; input(‘请输入b值: ‘);<br>c &#x3D; input(‘请输入c值: ‘);<br>d &#x3D; b * b - 4 * a * c;<br>x &#x3D; [(-b + sqrt(d)) &#x2F; (2 * a), (-b - sqrt(d)) &#x2F; (2 * a)];<br>disp([‘x1的值是: ‘,num2str(x(1)), ‘, x2的值是: ‘,num2str(x(2))])</li>
+<li>选择结构<br>% 需求: x在1<del>9内, y &#x3D; x + 10; x在10</del>29内, y &#x3D; x - 10; 否则, 输出错误信息<br>x &#x3D; input(‘请输入x的值: ‘);<br>if x &gt;&#x3D; 1 &amp;&amp; x &lt;&#x3D; 9<br> y &#x3D; x + 10;<br> y<br>elseif x &gt;&#x3D; 10 &amp;&amp; x &lt;&#x3D; 19<br> y &#x3D; x - 10;<br> y<br>else<br> disp(‘错误信息’)<br>end</li>
+<li>多分支结构<br>c &#x3D; input(‘请输入一个字符’,’s’);<br>if c &gt;&#x3D; ‘a’ &amp;&amp; c &lt;&#x3D; ‘z’<br> disp(upper(c))<br>elseif c &gt;&#x3D; ‘0’ &amp;&amp; c &lt;&#x3D; ‘9’<br> disp([‘最终结果是: ‘,num2str(str2double(c) * 2)])<br>end</li>
+<li>switch<br>% 需求: n &#x2F; 10, 当结果为0, 输出零蛋; 当结果为1, 2,<br>% 输出他们的乘4; 当结果为3, 4, 5, 输出’最终结果是: 开平方’<br>% 当结果为5~9, 输出开根号, 当结果为10+, 输出错误信息<br>n &#x3D; input(‘请输入想要输入的值: ‘);<br>switch rem(n, 10)<br> case 0<br> disp(‘零蛋’);<br> case {1, 2}<br> disp(n * 4);<br> case {3, 4, 5}<br> disp([‘最终结果是: ‘,num2str(sqrt(n))]);<br> case num2cell(6:9)<br> n &#x3D; n &#x2F; 2;<br> otherwise<br> disp(‘错误信息’);<br>end<br>n</li>
 </ol>
 
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-03-28 21:12:38 星期一
+                                更新于  2022-07-23 21:05:41 星期六
                             </p>
                         </div>
 
@@ -144,7 +129,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/28cc/" class="nav__link">
+                            <a href="/posts/matlab04/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -158,7 +143,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        封装机制与访问控制
+                                        第四章 绘图[未完成]
                                     </div>
                                 </div>
                             </a>
@@ -166,13 +151,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/18bf/" class="nav__link">
+                            <a href="/posts/matlab09/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        递归调用
+                                        应用篇-第一章  图形对象句柄[未完成]
                                     </div>
                                 </div>
                                 <div>

@@ -18,12 +18,12 @@
             <link rel="mask-icon" href="/img/icon.png">
             
                 <title>
-                    第三章  程序流程控制[未完成] | 
+                    第四章 绘图[未完成] | 
                         锦鲤未离
                 </title>
 
-                <meta name="keywords" content="学习">
-                <link rel="canonical" href="http://example.com/posts/4dff/">
+                <meta name="keywords" content="MATLAB">
+                <link rel="canonical" href="http://example.com/posts/matlab04/">
                 <link rel="stylesheet" href="/css/main.css">
                 <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
                 <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
@@ -59,15 +59,15 @@
 
     <div class="post-title">
         <h1 class="post-title__text">
-            第三章  程序流程控制[未完成]
+            第四章 绘图[未完成]
         </h1>
         <div class="post-title__meta">
             <a href="/archives/2022/02/" class="post-meta__date button">
-                创建于  2022-02-20 12:01:14 星期日
+                创建于  2022-02-20 14:08:35 星期日
             </a>
             
-                <span class="separate-dot"></span><a href="/categories/%E5%AD%A6%E4%B9%A0/" class="button">
-                    学习
+                <span class="separate-dot"></span><a href="/categories/MATLAB/" class="button">
+                    MATLAB
                 </a>
                 
 
@@ -77,7 +77,7 @@
     
         <aside class="post-side">
             <div class="post-side__toc">
-                
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2"><span class="toc-text">二维图形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A22"><span class="toc-text">二维图形2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E5%9B%BE%E5%BD%A2"><span class="toc-text">三维图形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%90%E5%87%BD%E6%95%B0%E7%BB%98%E5%9B%BE"><span class="toc-text">隐函数绘图</span></a></li></ol>
             </div>
         </aside>
         <a class="btn-toc button" id="btn-toc" tabindex="0">
@@ -91,7 +91,7 @@
             <div class="toc-title">
                 文章目录
             </div>
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2"><span class="toc-text">二维图形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A22"><span class="toc-text">二维图形2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E5%9B%BE%E5%BD%A2"><span class="toc-text">三维图形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%90%E5%87%BD%E6%95%B0%E7%BB%98%E5%9B%BE"><span class="toc-text">隐函数绘图</span></a></li></ol>
         </div>
         
 
@@ -104,23 +104,27 @@
                 
                     <div class="wenzhangmulu">文章目录</div>
                     <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
-                        
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2"><span class="toc-text">二维图形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A22"><span class="toc-text">二维图形2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E5%9B%BE%E5%BD%A2"><span class="toc-text">三维图形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%90%E5%87%BD%E6%95%B0%E7%BB%98%E5%9B%BE"><span class="toc-text">隐函数绘图</span></a></li></ol>
                     </div>
 
                     
                         <div class="post__content">
-                            <p>哈哈大家好啊~点击more一起阅读吧!<span id="more"></span><br></p>
-<h1 id="第三章-程序流程控制"><a href="#第三章-程序流程控制" class="headerlink" title="第三章  程序流程控制"></a>第三章  程序流程控制</h1><ol>
-<li>顺序结构<br>a &#x3D; input(‘请输入a值: ‘);<br>b &#x3D; input(‘请输入b值: ‘);<br>c &#x3D; input(‘请输入c值: ‘);<br>d &#x3D; b * b - 4 * a * c;<br>x &#x3D; [(-b + sqrt(d)) &#x2F; (2 * a), (-b - sqrt(d)) &#x2F; (2 * a)];<br>disp([‘x1的值是: ‘,num2str(x(1)), ‘, x2的值是: ‘,num2str(x(2))])</li>
-<li>选择结构<br>% 需求: x在1<del>9内, y &#x3D; x + 10; x在10</del>29内, y &#x3D; x - 10; 否则, 输出错误信息<br>x &#x3D; input(‘请输入x的值: ‘);<br>if x &gt;&#x3D; 1 &amp;&amp; x &lt;&#x3D; 9<br> y &#x3D; x + 10;<br> y<br>elseif x &gt;&#x3D; 10 &amp;&amp; x &lt;&#x3D; 19<br> y &#x3D; x - 10;<br> y<br>else<br> disp(‘错误信息’)<br>end</li>
-<li>多分支结构<br>c &#x3D; input(‘请输入一个字符’,’s’);<br>if c &gt;&#x3D; ‘a’ &amp;&amp; c &lt;&#x3D; ‘z’<br> disp(upper(c))<br>elseif c &gt;&#x3D; ‘0’ &amp;&amp; c &lt;&#x3D; ‘9’<br> disp([‘最终结果是: ‘,num2str(str2double(c) * 2)])<br>end</li>
-<li>switch<br>% 需求: n &#x2F; 10, 当结果为0, 输出零蛋; 当结果为1, 2,<br>% 输出他们的乘4; 当结果为3, 4, 5, 输出’最终结果是: 开平方’<br>% 当结果为5~9, 输出开根号, 当结果为10+, 输出错误信息<br>n &#x3D; input(‘请输入想要输入的值: ‘);<br>switch rem(n, 10)<br> case 0<br> disp(‘零蛋’);<br> case {1, 2}<br> disp(n * 4);<br> case {3, 4, 5}<br> disp([‘最终结果是: ‘,num2str(sqrt(n))]);<br> case num2cell(6:9)<br> n &#x3D; n &#x2F; 2;<br> otherwise<br> disp(‘错误信息’);<br>end<br>n</li>
-</ol>
+                            <h1 id="第四章-绘图"><a href="#第四章-绘图" class="headerlink" title="第四章 绘图"></a>第四章 绘图</h1><h2 id="二维图形"><a href="#二维图形" class="headerlink" title="二维图形"></a>二维图形</h2><ul>
+<li>绘制方法: ploy(x, y)</li>
+<li>辅助操作</li>
+<li>图形标注:标题(title), 轴说明(x, ylabel), 标记图例(legend)</li>
+<li>坐标控制:轴范围(axis), 网格线(grid), 边框(box)</li>
+<li>图形保持:hold</li>
+<li>窗口分割:subplot<h2 id="二维图形2"><a href="#二维图形2" class="headerlink" title="二维图形2"></a>二维图形2</h2></li>
+<li>极坐标图: polar</li>
+<li>条形图: bar</li>
+<li>饼图: pie<h2 id="三维图形"><a href="#三维图形" class="headerlink" title="三维图形"></a>三维图形</h2>需生成平面网格坐标<br>meshgrid<br>ploy3, mesh, surf<h2 id="隐函数绘图"><a href="#隐函数绘图" class="headerlink" title="隐函数绘图"></a>隐函数绘图</h2>ezplot</li>
+</ul>
 
                         </div>
                         <div class="post-footer__meta">
                             <p>
-                                更新于  2022-03-28 21:12:38 星期一
+                                更新于  2022-07-23 21:06:05 星期六
                             </p>
                         </div>
 
@@ -130,7 +134,7 @@
                 <div class="nav">
                     <div class="nav__prev">
                         
-                            <a href="/posts/a85/" class="nav__link">
+                            <a href="/posts/matlab05/" class="nav__link">
                                 <div>
                                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="24">
@@ -144,7 +148,7 @@
                                         上一篇
                                     </div>
                                     <div class="nav__title">
-                                        第四章 绘图[未完成]
+                                        第五章  数据分析与多项式计算[未完成]
                                     </div>
                                 </div>
                             </a>
@@ -152,13 +156,13 @@
                     </div>
                     <div class="nav__next">
                         
-                            <a href="/posts/9e15/" class="nav__link">
+                            <a href="/posts/matlab03/" class="nav__link">
                                 <div>
                                     <div class="nav__label">
                                         下一篇
                                     </div>
                                     <div class="nav__title">
-                                        应用篇-第一章  图形对象句柄[未完成]
+                                        第三章  程序流程控制[未完成]
                                     </div>
                                 </div>
                                 <div>

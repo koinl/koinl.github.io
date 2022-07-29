@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+
+    
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <link rel="shortcut icon" href="/img/icon.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
+            <link rel="mask-icon" href="/img/icon.png">
+            
+                <title>
+                    第三章  存储和逻辑卷管理 | 
+                        锦鲤未离
+                </title>
+
+                <meta name="keywords" content="Linux">
+                <link rel="canonical" href="http://example.com/posts/linux03/">
+                <link rel="stylesheet" href="/css/main.css">
+                <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
+                <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
+                <link rel="stylesheet" href="/css/dark.css">
+                <script src="/js/darkmode.js"></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button" aria-label="回到首页" title="回到首页">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+
+                <a href="javaScript:void(0);" id="btn-toggle-dark" aria-label="夜间模式"
+                    title="夜间模式">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </a>
+
+                
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第三章  存储和逻辑卷管理
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/06/" class="post-meta__date button">
+                创建于  2022-06-09 11:18:06 星期四
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/Linux/" class="button">
+                    Linux
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="toc-text">一. 存储管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-text">1. 磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-text">1) 查看磁盘分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0%E5%88%86%E5%8C%BA"><span class="toc-text">2) 添加分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E5%88%86%E5%8C%BA"><span class="toc-text">3) 删除分区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD%E4%B8%8E%E5%8D%B8%E8%BD%BD"><span class="toc-text">2. 磁盘挂载与卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD"><span class="toc-text">1) 磁盘挂载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A3%81%E7%9B%98%E5%8D%B8%E8%BD%BD"><span class="toc-text">2) 磁盘卸载</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA"><span class="toc-text">二. 交换分区</span></a></li></ol>
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                文章目录
+            </div>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="toc-text">一. 存储管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-text">1. 磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-text">1) 查看磁盘分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0%E5%88%86%E5%8C%BA"><span class="toc-text">2) 添加分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E5%88%86%E5%8C%BA"><span class="toc-text">3) 删除分区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD%E4%B8%8E%E5%8D%B8%E8%BD%BD"><span class="toc-text">2. 磁盘挂载与卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD"><span class="toc-text">1) 磁盘挂载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A3%81%E7%9B%98%E5%8D%B8%E8%BD%BD"><span class="toc-text">2) 磁盘卸载</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA"><span class="toc-text">二. 交换分区</span></a></li></ol>
+        </div>
+        
+
+            <article class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                </div>
+
+                
+                    <div class="wenzhangmulu">文章目录</div>
+                    <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="toc-text">一. 存储管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-text">1. 磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-text">1) 查看磁盘分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0%E5%88%86%E5%8C%BA"><span class="toc-text">2) 添加分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E5%88%86%E5%8C%BA"><span class="toc-text">3) 删除分区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD%E4%B8%8E%E5%8D%B8%E8%BD%BD"><span class="toc-text">2. 磁盘挂载与卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD"><span class="toc-text">1) 磁盘挂载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A3%81%E7%9B%98%E5%8D%B8%E8%BD%BD"><span class="toc-text">2) 磁盘卸载</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA"><span class="toc-text">二. 交换分区</span></a></li></ol>
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <h2 id="一-存储管理"><a href="#一-存储管理" class="headerlink" title="一. 存储管理"></a>一. 存储管理</h2><h3 id="1-磁盘分区"><a href="#1-磁盘分区" class="headerlink" title="1. 磁盘分区"></a>1. 磁盘分区</h3><h4 id="1-查看磁盘分区"><a href="#1-查看磁盘分区" class="headerlink" title="1) 查看磁盘分区"></a>1) 查看磁盘分区</h4><p>fdisk -l<br>lsblk -f</p>
+<h4 id="2-添加分区"><a href="#2-添加分区" class="headerlink" title="2) 添加分区"></a>2) 添加分区</h4><p>fdisk &#x2F;dev&#x2F;sda，n，p，4，↲，+512M，w，partprobe</p>
+<h4 id="3-删除分区"><a href="#3-删除分区" class="headerlink" title="3) 删除分区"></a>3) 删除分区</h4><p>fdisk &#x2F;dev&#x2F;sda，d，2，w，partprobe</p>
+<h3 id="2-磁盘挂载与卸载"><a href="#2-磁盘挂载与卸载" class="headerlink" title="2. 磁盘挂载与卸载"></a>2. 磁盘挂载与卸载</h3><h4 id="1-磁盘挂载"><a href="#1-磁盘挂载" class="headerlink" title="1) 磁盘挂载"></a>1) 磁盘挂载</h4><p>注：所挂载目录需存在<br>mkfs -t ext4 &#x2F;dev&#x2F;sda4<br>mount &#x2F;dev&#x2F;sda4 &#x2F;sta&#x2F;knl</p>
+<h4 id="2-磁盘卸载"><a href="#2-磁盘卸载" class="headerlink" title="2) 磁盘卸载"></a>2) 磁盘卸载</h4><p>umount &#x2F;dev&#x2F;sda4</p>
+<h2 id="二-交换分区"><a href="#二-交换分区" class="headerlink" title="二. 交换分区"></a>二. 交换分区</h2><p>fdisk &#x2F;dev&#x2F;sda，n…，t 82 w，partprobe<br>mkswap &#x2F;dev&#x2F;sda6<br>swapon &#x2F;dev&#x2F;sda6<br>vi &#x2F;etc&#x2F;fstab<br>&#x2F;dev&#x2F;hda6 swap swap defaults 0 0<br>mount -a</p>
+<p>or</p>
+<p>dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;opt&#x2F;swapfile bs&#x3D;1M count&#x3D;1000 (bs blocksize ，每个块大小为1M.count&#x3D;2048。则总大小为2G的文件。创建一个1G的文件作为交换分区使用)<br>mkswap &#x2F;opt&#x2F;swapfile<br>swapon &#x2F;opt&#x2F;swapfile<br>vi &#x2F;etc&#x2F;fstab<br>&#x2F;opt&#x2F;swapfile swap swap defaults 0 0<br>mount -a</p>
+<p>LVM 是 Logical Volume Manager 的简称，中文就是逻辑卷管理。<br><img src="https://img-blog.csdnimg.cn/20190807200211507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg2MzM2MQ==,size_16,color_FFFFFF,t_70"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sda n... t 4 8e w    # 硬盘分区，分区id设置为8e </span><br><span class="line">pvcreate /dev/sda4    # 把物理分区建立物理卷</span><br><span class="line">vgcreate -s 4MB vg /dev/sda4 /dev/sda5    # 把物理卷整合为卷组,-s PE 大小：指定 PE 的大小，单位可以是 MB,GB,TB 等。如果不写默认 PE 大小事 4MB</span><br><span class="line">    vgreduce vg /dev/sda5    # 添加减少卷组里的物理卷</span><br><span class="line">lvcreate -L 512M -n lv vg    # 卷组划分为逻辑卷,-L 容量：指定逻辑卷大小，单位 MB，GB，TB 等，-l 个数：按照 PE 个数指定逻辑卷大小，这个参数需要换算容量，太麻烦</span><br><span class="line">    lvresize -L +1M /dev/vg/lv    # 调整逻辑卷的大小。lvdisplay&#x27;s LV Size: 513M -&gt;大小改变了，但是 df -h /disklvm/&#x27;s 文件系统：/dev/mapper/scvg-userlv 的容量：512M</span><br><span class="line">    resize2fs /dev/vg/lv    #df -h /disklvm/&#x27;s 文件系统：/dev/mapper/scvg-userlv 的容量：513M</span><br><span class="line">    # 挂载</span><br><span class="line">mount /dev/vg/lv /挂载目录/    # 挂载目录需存在且已格式化。mkdir /挂载目录/    mkfs -t ext4 /dev/vg/lv</span><br></pre></td></tr></table></figure>
+
+<p>4.删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/vg/lv    # 卸载挂载</span><br><span class="line">e2fsck -f /dev/dd/yy    # 卸载文件系统</span><br><span class="line">lvremove /dev/vg/lv    # 删除逻辑卷</span><br><span class="line">vgremove vg    # 删除卷组</span><br><span class="line">pvremove /dev/sda4    # 删除物理卷</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">任务</th>
+<th align="center">PV</th>
+<th align="center">VG</th>
+<th align="center">LV</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">创建</td>
+<td align="center">create</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">删除</td>
+<td align="center">remove</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">显示详细属性</td>
+<td align="center">display</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">扫描列表</td>
+<td align="center">s</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">显示简单信息（不常用）</td>
+<td align="center">scan</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">扩展</td>
+<td align="center">-</td>
+<td align="center">extend</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">缩减</td>
+<td align="center">-</td>
+<td align="center">reduce</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-06-25 10:11:32 星期六
+                            </p>
+                        </div>
+
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/linux04/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第五章  用户和组管理
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/linux02/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第二章  进程管理
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/page_friends">Koi_NL·友链页</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+    <script>
+        !
+            function () {
+                function n(n, e, t) {
+                    return n.getAttribute(e) || t
+                }
+                function e(n) {
+                    return document.getElementsByTagName(n)
+                }
+                function t() {
+                    var t = e("script"),
+                        o = t.length,
+                        i = t[o - 1];
+                    return {
+                        l: o,
+                        z: n(i, "zIndex", -1),
+                        o: n(i, "opacity", .5),
+                        c: n(i, "color", "180,103,205"),
+                        n: n(i, "count", 156)
+                    }
+                }
+                function o() {
+                    a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                }
+                function i() {
+                    r.clearRect(0, 0, a, c);
+                    var n, e, t, o, m, l;
+                    s.forEach(function (i, x) {
+                        for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+                            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                    }),
+                        x(i)
+                }
+                var a, c, u, m = document.createElement("canvas"),
+                    d = t(),
+                    l = "c_n" + d.l,
+                    r = m.getContext("2d"),
+                    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                        function (n) {
+                            window.setTimeout(n, 1e3 / 45)
+                        },
+                    w = Math.random,
+                    y = {
+                        x: null,
+                        y: null,
+                        max: 2e4
+                    };
+                m.id = l,
+                    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+                    e("body")[0].appendChild(m),
+                    o(),
+                    window.onresize = o,
+                    window.onmousemove = function (n) {
+                        n = n || window.event,
+                            y.x = n.clientX,
+                            y.y = n.clientY
+                    },
+                    window.onmouseout = function () {
+                        y.x = null,
+                            y.y = null
+                    };
+                for (var s = [], f = 0; d.n > f; f++) {
+                    var h = w() * a,
+                        g = w() * c,
+                        v = 2 * w() - 1,
+                        p = 2 * w() - 1;
+                    s.push({
+                        x: h,
+                        y: g,
+                        xa: v,
+                        ya: p,
+                        max: 6e3
+                    })
+                }
+                u = s.concat([y]),
+                    setTimeout(function () {
+                        i()
+                    },
+                        100)
+            }();
+    </script>
+
+    
+</body>
+
+
+</html>

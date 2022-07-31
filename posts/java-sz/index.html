@@ -347,7 +347,38 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
     <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+    <script type="text/javascript">$(".highlight").wrap("<div class='code-wrapper' style='position:relative'></div>");
+        !function (e, t, a) {
+            var initCopyCode = function () {
+                var copyHtml = '';
+                copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+                copyHtml += '  <i class="fa fa-clipboard"></i><span>复制</span>';
+                copyHtml += '</button>';
+                $(".highlight .code").before(copyHtml);
+                var clipboard = new ClipboardJS('.btn-copy', {
+                    target: function (trigger) {
+                        return trigger.nextElementSibling;
+                    }
+                });
+                clipboard.on('success', function (e) {
+                    e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制成功</span>"
+                    setTimeout(function () {
+                        e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制</span>"
+                    }, 1000)
+
+                    e.clearSelection();
+                });
+                clipboard.on('error', function (e) {
+                    e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制失败</span>"
+                    setTimeout(function () {
+                        e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制</span>"
+                    }, 1000)
+                    e.clearSelection();
+                });
+            }
+            initCopyCode();
+        }(window, document);
+    </script>
     <script>
         !
             function () {

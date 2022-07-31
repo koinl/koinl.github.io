@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/img/icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
+    <link rel="mask-icon" href="/img/icon.png">
+    
+        <title>
+            『post.categories』
+                第七章  网络基础 | 
+                    锦鲤未离
+        </title>
+
+        <meta name="keywords" content="Linux">
+        <link rel="canonical" href="http://example.com/posts/linux06/">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
+        <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
+        <link rel="stylesheet" href="/css/dark.css">
+        <script src="/js/darkmode.js"></script>
+        
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button" aria-label="回到首页" title="回到首页">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+
+                <a href="javaScript:void(0);" id="btn-toggle-dark" aria-label="夜间模式"
+                    title="夜间模式">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </a>
+
+                
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第七章  网络基础
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/06/" class="post-meta__date button">
+                创建于  2022-06-02 10:17:29 星期四
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/Linux/" class="button">
+                    Linux
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#systemctl-%E5%91%BD%E4%BB%A4"><span class="toc-text">systemctl 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-text">主机名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ping"><span class="toc-text">ping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#traceroute"><span class="toc-text">traceroute</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip"><span class="toc-text">ip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87"><span class="toc-text">任务目标</span></a></li></ol>
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                文章目录
+            </div>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#systemctl-%E5%91%BD%E4%BB%A4"><span class="toc-text">systemctl 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-text">主机名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ping"><span class="toc-text">ping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#traceroute"><span class="toc-text">traceroute</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip"><span class="toc-text">ip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87"><span class="toc-text">任务目标</span></a></li></ol>
+        </div>
+        
+
+            <article class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                </div>
+
+                
+                    <div class="wenzhangmulu">文章目录</div>
+                    <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#systemctl-%E5%91%BD%E4%BB%A4"><span class="toc-text">systemctl 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-text">主机名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ping"><span class="toc-text">ping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#traceroute"><span class="toc-text">traceroute</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip"><span class="toc-text">ip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87"><span class="toc-text">任务目标</span></a></li></ol>
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <p>&lt;注: 网卡设备均以设备 ens33 举例子&gt;<br>关于 Linux 的网络配置, 可分为配置网络 IP 临时 [ifconfig, ip] 与 永久 [nmcli, 网络链接配置文件]。<br>临时本篇暂且不论，只论永久。<br>网络配置文件仅作为了解性内容，重点在于 nmcli 的处理。</p>
+<p>网络配置文件: vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33</p>
+<p>网卡设备本身</p>
+<p>网卡的连接配置<br>##nmcli</p>
+<table>
+<thead>
+<tr>
+<th align="center">用法</th>
+<th align="center">简写</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">nmcli device status</td>
+<td align="center">nmcli d s</td>
+<td align="center">设备状况</td>
+</tr>
+<tr>
+<td align="center">nmcli device show ens33</td>
+<td align="center">nmcli d show ens33</td>
+<td align="center">显示 ens33 状态</td>
+</tr>
+<tr>
+<td align="center">nmcli d disconnect &#x2F; connect ens33</td>
+<td align="center">nmcli d d &#x2F; c ens33</td>
+<td align="center">ens33 设备禁 &#x2F; 启用</td>
+</tr>
+<tr>
+<td align="center">nmcli connection show</td>
+<td align="center">nmcli c s</td>
+<td align="center">显示连接</td>
+</tr>
+<tr>
+<td align="center">nmcli connection show ens33</td>
+<td align="center">nmcli c s ens33</td>
+<td align="center">显示 ens33 网络连接</td>
+</tr>
+<tr>
+<td align="center">nmcli connection down &#x2F; up ens33</td>
+<td align="center">nmcli c d &#x2F; u ens33</td>
+<td align="center">禁 &#x2F; 启用连接配置</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">nucli 参数</th>
+<th align="center">配置文件参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ipv4.method manval &#x2F; auto</td>
+<td align="center">BOOTPROTO&#x3D;none or static &#x2F; dhcp</td>
+<td align="center">动态分配 IP</td>
+</tr>
+<tr>
+<td align="center">ifname ens33</td>
+<td align="center">DEVICE&#x3D;ens33</td>
+<td align="center">指定网卡名称</td>
+</tr>
+<tr>
+<td align="center">ipv4.addresses 192.168.100.100&#x2F;24</td>
+<td align="center">IPADDR&#x3D;192.168.100.100’&#x2F;n’PREFIX&#x3D;24</td>
+<td align="center">IP 地址与掩码位数</td>
+</tr>
+<tr>
+<td align="center">gw4 192.168.100.1(2?)</td>
+<td align="center">GATEWAY&#x3D;192.168.100.1</td>
+<td align="center">设置网关</td>
+</tr>
+<tr>
+<td align="center">ipv4.dns 8.8.8.8</td>
+<td align="center">DNS0&#x3D;8.8.8.8</td>
+<td align="center">设置 DNS 服务器</td>
+</tr>
+<tr>
+<td align="center">ipv4.dns-search example.com</td>
+<td align="center">DOMAIN&#x3D;example.com</td>
+<td align="center">域名</td>
+</tr>
+<tr>
+<td align="center">connection.autoconnect yes</td>
+<td align="center">ONBOOT&#x3D;yes</td>
+<td align="center">开机自动连接</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>创建名为 conn2 的连接配置, 指定静态 ip 地址, 不自动连接. (分配，类型，地址，网关)<br>nmcli c a ifname ens33 con-name conn2</p>
+</li>
+<li><p>ipv4.method manual type Ethernet ipv4.addresses 192.168.85.136&#x2F;24 gw4 192.168.85.2</p>
+</li>
+<li><p>autoconnect no </p>
+</li>
+<li><p>经查看, 可知 conn2 连接已存在, 但未关联到某个设备上.<br>nmcli c s</p>
+</li>
+<li><p>查看 配置文件 conn2<br>cat &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-conn2</p>
+</li>
+<li><p>首先禁用 ens33 连接, 再启用 conn2 连接. 这就是 两个网络情况下切换网络的方法.<br>nmcli c d ens33<br>nmcli c u conn2</p>
+</li>
+<li><p>可通过查看连接状态了解详情.<br>nmcli c s</p>
+</li>
+<li><p>查看 ens33 设备的状态.<br>nmcli d s<br>nmcli d show ens33</p>
+</li>
+<li><p>修改 conn2 的连接配置, IP为 , DNS 为 , 并设置开机自动启用连接.<br>nmcli c m conn2 ipv4.addresses 192.168.85.59&#x2F;24 ipv4.dns 192.168.85.1 connection.autoconnect yes </p>
+</li>
+<li><p>查看 ifcfg-conn2配置文件的内容<br>cat -n &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-conn2</p>
+</li>
+<li><p>重启网络服务, 使新配置生效.<br>systemctl restart network</p>
+</li>
+<li><p>将网络恢复原先状态<br>nmcli c d conn2</p>
+</li>
+</ul>
+<p>配置文件的修改实际上就是命令: <code>nmcli connection modify</code>. </p>
+<details ><summary>点击显/隐查看网卡设备 ens33 的配置文件参数</summary><div class="fold-content"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet    # 类型</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">BOOTPROTO=dhcp    # 静态 none 或 static, 动态 dhcp</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens33</span><br><span class="line">UUID=6bf39c75-5e3b-4499-af27-7db5c701ea5e</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=no    # 开机自启</span><br><span class="line">IPADDR=192.168.85.121    # IP</span><br><span class="line">PREFIX=24    # 子网掩码, 24 代表 255.255.255.0</span><br><span class="line">DNS1=192.168.85.2    # DNS</span><br><span class="line">IPADDR1=192.168.85.155    # 第二个 IP</span><br><span class="line">NETMASK1=255.255.255.0 # 子网掩码</span><br></pre></td></tr></table></figure></div></details>
+
+<h2 id="systemctl-命令"><a href="#systemctl-命令" class="headerlink" title="systemctl 命令"></a>systemctl 命令</h2><p>systemctl start 服务名<br>stop,status,restart,enable,disable</p>
+<h2 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h2><p>hostname<br>hostname new_name</p>
+<h2 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h2><p>ping -c 3 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a><br>检测 IP 连通性</p>
+<h2 id="traceroute"><a href="#traceroute" class="headerlink" title="traceroute"></a>traceroute</h2><p>traceroute -q 4 <a target="_blank" rel="noopener" href="http://www.38.com/">www.38.com</a></p>
+<h2 id="ip"><a href="#ip" class="headerlink" title="ip"></a>ip</h2><p>ip a show ens33</p>
+<h2 id="任务目标"><a href="#任务目标" class="headerlink" title="任务目标"></a>任务目标</h2><p>配置一台 DHCP 服务器，给局域网中的员工计算机分配 IP 地址，网关，DNS 等信息。局域网中有 30 台计算机，这些计算机里面有 Windows 和 Linux客户端，要求该部门经理使用固定的 IP 地址，其他员工使用动态分配的 IP 地址。</p>
+<p>公司要使用一台最小化安装的 RHEL 7.4 虚拟机来配置 DHCP 服务器，再分别使用两台 Linux 虚拟机作为 DHCP 客户端进行测试。所有虚拟机的网卡连接模式都设置为 NAT 模式，并关闭 VMware 虚拟 DHCP 服务器。虚拟机节点的具体规划如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">主机名</th>
+<th align="center">IP 地址&#x2F;掩码</th>
+<th align="center">MAC 地址</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">dhcp-server</td>
+<td align="center">192.169.200.3&#x2F;24</td>
+<td align="center">00:0C:29:0F:EB:90</td>
+<td align="center">DHCP 服务器（Linux 系统）</td>
+</tr>
+<tr>
+<td align="center">client1</td>
+<td align="center">使用 DHCP 设置 IP 地址</td>
+<td align="center">00:0C:29:B0:74:32</td>
+<td align="center">DHCP 客户端1（Linux 系统）</td>
+</tr>
+<tr>
+<td align="center">client2</td>
+<td align="center">使用 DHCP 设置固定 IP 地址</td>
+<td align="center">00:0C:29:79;E8:9E</td>
+<td align="center">DHCP 客户端2（Linux 系统）</td>
+</tr>
+</tbody></table>
+<p>DHCP 服务器的配置参数如下：<br>(1). DHCP 服务器的 IP 地址为 192.168.200.3&#x2F;24.<br>(2). DHCP 服务器分配给客户端的 IP 地址池是192.168.200.50-99，子网掩码是255.255.255.0，网关地址是 192.168.200.2，DNS 地址为 8.8.8.8。<br>(3). 地址池中的192.168.200.50 保留为静态 IP 地址，分配给固定的客户端2使用。<br>(4). 客户端1使用动态分配的 IP 地址。</p>
+
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-06-23 16:15:12 星期四
+                            </p>
+                        </div>
+
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/linux07/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        安全管理
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/py0nnnpillow/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第某章  PIL 库
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/page_friends">Koi_NL·友链页</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+    <script>
+        !
+            function () {
+                function n(n, e, t) {
+                    return n.getAttribute(e) || t
+                }
+                function e(n) {
+                    return document.getElementsByTagName(n)
+                }
+                function t() {
+                    var t = e("script"),
+                        o = t.length,
+                        i = t[o - 1];
+                    return {
+                        l: o,
+                        z: n(i, "zIndex", -1),
+                        o: n(i, "opacity", .5),
+                        c: n(i, "color", "180,103,205"),
+                        n: n(i, "count", 156)
+                    }
+                }
+                function o() {
+                    a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                }
+                function i() {
+                    r.clearRect(0, 0, a, c);
+                    var n, e, t, o, m, l;
+                    s.forEach(function (i, x) {
+                        for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+                            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                    }),
+                        x(i)
+                }
+                var a, c, u, m = document.createElement("canvas"),
+                    d = t(),
+                    l = "c_n" + d.l,
+                    r = m.getContext("2d"),
+                    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                        function (n) {
+                            window.setTimeout(n, 1e3 / 45)
+                        },
+                    w = Math.random,
+                    y = {
+                        x: null,
+                        y: null,
+                        max: 2e4
+                    };
+                m.id = l,
+                    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+                    e("body")[0].appendChild(m),
+                    o(),
+                    window.onresize = o,
+                    window.onmousemove = function (n) {
+                        n = n || window.event,
+                            y.x = n.clientX,
+                            y.y = n.clientY
+                    },
+                    window.onmouseout = function () {
+                        y.x = null,
+                            y.y = null
+                    };
+                for (var s = [], f = 0; d.n > f; f++) {
+                    var h = w() * a,
+                        g = w() * c,
+                        v = 2 * w() - 1,
+                        p = 2 * w() - 1;
+                    s.push({
+                        x: h,
+                        y: g,
+                        xa: v,
+                        ya: p,
+                        max: 6e3
+                    })
+                }
+                u = s.concat([y]),
+                    setTimeout(function () {
+                        i()
+                    },
+                        100)
+            }();
+    </script>
+
+    
+</body>
+
+
+</html>

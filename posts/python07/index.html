@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/img/icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
+    <link rel="mask-icon" href="/img/icon.png">
+    
+        <title>
+            『post.categories』
+                第七章  文件和数据格式化 | 
+                    锦鲤未离
+        </title>
+
+        <meta name="keywords" content="Python">
+        <link rel="canonical" href="http://example.com/posts/python07/">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
+        <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
+        <link rel="stylesheet" href="/css/dark.css">
+        <script src="/js/darkmode.js"></script>
+        
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button" aria-label="回到首页" title="回到首页">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+
+                <a href="javaScript:void(0);" id="btn-toggle-dark" aria-label="夜间模式"
+                    title="夜间模式">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </a>
+
+                
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第七章  文件和数据格式化
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/07/" class="post-meta__date button">
+                创建于  2022-07-27 08:45:51 星期三
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/Python/" class="button">
+                    Python
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                文章目录
+            </div>
+            
+        </div>
+        
+
+            <article class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                </div>
+
+                
+                    <div class="wenzhangmulu">文章目录</div>
+                    <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
+                        
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <p>7.1文件的使用<br>文件是存储在辅助存储器上的一组数据序列，可以包含任何数据内容。概念上，文件是数据的集合和抽象。文件包括文本文件和二进制文件两种类型。<br>7.1.1文件的类型<br>文本文件一般由单一特定编码的字符组成，如UTF-8编码，内容容易统一展示和阅读。大部分文本文件都可以通过文本编辑软件或文字处理软件创建、修改和阅读。由于文本文件<br>存在编码,所以，它也可以被看作是存储在磁盘上的长字符串，如一个txt 格式的文本文件<br>二进制文件直接由比特О和比特1组成，没有统一的字符编码，文件内部数据的组织格<br>式与文件用途有关。二进制是信息按照非字符但有特定格式形式的文件，如png格式的图片文件、avi格式的视频文件。二进制文件和文本文件最主要的区别在于是否有统一的这符编码。二进制文件没有统一的字符编码，只能当作字节流，而不能看作是字符串<br>无论文件创建为文本文件或者是二进制文件，都可以用“文本文件方式”和“二进制文件方式”打开，但打开后的操作不同。<br>一个文本文件 a.txt，其内容为“全国计算机等级考试”，采用文本方式打开。这里需要将文本文件与Python程序文件放在同一个目录中。<br>采用文本方式读入文件，文件经过编码形成字符串，打印出有含义的字符;采用二进制方式打开文件,文件被解析为字节流。由于存在编码,字符串中的一个字符由多个字节表示。<br>7.1.2文件的打开和关闭<br>Python对文本文件和二进制文件采用统一的操作步骤，即“打开—操作—关闭”，操作系统中的文件默认处于存储状态，首先需要将其打开，使用得当前程序有权操作这个文件，打开不存在的文件系统可以创建这个文件。打开后的文件处于占用状态，此时，另一个进程不能操作这个文件。可以通过一组方法读取文件的内容或向文件写入内容，操作之后需要将文件关闭，关闭将释放对文件的控制使用文件恢复成存储状态，此时，另一进程能够操作这个文件。<br>Python通过open()函数打开一个文件，并返回一个操作这个文件的变量。语法结构:<br>变量名&#x3D;open(文件路径及文件名,打开模式)<br>open()函数有两个参数:文件名和打开模式。文件名可以是文件的实际名字，也可以是包含完整路径的名字。打开模式用于控制使用何种方式打开文件，open()函数提供了7种基本的打开模式。<br>文件的打开模式<br>r 只读模式，如果文件不存在，返回异常FileNotFoundError，默认值<br>w 覆盖写模式，文件不存在则创建，存在则完全覆盖原文件<br>x 创建写模式，文件不存在则创建，存在则返回异常FileExistsError<br>a 追加写模式，文件不存在则创建，存在则在原文件最后追加内容<br>b 二进制文件模式<br>t 文本文件模式，默认值</p>
+<ul>
+<li>与r&#x2F;w&#x2F;x&#x2F;a一同使用，在原功能基础上增加同时读写功能<br>打开模式使用字符串方式表示，根据字符串定义，单引号或者双引号均可。上述打开模式中，r,w,x,a或以和 b,t,+组合使用，形成既表达读写又表达文件模式的方式。</li>
+</ul>
+<p>7.1.3文件的读写<br>根据打开方式不同，文件读写也会根据文本文件或二进制打开方式有所不同。<br>f.read(size&#x3D;-1)：从文件中读入整个文件内容。参数可选，如果给出，读入前size长度的字符串或字节流。<br>f.readline(size&#x3D;-1)：从文件中读入一行内容。参数可选，如果给出，读入该行前size长度的字符串或字节流。<br>f.readlines(hint&#x3D;-1)：从文件中读入所有行，以每行为元素形成一个列表。参数可选，如果给出，读入hint行。<br>f.seek(offset)：改变当前文件操作指针的位置，offset的值:o为文件开头;2为文件结尾。<br>如果文件以文本文件方式打开，则读入字符串;如果文件以二进制方式打开，则读入字节流。<br>如果文件不大，可以一次性将文件内容读入，保存到程序内部变量中。f.read()是最常用的一次性读入文件的函数．其结果是一个字符串。<br>f.write(s)：向文件写入一个字符串或字节流<br>f.writelines(lines)：将一个元素为字符串的列表整体写入文件<br>f.write(s)向文件写入字符串 s，每次写入后，将会记录一个写入指针。该方法可以反复调用，在写入指针后分批写入内容，直至文件被关闭。<br>使用f.write(s)时，要显示地使用”\n”对写入文本进行分行，如果不进行分行，每次写入的字符串会被连接起来。<br>f.writelines(lines)直接将列表类型的各元素连接起来写入文件f。<br>7.2数据组织的维度<br>一组数据在被计算机处理前需要进行一定的组织，表明数据之间的基本关系和逻辑，进而形成“数据的维度”。根据数据的关系不同，数据组织可以分为:一维数据、二维数据和高维数据。<br>7.2.1一维数据<br>一维数据由对等关系的有序或无序数据构成，采用线性方式组织，对应于数学中数组的概念。例如，中国的直辖市列表即可表示为一维数据，一维数据具有线性特点。<br>维数据十分常见，任何表现为序列或集合的内容都可以看作是一维数据。<br>7.2.2二维数据<br>二维数据，也称表格数据，由关联关系数据构成，采用二维表格方式组织，对应于数学中的矩阵，常见的表格都属于二维数据。<br>例如，国家统计局发布的居民消费价格数是二维数据。表格横向包括“指标”“2014年”“2015年”“2016年”，分别表示项目和时间维度，表格纵向为具体指标点，形成了二维数据关系。其中，第一行为说明部分，可以看作是与其他行一致的二维数据一行，也可以看作具数据外的数明部分<br>7.2.3高维数据<br>高维数据由键值对类型的数据构成，采用对象方式组织，可以我层嵌套。<br>高维数据在Web系统中十分常用，作另当今Internet组织内容的主要方式，高维数据衍生出HTML、XML、JSON等具体数据组织的语法结构。<br>以JSON格式为例，下面给出了描述“本书”的高维数据表示形式，其中冒号(:）形成一个键值对，逗号(,）分隔键值对，JSON格式中[]组织各键值对成为一个整体，与“本书”形成高层次的键值对。高维数据相比一维数据和二维数据能表达更加灵活和复杂的数据产系。<br>7.3.1一维数据的表示<br>一维数据是最简单的数据组织类型，幽于是线性结构，在Python 语言中主要采用列表形式表示。例如，中国的直辖市数据可以采用一个列表变量表示。<br>采用列表类型表示一维数据的时候需要注意每个数据的数据类型。7.3.2一维数据的存储<br>一维数据的文件存储有多种方式，总体思路是采用特殊字符分隔各数据。采用存储方法包括如下4种。<br>(1）采用空格分隔元素，列如:<br>(2)采用逗号分隔元素，例如:<br>(3）使用换行分隔元素，例如:<br>(4)  其他特殊符号分割<br>这4种方法中，逗号分隔的存储格式叫作csv格式(Comma-Separated Values，即逗号分隔值)，它是一种通用的、相对简单的文件格式，在商业和科学上广泛应用，大部分编辑器都支持直接读入或保存文件为CSv格式，如 Windows平台上的记事本或微软Office Excel等。存储的文件一般采用.csv为扩展名。<br>一维数据保存成CSV格式后，各元素采用逗号分隔，形成一行，这里的逗号是英文逗号。从Python表示到数据存储，需要将列表对象输出为CSV格式以及CSV格式读入成列表对象。<br>列表对象输出为CSV格式文件方法如下，采用字符串的join()方法最为方便。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list=[]</span><br><span class="line">f=open()</span><br><span class="line">f.write(&#x27;,&#x27;.join(list)+&#x27;\n&#x27;)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<p>7.3.3一维数据的处理<br>对一维数据进行处理首先需要从CSV格式文件读入一维数据,并将其表示为列表对象。需要注意，从CSV文件中获得内容时，最后一个元素后面包含了一个换行符(“‘n”)。对于数据的表达和使用来说，这个换行是多余的，需要采用字符串的strip()方法去掉数据尾部的换行符，进一步使用split()方法以逗号进行分隔。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f=open()</span><br><span class="line">list=f.read().strip(&#x27;\n&#x27;).split(&#x27;,&#x27;)</span><br><span class="line">f.close()</span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
+<p>7.4二维数据的处理<br>7.4.1二维数据的表示<br>二维数据由多个一维数据构成，可以看作是一维数据的组合形式。因此，二维数据可以采用二维列表来表示,即列表的每个元素对应二维数据的一行,这个元素本身也是列表类型,其内部各元素对应这行中的各列值。<br>提示:二维数据的数据类型<br>二维数据一般采用相同的数据类型存储数据，便于操作。<br>尽管在二维数据中存在大量数值，但由于本例中数值所在行或列不都是数字，存在字符文本，因此，将数值统一表示为字符串形式。<br>7.4.2二维数据的存储<br>二维数据由一维数据组成，用CSV格式文件存储。CSV文件的每一行是一维数据，整个CSV文件是一个二维数据。存储以下数据为.csv文件，名称为cpi.csv。<br>二维数据存储为CSV格式，需要将二维列表对象写入CSV格式文件以及将CSV格式读成二维列表对象。<br>二维列表对象输出为CSV格式文件方法如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list=</span><br><span class="line">f=o</span><br><span class="line">for row in list:</span><br><span class="line">    f.write(&#x27;,&#x27;.join(row)+&#x27;\n&#x27;)</span><br><span class="line">f.c</span><br></pre></td></tr></table></figure>
+<p>7.4.3二维数据的处理<br>对二维数据进行处理首先需要从CSV格式文件读入二维数据，并将其表示为二维列表对象。读取CSV格式文件方法如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f=o</span><br><span class="line">list=[]</span><br><span class="line">for line in f:</span><br><span class="line">    list.append(line.strip(&#x27;\n&#x27;).split(&#x27;,&#x27;))</span><br><span class="line">f.c</span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-07-27 09:38:07 星期三
+                            </p>
+                        </div>
+
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/sqlservers/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        三级考试(数据库篇)错题整理(选择题, 填空题篇)
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/python08/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第八章  计算生态
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/page_friends">Koi_NL·友链页</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+    <script>
+        !
+            function () {
+                function n(n, e, t) {
+                    return n.getAttribute(e) || t
+                }
+                function e(n) {
+                    return document.getElementsByTagName(n)
+                }
+                function t() {
+                    var t = e("script"),
+                        o = t.length,
+                        i = t[o - 1];
+                    return {
+                        l: o,
+                        z: n(i, "zIndex", -1),
+                        o: n(i, "opacity", .5),
+                        c: n(i, "color", "180,103,205"),
+                        n: n(i, "count", 156)
+                    }
+                }
+                function o() {
+                    a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                }
+                function i() {
+                    r.clearRect(0, 0, a, c);
+                    var n, e, t, o, m, l;
+                    s.forEach(function (i, x) {
+                        for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+                            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                    }),
+                        x(i)
+                }
+                var a, c, u, m = document.createElement("canvas"),
+                    d = t(),
+                    l = "c_n" + d.l,
+                    r = m.getContext("2d"),
+                    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                        function (n) {
+                            window.setTimeout(n, 1e3 / 45)
+                        },
+                    w = Math.random,
+                    y = {
+                        x: null,
+                        y: null,
+                        max: 2e4
+                    };
+                m.id = l,
+                    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+                    e("body")[0].appendChild(m),
+                    o(),
+                    window.onresize = o,
+                    window.onmousemove = function (n) {
+                        n = n || window.event,
+                            y.x = n.clientX,
+                            y.y = n.clientY
+                    },
+                    window.onmouseout = function () {
+                        y.x = null,
+                            y.y = null
+                    };
+                for (var s = [], f = 0; d.n > f; f++) {
+                    var h = w() * a,
+                        g = w() * c,
+                        v = 2 * w() - 1,
+                        p = 2 * w() - 1;
+                    s.push({
+                        x: h,
+                        y: g,
+                        xa: v,
+                        ya: p,
+                        max: 6e3
+                    })
+                }
+                u = s.concat([y]),
+                    setTimeout(function () {
+                        i()
+                    },
+                        100)
+            }();
+    </script>
+
+    
+</body>
+
+
+</html>

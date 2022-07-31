@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/img/icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
+    <link rel="mask-icon" href="/img/icon.png">
+    
+        <title>
+            『post.categories』
+                『SQL Server』第一章  数据库应用系统开发方法 | 
+                    锦鲤未离
+        </title>
+
+        <meta name="keywords" content="SqlServer">
+        <link rel="canonical" href="http://example.com/posts/sqlserver01/">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
+        <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
+        <link rel="stylesheet" href="/css/dark.css">
+        <script src="/js/darkmode.js"></script>
+        
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button" aria-label="回到首页" title="回到首页">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+
+                <a href="javaScript:void(0);" id="btn-toggle-dark" aria-label="夜间模式"
+                    title="夜间模式">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </a>
+
+                
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            『SQL Server』第一章  数据库应用系统开发方法
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/07/" class="post-meta__date button">
+                创建于  2022-07-17 09:14:49 星期日
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/SqlServer/" class="button">
+                    SqlServer
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E5%88%92%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-text">规划与分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A7%84%E5%88%92%E4%B8%8E%E5%AE%9A%E4%B9%89"><span class="toc-text">系统规划与定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-text">可行性分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%A7%84%E5%88%92"><span class="toc-text">项目规划</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-%E7%AC%AC%E4%BA%8C%E7%AB%A0%E4%BC%9A%E6%B6%89%E5%8F%8A"><span class="toc-text">需求分析:第二章会涉及</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%BC%9A%E6%B6%89%E5%8F%8A"><span class="toc-text">系统设计:第三章会涉及</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%8E%E9%83%A8%E7%BD%B2"><span class="toc-text">实现与部署:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%AE%A1%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4-%E7%AC%AC%E5%8D%81%E7%AB%A0%E4%BC%9A%E6%B6%89%E5%8F%8A"><span class="toc-text">运行管理与维护:第十章会涉及</span></a></li></ol>
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                文章目录
+            </div>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E5%88%92%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-text">规划与分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A7%84%E5%88%92%E4%B8%8E%E5%AE%9A%E4%B9%89"><span class="toc-text">系统规划与定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-text">可行性分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%A7%84%E5%88%92"><span class="toc-text">项目规划</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-%E7%AC%AC%E4%BA%8C%E7%AB%A0%E4%BC%9A%E6%B6%89%E5%8F%8A"><span class="toc-text">需求分析:第二章会涉及</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%BC%9A%E6%B6%89%E5%8F%8A"><span class="toc-text">系统设计:第三章会涉及</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%8E%E9%83%A8%E7%BD%B2"><span class="toc-text">实现与部署:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%AE%A1%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4-%E7%AC%AC%E5%8D%81%E7%AB%A0%E4%BC%9A%E6%B6%89%E5%8F%8A"><span class="toc-text">运行管理与维护:第十章会涉及</span></a></li></ol>
+        </div>
+        
+
+            <article class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                </div>
+
+                
+                    <div class="wenzhangmulu">文章目录</div>
+                    <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E5%88%92%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-text">规划与分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%A7%84%E5%88%92%E4%B8%8E%E5%AE%9A%E4%B9%89"><span class="toc-text">系统规划与定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-text">可行性分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%A7%84%E5%88%92"><span class="toc-text">项目规划</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-%E7%AC%AC%E4%BA%8C%E7%AB%A0%E4%BC%9A%E6%B6%89%E5%8F%8A"><span class="toc-text">需求分析:第二章会涉及</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%BC%9A%E6%B6%89%E5%8F%8A"><span class="toc-text">系统设计:第三章会涉及</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%8E%E9%83%A8%E7%BD%B2"><span class="toc-text">实现与部署:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%AE%A1%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4-%E7%AC%AC%E5%8D%81%E7%AB%A0%E4%BC%9A%E6%B6%89%E5%8F%8A"><span class="toc-text">运行管理与维护:第十章会涉及</span></a></li></ol>
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <h1 id="第一章-数据库应用系统开发方法"><a href="#第一章-数据库应用系统开发方法" class="headerlink" title="第一章  数据库应用系统开发方法"></a>第一章  数据库应用系统开发方法</h1><h1 id="DBS"><a href="#DBS" class="headerlink" title="DBS:"></a>DBS:</h1><h1 id="DBAS"><a href="#DBAS" class="headerlink" title="DBAS:"></a>DBAS:</h1><h1 id="DBAS生命周期-即数据库应用系统生命周期"><a href="#DBAS生命周期-即数据库应用系统生命周期" class="headerlink" title="DBAS生命周期(即数据库应用系统生命周期):"></a>DBAS生命周期(即数据库应用系统生命周期):</h1><h2 id="规划与分析"><a href="#规划与分析" class="headerlink" title="规划与分析"></a>规划与分析</h2><h3 id="系统规划与定义"><a href="#系统规划与定义" class="headerlink" title="系统规划与定义"></a>系统规划与定义</h3><ul>
+<li>任务陈述</li>
+<li>确定任务目标</li>
+<li>确定范围与边界</li>
+<li>确定用户视图<h3 id="可行性分析"><a href="#可行性分析" class="headerlink" title="可行性分析"></a>可行性分析</h3></li>
+<li>技术, 经济, 操作可行性</li>
+<li>开发方案选择<h3 id="项目规划"><a href="#项目规划" class="headerlink" title="项目规划"></a>项目规划</h3></li>
+<li>项目环境</li>
+<li>项目团队</li>
+<li>项目活动</li>
+<li>项目成本预算</li>
+<li>项目进度计划<h2 id="需求分析-第二章会涉及"><a href="#需求分析-第二章会涉及" class="headerlink" title="需求分析:第二章会涉及"></a>需求分析:第二章会涉及</h2></li>
+<li>系统需求 </li>
+<li>DFD:数据流(数据的流入流出)(箭头)处理(数据变换)(矩形框)数据存储(存储数据的地方)(圆角矩形框)外部项(数据的来源和去处)(圆角框)</li>
+<li>数据需求分析 </li>
+<li>功能需求分析:数据处理&#x2F;业务规则</li>
+<li>性能需求分析:响应时间,吞吐量,并发访问用户数,tps代价值</li>
+<li>其他需求分析:安全:防止被非法用户攻击存储:数据总量<h2 id="系统设计-第三章会涉及"><a href="#系统设计-第三章会涉及" class="headerlink" title="系统设计:第三章会涉及"></a>系统设计:第三章会涉及</h2></li>
+<li>概念设计：自下而上的E-R图设计</li>
+<li>逻辑设计：完成数据库关系模式的设计，设计视图和关系模式的完整性约束</li>
+<li>物理设计：将关系模式转换成具体的关系表<h2 id="实现与部署"><a href="#实现与部署" class="headerlink" title="实现与部署:"></a>实现与部署:</h2></li>
+<li>建立数据库结构</li>
+<li>数据装载(数据加载)</li>
+<li>事务和应用程序的编码及测试</li>
+<li>系统集成</li>
+<li>测试与运行</li>
+<li>系统部署<h2 id="运行管理与维护-第十章会涉及"><a href="#运行管理与维护-第十章会涉及" class="headerlink" title="运行管理与维护:第十章会涉及"></a>运行管理与维护:第十章会涉及</h2></li>
+<li>日常维护:备份恢复,完整安全性维护,存储空间管理,并发控制</li>
+<li>系统监控与分析</li>
+<li>系统性能优化调整</li>
+<li>系统进化升级</li>
+</ul>
+<p>数据完整性：实体完整性：primary key<br>参照完整性：foreign key。。。references<br>用户自定义完整性：not null，unique，check</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">项目规划</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">需求分析</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">系统设计</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">实现和部署</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">运行管理与维护</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<table id="main-table" class="mytable">
+            <tbody>
+                <tr>
+                    <th>项目规划：</th>
+                    <th></th>
+                    <th>规划与分析</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>⬇</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>需求分析：</td>
+                    <td>数据项分析</td>
+                    <td>数据流与事务分析</td>
+                    <td>程序需求分析</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>⬇</td>
+                    <td>⬇</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>概念模式设计</td>
+                    <td>系统总体设计</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>系统设计：</td>
+                    <td>⬇</td>
+                    <td>⬇</td>
+                    <td>⬇</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>逻辑模式设计</td>
+                    <td>事务概要设计</td>
+                    <td>程序概要设计</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>⬇</td>
+                    <td>⬇</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>物理模式设计</td>
+                    <td>事务详细设计</td>
+                    <td>程序详细设计</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>⬇</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>系统实现和部署：</td>
+                    <td></td>
+                    <td>系统实现</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>数据转换与加载</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>系统测试，部署与交付</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>⬇</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>系统运行管理与维护：</td>
+                    <td></td>
+                    <td>系统运行维护</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-07-16 11:07:03 星期六
+                            </p>
+                        </div>
+
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/sqlserver08/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        『SQL Server』第八章  数据库后台编程技术
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/sqlserver05/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        『SQL Server』第五章  UML与DBAS
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/page_friends">Koi_NL·友链页</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+    <script>
+        !
+            function () {
+                function n(n, e, t) {
+                    return n.getAttribute(e) || t
+                }
+                function e(n) {
+                    return document.getElementsByTagName(n)
+                }
+                function t() {
+                    var t = e("script"),
+                        o = t.length,
+                        i = t[o - 1];
+                    return {
+                        l: o,
+                        z: n(i, "zIndex", -1),
+                        o: n(i, "opacity", .5),
+                        c: n(i, "color", "180,103,205"),
+                        n: n(i, "count", 156)
+                    }
+                }
+                function o() {
+                    a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                }
+                function i() {
+                    r.clearRect(0, 0, a, c);
+                    var n, e, t, o, m, l;
+                    s.forEach(function (i, x) {
+                        for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+                            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                    }),
+                        x(i)
+                }
+                var a, c, u, m = document.createElement("canvas"),
+                    d = t(),
+                    l = "c_n" + d.l,
+                    r = m.getContext("2d"),
+                    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                        function (n) {
+                            window.setTimeout(n, 1e3 / 45)
+                        },
+                    w = Math.random,
+                    y = {
+                        x: null,
+                        y: null,
+                        max: 2e4
+                    };
+                m.id = l,
+                    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+                    e("body")[0].appendChild(m),
+                    o(),
+                    window.onresize = o,
+                    window.onmousemove = function (n) {
+                        n = n || window.event,
+                            y.x = n.clientX,
+                            y.y = n.clientY
+                    },
+                    window.onmouseout = function () {
+                        y.x = null,
+                            y.y = null
+                    };
+                for (var s = [], f = 0; d.n > f; f++) {
+                    var h = w() * a,
+                        g = w() * c,
+                        v = 2 * w() - 1,
+                        p = 2 * w() - 1;
+                    s.push({
+                        x: h,
+                        y: g,
+                        xa: v,
+                        ya: p,
+                        max: 6e3
+                    })
+                }
+                u = s.concat([y]),
+                    setTimeout(function () {
+                        i()
+                    },
+                        100)
+            }();
+    </script>
+
+    
+</body>
+
+
+</html>

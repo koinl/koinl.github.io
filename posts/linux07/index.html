@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <link rel="shortcut icon" href="/img/icon.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
+            <link rel="mask-icon" href="/img/icon.png">
+            
+                <title>
+                    安全管理 | 
+                        锦鲤未离
+                </title>
+
+                <meta name="keywords" content="Linux">
+                <link rel="canonical" href="http://example.com/posts/linux07/">
+                <link rel="stylesheet" href="/css/main.css">
+                <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
+                <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
+                <link rel="stylesheet" href="/css/dark.css">
+                <script src="/js/darkmode.js"></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button" aria-label="回到首页" title="回到首页">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+
+                <a href="javaScript:void(0);" id="btn-toggle-dark" aria-label="夜间模式"
+                    title="夜间模式">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </a>
+
+                
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            安全管理
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/06/" class="post-meta__date button">
+                创建于  2022-06-09 10:50:03 星期四
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/Linux/" class="button">
+                    Linux
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                文章目录
+            </div>
+            
+        </div>
+        
+
+            <article class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                </div>
+
+                
+                    <div class="wenzhangmulu">文章目录</div>
+                    <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
+                        
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <p>SELinux 模式共分为 3 种：<br>强制模式：Enforcing<br>许可模式：Permissive<br>禁用模式：Disabled</p>
+<details ><summary>点击显/隐</summary><div class="fold-content"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# getenforce    # 显示 SELinux 模式</span><br><span class="line">Enforcing</span><br><span class="line">[root@localhost ~]# setenforce 0    # 修改 SELinux 模式，未对配置文件使用</span><br><span class="line">[root@localhost ~]# getenforce</span><br><span class="line">Permissive</span><br><span class="line">[root@localhost ~]# reboot    # 重启，</span><br><span class="line">[root@localhost koinl]# getenforce    # 失效</span><br><span class="line">Enforcing</span><br><span class="line">[root@localhost koinl]# vi /etc/sysconfig/selinux     # 修改 SELinux 配置文件</span><br><span class="line">[root@localhost koinl]# getenforce    # 重启生效</span><br><span class="line">Enforcing</span><br><span class="line">[root@localhost koinl]# reboot</span><br><span class="line">[root@localhost koinl]# getenforce</span><br><span class="line">Permissive</span><br><span class="line">[root@localhost koinl]# semanage port -l | grep http    # 显示 SELinux 的 http 服务端口</span><br><span class="line">http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010</span><br><span class="line">http_cache_port_t              udp      3130</span><br><span class="line">http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000</span><br><span class="line">pegasus_http_port_t            tcp      5988</span><br><span class="line">pegasus_https_port_t           tcp      5989</span><br><span class="line">[root@localhost koinl]# semanage port -a -t http_cache_port_t -p udp 8888    # 修改第二个端口：增加一个 8888 的端口号</span><br><span class="line">[root@localhost koinl]# semanage port -l | grep http | head -2</span><br><span class="line">http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010</span><br><span class="line">http_cache_port_t              udp      8888, 3130</span><br><span class="line">[root@localhost koinl]# semanage port -d -t http_cache_port_t -p udp 8888    # 修改第二个端口：删除一个 8888 的端口号</span><br><span class="line">[root@localhost koinl]# semanage port -l | grep http | head -2</span><br><span class="line">http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010</span><br><span class="line">http_cache_port_t              udp      3130</span><br></pre></td></tr></table></figure></div></details>
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-06-23 16:15:12 星期四
+                            </p>
+                        </div>
+
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/linux02/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第二章  进程管理
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/linux06/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第七章  网络基础
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/page_friends">Koi_NL·友链页</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+    <script>
+        !
+            function () {
+                function n(n, e, t) {
+                    return n.getAttribute(e) || t
+                }
+                function e(n) {
+                    return document.getElementsByTagName(n)
+                }
+                function t() {
+                    var t = e("script"),
+                        o = t.length,
+                        i = t[o - 1];
+                    return {
+                        l: o,
+                        z: n(i, "zIndex", -1),
+                        o: n(i, "opacity", .5),
+                        c: n(i, "color", "180,103,205"),
+                        n: n(i, "count", 156)
+                    }
+                }
+                function o() {
+                    a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                }
+                function i() {
+                    r.clearRect(0, 0, a, c);
+                    var n, e, t, o, m, l;
+                    s.forEach(function (i, x) {
+                        for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+                            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                    }),
+                        x(i)
+                }
+                var a, c, u, m = document.createElement("canvas"),
+                    d = t(),
+                    l = "c_n" + d.l,
+                    r = m.getContext("2d"),
+                    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                        function (n) {
+                            window.setTimeout(n, 1e3 / 45)
+                        },
+                    w = Math.random,
+                    y = {
+                        x: null,
+                        y: null,
+                        max: 2e4
+                    };
+                m.id = l,
+                    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+                    e("body")[0].appendChild(m),
+                    o(),
+                    window.onresize = o,
+                    window.onmousemove = function (n) {
+                        n = n || window.event,
+                            y.x = n.clientX,
+                            y.y = n.clientY
+                    },
+                    window.onmouseout = function () {
+                        y.x = null,
+                            y.y = null
+                    };
+                for (var s = [], f = 0; d.n > f; f++) {
+                    var h = w() * a,
+                        g = w() * c,
+                        v = 2 * w() - 1,
+                        p = 2 * w() - 1;
+                    s.push({
+                        x: h,
+                        y: g,
+                        xa: v,
+                        ya: p,
+                        max: 6e3
+                    })
+                }
+                u = s.concat([y]),
+                    setTimeout(function () {
+                        i()
+                    },
+                        100)
+            }();
+    </script>
+
+    
+        <script>
+            window.onload = () => {
+                document.querySelectorAll('.sliding-fold').forEach((item) => {
+                    item.querySelector('summary').onclick = () => {
+                        item.classList.toggle("collapsed");
+                        item.classList.toggle("expanded");
+                    };
+                });
+            };
+        </script>
+        
+</body>
+
+
+</html>

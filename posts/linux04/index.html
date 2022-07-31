@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    
+            <meta name="renderer" content="webkit">
+            <meta name="force-rendering" content="webkit">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta name="HandheldFriendly" content="True">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <link rel="shortcut icon" href="/img/icon.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
+            <link rel="mask-icon" href="/img/icon.png">
+            
+                <title>
+                    第五章  用户和组管理 | 
+                        锦鲤未离
+                </title>
+
+                <meta name="keywords" content="Linux">
+                <link rel="canonical" href="http://example.com/posts/linux04/">
+                <link rel="stylesheet" href="/css/main.css">
+                <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
+                <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
+                <link rel="stylesheet" href="/css/dark.css">
+                <script src="/js/darkmode.js"></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button" aria-label="回到首页" title="回到首页">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+
+                <a href="javaScript:void(0);" id="btn-toggle-dark" aria-label="夜间模式"
+                    title="夜间模式">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </a>
+
+                
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第五章  用户和组管理
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/06/" class="post-meta__date button">
+                创建于  2022-06-09 11:18:08 星期四
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/Linux/" class="button">
+                    Linux
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">一. 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text">1. 创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2. 修改用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">3. 删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">4. 修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">5. 查看用户信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-text">二. 组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%BB%84"><span class="toc-text">1. 创建组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%BB%84"><span class="toc-text">2. 修改组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%BB%84"><span class="toc-text">3. 删除组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E7%BB%84"><span class="toc-text">4. 查看组</span></a></li></ol></li></ol>
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                文章目录
+            </div>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">一. 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text">1. 创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2. 修改用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">3. 删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">4. 修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">5. 查看用户信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-text">二. 组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%BB%84"><span class="toc-text">1. 创建组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%BB%84"><span class="toc-text">2. 修改组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%BB%84"><span class="toc-text">3. 删除组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E7%BB%84"><span class="toc-text">4. 查看组</span></a></li></ol></li></ol>
+        </div>
+        
+
+            <article class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                </div>
+
+                
+                    <div class="wenzhangmulu">文章目录</div>
+                    <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">一. 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text">1. 创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2. 修改用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">3. 删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">4. 修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">5. 查看用户信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-text">二. 组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%BB%84"><span class="toc-text">1. 创建组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%BB%84"><span class="toc-text">2. 修改组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%BB%84"><span class="toc-text">3. 删除组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E7%BB%84"><span class="toc-text">4. 查看组</span></a></li></ol></li></ol>
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <p>用户信息一般保存在 &#x2F;etc&#x2F;passwd 与 &#x2F;etc&#x2F;shadow 中; 组信息一般保存在 &#x2F;etc&#x2F;group 与 &#x2F;etc&#x2F;gshadow 中.</p>
+<p>其中, UID 的 <code>koinl:x:1000:1000:koinl:/home/koinl:/bin/bash</code> 分别表示 <code>用户名:密码:UID:GID:用户描述信息:用户主目录:用户默认登录 Shell</code> ;<br>其二, GID 的 <code>koinl:x:1000:</code> 分别表示 <code>组名:密码:GID:组成员</code>.</p>
+<p>在 UID 中, 0 表示超级用户 root, 系统用户 UID 的数字范围为 1<del>499, 普通用户的数字范围为 499</del>65535.<br>在 GID 中, 0 表示超级组 root, 系统组 GID 的数字范围为 1<del>499, 普通组的数字范围为 499</del>65535.</p>
+<p>在下述中, 会阐述下关于增删改用户与组的命令以及修改用户密码的命令.</p>
+<h2 id="一-用户管理"><a href="#一-用户管理" class="headerlink" title="一. 用户管理"></a>一. 用户管理</h2><h3 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1. 创建用户"></a>1. 创建用户</h3><p>useradd om,<br>-u 选项可以指定 UID; -g 选项可以指定 GID 与属组;<br>-G 选项可以指定附属组, -d 选项可以指定主目录.</p>
+<details ><summary>点击显/隐创建用户代码</summary><div class="fold-content"><p>[root@localhost koinl]# useradd -u 1234 -g koinl u1<br>[root@localhost koinl]# id u1<br>uid&#x3D;1234(u1) gid&#x3D;1000(koinl) groups&#x3D;1000(koinl)<br>可以得到创建后的信息: <code>uid=1234(u1) gid=1000(koinl) groups=1000(koinl)</code></p>
+</div></details>
+
+<h3 id="2-修改用户"><a href="#2-修改用户" class="headerlink" title="2. 修改用户"></a>2. 修改用户</h3><p>usermod om,<br>-l 选项仅修改名称 (主目录名称不会改变); -g 选项可以修改 GID; -u 选项可以修改 UID<br>-G 选项可以指定附属组, -d 选项可以指定主目录.</p>
+<details ><summary>点击显/隐修改用户代码</summary><div class="fold-content"><p>已知旧用户信息: <code>uid=1202(koi) gid=1202(koi) groups=1202(koi)</code><br>[root@localhost koinl]# usermod -l KOI -g u1 -u 1220 koi<br>[root@localhost koinl]# id KOI<br>uid&#x3D;1220(KOI) gid&#x3D;1200(u1) groups&#x3D;1200(u1)<br>可以得到修改后的信息: <code>uid=1220(KOI) gid=1200(u1) groups=1200(u1)</code></p>
+</div></details>
+
+<h3 id="3-删除用户"><a href="#3-删除用户" class="headerlink" title="3. 删除用户"></a>3. 删除用户</h3><p>userdel om,<br>-r 选项连同主目录一起删除</p>
+<h3 id="4-修改密码"><a href="#4-修改密码" class="headerlink" title="4. 修改密码"></a>4. 修改密码</h3><p>passwd [om],<br>-d 选项可以设置成为无密码</p>
+<h3 id="5-查看用户信息"><a href="#5-查看用户信息" class="headerlink" title="5. 查看用户信息"></a>5. 查看用户信息</h3><p>关于仅需查看 UID GID 属组, <code>id u1</code> 足矣, 若需要查看详细的用户信息, 查看文件即可.例: <code>cat /etc/passwd | tail -5</code></p>
+<h2 id="二-组管理"><a href="#二-组管理" class="headerlink" title="二. 组管理"></a>二. 组管理</h2><h3 id="1-创建组"><a href="#1-创建组" class="headerlink" title="1. 创建组"></a>1. 创建组</h3><p>groupadd student,<br>-g 选项可以指定 GID;</p>
+<h3 id="2-修改组"><a href="#2-修改组" class="headerlink" title="2. 修改组"></a>2. 修改组</h3><p>groupmod student,<br>-n 选项可以修改名称; -g 选项可以修改 GID;</p>
+<details ><summary>点击显/隐修改组代码</summary><div class="fold-content"><p>已知旧组信息: <code>STUDENT:x:1349:</code><br>[root@localhost koinl]# groupmod -n stu -g 1299 STUDENT<br>[root@localhost koinl]# cat &#x2F;etc&#x2F;group | tail -1<br>stu:x:1299:<br>可以得到修改后的信息: <code>stu:x:1299:</code></p>
+</div></details>
+
+<h3 id="3-删除组"><a href="#3-删除组" class="headerlink" title="3. 删除组"></a>3. 删除组</h3><p>groupdel student, 组中必须无用户</p>
+<h3 id="4-查看组"><a href="#4-查看组" class="headerlink" title="4. 查看组"></a>4. 查看组</h3><p>与查看用户信息类似, 同样使用 <code>cat /etc/group | tail -5</code>即可.</p>
+<blockquote>
+<p>小背诵:<br>用户 user 组 group,<br>增删改 add del mod,<br>用户中, u g 定改 ID, l 改名<br>组中, g 定改 ID, n 改名</p>
+</blockquote>
+
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-06-23 16:17:44 星期四
+                            </p>
+                        </div>
+
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/linux05/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第六章  用户管理
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/linux03/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第三章  存储和逻辑卷管理
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/page_friends">Koi_NL·友链页</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+    <script>
+        !
+            function () {
+                function n(n, e, t) {
+                    return n.getAttribute(e) || t
+                }
+                function e(n) {
+                    return document.getElementsByTagName(n)
+                }
+                function t() {
+                    var t = e("script"),
+                        o = t.length,
+                        i = t[o - 1];
+                    return {
+                        l: o,
+                        z: n(i, "zIndex", -1),
+                        o: n(i, "opacity", .5),
+                        c: n(i, "color", "180,103,205"),
+                        n: n(i, "count", 156)
+                    }
+                }
+                function o() {
+                    a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                }
+                function i() {
+                    r.clearRect(0, 0, a, c);
+                    var n, e, t, o, m, l;
+                    s.forEach(function (i, x) {
+                        for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+                            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                    }),
+                        x(i)
+                }
+                var a, c, u, m = document.createElement("canvas"),
+                    d = t(),
+                    l = "c_n" + d.l,
+                    r = m.getContext("2d"),
+                    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                        function (n) {
+                            window.setTimeout(n, 1e3 / 45)
+                        },
+                    w = Math.random,
+                    y = {
+                        x: null,
+                        y: null,
+                        max: 2e4
+                    };
+                m.id = l,
+                    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+                    e("body")[0].appendChild(m),
+                    o(),
+                    window.onresize = o,
+                    window.onmousemove = function (n) {
+                        n = n || window.event,
+                            y.x = n.clientX,
+                            y.y = n.clientY
+                    },
+                    window.onmouseout = function () {
+                        y.x = null,
+                            y.y = null
+                    };
+                for (var s = [], f = 0; d.n > f; f++) {
+                    var h = w() * a,
+                        g = w() * c,
+                        v = 2 * w() - 1,
+                        p = 2 * w() - 1;
+                    s.push({
+                        x: h,
+                        y: g,
+                        xa: v,
+                        ya: p,
+                        max: 6e3
+                    })
+                }
+                u = s.concat([y]),
+                    setTimeout(function () {
+                        i()
+                    },
+                        100)
+            }();
+    </script>
+
+    
+        <script>
+            window.onload = () => {
+                document.querySelectorAll('.sliding-fold').forEach((item) => {
+                    item.querySelector('summary').onclick = () => {
+                        item.classList.toggle("collapsed");
+                        item.classList.toggle("expanded");
+                    };
+                });
+            };
+        </script>
+        
+</body>
+
+
+</html>

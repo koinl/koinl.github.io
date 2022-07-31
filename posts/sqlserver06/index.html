@@ -346,6 +346,19 @@ Resource：是一个只读数据库，包含了所有系统对象，SQLServer系
                         100)
             }();
     </script>
+
+    
+        <script>
+            window.onload = () => {
+                document.querySelectorAll('.sliding-fold').forEach((item) => {
+                    item.querySelector('summary').onclick = () => {
+                        item.classList.toggle("collapsed");
+                        item.classList.toggle("expanded");
+                    };
+                });
+            };
+        </script>
+        
 </body>
 
 

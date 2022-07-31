@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/img/icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
+    <link rel="mask-icon" href="/img/icon.png">
+    
+        <title>
+            『SqlServer』
+                『SQL Server』考二 | 
+                    锦鲤未离
+        </title>
+
+        <meta name="keywords" content="SqlServer">
+        <link rel="canonical" href="http://example.com/posts/sqlserver2/">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
+        <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
+        <link rel="stylesheet" href="/css/dark.css">
+        <script src="/js/darkmode.js"></script>
+        
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button" aria-label="回到首页" title="回到首页">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+
+                <a href="javaScript:void(0);" id="btn-toggle-dark" aria-label="夜间模式"
+                    title="夜间模式">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </a>
+
+                
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            『SQL Server』考二
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/07/" class="post-meta__date button">
+                创建于  2022-07-18 19:08:39 星期一
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/SqlServer/" class="button">
+                    SqlServer
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%A5%97"><span class="toc-text">第一套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%A5%97"><span class="toc-text">第二套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%A5%97"><span class="toc-text">第三套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E5%A5%97"><span class="toc-text">第五套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E5%A5%97"><span class="toc-text">第七套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A1%A2-%E6%B4%A2"><span class="toc-text">??????????????????????????????????????塢?????????????????? ?洢????</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A5%97"><span class="toc-text">第二十套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B4%A2"><span class="toc-text">?????????????? ????????洢????</span></a></li></ol>
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                文章目录
+            </div>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%A5%97"><span class="toc-text">第一套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%A5%97"><span class="toc-text">第二套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%A5%97"><span class="toc-text">第三套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E5%A5%97"><span class="toc-text">第五套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E5%A5%97"><span class="toc-text">第七套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A1%A2-%E6%B4%A2"><span class="toc-text">??????????????????????????????????????塢?????????????????? ?洢????</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A5%97"><span class="toc-text">第二十套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B4%A2"><span class="toc-text">?????????????? ????????洢????</span></a></li></ol>
+        </div>
+        
+
+            <article class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                </div>
+
+                
+                    <div class="wenzhangmulu">文章目录</div>
+                    <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%A5%97"><span class="toc-text">第一套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%A5%97"><span class="toc-text">第二套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%A5%97"><span class="toc-text">第三套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E5%A5%97"><span class="toc-text">第五套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E5%A5%97"><span class="toc-text">第七套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A1%A2-%E6%B4%A2"><span class="toc-text">??????????????????????????????????????塢?????????????????? ?洢????</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A5%97"><span class="toc-text">第二十套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B4%A2"><span class="toc-text">?????????????? ????????洢????</span></a></li></ol>
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <p>没有8，9，至10（含）</p>
+<h2 id="第一套"><a href="#第一套" class="headerlink" title="第一套"></a>第一套</h2><p>商品表（商品号，商品名，单价）<br>销售表（销售单据号，商品号，销售时间，销售数量，销售单价）。<br>商品号，单价，销售数量，销售单价均为整型<br>请编写查询某年某商品的销售总毛利的存储过程，毛利&#x3D;销售数量<em>（销售单价-单价）<br>要求商品号和年份为输入参数，总毛利用输出参数返回。<br>CREATE PROC p_name @商品号 int,@年份 int,@毛利 int output<br>AS<br>DECLARE @销售量 int,@单价 int,@销售单价 int<br>BEGIN<br>SELECT @单价 &#x3D; 单价 FROM 商品表 WHERE 商品号&#x3D;@商品号<br>SELECT @销售单价&#x3D; 销售单价, @销售量&#x3D; sum(销售数量)FROM 销售表 WHERE<br>@商品号&#x3D;商品号 AND 销售时间&#x3D;@年份<br>IF @单价 IS NULL THEN  &#x2F;<em>有？</em>&#x2F;<br>  ROLLBACK;<br>  RETURN;<br>END IF<br>IF @销售单价 IS NULL THEN&#x2F;<em>卖？</em>&#x2F;<br>  ROLLBACK;<br>  RETURN;<br>END IF<br>SET @毛利&#x3D;(@销售单价-@单价)</em>@销售量<br>end</p>
+<h2 id="第二套"><a href="#第二套" class="headerlink" title="第二套"></a>第二套</h2><p>在SQL Server 2008中，设某数据库中有商品表（商品号，商品名，进货价格)，商品号为主码;销售表（商品号，销售时间，销售数量，销售价格，本次利润)，商品号和销售时间为主码，销售价格为本次销售商品的单价。现要求每当在销售表中插入前4列数据时（假设—次只插入一行数据)，系统自动计算本次销售产生的利润，并将该利润赋给销售表的第5列”本次利润”。请编写实现上述功能的后触发型触发器代码。(10分)<br>CREATE TRIGGER tri_name ON 销售表 FOR INSERT<br>  AS<br>   DECLARE @进价 money, @销量 int,@售价 money,@利润 money<br>   SElECT @进价 &#x3D; 进货价格 FROM 商品表<br>   SELECT @销量 &#x3D; 销售数量,@售价 &#x3D; 销售价格 FROM inserted<br>   SET @利润 &#x3D; @销量*(@售价-@进价)<br>   UPDATE 销售表 SET 本次利润 &#x3D; @利润<br>   WHERE 商品号 IN(SELECT 商品号 FROM inserted)<br>   AND 销售时间 IN(SELECT 销售时间 FROM inserted)<br>END</p>
+<h2 id="第三套"><a href="#第三套" class="headerlink" title="第三套"></a>第三套</h2><p>设在SQL Server 2008某数据库中，已建立了四个文件组: fg1、fg2、fg3和fg4，以及一个分区函数RangePF1。RangePF1的定义代码如下:<br>CREATE PARTITION FUNCTION RangePF1(int)AS RANGE LEFT FOR VALUES(100,200,300)<br>(1)请基于RangePF1创建一个分区方案RangePS1，每个分区对应一个文件组。(5分)<br>(2）请使用RangePS1创建一个分区表PartitionT(Gid, GoodName, Price)，该表基于Gid列创建分区。其中Gid: int类型，取值大于等于1; GoodName:统一字符编码可变长类型，最多可存储20个汉字;Price:定点小数类型，小数部分1位，整数部分到千位。(5分)<br>[][创建分区方案 方案名 as 分区 函数名 to （文件组）]<br>[][CREATE TABLE tb_name （）on 方案名（Gid）]<br>1:<br>create partition scheme RangePS1<br>as partition RangePF1<br>to(fg1,fg2,fg3,fg4)<br>2:<br>create table orders<br>(<br>GID int identity(1,1) primary key,<br>GoodName varchar(40),<br>Price numeric(5,1)<br>)<br>on RangePS1(GID)</p>
+<h2 id="第五套"><a href="#第五套" class="headerlink" title="第五套"></a>第五套</h2><p>设有图书管理数据库，包含三张表:图书明细表(图书编号，图书类别，图书名称，作者，出版社，出版日期，定价);读者表（借书证号，姓名，系别，办证日期);借出信息表（借出编号，借书证号，图书编号，借书日期);完成下列操作:(10分)定义一个多语句表值函数，用于查询学生借书情况，只需提供参数:借书证号，就可以通过调用函数返回此学生的借书情况，若有借书籍，则返回所借书籍的编号、书籍名称、定价和借书日期;若没有在借书籍，则返回记录为空。设函数名为: f_BorrowBook(@jszh char(20))。</p>
+<p>CREATE FUNCTION f_BorrowBook(@jszh char(20))<br>RETURNS @jsqkb TABLE(书籍编号 char(20),书籍名称 char(50),定价 float,借书日期 datetime)<br>AS<br>BEGIN<br>INSERT INTO @jsqkb<br>SELECT图书明细表.图书编号,图书名称,定价,借出信息表.借书日期 FROM 借出信息表,图书明细表<br>WHERE 借出信息表.图书编号&#x3D;图书明细表.图书编号 AND 借出信息表.借书证号&#x3D;@jszh<br>RETURN<br>END</p>
+<h2 id="第七套"><a href="#第七套" class="headerlink" title="第七套"></a>第七套</h2><p>BORROWER：<br>借书证号  姓名  系名  班级<br>12011106 张三 计算机 12-1<br>12011107 李四 计算机 12-1<br>12012113 王五 语文 12-2</p>
+<p>LOANS??<br>借书证号  图书馆登记号  借书日期<br>12011106 T001001 2012.01.02<br>12012113 T001026 2013.02.06</p>
+<p>BOOKS??<br>索书号 书名  作者 图书登记号 出版社 价格<br>TP311.1 数据库 李明 T001001 人民 19.00<br>TP311.2 二级C语言 王珊 T001026 科学 32.00<br>1.检索至少借了五本书的同学借书证号，姓名，系名，借书数量<br>2.检索借书和王五同学所借图书的任意一本相同的学牲姓名，系名，书名和借书日期<br>SELECT LOANS.借书证号,姓名,系名,COUNT(<em>) AS 借书数量<br>FROM BORROWER,LOANS<br>WHERE BORROWER.借书证号&#x3D;LOANS.借书证号<br>GROUP BY LOANS.借书证号,姓名,系名<br>HAVING COUNT(</em>)&gt;&#x3D;5;</p>
+<p>SELECT 姓名,系名,书名,借书日期<br>FROM  BORROWER,LOANS , BOOKS<br>WHERE<br> BORROWER.借书证号&#x3D;LOANS.借书证号 AND LOANS.图书馆登记号&#x3D;BOOKS.图书馆登记号<br>AND 索书号 IN<br>(SELECT 索书号 FROM BORROWER,LOANS,BOOKS<br>WHERE BORROW.借书证号&#x3D;LOANS.借书证号<br>AND LOANS.图书馆登记号&#x3D;BOOKS.图书馆登记号<br>AND 姓名&#x3D;”王五”)<br>group by 姓名,系名,书名,借书日期<br>having 姓名 !&#x3D;’王五’</p>
+<h2 id="塢-洢"><a href="#塢-洢" class="headerlink" title="??????????????????????????????????????塢?????????????????? ?洢????"></a>??????????????????????????????????????塢?????????????????? ?洢????</h2><p>CREATE TABLE 商品表(<br>商品号 char(10) PRIMARY KEY,<br>商品名 varchar(40),<br>类别 varchar(20),<br>进货单价 int,<br>销售总量 int default 0)<br>CREATE TABLE 销售表(<br>商品号 char(10) REFERENCES 商品表(商品号),<br>销售时间 datetime,<br>销售数量 int,<br>销售单价 int,<br>PRIMARY KEY(商品号,销售时间))<br>9.12.创建存储过程:指定类别的每种商品今年的销售总数量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create proc p_name @lb varchar(20)</span><br><span class="line">as</span><br><span class="line">select 商品名, (select sum(销售数量) from 销售表 a </span><br><span class="line">where a.商品号=b.商品号 and year(销售时间)=year(getdate())) as 销售总数量</span><br><span class="line">from 商品表 b</span><br><span class="line">where b.类别=@lb</span><br></pre></td></tr></table></figure>
+<p>8.11.创建存储过程:指定类别的每种商品今年的销售总金额</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create proc p_name @lb varchar(20)</span><br><span class="line">as</span><br><span class="line">select 商品名, (select sum(销售数量*销售单价) from 销售表 a</span><br><span class="line">where a.商品号=b.商品号 and year(销售时间)=year(getdate())) as 销售总金额</span><br><span class="line">from 商品表 b</span><br><span class="line">where b.类别=@lb</span><br></pre></td></tr></table></figure>
+<p>13.创建存储过程:指定类别的每种商品去年的销售总数量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create proc p_name @lb varchar(20)</span><br><span class="line">as</span><br><span class="line">select a.商品号,商品名,sum(销售数量) as 销售总数量</span><br><span class="line">from 商品表 a join 销售表 b</span><br><span class="line">on a.商品号=b.商品号</span><br><span class="line">where year(销售时间)=year(dateadd(year,-1,getdate()))</span><br><span class="line">and 类别=@lb</span><br><span class="line">group by a.商品号,商品名</span><br></pre></td></tr></table></figure>
+<p>17.创建存储过程:指定日期范围每种商品的销售总数量,包括未销售的商品.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create proc p1 @start_date date, @end_date date</span><br><span class="line">as</span><br><span class="line">select 商品表.商品号,sum(销售数量) from 商品表</span><br><span class="line">left join 销售表 on 商品表.商品号=销售表.商品号</span><br><span class="line">where 销售时间 between @start_date and @end_date</span><br><span class="line">group by 商品表.商品号</span><br></pre></td></tr></table></figure>
+<p>19.创建存储过程:指定商品号的商品销售总数量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create proc p1 @model varchar(10),@total int output</span><br><span class="line">as</span><br><span class="line">set @total=(select sum(销售数量) from 销售表 s </span><br><span class="line">join 商品表 c on s.商品号=c.商品号</span><br><span class="line">where 商品号=@model)</span><br></pre></td></tr></table></figure>
+<p>14.创建存储过程:指定类别的每个商品的销售总利润,包括未销售的(值为0)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create proc p_Profit @lb char(10)</span><br><span class="line">as</span><br><span class="line">select 商品表.商品号,</span><br><span class="line">case</span><br><span class="line">when 销售表.商品号 is null then 0</span><br><span class="line">else sum((销售单价-进货单价)*数量)</span><br><span class="line">end as 销售总利润</span><br><span class="line">from 商品表 left join 销售表 on 商品表.商品号=销售表.商品号</span><br><span class="line">where 类别=@lb</span><br><span class="line">group by 商品表.商品号</span><br></pre></td></tr></table></figure>
+<p>16.标量函数:指定商品号返回销售总金额</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create function dbo.f_TotalQty(@GoodID char)</span><br><span class="line">returns int</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">return(select sum(销售数量*销售单价)from 商品表 join 销售表</span><br><span class="line">on 商品表.商品号=销售表.商品号</span><br><span class="line">where 商品号=@GoodID)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>4.多语句表值函数: 返回类别参数的每种商品在2012年的销售总利润,并降序输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create function f_Profit(@lb char(10))</span><br><span class="line">returns @ProfitTable table(商品号 char(10),总利润 int)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">insert into @ProfitTable</span><br><span class="line">select a.商品号,sum(销售数量*(销售单价-进货单价)) as 总利润</span><br><span class="line">from 销售表 a join 商品表 b on a.商品号=b.商品号</span><br><span class="line">where a.商品号 in(select 商品号 from 商品表 where 类别=@lb)</span><br><span class="line">group by a.商品号</span><br><span class="line">order by 总利润 desc</span><br><span class="line">return @ProfitTable</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>10.6.多语句表值函数：统计指定年份中每个商品的销售总额</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create function fun_name(@year int)</span><br><span class="line">returns @fun_name table(商品号 char(10),销售总金额 int)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">insert into @fun_name</span><br><span class="line">select a.商品号,sum(a.销售单价*b.销售数量) from 商品表 a</span><br><span class="line">join 销售表 b on a.商品号=b.商品号</span><br><span class="line">where year(b.销售时间)=@year</span><br><span class="line">group by a.商品号</span><br><span class="line">return</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>15.18.创建触发器:每当在销售表中插入一条销售记录, 修改商品表中对应商品的销售总量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create trigger tri_name on 销售表 for insert</span><br><span class="line">as</span><br><span class="line">update 商品表</span><br><span class="line">set 销售总量=商品表.销售总量+(select 销售数量 from inserted)</span><br><span class="line">where 商品号 in(select 商品号 from inserted)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create trigger tri_name on 销售表 after insert</span><br><span class="line">as</span><br><span class="line">declare @Sales_Amount int</span><br><span class="line">set @Sales_Amount=(select 销售数量 from inserted)</span><br><span class="line">update 商品表 set 销售总量=商品表.销售总量+@Sales_Amount</span><br><span class="line">where 商品号 in (select 商品号 from inserted)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<h2 id="第二十套"><a href="#第二十套" class="headerlink" title="第二十套"></a>第二十套</h2><p>CREATE TABLE 出租表(<br>房屋号 char(10),<br>出租日期 datetime,<br>租期 int not null, –月数<br>到期日期 datetime,<br>PRIMARY KEY(房屋号,出租日期));<br>创建触发器:每当在出租表插入一行数据(房屋号,出租日期,租期),自动计算到期日期<br>CREATE TRIGGER tri ON 出租表 FOR insert<br>AS<br>update 出租表 SET 到期日期 &#x3D; dateadd(month,租期,出租日期)<br>WHERE 房屋号 &#x3D; (SELECT 房屋号 FROM inserted )<br>and 出租日期&#x3D;(select 出租日期 from inserted)</p>
+<h2 id="洢"><a href="#洢" class="headerlink" title="?????????????? ????????洢????"></a>?????????????? ????????洢????</h2><p>create table 房屋表(<br>房屋号 char(10) primary key,<br>房屋地址 char(20) not null,<br>面积 int,<br>月租金 int<br>)<br>create table 租贷表(<br>房屋号 char(10),<br>租贷日期 datetime,<br>租贷月数 int not null,<br>本次总租金 int,<br>primary key(房屋号,租贷日期),<br>foreign key(房屋号) references 房屋表(房屋号)<br>)<br>创建触发器:每当在租贷表插入一行数据（房屋号，租贷日期，租贷月数），计算本次月租金</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create trigger tri_name on 租贷表 for insert</span><br><span class="line">as</span><br><span class="line">declare @x int </span><br><span class="line">set @x=(select 月租金 from 房屋表 where 房屋号=</span><br><span class="line">(select 房屋号 from inserted))</span><br><span class="line">update 租贷表 set 本次月租金=租贷月数*@x</span><br><span class="line">from 租贷表 a join 房屋表 b on a.房屋号=b.房屋号</span><br><span class="line">and a.租贷日期=b.租贷日期</span><br></pre></td></tr></table></figure>
+<p>创建存储过程：输入房屋号，计算历史租金总和</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create proc p1 @room char(10),@total int output</span><br><span class="line">as</span><br><span class="line">set @total=(select sum(租贷月数*月租金) from 房屋表</span><br><span class="line">join 租贷表 on 房屋表.房屋号=租贷表.房屋号</span><br><span class="line">where a.房屋号=@room)</span><br></pre></td></tr></table></figure>
+
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-07-25 09:22:31 星期一
+                            </p>
+                        </div>
+
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/sqlserver3/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        『SQL Server』考三
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/sqlserver12/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        『SQL Server』第十二章  备份与恢复数据库
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/page_friends">Koi_NL·友链页</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+    <script>
+        !
+            function () {
+                function n(n, e, t) {
+                    return n.getAttribute(e) || t
+                }
+                function e(n) {
+                    return document.getElementsByTagName(n)
+                }
+                function t() {
+                    var t = e("script"),
+                        o = t.length,
+                        i = t[o - 1];
+                    return {
+                        l: o,
+                        z: n(i, "zIndex", -1),
+                        o: n(i, "opacity", .5),
+                        c: n(i, "color", "180,103,205"),
+                        n: n(i, "count", 156)
+                    }
+                }
+                function o() {
+                    a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                }
+                function i() {
+                    r.clearRect(0, 0, a, c);
+                    var n, e, t, o, m, l;
+                    s.forEach(function (i, x) {
+                        for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+                            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                    }),
+                        x(i)
+                }
+                var a, c, u, m = document.createElement("canvas"),
+                    d = t(),
+                    l = "c_n" + d.l,
+                    r = m.getContext("2d"),
+                    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                        function (n) {
+                            window.setTimeout(n, 1e3 / 45)
+                        },
+                    w = Math.random,
+                    y = {
+                        x: null,
+                        y: null,
+                        max: 2e4
+                    };
+                m.id = l,
+                    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+                    e("body")[0].appendChild(m),
+                    o(),
+                    window.onresize = o,
+                    window.onmousemove = function (n) {
+                        n = n || window.event,
+                            y.x = n.clientX,
+                            y.y = n.clientY
+                    },
+                    window.onmouseout = function () {
+                        y.x = null,
+                            y.y = null
+                    };
+                for (var s = [], f = 0; d.n > f; f++) {
+                    var h = w() * a,
+                        g = w() * c,
+                        v = 2 * w() - 1,
+                        p = 2 * w() - 1;
+                    s.push({
+                        x: h,
+                        y: g,
+                        xa: v,
+                        ya: p,
+                        max: 6e3
+                    })
+                }
+                u = s.concat([y]),
+                    setTimeout(function () {
+                        i()
+                    },
+                        100)
+            }();
+    </script>
+
+    
+</body>
+
+
+</html>

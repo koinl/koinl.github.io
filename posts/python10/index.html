@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/img/icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
+    <link rel="mask-icon" href="/img/icon.png">
+    
+        <title>
+            『Python』
+                第十章  第三方库概览 | 
+                    锦鲤未离
+        </title>
+
+        <meta name="keywords" content="Python">
+        <link rel="canonical" href="http://example.com/posts/python10/">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
+        <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
+        <link rel="stylesheet" href="/css/dark.css">
+        <script src="/js/darkmode.js"></script>
+        
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="app">
+        <header class="header">
+    <div class="header__left">
+        <a href="/" class="button" aria-label="回到首页" title="回到首页">
+            <span class="logo__text">🏠</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+
+                <a href="javaScript:void(0);" id="btn-toggle-dark" aria-label="夜间模式"
+                    title="夜间模式">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </a>
+
+                
+    </div>
+</header>
+    
+            <main class="main">
+    
+
+    <div class="post-title">
+        <h1 class="post-title__text">
+            第十章  第三方库概览
+        </h1>
+        <div class="post-title__meta">
+            <a href="/archives/2022/07/" class="post-meta__date button">
+                创建于  2022-07-26 20:19:47 星期二
+            </a>
+            
+                <span class="separate-dot"></span><a href="/categories/Python/" class="button">
+                    Python
+                </a>
+                
+
+        </div>
+    </div>
+
+    
+        <aside class="post-side">
+            <div class="post-side__toc">
+                
+            </div>
+        </aside>
+        <a class="btn-toc button" id="btn-toc" tabindex="0">
+            <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+        <div class="toc-menus" id="toc-menus">
+            <div class="toc-title">
+                文章目录
+            </div>
+            
+        </div>
+        
+
+            <article class="post post__with-toc content-card">
+                <div class="post__header">
+                    
+                </div>
+
+                
+                    <div class="wenzhangmulu">文章目录</div>
+                    <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;">
+                        
+                    </div>
+
+                    
+                        <div class="post__content">
+                            <p>10.1Python第三方库的获取和安装<br>Python第三方库依照安装方式灵活性和难易程序有3个方法，这三个方法是: pip工具安装、自定义安装、文件安装。<br>10.1.1pip工具安装<br>最常用且最高效的Python第三方库安装方式是采用pip工具安装。pip是Python官方提供并维护的在线第三方库安装工具。对于Python3.x版本环境，可以采用 pip3命令代替pip命令专为Python3.x版本安装第三方库。<br>使用pip安装第三方库需要联网。<br>安装语法:<br>pip install库名<br>10.1.2自定义安装<br>自定义安装指按照第三方库提供的步骤和方式安装。第三方库都有主页用于维护库的代码和文档。科学计算用的 numpy 的官方主页是:<a target="_blank" rel="noopener" href="http://numpy.org.浏览网页找到下载链接.http//scipy.org/scipylib/download.html%E3%80%82%E8%BF%9B%E8%80%8C%E6%A0%B9%E6%8D%AE%E6%8F%90%E7%A4%BA%E6%AD%A5%E9%AA%A4%E5%AE%89%E8%A3%85%E3%80%82">http://numpy.org。浏览网页找到下载链接。http://scipy.org/scipylib/download.html。进而根据提示步骤安装。</a><br>自定义安装一般适用于在pip中尚无登记或安装失败的第三方库。<br>10.1.3文件安装<br>由于Python某些第三方库仅提供源代码，通过pip下载文件后无法在 Windows系统编译安装，会导致第三方库安装失败。在 Windows平台下所遇到无法安装第三方库的问题大多属于这类<br>10.1.4pip工具使用<br>除了进行第三方库安装之外，pip工具能对第三方库进行基本的维护。执行pip-h 将列出pip 常用的子命令。<br>pip支持安装(install&gt;、下载( download)、卸载( uninstall&gt;、列表(list)、查看(show)、查找(search）等一系列安装和维护子命令。<br>pip 的uninstall子命令可以卸载一个已经安装的第三方库。<br>10.2PyInstaller库概述<br>PyIlnstaller是一个十分有用的 Python第三方库，它能够在 Windows、Linux、MacOS等操作系统下将Python源文件打包、变成直接可运行的可执行文件。<br>通过对源文件打包，Python程序可以在没有安装Python 的环境中运行，也可以作为一个独立文件方便传递和管理。PyInstaller需要在命令行下用pip工具安装。<br>pip install Pylnstaller<br>pip指令可以将PyInstaller 库自动安装到Python 解释器目录，与pip或pip3命令路径相同，可以直接在命令行调用。<br>Pylnstaller针对不同操作系统打包生成的可执行文件都不同。<br>10.3PyInstaller库与程序打包<br>使用PyInstaller库对Python源文件打包十分简单。语法结构:<br>Pyinstaller源文件名<br>执行完毕后，源文件所在目录将生成dist和 build两个文件夹。其中，build目录是PyInstaller存储临时文件的目录，可以安全删除。最终的打包程序在dist内部与源文件同中的目录中。目录中其他文件是可执行文件的动态链接库。<br>可以通过-F参数对Python源文件生成一个独立的可执行文件。<br>pyinstaller -F a.py<br>执行后在dist目录中出了a.exe文件，没有任何依赖库，执行它即可运行程序。使用Pylnstaller库需要注意以下问题:<br>文件路径不能出现空格和英文句号(.)源文件必须是UTF_8编码，暂时不支持其他编码类型。<br>pyinstaller命令的常用参数<br>-h、–help：查看帮助<br>–clean：清理打包过程中的临时文件<br>-D，–onedir：默认值，生成dist目录<br>-F，–onefile：在 dist文件夹中只能生成独立的打包文件<br>-i&lt;图标文件名.ico&gt;：指定打包程序使用的图标icon文件<br>pyinstaller命令不需要在Python源文件中增加代码，只需要通过命令进行打包即可。</p>
+<p>10.4jieba库概述<br>由于中文文本的单词不是通过空格或者标点符号分割,中文及类似语言存在一个重要的“分词”问题。<br>jieba是Python 中一个重要的第三方中文分词函数库，能够将一段中文文本分割成中文词语的序列。jieba 库需要通过pip指令安装。<br>pip installer jieba<br>jieba 库的分词原理是利用一个中文词库，将待分词的内容与分词词库进行比对，通过图结构和动态规划方法找到最大概率的词组。除了分词，jieba还提供增加自定义中文单词的功能。<br>jieba库支持三种分词模式:精确模式，将句子最精确地切开，适合文本分析;全模式，把句子中所有可以成词的词语都扫描出来,速度非常快,但是不能解决歧义;搜索引擎模式，在精确模式基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>对中文分词来说，jieba只需要一行代码。(英文文本不存在分词问题)<br>10.5jieba库与中文分词<br>jieba 库主要提供中文分词功能，可以辅助自定义分词词典。<br>jieba库常用的分词函数<br>jieba.lcut(s)：精确模式，返回一个列表类型<br>jieba.lcut(s,cut_all&#x3D;True)：全模式，返回一个列表类型<br>jieba.lcut_for_search(s)：搜索引擎模式，返回一个列表类型<br>jieba.add_word(w)：向分词字典中增加新词w<br>jieba.lcut(s)是最常用的中文分词函数，用于精确模式，即将字符串分割成等量的中文词组，返回结果是列表类型。<br>jieba.lcut(s,cut_all&#x3D;True)用于全模式，即将字符串的所有分词可能均列出来，返回结果是列表类型，冗余性最大。<br>相比精确模式，全模式会找到所有分词可能，比如“计算机”被分词为3个可能词语“计算”、“计算机”、“算机”。<br>Jieba.lcut_for_search(s)返回搜索引掌候式，首先执行精确模式，在对其中长词进一步切分获得最终结果。<br>相比精确模式，其中长词“计算机”被再次分词成“计算”、“算机”、“计算机”三个词语，存在一定冗余。<br>提示:精确模式因为不产生冗余，最为常用。<br>搜索引擎模式更倾向于寻找短诃语，这种方式具有一定冗余度，但相比全模式较少。<br>3种分词模式如何选择?看需求<br>如果希望对文本准确分词，不产生冗余，只能选择jieba.Icut(s)函数<br>希望对文本分词更准确，不漏掉仕何可能的分词结果，选用全模式。没想好怎么用，可以使用搜索引擎模式。<br>jieba.add word()函数，用来向jieba词库增加新的单词。<br>10.6wordcloud 库概述<br>数据展示的方式多种多样，传统的统计图尽管很“科学”，但略显古板。尤其对于文本来说，更加直观、带有一定艺术感的展示效果需要很大，对于这类需求，词云特有的展示方式深得人心。<br>词云以词语为基本单元,根据其在文本中出现的频率设计不同大小以形成视觉上的不同效果，形成“关键云层”或“关键词渲染”，从而使用读者只要“一瞥”即可领略文本的主旨。这种展示方式已经成为文本展示的样板。<br>Wordcloud库是专门用于根据文本生成词云的Python第三方库，十分常用且有趣。提示:词去<br>能够将文本转变成词云，也是一种必备能力。<br>有关wordcloud库的详细介绍可访问<a target="_blank" rel="noopener" href="https://amueller.github.io/word">https://amueller.github.io/word</a> cloud&#x2F;安装wordcloud库在 Windows的cmd命令行使用如下:<br>10.7wordcloud库与可视化词云<br>在生成词云时，wordcloud默认会以空格或标点分隔符对目标文本进行分词处理。对于<br>中文文本，分词处理需要由用户来完成。一般步骤是先将文本分词处理，然后以空格拼接，再调用wordcloud库函数,处理中文时还需要指定中文字体。例如,选择了微软雅黑( msyh.ttc）<br>作为显示效果,需要将该字体文件与代码存放在同一目录下或在字体文件名前加上完整路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br><span class="line">from wordcloud import WordCloud</span><br><span class="line">txt=&#x27;程序设计语言是计算机能够理解和识别用户操作意图的一种交互体系，它按照特定规则组织、计算机指令，使用计算机能够自动进行各种运算处理&#x27;</span><br><span class="line">words=jieba.lcut(txt)</span><br><span class="line">newtxt=&#x27; &#x27;.join(words)</span><br><span class="line">wordcloud=WordCloud(font_path=&#x27;msyh.ttc&#x27;).generate(newtxt)wordcloud.to_file(&#x27;词云中文案例.png&#x27;)</span><br></pre></td></tr></table></figure>
+<p>Wordcloud库的核心是 WordCloud类，所有的功能都封装在 WordCloud类中。使用时需要实例化一个 WordCloud类的对象，并调用其 generate(text)方法将text文本转化为词云。WordCloud在创建时有一系列可选参数，用于配置词云图片。<br>font_path<br>指定字体文件的完整路径，默认None<br>width<br>生成图片宽度，默认400像素<br>height<br>生成图片高度，默认200像素<br>mask<br>词云形状，默认None，即方形图<br>min_font_size<br>词云中最小的字体字号，默认4号<br>font_step<br>字号步进间隔，默认1<br>max_font_size<br>词云中最大的字体字号，默认None，根据高度自动调节<br>max_words<br>词云图中最大词数，默认200<br>stopwords<br>被排除词列表，排除词不在词云中显示<br>background_color<br>图片背景色，默认黑色<br>WordCloud类的常用方法<br>generate(text)<br>由text文本生成词云<br>to_file(filename)<br>将词云图保存为名为filename的文件<br>wordcloud可以生成任何形状的词云，为了获取形状，需要提供一张形状的图像。</p>
+
+                        </div>
+                        <div class="post-footer__meta">
+                            <p>
+                                更新于  2022-07-26 20:52:55 星期二
+                            </p>
+                        </div>
+
+            </article>
+
+            
+                <div class="nav">
+                    <div class="nav__prev">
+                        
+                            <a href="/posts/python09/" class="nav__link">
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="nav__label">
+                                        上一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第九章  标准库概览
+                                    </div>
+                                </div>
+                            </a>
+                            
+                    </div>
+                    <div class="nav__next">
+                        
+                            <a href="/posts/python06/" class="nav__link">
+                                <div>
+                                    <div class="nav__label">
+                                        下一篇
+                                    </div>
+                                    <div class="nav__title">
+                                        第六章  第三方生态
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24">
+                                        <path
+                                            d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z"
+                                            fill="#808080"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                    </div>
+                </div>
+                
+</main>
+                <footer class="footer">
+
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path
+                d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+    
+        <p class="footer-copyright">
+            Copyright © 2022&nbsp;-&nbsp;2022
+                <a href="/page_friends">Koi_NL·友链页</a>
+        </p>
+
+        <p><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        </p>
+</footer>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/clipboard_use.js"></script>
+    <script>
+        !
+            function () {
+                function n(n, e, t) {
+                    return n.getAttribute(e) || t
+                }
+                function e(n) {
+                    return document.getElementsByTagName(n)
+                }
+                function t() {
+                    var t = e("script"),
+                        o = t.length,
+                        i = t[o - 1];
+                    return {
+                        l: o,
+                        z: n(i, "zIndex", -1),
+                        o: n(i, "opacity", .5),
+                        c: n(i, "color", "180,103,205"),
+                        n: n(i, "count", 156)
+                    }
+                }
+                function o() {
+                    a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+                }
+                function i() {
+                    r.clearRect(0, 0, a, c);
+                    var n, e, t, o, m, l;
+                    s.forEach(function (i, x) {
+                        for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+                            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                    }),
+                        x(i)
+                }
+                var a, c, u, m = document.createElement("canvas"),
+                    d = t(),
+                    l = "c_n" + d.l,
+                    r = m.getContext("2d"),
+                    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                        function (n) {
+                            window.setTimeout(n, 1e3 / 45)
+                        },
+                    w = Math.random,
+                    y = {
+                        x: null,
+                        y: null,
+                        max: 2e4
+                    };
+                m.id = l,
+                    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+                    e("body")[0].appendChild(m),
+                    o(),
+                    window.onresize = o,
+                    window.onmousemove = function (n) {
+                        n = n || window.event,
+                            y.x = n.clientX,
+                            y.y = n.clientY
+                    },
+                    window.onmouseout = function () {
+                        y.x = null,
+                            y.y = null
+                    };
+                for (var s = [], f = 0; d.n > f; f++) {
+                    var h = w() * a,
+                        g = w() * c,
+                        v = 2 * w() - 1,
+                        p = 2 * w() - 1;
+                    s.push({
+                        x: h,
+                        y: g,
+                        xa: v,
+                        ya: p,
+                        max: 6e3
+                    })
+                }
+                u = s.concat([y]),
+                    setTimeout(function () {
+                        i()
+                    },
+                        100)
+            }();
+    </script>
+
+    
+</body>
+
+
+</html>

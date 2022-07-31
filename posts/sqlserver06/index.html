@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-
     
             <meta name="renderer" content="webkit">
             <meta name="force-rendering" content="webkit">
@@ -262,9 +261,6 @@ Resource：是一个只读数据库，包含了所有系统对象，SQLServer系
         </p>
 </footer>
     </div>
-
-
-
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
     <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="/js/clipboard_use.js"></script>
@@ -352,6 +348,17 @@ Resource：是一个只读数据库，包含了所有系统对象，SQLServer系
     </script>
 
     
+        <script>
+            window.onload = () => {
+                document.querySelectorAll('.sliding-fold').forEach((item) => {
+                    item.querySelector('summary').onclick = () => {
+                        item.classList.toggle("collapsed");
+                        item.classList.toggle("expanded");
+                    };
+                });
+            };
+        </script>
+        
 </body>
 
 

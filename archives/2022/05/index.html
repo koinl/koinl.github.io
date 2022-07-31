@@ -2504,7 +2504,8 @@ details {
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
     <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript">$(".highlight").wrap("<div class='code-wrapper' style='position:relative'></div>");
+    <script type="text/javascript">
+        $(".highlight").wrap("<div class='code-wrapper' style='position:relative'></div>");
         !function (e, t, a) {
             var initCopyCode = function () {
                 var copyHtml = '';
@@ -2619,7 +2620,18 @@ details {
             }();
     </script>
 
-    
+
+    <script>
+        window.onload = () => {
+            document.querySelectorAll('.sliding-fold').forEach((item) => {
+                item.querySelector('summary').onclick = () => {
+                    item.classList.toggle("collapsed");
+                    item.classList.toggle("expanded");
+                };
+            });
+        };
+    </script>
+
 </body>
 
 

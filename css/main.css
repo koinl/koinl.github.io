@@ -1,7 +1,7 @@
 :root {
   --main-color: #f8312f;
-  /* --bg-color: #f4f4f4; */
-  --bg-color: radial-gradient(circle at top right, #a9e7ffd4, #f4a0a0bf);
+  --bg-color: #f4f4f4;
+  /* --bg-color: radial-gradient(circle at top right, #a9e7ffd4, #f4a0a0bf); */
   --bg-content-color: #fff;
   --bg-menu: #eceef2;
   --bg-tag-color: #f4f4f4;

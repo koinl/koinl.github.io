@@ -1,347 +1,544 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<!-- 你好~ 欢迎来到我的乐园。-->
-<head>
-    <title>分类 | 锦鲤未离</title>
-    <meta name="keywords" content="">
-    <meta charset="utf-8">
-    <meta name="renderer" content="webkit">
-    <meta name="copyright" content="Koi_NL">
-    <meta name="generator" content="Hexo 6.1.0">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="force-rendering" content="webkit">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="author" content="Koi_NL,koinl@qq.com, koinlmail@gmail.com"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="mask-icon" href="/img/icon.png">
-    <link rel="shortcut icon" href="/img/icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
-    <link rel="canonical" href="http://example.com/category/index.html">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/dark.css">
-    <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
-    <link rel="stylesheet" id="hl-dark-theme" href="/css/hlight-dark.css" media="none">
-    
-    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-</head>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  
+  <title>分类 | 锦鲤未离</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/public.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/iconfont.css" />
+  <link rel="stylesheet" href="/css/APlayer.min.css" />
+  <link rel="stylesheet" href="/css/hlight-main.css" />
+  <script src="/js/APlayer.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.pjax.min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script>document.title = `分类`</script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<style>
+  .load {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(37, 35, 40);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 9999;
+  }
+  .load-circle {
+    width: 80px;
+    height: 80px;
+    border: 8px solid orange;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 1s linear infinite;
+    filter: drop-shadow(0 0 3px orange);
+  }
+  .load-circle-inner {
+    width: 40px;
+    height: 40px;
+    border: 8px solid orange;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: rotate-reverse .5s linear infinite;
+  }
+  .load-text {
+    margin-top: 20px;
+    font-size: 24px;
+    color: orange;
+    display: flex;
+  }
+  .load-text span {
+    margin: 0 5px;
+    text-shadow: 5px 5px 5px orange;
+    animation: move 1s linear infinite;
+  }
+  .load-text span:nth-child(1) {
+    animation-delay: -0.6s;
+  }
+  .load-text span:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+  .load-text span:nth-child(3) {
+    animation-delay: -0.4s;
+  }
+  .load-text span:nth-child(4) {
+    animation-delay: -0.3s;
+  }
+  .load-text span:nth-child(5) {
+    animation-delay: -0.2s;
+  }
+  .load-text span:nth-child(6) {
+    animation-delay: -0.1s;
+  }
+  @keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes rotate-reverse {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(-360deg); }
+  }
+  @keyframes move {
+    0% { transform: translateY(0%) rotate(0) scale(1); }
+    20% { transform: translateY(20%) rotate(10deg) scale(1.2); }
+    80% { transform: translateY(-10%) rotate(-20deg) scale(.8);}
+    100% { transform: translateY(0) rotate(0) scale(1); }
+  }
+
+  .progress {
+    position: fixed;
+    left: 0; top: 0;
+    width: 0;
+    height: 3px;
+    background-color: green;
+    transition: all cubic-bezier(0.215, 0.610, 0.355, 1) .1s;
+    z-index: 9999;
+  }
+
+  .to-up {
+    animation: toUp .5s 1;
+  }
+  .gray {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: none;
+    pointer-events: none;
+    background-color: #000;
+    mix-blend-mode: color;
+  }
+  @keyframes toUp {
+    from { transform: translateY(15px); opacity: 0; }
+    to { transform: translateY(0) ; opacity: 1; }
+  }
+</style>
 <body>
-    <div class="loading"><span></span><span></span><span></span><span></span><span></span></div>
-    <div id="app">
-<header class="header">
-    <div class="header__left"><a href="/" class="button" title="回到首页">
-            <svg t="1662257077921" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                p-id="9718" width="27" height="27">
-                <path
-        d="M1017.295381 515.625294c-8.918711 9.05797-23.377057 9.05797-32.295768 0L755.083237 303.3395c-1.513416-1.206227-2.807704-2.525091-3.989357-4.056938l-89.551638-90.944226c-1.513416-1.200084-2.807704-2.512803-3.989357-4.050794L512.000756 56.462215 38.999851 515.625294c-8.918711 9.05797-23.377057 9.05797-32.29372 0-8.918711-9.05797-8.918711-23.73954 0-32.797509L493.065647 10.095158c0.77002-1.130454 1.234898-2.394024 2.224046-3.405698 4.603734-4.677459 10.67583-6.829828 16.711063-6.682377 6.033185-0.147451 12.105281 2.004918 16.709015 6.682377 0.989147 1.011675 1.454026 2.275244 2.224046 3.405698l121.376383 123.262521L652.3102 71.16836c0 0-0.002048 0-0.002048-0.006144 0-13.114908 10.471037-23.751827 23.385249-23.751827l93.538947 0c6.459154 0 12.305978 2.660254 16.536989 6.952703 4.23306 4.298593 6.850307 10.24167 6.850307 16.799124l0 204.700282 224.675737 206.965287C1026.212043 491.885755 1026.212043 506.567325 1017.295381 515.625294zM745.851194 94.907899l-46.770497 0 0 85.959578 46.770497 47.491367L745.851194 94.907899zM163.72459 474.910509c12.916259 0 23.385249 10.630776 23.385249 23.745683l0 430.348784c0 26.235959 20.940027 47.49751 46.770497 47.49751l161.196225 0-0.002048 0L395.074513 688.656474c0-13.121052 10.471037-23.751827 23.385249-23.751827l187.079941 0c12.916259 0 23.385249 10.630776 23.385249 23.751827l0 287.846013-0.002048 0 161.196225 0c25.83047 0 46.768449-21.261551 46.768449-47.49751l-0.002048-430.348784c0-13.114908 10.468989-23.745683 23.385249-23.745683 12.914211 0 23.385249 10.630776 23.385249 23.745683l0 430.348784c0 52.469871-41.878006 94.995021-93.538947 94.995021L233.880336 1023.999997c-51.660941 0-93.538947-42.52515-93.538947-94.995021L140.34139 498.656193C140.34139 485.541285 150.810379 474.910509 163.72459 474.910509zM582.154454 976.502487l0-264.100329-140.309444 0 0 264.100329-0.002048 0L582.154454 976.502487 582.154454 976.502487z"
-        p-id="44080" fill="#999"></path>
-            </svg>
-        </a></div>
-    <div class="header__right">
-        <form class="Search_nav_card" type="submit" name="search_formpage">
-            <input class="Search_input" placeholder="输入" required name='search_SkipPage' autocomplete="off" value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
-            <input class="Text_search_button" name='submitSkip' type='button' onClick='Go_Page_search()' value='搜索'>
-        </form>
-        <script language=javascript> function Go_Page_search() { var Custom_path = 'https://koinl.github.io/page_search/?s='; if (document.search_formpage.search_SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + document.search_formpage.search_SkipPage.value; } }</script>
-        <a href="javaScript:void(0);" id="btn-toggle-dark" title="夜间模式">
-            <svg t="1662256981531" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                p-id="8697" width="30" height="30">
-                <path d="M89.85 197.55m-26.03 0a26.03 26.03 0 1 0 52.06 0 26.03 26.03 0 1 0-52.06 0Z" fill="#999"
-                    opacity=".8" p-id="34043"></path>
-                <path d="M135.4 99.52m-26.03 0a26.03 26.03 0 1 0 52.06 0 26.03 26.03 0 1 0-52.06 0Z" fill="#999"
-                    opacity=".8" p-id="34044"></path>
-                <path d="M934.15 145.07m-26.03 0a26.03 26.03 0 1 0 52.06 0 26.03 26.03 0 1 0-52.06 0Z" fill="#999"
-                    opacity=".8" p-id="34045"></path>
-                <path d="M612.93 189.8V194.82h0.51c2.42 15.26 15.54 26.96 31.48 26.96h196.21c15.94 0 29.05-11.7 31.48-26.96h0.5v-15.45c0-17.67-14.31-31.98-31.98-31.98H644.91c-17.66 0-31.99 14.32-31.99 31.98v10.43zM619.43 411.04V416.06h0.51c2.42 15.26 15.54 26.96 31.48 26.96h196.21c15.94 0 29.05-11.7 31.48-26.96h0.5v-15.45c0-17.67-14.31-31.98-31.98-31.98H651.42c-17.66 0-31.99 14.32-31.99 31.98v10.43z"
-                    fill="#999" opacity=".8" p-id="34046"></path>
-                <path d="M632.26 430.79c0.01 0 0.01 0.01 0.03 0.02l3.25 3.78 0.39-0.33c11.79 10 29.36 10.31 41.45-0.09l178.53-217.51c12.09-10.39 14.4-27.81 6.28-40.97l0.38-0.32-3.27-3.81-5.83-6.77-0.97-1.13c-11.52-13.4-31.7-14.91-45.1-3.39L628.86 377.78c-13.39 11.51-14.91 31.72-3.39 45.11l0.97 1.13 5.82 6.77z"
-                    fill="#999" opacity=".8" p-id="34047"></path>
-                <path d="M511.94 950.5c-233.06 0-422.66-189.65-422.66-422.75 0-190.41 128.42-358.05 312.31-407.65 13.22-3.52 27.25 1.33 35.41 12.34 8.14 11.01 8.71 25.88 1.42 37.47-31.43 50.03-48.04 107.45-48.04 166.05 0 172.59 140.48 313.02 313.17 313.02 58.73 0 116.22-16.67 166.28-48.23a33.279 33.279 0 0 1 37.49 1.37 33.281 33.281 0 0 1 12.37 35.4C870.16 821.8 702.49 950.5 511.94 950.5zM344.17 213.93C230.3 274.77 155.8 394.66 155.8 527.76c0 196.42 159.76 356.22 356.13 356.22 133.25 0 253.21-74.72 314-188.92a376.765 376.765 0 0 1-122.39 20.44c-209.36 0-379.7-170.26-379.7-379.53 0.01-41.53 6.87-82.76 20.33-122.04z m0 0"
-                    fill="#999" opacity=".8" p-id="34048"></path>
-            </svg>
-        </a>
+  <!-- <div id="load" class="load">
+    <div class="load-circle">
+      <div class="load-circle-inner"></div>
     </div>
-    <script>(() => { const rootElement = document.documentElement; const darkModeStorageKey = 'user-color-scheme'; const darkModeMediaQueryKey = '--color-mode'; const rootElementDarkModeAttributeName = 'data-user-color-scheme'; const setLS = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { } }; const removeLS = (k) => { try { localStorage.removeItem(k); } catch (e) { } }; const getLS = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }; const getModeFromCSSMediaQuery = () => { const res = getComputedStyle(rootElement).getPropertyValue(darkModeMediaQueryKey); if (res.length) return res.replace(/["'\s]/g, ''); return res === 'dark' ? 'dark' : 'light'; }; const resetRootDarkModeAttributeAndLS = () => { rootElement.removeAttribute(rootElementDarkModeAttributeName); removeLS(darkModeStorageKey); }; const validColorModeKeys = { dark: true, light: true, }; const applyCustomDarkModeSettings = (mode) => { const currentSetting = mode || getLS(darkModeStorageKey); if (document.getElementById('hl-dark-theme')) { if (validColorModeKeys[currentSetting]) { if (currentSetting === 'dark') { document.getElementById('hl-default-theme').media = 'none'; document.getElementById('hl-dark-theme').media = 'all'; } else { document.getElementById('hl-dark-theme').media = 'none'; document.getElementById('hl-default-theme').media = 'all'; } } else { if (getModeFromCSSMediaQuery() === 'dark') { document.getElementById('hl-default-theme').media = 'none'; document.getElementById('hl-dark-theme').media = 'all'; } else { document.getElementById('hl-dark-theme').media = 'none'; document.getElementById('hl-default-theme').media = 'all'; } } } else if (document.getElementById('hl-default-theme')) { document.getElementById('hl-default-theme').media = 'all'; } if (currentSetting === getModeFromCSSMediaQuery()) { resetRootDarkModeAttributeAndLS(); } else if (validColorModeKeys[currentSetting]) { rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting); } else { resetRootDarkModeAttributeAndLS(); } }; const invertDarkModeObj = { dark: 'light', light: 'dark', }; const toggleCustomDarkMode = () => { var currentSetting = getLS(darkModeStorageKey); if (validColorModeKeys[currentSetting]) { currentSetting = invertDarkModeObj[currentSetting]; } else if (currentSetting === null) { currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()]; } else { return; } setLS(darkModeStorageKey, currentSetting); return currentSetting; }; applyCustomDarkModeSettings(); window.onload = () => { const darkModeToggleBottonElement = document.getElementById('btn-toggle-dark'); darkModeToggleBottonElement.addEventListener('click', () => { applyCustomDarkModeSettings(toggleCustomDarkMode()); }); }; })();</script>
+    <p class="load-text">
+      <span>L</span>
+      <span>O</span>
+      <span>A</span>
+      <span>D</span>
+      <span>I</span>
+      <span>N</span>
+      <span>G</span>
+    </p>
+  </div> -->
+  <div id="container" class="container w-100 vh-100" style="display: none;">
+    <header class="header">
+  <div class="header-wrapper">
+    <div class="header-left">
+      <div class="header-search">
+        <input id="search-input" type="text" class="header-search--input" placeholder="请输入要检索的文章标题" />
+        <span id="search-btn" class="header-search--icon"><i class="iconfont icon-sousuo"></i></span>
+      </div>
+      <div id="search-layer" class="header-search--layer hidden">
+        <p class="title">
+          <span>以下是搜索内容：</span>
+          <span id="close-layer-btn">关闭</span>
+        </p>
+        <ul>
+        </ul>
+      </div>
+    </div>
+    <div class="header-right">
+      <ul class="header-menu">
+        <li>
+          <a href="http://example.com/">
+            <i class="header-menu--icon iconfont icon-shouye"></i>
+            <span class="header-menu--span">首页</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://example.com/log">
+            <i class="header-menu--icon iconfont icon-rizhi"></i>
+            <span class="header-menu--span">日志</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://example.com/link">
+            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
+            <span class="header-menu--span">友情链接</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://example.com/about">
+            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
+            <span class="header-menu--span">关于我</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>
 
+<script>
+  const ipt = document.querySelector('#search-input')
+  const btn = document.querySelector('#search-btn')
+  const layer = document.querySelector('#search-layer')
+  const posts = JSON.parse(`[{"title":"⌊手机篇⌉ 将手机投屏到电脑","path":"posts/EDp-scrcpy/"},{"title":"⌊电脑篇⌉ 电脑声音无法出现","path":"posts/EDc-sound/"},{"title":"Hello World","path":"posts/3eeb/"},{"title":"小贴士~","path":"posts/tips/"},{"title":"数据库实训-Eclipse 连接 MySQL","path":"posts/EconnectM/"},{"title":"考试---可视化","path":"posts/考试---可视化/"},{"title":"第三章  程序流程控制[未完成]","path":"posts/matlab03/"},{"title":"应用篇-第一章  图形对象句柄[未完成]","path":"posts/matlab09/"},{"title":"第五章  数据分析与多项式计算[未完成]","path":"posts/matlab05/"},{"title":"应用篇-第二章  图形对用户界面设计[未完成]","path":"posts/matlabyyp02/"},{"title":"第四章 绘图[未完成]","path":"posts/matlab04/"},{"title":"程序流程控制","path":"posts/java-cxlckz/"},{"title":"消息, 继承与多态","path":"posts/java-xxjcydt/"},{"title":"第六章  数组","path":"posts/java-sz/"},{"title":"键盘输值","path":"posts/java-wjyl/"},{"title":"封装机制与访问控制","path":"posts/java-fzjzyfwkz/"},{"title":"第四章  类与对象","path":"posts/java-lydx/"},{"title":"递归调用","path":"posts/java-dgdy/"},{"title":"『SQL Server』第一章  数据库应用系统开发方法","path":"posts/sqlserver01/"},{"title":"『SQL Server』第七章  高级数据库查询","path":"posts/sqlserver07/"},{"title":"『SQL Server』第三章  系统设计","path":"posts/sqlserver03/"},{"title":"『SQL Server』第九章  安全管理","path":"posts/sqlserver09/"},{"title":"『SQL Server』第二章  需求分析","path":"posts/sqlserver02/"},{"title":"『SQL Server』第五章  UML与DBAS","path":"posts/sqlserver05/"},{"title":"『SQL Server』第八章  数据库后台编程技术","path":"posts/sqlserver08/"},{"title":"『SQL Server』第六章  数据库及其对象.md","path":"posts/sqlserver06/"},{"title":"『SQL Server』第十一章  故障管理","path":"posts/sqlserver11/"},{"title":"『SQL Server』第十三章  大规模数据库架构","path":"posts/sqlserver13/"},{"title":"『SQL Server』第十四章  数据仓库与数据挖掘","path":"posts/sqlserver14/"},{"title":"『SQL Server』第十二章  备份与恢复数据库","path":"posts/sqlserver12/"},{"title":"『SQL Server』第十章  数据库运行管理与维护","path":"posts/sqlserver10/"},{"title":"『SQL Server』第四章  应用系统功能设计","path":"posts/sqlserver04/"},{"title":"『SQL Server』考三","path":"posts/sqlserver3/"},{"title":"『SQL Server』考二","path":"posts/sqlserver2/"},{"title":"三级考试(数据库篇)错题整理(选择题, 填空题篇)","path":"posts/sqlservers/"},{"title":"第一章  操作基础","path":"posts/linux01/"},{"title":"第二章  进程管理","path":"posts/linux02/"},{"title":"第三章  存储和逻辑卷管理","path":"posts/linux03/"},{"title":"第四章  用户和组管理","path":"posts/linux04/"},{"title":"第六章  用户管理","path":"posts/linux05/"},{"title":"第六章  网络基础","path":"posts/linux06/"},{"title":"安全管理","path":"posts/linux07/"},{"title":"第十章 Shell 脚本","path":"posts/linux08/"},{"title":"第一章  操作基础","path":"posts/linuxlianxizuoye/"},{"title":"第八章  计算生态","path":"posts/python08/"},{"title":"第九章  标准库概览","path":"posts/python09/"},{"title":"第七章  文件和数据格式化","path":"posts/python07/"},{"title":"第十章  第三方库概览","path":"posts/python10/"},{"title":"第一章  程序基本结构","path":"posts/py01/"},{"title":"第一章  程序基本结构","path":"posts/py01/"},{"title":"第三章  组合数据类型","path":"posts/py03/"},{"title":"第某章  random 库","path":"posts/pythonrdom/"},{"title":"第某章  PIL 库","path":"posts/py0nnnpillow/"},{"title":"第某章  turtle 库","path":"posts/py0nnn/"},{"title":"第二章  函数","path":"posts/py02/"},{"title":"第五章  文件操作","path":"posts/python05/"},{"title":"第六章  第三方生态","path":"posts/python06/"},{"title":"第一章  排序","path":"posts/dsa04/"},{"title":"第一章  线性表","path":"posts/dsa01/"},{"title":"第二章  查找","path":"posts/dsa05/"},{"title":"第三章  图","path":"posts/dsa03/"},{"title":"第二章  树和二叉树","path":"posts/dsa02/"},{"title":"绪论  聊聊需要的软件","path":"posts/hadoop00/"},{"title":"第一章  分布式文件系统（HDFS）概述","path":"posts/hadoop01/"},{"title":"第二章  磁盘I/O操作","path":"posts/hadoop02/"},{"title":"第三章  MapReduce基础","path":"posts/hadoop03/"},{"title":"第一章  数据计算（NumPy）","path":"posts/DPaA01/"},{"title":"第二章  数据分析（Pandas）","path":"posts/DPaA02/"},{"title":"第三章  数据可视化（Matplotlib）","path":"posts/DPaA03/"},{"title":"第四章  数据预处理","path":"posts/DPaA04/"},{"title":"第 4 章  抽样推断","path":"posts/as04/"},{"title":"第一章 待补充...","path":"posts/DM01/"},{"title":"第1章  时间序列分析","path":"posts/Time-Series_Analysis_ALL/"},{"title":"配置hadoop","path":"posts/This-article-is-used-to-test-the-style/"},{"title":"第4章  Spark SQL结构化数据文件处理","path":"posts/spark_04/"},{"title":"第3章  Spark RDD弹性分布式数据集","path":"posts/spark_03/"},{"title":"第5章  HBase 分布式数据库","path":"posts/spark_05/"},{"title":"第6章  Kafka分布式发布订阅消息系统","path":"posts/spark_06/"},{"title":"第7章  Spark Streaming","path":"posts/spark_07/"},{"title":"第1章  Scala语言基础.","path":"posts/spark_01/"},{"title":"第8章  Spark MLlib机器学习算法库","path":"posts/spark_08/"},{"title":"第1章  点云图","path":"posts/NPJS_2303_03/"},{"title":"第1章  深度卷积神经网络分析","path":"posts/DCNN_ALL/"}]`)
+  ipt.addEventListener('keyup', e => {
+    if (e.key === 'Enter') {
+      handleSearch()
+    }
+  })
+  btn.addEventListener('click', () => {
+    handleSearch()
+  })
 
-        <div class="cover">
-            <div class="cover__logo">
-                <style>
-                
-                #carousel_main {
-                    display: inline-block;
-                    height: var(--main-height-LunBoTu);
-                    width: var(--main-width-LunBoTu);
-                    overflow: hidden;
-                    position: relative;
-                    padding: 0;
-                    border-radius: 15px;
-                    margin: 0 auto;
-                    /* margin-left: 10px; */
-                    opacity: 0.9;
-                  }
-                  
-                  #carousel_main #div_img {
-                    height: var(--main-height-LunBoTu);
-                    position: absolute;
-                    list-style: none;
-                    padding: 0;
-                  }
-                  
-                  #carousel_main #div_img .every_img {
-                    width: var(--main-width-LunBoTu);
-                    height: var(--main-height-LunBoTu);
-                    float: left;
-                    margin-top: 0;
-                  }
-                  
-                  #carousel_main #div_img .every_img #link_img {
-                    width: 100%;
-                    height: 100%;
-                    cursor: pointer;
-                  }
-                  
-                  #carousel_main .div_circle {
-                    width: 92px;
-                    height: 0px;
-                    position: absolute;
-                    z-index: 3;
-                    left: 50%;
-                    margin-left: -58px;
-                    bottom: -4px;
-                    list-style: none;
-                  }
-                  
-                  #carousel_main .div_circle>.every_circle {
-                    width: var(--main-radius-circle-LunBoTu);
-                    height: var(--main-radius-circle-LunBoTu);
-                    background: #FFFFFF;
-                    float: left;
-                    border-radius: 50%;
-                    margin: 4px 4px;
-                  }
-                  
-                  #carousel_main .btn {
-                    position: absolute;
-                    z-index: 2;
-                    color: #ffffff4d;
-                    cursor: pointer;
-                  }
-                  
-                  #carousel_main .left {
-                    left: -7px;
-                    /* 不论正负，数值增加5px */
-                    cursor: w-resize;
-                  }
-                  
-                  #carousel_main .right {
-                    left: 172px;
-                    /* 不论正负，数值下降5px */
-                    cursor: e-resize;
-                  }
-                  
-                  #carousel_main .btn_p,
-                  #carousel_main .btn_p font {
-                    vertical-align: inherit;
-                    font-size: xxx-large;
-                    width: 60px;
-                    /* 若每次上升10px */
-                    height: var(--main-height-LunBoTu);
-                    vertical-align: middle;
-                    line-height: 132px;
-                  }
-                  
-                  
-                  #carousel_main .left:hover>.btn_p {
-                    color: #00000036;
-                  }
-                  
-                  #carousel_main .right:hover>.btn_p {
-                    color: #00000036;
-                  }
-                  
-                  
-                  #carousel_main .left:active>.btn_p {
-                    color: #00000036;
-                    background: #00000045;
-                  }
-                  
-                  #carousel_main .right:active>.btn_p {
-                    color: #00000036;
-                    background: #00000045;
-                  }
-                  </style>
-                <div class="carousel" id="carousel_main">
-                    <ul id="div_img">
-                        <li class="every_img"><img src="/img/cover/LunBoTu/pan.jpg" id="link_img" onClick="link('https://www.csdn.net/', '_self')" alt="" title="" /></li>
-                        <li class="every_img"><img src="/img/cover/LunBoTu/development_log.jpg" id="link_img" onClick="link('https://koinl.github.io/development_log/', '_self')" alt="" title="" /></li>
-                        <li class="every_img"><img src="/img/cover/LunBoTu/home_welcome.jpg" id="link_img" onClick="link('https://koinl.github.io/page_home/', '_self')" alt="" title="" /></li>
-                        <li class="every_img"><img src="/img/cover/LunBoTu/Picture_APP_By_KoiNL.jpg" id="link_img" onClick="link('https://koinl.github.io/apk/APP_By_KoiNL.apk', '_self')" alt="" title="" /></li>
-                        <li class="every_img"><img src="/img/cover/LunBoTu/new_blog_theme.jpg" id="link_img" onClick="link('https://koinl.github.io/', '_self')" alt="" title="" /></li>
-                    </ul>
-                    <ul class="div_circle"><li class = every_circle></li><li class = every_circle></li><li class = every_circle></li><li class = every_circle></li><li class = every_circle></li></ul>
-                    <div class="btn left"><p class="btn_p">《&nbsp</p></div><div class="btn right"><p class="btn_p">&nbsp》</p></div>
-                </div>
-                
+  document.querySelector('#close-layer-btn').addEventListener('click', () => {
+    layer.classList.toggle('hidden')
+  })
 
-                <script type="text/javascript">$(function () { var max_num = 4; var time_stop = 4250; var time_swap = 1250; var num = 0; var chosen_circle_color = "#0aa1ed"; var chosen_not_circle_color = "#ffffff"; function every_thing() { $("#div_img").animate({ left: -$(".every_img").eq(0).width() * num }, time_swap); $(".every_circle").eq(num).css("background", chosen_circle_color).siblings('li').css("background", chosen_not_circle_color); } function Right_move() { if (num >= max_num) { num = 0; } else { num++; } every_thing(); } function Left_move() { if (num === 0) { num = max_num; } else { num--; } every_thing(); } $(".every_circle").eq(0).css("background", chosen_circle_color); $("#div_img").width($('.every_img').length * $('.every_img').eq(0).width()); var id = setInterval(Right_move, time_stop); $("#carousel_main").mouseover(function () { clearInterval(id) }); $("#carousel_main").mouseout(function () { id = setInterval(Right_move, time_stop); }); $(".left").click(function () { $("#div_img").stop(); Left_move(); }); $(".right").click(function () { $("#div_img").stop(); Right_move(); }); $(".every_circle").mouseover(function () { num = $(this).index(); $("#div_img").stop(); every_thing(); }); }); function link(jinliweili_Url, quality_target) { window.open(jinliweili_Url, quality_target);}</script>
-            </div>
-            <div class="cover__desc">
-                <div class='avator_logo_link'><img alt="離.png" src="/img/avator.png"></div>
-                <div class="desc-com"><div class="desc-button"><div class="desc-box">是</div><div class="desc-box">锦</div><div class="desc-box">鲤</div><div class="desc-box">未</div><div class="desc-box">离</div></div></div>
-                <button class="btn-cssbuttons">
-                    <span class="btn-cssbuttons-span">
-                        <svg t="1662258197467" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="31880" width="18" height="18"><path d="M512 164.7c12.9 0 25.9 0.7 39.1 2.1 163.3 17.9 294.5 153.8 307 317.6 5.4 71.2-10.4 138-42.2 195.2-15.8 28.4-13.8 63.3 2.4 91.4l27.5 47.5c10.4 18-2.6 40.4-23.3 40.4h-286l0.7-1c-8.4 0.7-16.8 1-25.1 1-23.3 0-46.5-2.6-69.8-7.6C300.1 820.5 187.4 704 168 559.9c-28.5-213 136.5-395.1 344-395.2m0-100.5c-129.1 0-251.9 55.8-337 153-85 97.2-123.8 226.9-106.5 356 24.8 184.7 166.4 336 352.4 376.4 30.3 6.6 61 9.9 91.2 9.9 5.5 0 11-0.1 16.4-0.3 2.7 0.2 5.3 0.3 8 0.3h286c45.4 0 87.7-24.4 110.4-63.8 22.7-39.3 22.7-88.2-0.1-127.5L906.7 723c40.4-75 58.2-160 51.6-246.3C942.3 266.1 771.9 89.9 562 67c-16.6-1.9-33.4-2.8-50-2.8z" p-id="31881" fill="#999"></path><path d="M331.4 511.9m-50.3 0a50.3 50.3 0 1 0 100.6 0 50.3 50.3 0 1 0-100.6 0Z" p-id="31882" fill="#999"></path><path d="M512 511.9m-50.3 0a50.3 50.3 0 1 0 100.6 0 50.3 50.3 0 1 0-100.6 0Z" p-id="31883" fill="#999"></path><path d="M692.6 511.9m-50.3 0a50.3 50.3 0 1 0 100.6 0 50.3 50.3 0 1 0-100.6 0Z" p-id="31884" fill="#999"></path></svg>
-                    </span>
-                    <span class="Link_ME_KOINL">联系我　　</span>
-                    <ul>
-                        <li id="WeChat"><a href="/img/cover/btn-cssbuttons-span/WeChatLink.gif" title="WeChat" target="_blank"><svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024" class="icon"> <path d="M676.325 381.17h5.098c-25.972-114.081-144.421-200.37-286.538-200.37-161.17 0-291.877 110.804-291.877 247.581 0 79.493 44.176 150.247 112.867 195.516l-28.884 85.925 101.702-50.486-1.942-0.971c33.497 11.286 69.905 17.598 108.134 17.598 8.617 0 17.234-0.364 25.729-0.971-7.646-21.117-11.893-43.691-11.893-66.992 0-125.125 119.786-226.828 267.605-226.828zM489.184 319.276c21.482 0 38.836 15.292 38.836 34.102 0 14.563-10.437 27.065-25.122 31.918-4.247 1.456-8.86 2.185-13.714 2.185-21.482 0-38.836-15.292-38.836-34.102s17.476-34.102 38.836-34.102zM315.634 385.419c-4.247 1.456-8.86 2.185-13.714 2.185-21.482 0-38.836-15.292-38.836-34.102s17.355-34.102 38.836-34.102 38.836 15.292 38.836 34.102c0 14.563-10.437 27.065-25.122 31.918z" fill="#999999" p-id="3256"></path> <path d="M922.45 608.241c0-115.295-110.197-208.865-246.124-208.865s-246.124 93.45-246.124 208.865 110.197 208.865 246.124 208.865c30.462 0 59.711-4.733 86.774-13.349l78.279 42.962-21.117-69.177c61.895-37.866 102.188-99.638 102.188-169.301zM610.546 570.254c-3.519 1.214-7.404 1.821-11.408 1.821-17.962 0-32.526-12.865-32.526-28.641s14.563-28.641 32.526-28.641 32.526 12.865 32.526 28.641c0 12.257-8.738 22.695-21.117 26.821zM769.897 570.254c-3.519 1.214-7.404 1.821-11.408 1.821-17.962 0-32.526-12.865-32.526-28.641s14.563-28.641 32.526-28.641 32.526 12.865 32.526 28.641c0 12.257-8.738 22.695-21.117 26.821z" fill="#999999" p-id="3257"></path> </svg></a></li>
-                        <li id="Telegram"><a href="/img/cover/btn-cssbuttons-span/TwitterLink.gif" title="Twitter" target="_blank"><svg t="1668130962964" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1646" width="18" height="18"><path d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4 35.4-21.1 62.3-54.4 75-94-32.7 19.5-69.7 33.8-108.2 41.2C765.4 194.6 721.1 174 672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5-14.8 25.4-23.2 54.4-23.2 86.1 0 59.2 30.1 111.4 76 142.1-28-1.1-54.4-9-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4-14.3 3.7-29.6 5.8-44.9 5.8-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-0.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-0.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z" p-id="1647" fill="#999999"></path></svg></a></li>
-                        <li id="E-mail"><a href="/img/cover/btn-cssbuttons-span/G-mail.jpg" title="G-mail" target="_blank"><svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024" class="icon"> <path d="M134 297.4c22 11.6 327.6 178.2 339 184.2 11.4 6 23 8.8 41 8.8 18 0 29.6-2.8 41-8.8 11.4-6 317-172.6 339-184.2 8.2-4.2 22-11.8 25-20.4 5.2-15.2-0.4-21-22.6-21L514 256 131.6 256c-22.2 0-27.8 6-22.6 21C112 285.8 125.8 293.2 134 297.4z" p-id="5247" fill="#999"></path> <path d="M911.4 306.4c-16.4 8.4-163.6 113.2-261 176.2l164.4 185c4 4 5.8 8.8 3.6 11.2-2.4 2.2-7.6 1-11.8-2.8l-197.2-166.4c-29.8 19.2-50.8 32.4-54.4 34.4-15.4 7.8-26.2 8.8-41 8.8-14.8 0-25.6-1-41-8.8-3.8-2-24.6-15.2-54.4-34.4l-197.2 166.4c-4 4-9.4 5.2-11.8 2.8-2.4-2.2-0.6-7.2 3.4-11.2l164.2-185c-97.4-63-246.2-167.8-262.6-176.2-17.6-9-18.6 1.6-18.6 9.8 0 8.2 0 410 0 410 0 18.6 27.4 41.8 47 41.8L514 768l371 0c19.6 0 43-23.4 43-41.8 0 0 0-402 0-410C928 307.8 929.2 297.4 911.4 306.4z" p-id="5248" fill="#999"></path></svg></a></li>
-                        <li id="Github">
-                            <a href="https://github.com/koinl" title="Github" target="_blank">
-                                <svg height="13" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024" class="icon">
-                                    <path d="M855.557 216.855c35.621-66.153-5.089-152.661-5.089-152.661-91.597 0-157.75 61.064-157.75 61.064-35.621-20.355-152.661-20.355-152.661-20.355s-117.04 0-152.661 20.355c0 0-66.153-61.064-157.75-61.064 0 0-40.71 86.508-5.089 152.661 0 0-81.419 76.331-50.887 239.169 28.691 153.018 162.838 193.371 249.346 193.371 0 0-35.621 30.532-30.532 81.419 0 0-50.887 30.532-101.774 10.177s-76.331-71.242-76.331-71.242-50.887-66.153-101.774-40.71c0 0-15.266 15.266 40.71 40.71 0 0 40.71 61.064 55.976 96.685 15.266 35.621 96.685 66.153 178.105 45.798v117.04s0 10.177-20.355 15.266-20.355 15.266-10.177 15.266H723.25c10.177 0 10.177-10.177-10.177-15.266-20.355-5.089-20.355-15.266-20.355-15.266v-117.04s0.447-61.03 0-81.419c-1.119-51.128-35.621-81.419-35.621-81.419 86.508 0 220.655-40.353 249.346-193.371 30.533-162.837-50.886-239.168-50.886-239.168z" p-id="3872" fill="#999999"></path>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </button>
-            </div>
-            <div class="cover__intro">
-                <details>
-                    <summary>
-                        <a href="/page_home/" target="_self"><button>主页</button></a> 
-                        <a href="/" target="_self"><button>首页</button></a> 
-                        <a href="/page_friends/" target="_self"><button>友链页</button></a> 
-                        <p title="打开分类">分类流</p>
-                        <a href="/development_log/" target="_self"><button>研发日志</button></a> 
-                        <a href="/pan/" target="_self"><button>网盘</button></a> 
-                    </summary>
-                    <div class="fold-content">
-                        <div class="dropdown-menus" id="dropdown-menus"> • 分类 • 
-                            <a href="/categories/Hadoop" class="dropdown-menu button">Hadoop</a> • 
-                            <a href="/categories/Data-Processing-and-Analysing" class="dropdown-menu button">数据处理与分析(Py)</a> • 
-                            <a href="/categories/Data-Visualization" class="dropdown-menu button">数据可视化</a> • 
-                            <a href="/categories/Data-Mining" class="dropdown-menu button">数据挖掘</a> • 
-                            <a href="/categories/Mathematical-Modeling" class="dropdown-menu button">数学建模</a> • 
-                            <a href="/categories/Python" class="dropdown-menu button">Python</a> • 
-                            <a href="/categories/Linux" class="dropdown-menu button">Linux</a> • 
-                            <a href="/categories/Data-Structure-and-Algorithm" class="dropdown-menu button">数据结构与算法</a> • 
-                            <a href="/categories/SqlServer" class="dropdown-menu button">SQL Server</a> • 
-                            <a href="/categories/MATLAB" class="dropdown-menu button">MATLAB</a> • 
-                            <a href="/categories/java" class="dropdown-menu button">Java</a> • 
-                            <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87" class="dropdown-menu button">电子设备</a> • 
-                        </div>
-                    </div>
-                </details>
-            </div>
-            <div class="cover__link_by_friendPage">
-                <a target="_blank" rel="noopener" href="https://www.baidu.com/from=844b/s?word=%E4%B8%B4%E6%BD%BC%E5%A4%A9%E6%B0%94&sa=tb&ts=6496545&t_kt=0&ie=utf-8&rsv_t=7a3ft91XonPtLcHNk6T4zAw6Z3IDfx9pjAWCcts61nzyApW6kTlbYMnWvA&ms=1&rsv_pq=11284953986776333406&gpc=&ss=110&sugid=128984770210573&rqlang=zh&rsv_sug4=3284&inputT=188&oq=%E5%A4%A9%E6%B0%94">
-                    <svg t="1666769950755" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12878" width="30" height="23"><path d="M880.96 520.832s-0.064 0 0 0a164.672 164.672 0 0 0-156.928-214.08c-39.04 0-75.264 13.632-103.744 36.864a278.4 278.4 0 0 0-42.176-93.376 273.92 273.92 0 0 0-177.792-112.896 274.624 274.624 0 0 0-318.72 223.616 273.088 273.088 0 0 0 25.856 172.096l0.256-0.128-0.128 0.64A187.776 187.776 0 0 0 0 703.168a188.032 188.032 0 0 0 187.776 187.776h648.512a187.968 187.968 0 0 0 187.776-187.776 188.16 188.16 0 0 0-143.104-182.336z m-44.736 304.576H187.776a122.368 122.368 0 0 1-122.24-122.24c0-53.76 34.88-99.456 83.136-115.776l-0.064-0.064a40.512 40.512 0 0 0 47.36-38.976v-0.96a40.64 40.64 0 0 0-16-32.256h0.064a202.496 202.496 0 0 1-27.328-141.76 202.688 202.688 0 0 1 235.072-164.992 201.6 201.6 0 0 1 131.2 83.456 201.6 201.6 0 0 1 32.256 159.04 37.248 37.248 0 0 0 73.088 13.888 41.216 41.216 0 0 1 0.576-5.504 99.712 99.712 0 0 1 116.544-86.72 100.352 100.352 0 0 1 72.448 143.168h0.064a39.936 39.936 0 0 0-8.64 24.96c0 22.464 18.048 40.768 40.448 40.768l0.832-0.128-0.256 0.256c62.656 5.12 112.128 57.792 112.128 121.728a122.24 122.24 0 0 1-122.24 122.112z" p-id="12879" fill="#999999"></path><path d="M281.088 279.232c-30.016 12.928-61.056 29.504-76.864 59.584-14.336 27.264-7.744 58.944 3.072 86.08 9.664 24.256 49.344 13.696 39.488-10.88-7.424-18.56-15.04-39.552-5.12-58.56 11.072-21.12 39.616-32.064 60.032-40.896 24.256-10.368 3.392-45.632-20.608-35.328z" p-id="12880" fill="#999999"></path></svg>
-                </a>
-                <a target="_blank" rel="noopener" href="https://www.baidu.com/from=844b/s?word=%E6%97%A5%E5%8E%86&ts=4779966&t_kt=0&ie=utf-8&fm_kl=021394be2f&rsv_iqid=4012764725&rsv_t=52e5W9EBFpDpv5GgF67oXbAYkq0MODxa7e%252BpS6yShqaUAFxtWWajQX5oiQ&sa=ib&ms=1&rsv_pq=4012764725&rsv_sug4=4899&tj=1&ss=011&inputT=24">
-                    <svg t="1666768613400" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3392" width="30" height="22"><path d="M725.333333 170.666667h74.709334C864.853333 170.666667 917.333333 223.189333 917.333333 288.096V799.893333C917.333333 864.757333 864.832 917.333333 800.042667 917.333333H223.957333C159.146667 917.333333 106.666667 864.810667 106.666667 799.904V288.106667C106.666667 223.242667 159.168 170.666667 223.957333 170.666667H298.666667v-32a32 32 0 0 1 64 0v32h298.666666v-32a32 32 0 0 1 64 0v32z m0 64v32a32 32 0 0 1-64 0v-32H362.666667v32a32 32 0 0 1-64 0v-32h-74.709334A53.354667 53.354667 0 0 0 170.666667 288.096V799.893333A53.301333 53.301333 0 0 0 223.957333 853.333333h576.085334A53.354667 53.354667 0 0 0 853.333333 799.904V288.106667A53.301333 53.301333 0 0 0 800.042667 234.666667H725.333333z m-10.666666 224a32 32 0 0 1 0 64H309.333333a32 32 0 0 1 0-64h405.333334zM586.666667 618.666667a32 32 0 0 1 0 64H309.333333a32 32 0 0 1 0-64h277.333334z" p-id="3393" fill="#999999"></path></svg>
-                    </a>
-                <a target="_blank" rel="noopener" href="https://mail.google.com/mail/mu/mp/372/#tl/%E6%94%B6%E4%BB%B6%E7%AE%B1">
-                    <svg t="1666769680196" class="icon" viewBox="0 0 1040 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8095" width="30" height="21"><path d="M818.97651 64.224744 204.713428 64.224744c-113.073288 0-204.714452 93.713358-204.714452 209.238488l0 413.642878c0 115.52513 91.641163 208.357422 204.714452 208.357422l614.262058 0c113.134687 0 204.771757-92.833315 204.771757-208.357422L1023.747243 273.463232C1023.748267 157.939125 932.110173 64.224744 818.97651 64.224744zM709.783599 482.420311l249.786996-150.083204 0 296.587905L709.783599 482.420311zM204.713428 128.026862l614.262058 0c72.988338 0 133.375683 58.618049 139.984195 132.059712L511.875157 528.771989 64.50206 259.912611C71.221088 186.55179 131.840724 128.026862 204.713428 128.026862zM63.87375 332.154959l250.091942 150.266375L63.87375 629.103068 63.87375 332.154959zM818.97651 831.417867 204.713428 831.417867c-72.79391 0-133.36238-57.398268-140.190903-130.530892l309.642223-181.605128c0.189312-0.11461 0.370437-0.23843 0.555655-0.356111l121.31295 72.890101c4.840238 2.889817 10.308787 4.397147 15.84078 4.397147 5.529947 0 10.997472-1.50733 15.838733-4.397147l121.314996-72.891124c0.186242 0.118704 0.367367 0.242524 0.557702 0.357134l309.352627 181.435259C952.219163 773.930571 891.884007 831.417867 818.97651 831.417867z" p-id="8096" fill="#999999"></path></svg>
-                </a>
-            </div>
-            
-            <!-- <div class="cover__categories">
-                <ul class="categories_All_DIV">
-                    <div class="categories_e">
-                        <a href="#" class="first_categories">魔方</a>
-                        <div class="second_categories">
-                            <a target="_blank" rel="noopener" href="https://www.baidu.com/">二阶</a>
-                            <a href="#">三阶</a>
-                            <a href="#">四阶</a>
-                        </div>
-                    </div>
-                    
-                </ul>
-            </div> -->
+  function handleSearch() {
+    if (ipt.value.trim() === '') {
+      return
+    }
+    let html = ''
+    const targetPosts = posts.filter(post => post.title.includes(ipt.value))
+    targetPosts.forEach(post => {
+      html += `
+        <li>
+          <div>
+            <a href="/${post.path}">${post.title.replace(new RegExp(ipt.value), `<span>${ipt.value}</span>`)}</a>
+          </div>
+          <img src="${post.cover || '/imgs/default-cover.webp' }" />
+        </li>
+      `
+    })
+    if (html.trim () === '') {
+      html += '<p class="empty">没有搜索到内容</p>'
+    }
+    layer.querySelector('ul').innerHTML = html
+    layer.classList.remove('hidden')
+  }
+</script> 
+    <section id="main" class="main">
+      <div class="main-left-wrapper">
+<div class="main-left">
+  <div class="main-left--block">
+    <div class="main-left--info">
+      <style>
+
+      </style>
+      <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
+      <div class="main-left--intro">
+        <p class="main-left--name">KoiNL.</p>
+        <div class="main-left--tags" style="text-align: right;">
+          <span class="main-left--tag">愿世间美好</span>
+          <span class="main-left--tag">温柔以待</span>
         </div>
-
-
-<!-- 我们是__应用部分！我是__文章部分！ -->
-        <main class="main POST">
-            <!-- 一、上·位置 --><style>.cover {clip-path: circle(0); max-width: 1px; max-height: 1px; min-height: 0; margin: 0; line-height: 0;}</style>
-            <div class="post-title">
-                <!-- 1. 文章标题 -->
-                <h1 class="post-title__text">分类</h1>
-                <!-- 2. 时间与类别 -->
-                <div class="post-title__meta">
-                    <p>创建于  2023-05-01 20:25:02 星期一 · </p>
-                    <p class="Page_Development_log"></p>
-                    <p class="Page_Development_log"></p>
-                </div>
-            </div>
-            <!-- 二、右·位置 -->
-            <aside class="post-side">
-                <!-- 1. 文章目录 -->
-                <div class="post-side__toc">
-                    
-                </div>
-            </aside>
-            <!-- 2. 小界面目录图标 -->
-            <a class="btn-toc button" id="btn-toc" tabindex="0">
-                <svg t="1662257293901" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29423" width="55" height="55"><path d="M480 64C214.848 64 0 278.848 0 544S214.848 1024 480 1024 960 809.152 960 544 745.152 64 480 64zM288 768C270.336 768 256 753.664 256 736S270.336 704 288 704 320 718.336 320 736 305.664 768 288 768zM288 576C270.336 576 256 561.664 256 544S270.336 512 288 512 320 526.336 320 544 305.664 576 288 576zM288 384C270.336 384 256 369.664 256 352S270.336 320 288 320 320 334.336 320 352 305.664 384 288 384zM672 768l-256 0C398.336 768 384 753.664 384 736S398.336 704 416 704l256 0c17.664 0 32 14.336 32 32S689.664 768 672 768zM672 576l-256 0C398.336 576 384 561.664 384 544S398.336 512 416 512l256 0C689.664 512 704 526.336 704 544S689.664 576 672 576zM672 384l-256 0C398.336 384 384 369.664 384 352S398.336 320 416 320l256 0C689.664 320 704 334.336 704 352S689.664 384 672 384z" p-id="43077" fill="#bfbfbf"></path></svg>
-            </a>
-            <!-- 3. 小界面目录流 -->
-            <div class="toc-menus" id="toc-menus">
-                <div class="toc-title">
-                    文章目录
-                </div>
-                
-            </div>
-            <!-- 三、中·正文 -->
-            <article class="post post__with-toc content-card">
-                <!-- 1. 正文缩略图 -->
-                <div class="post__header">
-                </div>
-
-                <!-- 2. 正文目录 -->
-                    <details open>
-                        <summary>
-                            <div class="wenzhangmulu">文章目录</div>
-                        </summary>
-                        <div class="fold-content">
-                            <div class="post-side__toc post-side__toc_By_KOINL">
-                                
-                            </div>
-                        </div>
-                    </details>
-                <!-- 3. 正文文章 -->
-                <div class="post__content">
-                    
-                </div>
-                <!-- 4. 正文更新时间 -->
-                <div class="post-footer__meta">
-                    <p>更新于  2023-05-01 20:25:02 星期一</p>
-                </div>
-            </article>
-            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
-            <script type="text/javascript">$(".highlight").wrap("<div class='code-wrapper' style='position:relative'></div>");!function (e, t, a) {var initCopyCode = function () {var copyHtml = '';copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';copyHtml += '  <i class="fa fa-clipboard"></i><span>复制</span>';copyHtml += '</button>';$(".highlight .code").before(copyHtml);var clipboard = new ClipboardJS('.btn-copy', {target: function (trigger) {return trigger.nextElementSibling;}});clipboard.on('success', function (e) {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制成功</span>";setTimeout(function () {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制</span>"}, 1000);e.clearSelection();});clipboard.on('error', function (e) {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制失败</span>";setTimeout(function () {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制</span>"}, 1000);e.clearSelection();});};initCopyCode();}(window, document);</script>
-        </main>
-
-        <footer class="footer">
-            <a href="#" class="button" id="b2t" title="回到顶部">
-                <svg t="1662256713839" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                p-id="3050" width="50" height="50">
-                    <path d="M512 0C230.4 0 0 230.4 0 512s230.4 512 512 512 512-230.4 512-512S793.6 0 512 0zM697.6 582.4 627.2 582.4c-12.8 0-19.2 6.4-19.2 19.2l0 108.8c0 6.4-6.4 12.8-12.8 12.8L428.8 723.2c-6.4 0-12.8-6.4-12.8-12.8L416 595.2c0-6.4-6.4-19.2-19.2-19.2L326.4 576C320 582.4 320 576 320 576l179.2-172.8c6.4-6.4 12.8-6.4 19.2 0L704 576C704 576 704 582.4 697.6 582.4zM704 364.8 320 364.8c-19.2 0-32-12.8-32-32S300.8 300.8 320 300.8l384 0c19.2 0 32 12.8 32 32S723.2 364.8 704 364.8z"
-                        p-id="3051" fill="#bfbfbf"></path>
-                </svg>
-            </a>
-            <p class="footer-copyright">Copyright © 2022&nbsp;-&nbsp;2023 Koi_NL</p>
-            <p class="poems_of_today"><span id="jinrishici-sentence">悟已往之不谏，知来者之可追。</span><script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
-            <p class="desc-footer-koinl">本博客由 Hexo 驱动，采用 starter 模板，使用 Cards 主题。后逐步添加记录。做博客不易，本博客仅为个人笔记使用，不用打赏机制，不做商业用途。</p>
-        </footer>
+      </div>
     </div>
-    <script>document.onreadystatechange=function(){console.log(document.readyState);if(document.readyState=="complete"){$(".loading").fadeOut();} else{$(".app").fadeOut();}}</script>
+  
+    <div>
+      <div class="main-left--motto">
+        <p>“锦鲤握运，未离我韵”</p>
+        <p>“愿好运常在”</p>
+      </div>
+      <div class="main-left--github">
+        <span class="line"></span>
+        <a target="_blank" rel="noopener" href="https://github.com/koinl"><i class="logo iconfont icon-github-fill"></i></a>
+        <span class="line"></span>
+      </div>
+      <div class="main-left--statics">
+        <a href="/categories">
+          <div>
+            <span>17</span>
+            <span>分类</span>
+          </div>
+        </a>
+        <a href="/tags">
+          <div>
+            <span>0</span>
+            <span>标签</span>
+          </div>
+        </a>
+        <a href="/archives">
+          <div>
+            <span>15 </span>
+            <span>归档</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-left--block">
+    <ul class="main-left--menu">
+      
+        <li>
+          <a href="/">
+            <span class="header-menu--span">小站首页</span>
+            <i class="header-menu--icon iconfont icon-shouye"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/log">
+            <span class="header-menu--span">个人日志</span>
+            <i class="header-menu--icon iconfont icon-rizhi"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/link">
+            <span class="header-menu--span">友情链接</span>
+            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/about">
+            <span class="header-menu--span">关于自己</span>
+            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tools">
+            <span class="header-menu--span">我的工具</span>
+            <i class="header-menu--icon iconfont icon-gongju"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="main-left--block">
+    <div class="main-left--site">
+      <h5 class="main-left--title">
+        <span>站点信息</span>
+        <i class="iconfont icon-zhandian"></i>
+      </h5>
+      <p class="main-left--subtitle">
+        <span>文章数目：</span>
+        <span>83 篇</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>最近动态：</span>
+        <span>1月前</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>上线时间：</span>
+        <span>520天</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>当前版本：</span>
+        <span>v3.0.0</span>
+      </p>
+    </div>
+  </div>
+</div></div>
+      <div id="main-container" class="main-container"><div class="categories">
+  <h2 class="categories-title">小站分类</h2>
+  <div class="categories-list">
+    <ul class="categories-list"><li class="categories-list-item"><a class="categories-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a><span class="categories-list-count">1</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a><span class="categories-list-count">5</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/Data-Mining/">Data-Mining</a><span class="categories-list-count">1</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a><span class="categories-list-count">4</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/Hadoop/">Hadoop</a><span class="categories-list-count">4</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/Linux/">Linux</a><span class="categories-list-count">9</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/MATLAB/">MATLAB</a><span class="categories-list-count">5</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/Python/">Python</a><span class="categories-list-count">13</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/SqlServer/">SqlServer</a><span class="categories-list-count">17</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/java/">java</a><span class="categories-list-count">7</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/spark/">spark</a><span class="categories-list-count">7</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/">无人驾驶</a><span class="categories-list-count">1</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a><span class="categories-list-count">1</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a><span class="categories-list-count">2</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a><span class="categories-list-count">1</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a><span class="categories-list-count">2</span></li><li class="categories-list-item"><a class="categories-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a><span class="categories-list-count">1</span></li></ul>
+  </div>
+</div></div>
+      <div class="main-right-wrapper"><div class="main-right">
+  <div class="main-right--board">
+    <div class="main-right--title">
+      <h5>公告栏</h5>
+      <i class="iconfont icon-gonggao"></i>
+    </div>
+    <div class="carousel" id="carousel_main">
+      <ul id="div_img">
+          <li class="every_img"><img src="/imgs/cover/LunBoTu/pan.jpg" id="link_img" onClick="link('https://www.csdn.net/', '_self')" alt="" title="" /></li>
+          <li class="every_img"><img src="/imgs/cover/LunBoTu/development_log.jpg" id="link_img" onClick="link('https://koinl.github.io/development_log/', '_self')" alt="" title="" /></li>
+          <li class="every_img"><img src="/imgs/cover/LunBoTu/home_welcome.jpg" id="link_img" onClick="link('https://koinl.github.io/page_home/', '_self')" alt="" title="" /></li>
+          <li class="every_img"><img src="/imgs/cover/LunBoTu/Picture_APP_By_KoiNL.jpg" id="link_img" onClick="link('https://koinl.github.io/apk/APP_By_KoiNL.apk', '_self')" alt="" title="" /></li>
+          <li class="every_img"><img src="/imgs/cover/LunBoTu/new_blog_theme.jpg" id="link_img" onClick="link('https://koinl.github.io/', '_self')" alt="" title="" /></li>
+      </ul>
+      <ul class="div_circle"><li class = every_circle></li><li class = every_circle></li><li class = every_circle></li><li class = every_circle></li><li class = every_circle></li></ul>
+      <div class="btn left"><p class="btn_p">《&nbsp</p></div><div class="btn right"><p class="btn_p">&nbsp》</p></div>
+  </div>
+  <script type="text/javascript">$(function () { var max_num = 4; var time_stop = 4250; var time_swap = 1250; var num = 0; var chosen_circle_color = "#0aa1ed"; var chosen_not_circle_color = "#ffffff"; function every_thing() { $("#div_img").animate({ left: -$(".every_img").eq(0).width() * num }, time_swap); $(".every_circle").eq(num).css("background", chosen_circle_color).siblings('li').css("background", chosen_not_circle_color); } function Right_move() { if (num >= max_num) { num = 0; } else { num++; } every_thing(); } function Left_move() { if (num === 0) { num = max_num; } else { num--; } every_thing(); } $(".every_circle").eq(0).css("background", chosen_circle_color); $("#div_img").width($('.every_img').length * $('.every_img').eq(0).width()); var id = setInterval(Right_move, time_stop); $("#carousel_main").mouseover(function () { clearInterval(id) }); $("#carousel_main").mouseout(function () { id = setInterval(Right_move, time_stop); }); $(".left").click(function () { $("#div_img").stop(); Left_move(); }); $(".right").click(function () { $("#div_img").stop(); Right_move(); }); $(".every_circle").mouseover(function () { num = $(this).index(); $("#div_img").stop(); every_thing(); }); }); function link(jinliweili_Url, quality_target) { window.open(jinliweili_Url, quality_target);}</script>
+    <div class="main-right--content">
+      Hello~近期剽窃本站内容频发，本站唯一指定网站：https://koinl.github.io。请认准。点击<a target="_blank" rel="noopener" href="https://koinl.github.io">点击此处</a>选择进入。
+    </div>
+  </div>
+
+  <div id="aplayer" class="main-right--music"></div>
+
+  <div class="operate-items">
+    <div class="operate-item backtop">
+      <i class="iconfont icon-huidaodingbu"></i>
+      <span>回到顶部</span>
+    </div>
+    
+    <div class="operate-item turn-comment hidden">
+      <i class="iconfont icon-pinglun"></i>
+      <span>查看评论</span>
+    </div>
+    
+  </div>
+
+  <div class="main-right--site">
+    <div class="main-right--power">
+      <p>Power By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a>.</p>
+
+      <p>Theme：<a href="">koinl.</a></p>
+    </div>
+    <p class="main-right--refer"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/index">信息来源于锦鲤未离</a> </p>
+  </div>
+</div>
+
+<script>
+  function setOperateItem () {
+    const reg = /\d{4}\/\d{2}\/\d{2}\/.+/
+    const path = location.pathname
+    const operateDom = document.querySelector('.main-right .operate-items')
+    const commentDom = document.querySelector('.turn-comment')
+    const cateloguDom = document.querySelector('.article-catelogue > .article-catelogue--wrapper');
+
+    if (commentDom) {
+      if (reg.test(path) || path.match(/\/log\/.+/)) {
+        commentDom.classList.remove('hidden')
+        const newDom = operateDom.cloneNode(true);
+        const _backtopDom = newDom.querySelector('.backtop');
+        const _commentDom = newDom.querySelector('.turn-comment');
+        console.log(_commentDom)
+        _backtopDom.addEventListener('click', () => backTopEvent());
+        _commentDom.addEventListener('click', () => commentDomEvent());
+
+        cateloguDom.appendChild(newDom);
+      } else {
+        commentDom.classList.add('hidden')
+      }
+    }
+  }
+
+  setOperateItem()
+  const musics = JSON.parse(`[{"name":"路过人间的情书","artist":"陈恒媛","url":"music/路过人间的情书.mp3","cover":"http://p2.music.126.net/bRIshzdt9OWH0QvqHwfxjQ==/109951166380164291.jpg?param=177y177"},{"name":"安河桥","artist":"宋冬野","url":"http://ting6.yymp3.net:82/new25/songdongye/11.mp3","cover":"https://img2.baidu.com/it/u=1260056724,1076343118&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"},{"name":"卡布达","artist":"暂无","url":"music/kabuda.mp3","cover":"https://img2.baidu.com/it/u=705831265,2862720033&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"}]`)
+  const ap = new APlayer({
+    container: document.querySelector('#aplayer'),
+    audio: musics,
+  })
+
+  $(document).on('pjax:complete', function() {
+    setOperateItem()
+  })
+
+  document.querySelector('.backtop').addEventListener('click', () => {
+    backTopEvent();
+  })
+  const dom = document.querySelector('.turn-comment')
+  dom && dom.addEventListener('click', () => {
+    commentDomEvent();
+  })
+
+  function backTopEvent() {
+    document.documentElement.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
+  function commentDomEvent() {
+    const commentDom = document.querySelector('.comments-intro')
+    if (!commentDom) return
+    const top = commentDom.offsetTop, height = commentDom.offsetHeight
+    document.documentElement.scrollTo({
+      top: top - 2 * height,
+      behavior: 'smooth'
+    })
+  }
+</script></div>
+    </section>
+  </div>
+  <div id="progress" class="progress"></div>
+  <div id="gray" class="gray"></div>
+  <script>
+    // gray
+    function initScroll () {
+      document.addEventListener('scroll', () => {
+        const doc = document.documentElement
+        const scrollTop = doc.scrollTop
+        const pageHeight = doc.offsetHeight
+        const clientHeight = doc.clientHeight
+        const ratio = scrollTop / (pageHeight - clientHeight)
+        const progress = document.querySelector('#progress')
+        const avatarImg = document.querySelector('.main-left--avatar')
+        progress.style.width = (100 * ratio) + '%'
+        avatarImg.style.transform = `rotate(${360 * ratio}deg)`
+      })
+    }
+
+    const rootPath = "/"
+
+    const checkAndSetArticlePageLayout = () => {
+      if (/^\/?\d{4}\/\d{2}\/\d{2}\/.*/.test(location.pathname.replace(rootPath, ''))) {
+        $('.main-container, .main-right, .main-right-wrapper').addClass('is-article')
+      } else {
+        $('.main-container, .main-right, .main-right-wrapper').removeClass('is-article')
+      }
+    }
+
+    const gray = "none"
+    const setGrayStyle = () => {
+      if (gray === 'none') {
+        return
+      } else if (gray === 'index') {
+        location.pathname === '/' ? $('#gray').show() : $('#gray').hide()
+      } else if (gray === 'all') {
+        $('#gray').show()
+      }
+    }
+    setGrayStyle()
+
+
+    window.onload = function () {
+      checkAndSetArticlePageLayout()
+      setTimeout(() => {
+        $('#load').slideUp()
+        $('#container').slideToggle()
+        setTimeout(() => {
+          initScroll();
+          window.loadImageFn();
+        }, 500)
+      }, 500)
+    }
+    
+    let status = 0
+    // 对所有链接跳转事件绑定pjax容器container
+    $(document).pjax('a[target!=_blank]', '#main-container', {
+      container: '#main-container',
+      fragment: '#main-container',
+      timeout: 8000
+    })
+
+    $(document).on('pjax:start', function() {
+    })
+    $(document).on('pjax:complete', function() {
+      status = 0
+      $('.main-container').addClass('to-up').on('animationend', function() {
+        $(this).removeClass('to-up')
+      })
+      setGrayStyle()
+      checkAndSetArticlePageLayout()
+    })
+    $(document).on('pjax:popstate', function() {
+      status = -1
+      checkAndSetArticlePageLayout()
+      // $('.main-container').fadeIn()
+    })
+  </script>
 </body>
 </html>

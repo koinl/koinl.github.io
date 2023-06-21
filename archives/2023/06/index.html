@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第5章  HBase 分布式数据库 | 锦鲤未离</title>
+  <title>小站首页 | 锦鲤未离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
   <script src="/js/jquery.min.js"></script>
   <script src="/js/jquery.pjax.min.js"></script>
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-  <script>document.title = `第5章  HBase 分布式数据库`</script>
+  <script>document.title = `小站首页`</script>
 <meta name="generator" content="Hexo 6.1.0"></head>
 
 <style>
@@ -348,210 +348,105 @@
 </div></div>
       <div id="main-container" class="main-container">
 
-
-  <style>
-/* 代码块复制按钮 */
-.highlight {
-    /* 方便copy代码按钮（btn-copy）的定位 */
-    position: relative;
-}
-.btn-copy {
-    display: inline-block;
-    cursor: pointer;
-    background-color: #eee;
-    background-image: linear-gradient(#fcfcfc, #eee);
-    border: 1px solid #d5d5d5;
-    border-radius: 3px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-appearance: none;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 20px;
-    color: #333;
-    -webkit-transition: opacity .3s ease-in-out;
-    -o-transition: opacity .3s ease-in-out;
-    transition: opacity .3s ease-in-out;
-    padding: 2px 6px;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    opacity: 0;
-}
-.btn-copy span {
-    margin-left: 5px;
-}
-.highlight:hover .btn-copy {
-    opacity: 1;
-}
-
-pre::-webkit-scrollbar {
-  width: 5px;
-  height: 10px;
-  background-color:#F5F5F5;
-}
-/*定义滚动条轨道
-内阴影+圆角*/
-pre::-webkit-scrollbar-track {
-  background-color:#F5F5F5;
-}
-/*定义滑块
-内阴影+圆角*/
-pre::-webkit-scrollbar-thumb {
-  background-color: rgb(69, 83, 100);
-}
-
-pre:active {
-  background-color: rgb(81, 95, 116);
-}
-pre {
-  width: 100% !important;
-	    float: left !important;
-	    overflow: hidden !important;
-	    text-overflow: ellipsis !important;
-	    /* white-space: normal !important; */
-}
-
-
-</style>
-
-<div class="article-container">
-  <div class="article">
-    <h1 class="article-title">第5章  HBase 分布式数据库</h1>
-    <div class="article-info">
-      <div class="article-info--item">
-        <div class="article-info--info">
-          
-          <div class="article-info--categories">
-            <span>分类：</span>
-            <a class="category-link" href="/categories/spark/">Spark</a>
-          </div>
-          
-          
-          <div class="article-info--tags">
-            <span>标签：</span>
-            
-          </div>
-          
-          <p class="article-info--date">创建日期：2023-03-31 17:00:05</p>
-        </div>
-        <img src="https://t7.baidu.com/it/u=3652245443,3894439772&fm=193&f=GIF" alt="" class="article-cover">
-      </div>
-    </div>
-    <article class="article-content">
-      <p>Spark计算框架如何在分布式环境下对数据处理后的结构进行随机地、实时地存储？HBase前来解决这个问题。</p>
-<span id="more"></span>
-<p>HBase一般使用<strong>Shell命令行</strong>或者**Java API **方式进行操作。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 conf]# hbase shell</span><br><span class="line">2023-03-31 20:06:06,069 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable</span><br><span class="line">HBase Shell</span><br><span class="line">Use &quot;help&quot; to get list of supported commands.</span><br><span class="line">Use &quot;exit&quot; to quit this interactive shell.</span><br><span class="line">Version 2.0.2, r1cfab033e779df840d5612a85277f42a6a4e8172, Tue Aug 28 20:50:40 PDT 2018</span><br><span class="line">Took 0.0022 seconds                                                    </span><br><span class="line">hbase(main):001:0&gt; create &#x27;student&#x27;,&#x27;info&#x27;.&#x27;score&#x27;</span><br><span class="line">SyntaxError: (hbase):1: syntax error, unexpected tSTRING_BEG</span><br><span class="line">create &#x27;student&#x27;,&#x27;info&#x27;.&#x27;score&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">hbase(main):002:0&gt; create &#x27;student&#x27;,&#x27;info&#x27;,&#x27;score&#x27;</span><br><span class="line">Created table student</span><br><span class="line">Took 2.2020 seconds                                                    </span><br><span class="line">=&gt; Hbase::Table - student</span><br><span class="line">hbase(main):003:0&gt; list</span><br><span class="line">TABLE                                                                  </span><br><span class="line">student                                                                </span><br><span class="line">1 row(s)</span><br><span class="line">Took 0.0968 seconds                                                    </span><br><span class="line">=&gt; [&quot;student&quot;]</span><br><span class="line">hbase(main):004:0&gt; put &#x27;student&#x27;,&#x27;1001&#x27;,&#x27;info:name&#x27;,&#x27;Graay&#x27;</span><br><span class="line">Took 0.6300 seconds     </span><br><span class="line">hbase(main):006:0&gt; put &#x27;student&#x27;,&#x27;1001&#x27;,&#x27;info:age&#x27;,&#x27;18&#x27;</span><br><span class="line">Took 0.0259 seconds                                                    </span><br><span class="line">hbase(main):007:0&gt; scan &#x27;student&#x27;</span><br><span class="line">ROW                COLUMN+CELL                                         </span><br><span class="line"> 1001              column=info:age, timestamp=1680318580788, value=18  </span><br><span class="line"> 1001              column=info:name, timestamp=1680318521517, value=Gra</span><br><span class="line">                   ay                                                  </span><br><span class="line">1 row(s)</span><br><span class="line">Took 0.1029 seconds                                                    </span><br><span class="line">hbase(main):008:0&gt; put &#x27;student&#x27;,&#x27;1002&#x27;,&#x27;info:age&#x27;,&#x27;21&#x27;</span><br><span class="line">Took 0.0161 seconds                                                    </span><br><span class="line">hbase(main):009:0&gt; scan &#x27;student&#x27;</span><br><span class="line">ROW                COLUMN+CELL                                         </span><br><span class="line"> 1001              column=info:age, timestamp=1680318580788, value=18  </span><br><span class="line"> 1001              column=info:name, timestamp=1680318521517, value=Gra</span><br><span class="line">                   ay                                                  </span><br><span class="line"> 1002              column=info:age, timestamp=1680318604807, value=21  </span><br><span class="line">2 row(s)</span><br><span class="line">Took 0.0136 seconds                                                    </span><br><span class="line">hbase(main):010:0&gt; describe &#x27;student&#x27;</span><br><span class="line">Table student is ENABLED                                               </span><br><span class="line">student                                                                </span><br><span class="line">COLUMN FAMILIES DESCRIPTION                                            </span><br><span class="line">&#123;NAME =&gt; &#x27;info&#x27;, VERSIONS =&gt; &#x27;1&#x27;, EVICT_BLOCKS_ON_CLOSE =&gt; &#x27;false&#x27;, NEW</span><br><span class="line">_VERSION_BEHAVIOR =&gt; &#x27;false&#x27;, KEEP_DELETED_CELLS =&gt; &#x27;FALSE&#x27;, CACHE_DATA</span><br><span class="line">_ON_WRITE =&gt; &#x27;false&#x27;, DATA_BLOCK_ENCODING =&gt; &#x27;NONE&#x27;, TTL =&gt; &#x27;FOREVER&#x27;, </span><br><span class="line">MIN_VERSIONS =&gt; &#x27;0&#x27;, REPLICATION_SCOPE =&gt; &#x27;0&#x27;, BLOOMFILTER =&gt; &#x27;ROW&#x27;, CA</span><br><span class="line">CHE_INDEX_ON_WRITE =&gt; &#x27;false&#x27;, IN_MEMORY =&gt; &#x27;false&#x27;, CACHE_BLOOMS_ON_WR</span><br><span class="line">ITE =&gt; &#x27;false&#x27;, PREFETCH_BLOCKS_ON_OPEN =&gt; &#x27;false&#x27;, COMPRESSION =&gt; &#x27;NON</span><br><span class="line">E&#x27;, BLOCKCACHE =&gt; &#x27;true&#x27;, BLOCKSIZE =&gt; &#x27;65536&#x27;&#125;                        </span><br><span class="line">&#123;NAME =&gt; &#x27;score&#x27;, VERSIONS =&gt; &#x27;1&#x27;, EVICT_BLOCKS_ON_CLOSE =&gt; &#x27;false&#x27;, NE</span><br><span class="line">W_VERSION_BEHAVIOR =&gt; &#x27;false&#x27;, KEEP_DELETED_CELLS =&gt; &#x27;FALSE&#x27;, CACHE_DAT</span><br><span class="line">A_ON_WRITE =&gt; &#x27;false&#x27;, DATA_BLOCK_ENCODING =&gt; &#x27;NONE&#x27;, TTL =&gt; &#x27;FOREVER&#x27;,</span><br><span class="line"> MIN_VERSIONS =&gt; &#x27;0&#x27;, REPLICATION_SCOPE =&gt; &#x27;0&#x27;, BLOOMFILTER =&gt; &#x27;ROW&#x27;, C</span><br><span class="line">ACHE_INDEX_ON_WRITE =&gt; &#x27;false&#x27;, IN_MEMORY =&gt; &#x27;false&#x27;, CACHE_BLOOMS_ON_W</span><br><span class="line">RITE =&gt; &#x27;false&#x27;, PREFETCH_BLOCKS_ON_OPEN =&gt; &#x27;false&#x27;, COMPRESSION =&gt; &#x27;NO</span><br><span class="line">NE&#x27;, BLOCKCACHE =&gt; &#x27;true&#x27;, BLOCKSIZE =&gt; &#x27;65536&#x27;&#125;                       </span><br><span class="line">2 row(s)</span><br><span class="line">Took 0.2478 seconds                                                    </span><br><span class="line">hbase(main):011:0&gt; get &#x27;student&#x27;,&#x27;1001&#x27;</span><br><span class="line">COLUMN             CELL                                                </span><br><span class="line"> info:age          timestamp=1680318580788, value=18                   </span><br><span class="line"> info:name         timestamp=1680318521517, value=Graay                </span><br><span class="line">1 row(s)</span><br><span class="line">Took 0.1066 seconds                                                    </span><br><span class="line">hbase(main):012:0&gt; count &#x27;student&#x27;</span><br><span class="line">2 row(s)</span><br><span class="line">Took 0.0993 seconds                                                    </span><br><span class="line">=&gt; 2</span><br><span class="line">hbase(main):013:0&gt; delete &#x27;student&#x27;,&#x27;1002&#x27;,&#x27;info:sex&#x27;</span><br><span class="line">Took 0.0651 seconds                                                    </span><br><span class="line">hbase(main):014:0&gt; deleteall &#x27;student&#x27;,&#x27;1001&#x27;</span><br><span class="line">Took 0.0595 seconds </span><br><span class="line">hbase(main):017:0&gt; truncate &#x27;student&#x27;</span><br><span class="line">Truncating &#x27;student&#x27; table (it may take a while):</span><br><span class="line">Disabling table...</span><br><span class="line">Truncating table...</span><br><span class="line">Took 2.8205 seconds </span><br><span class="line">hbase(main):019:0&gt; scan &#x27;student&#x27;</span><br><span class="line">ROW                COLUMN+CELL                                         </span><br><span class="line">0 row(s)</span><br><span class="line">Took 1.4101 seconds                                                    </span><br><span class="line">hbase(main):020:0&gt; disable &#x27;student&#x27;</span><br><span class="line">Took 0.5823 seconds                                                    </span><br><span class="line">hbase(main):021:0&gt; drop &#x27;student&#x27;</span><br><span class="line">Took 0.5392 seconds                                                    </span><br><span class="line">hbase(main):022:0&gt; </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-    </article>
     
-    <div class="read-nums">
-      <!-- id 将作为查询条件 -->
-      <span id="posts/spark_05/" class="leancloud_visitors" data-flag-title="Your Article Title">
-        <em class="post-meta-item-text">浏览量</em>
-        <i class="leancloud-visitors-count"></i>
-      </span>
-    </div>
-    <div class="comments-intro">
-      <h2>评论区</h2>
-      <p>欢迎你留下宝贵的意见，昵称输入QQ号会显示QQ头像哦~</p>
-    </div>
-    <div id="vcomments" class="vcomments"></div>
+
+<div class="index">
+  <div class="index-left">
+    
+      <div class="index-article">
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="https://t7.baidu.com/it/u=525238175,2471219466&fm=193&f=GIF" alt="">
+        </div>
+        <div class="index-article--content">
+              
+          <div>
+            <p>创建于  2023-06-21 19:11:00 星期三 · </p>
+            <p>“本文档仅用于学习交流使用，请于24小时内删除”*本文档内容带有作者个人...</p>  
+            
+            <!--  -->
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
     
   </div>
-  <div class="article-catelogue">
-    <div class="article-catelogue--wrapper">
-      <div class="catelogue catelogue-1">
-        <h3>目录</h3>
-        
-      </div>
+  <div class="index-center">
+    
+  </div>
+  <div class="index-right">
+    <div class="index-right-wrapper">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/">Data-Mining</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">Spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/">无人驾驶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
       
-        <div class="catelogue catelogue-2">
-          
-            <p>
-              <span>上一篇：</span>
-              <a href="/posts/NPJS_2303_03/">第1章  点云图</a>
-            </p>
-           
-          
-            <p>
-              <span>下一篇</span>
-              <a href="/posts/spark_04/">第4章  Spark SQL结构化数据文件处理</a>
-            </p>
-          
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">2023年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">2023年05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">2023年03月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">2023年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">2022年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">2022年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">2022年09月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">2022年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">2022年07月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">2022年06月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">2022年05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">2022年04月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">2022年02月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">2022年01月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/">1999年01月</a><span class="archive-list-count">1</span></li></ul>
+      
+        <div class="page">
+          <span class="page-number current">1</span>
         </div>
       
     </div>
   </div>
 </div>
 
-<script src="http://cdn.yangxiang.cc/prism.js"></script>
 
 <script>
-  // var定义，避免pjax重新进来造成的重复声明错误
-  var config = JSON.parse('{"enable":true,"appId":"Pf8zCXGEH1qsprnWfikVVujL-gzGzoHsz","appKey":"qOqoiUHhH1TGtLRUYURkLRQX","placeholder":"请留下你宝贵的意见吧~","meta":["nick"],"recordIP":true,"visitor":true,"enableQQ":true}')
-  new Valine({
-    el: '#vcomments',
-    appId: config.appId,
-    appKey: config.appKey,
-    placeholder: config.placeholder,
-    meta: config.meta,
-    recordIP: config.recordIP,
-    visitor: config.visitor,
-    enableQQ: config.enableQQ,
-    path: 'posts/spark_05/'
-  })
-</script>
+  var allImgBoxs = document.querySelectorAll('.index-article--box');
+  var windowHeight = window.innerHeight;
+  var boxs = Array.from(allImgBoxs);
+  var timer = null;
+  boxs.forEach((box, idx) => {
+    if (!window.loadImageSet || !window.loadImageSet.includes(idx)) {
+      box.classList.add('img-loading');
+    } else {
+      const imgDom = box.querySelector('img');
+      imgDom.src = imgDom.dataset.cover;
+    }
+  });
 
+  function scrollFn() {
+    if (timer) {
+      return;
+    }
+    timer = setTimeout(() => {
+      loadImage();
+      timer = null;
+    }, 100)
+  }
 
-<script>
-  $(document).on('pjax:complete', function() {
-    const tocs = document.querySelector('.toc')
-    const links = tocs ? tocs.querySelectorAll('a') : []
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        const href = decodeURIComponent(e.href)
-        href.search(/#(.*)/)
-        const id = RegExp.$1
-        const target = document.querySelector('#' + id)
-        const top = target.offsetTop
-        document.documentElement.scrollTo({
-          top: top - 100,
-          behavior: 'smooth'
-        })
-        e.preventDefault()
-      })
-    })
-  })
-</script>
+  if (!window.loadedImage) {
+    document.addEventListener('scroll', scrollFn);
+  }
 
-
-<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
-<script>
-  /*页面载入完成后，创建复制按钮*/
-!function (e, t, a) { 
-/* code */
-var initCopyCode = function(){
-    var copyHtml = '';
-    copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '  <i class="fa fa-globe"></i><span>copy</span>';
-    copyHtml += '</button>';
-    $(".highlight .code").before(copyHtml);
-    new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-            return trigger.nextElementSibling;
+  function loadImage() {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop;
+    if (boxs.every(box => box.loadedImage)) {
+      document.removeEventListener('scroll', scrollFn);
+      window.loadedImage = 1;
+      return;
+    }
+    boxs.forEach((box, idx) => {
+      if (box.loadedImage) {
+        return;
+      }
+      if (box.getBoundingClientRect().top < windowHeight) {
+        const imgDom = box.querySelector('img');
+        imgDom.src = imgDom.dataset.cover;
+        imgDom.onload = () => {
+          box.classList.remove('img-loading')
+          box.loadedImage = true;
+          if (window.loadImageSet) {
+            window.loadImageSet.push(idx);
+          } else {
+            window.loadImageSet = [];
+            window.loadImageSet.push(idx);
+          }
         }
+      }
     });
-}
-initCopyCode();
-}(window, document);
-</script> 
+  }
 
+  window.loadImageFn = loadImage;
+</script> 
 </div>
       <div class="main-right-wrapper"><div class="main-right">
   <div class="main-right--board">

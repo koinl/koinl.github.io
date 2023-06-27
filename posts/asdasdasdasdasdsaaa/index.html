@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第二章  磁盘I/O操作 | 锦鲤未离</title>
+  <title>交通大数据-代码复习 | 锦鲤未离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
   <script src="/js/jquery.min.js"></script>
   <script src="/js/jquery.pjax.min.js"></script>
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-  <script>document.title = `第二章  磁盘I/O操作`</script>
+  <script>document.title = `交通大数据-代码复习`</script>
 <meta name="generator" content="Hexo 6.1.0"></head>
 
 <style>
@@ -419,14 +419,14 @@ pre {
 
 <div class="article-container">
   <div class="article">
-    <h1 class="article-title">第二章  磁盘I/O操作</h1>
+    <h1 class="article-title">交通大数据-代码复习</h1>
     <div class="article-info">
       <div class="article-info--item">
         <div class="article-info--info">
           
           <div class="article-info--categories">
             <span>分类：</span>
-            <a class="category-link" href="/categories/Hadoop/">Hadoop</a>
+            <a class="category-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%A4%8D%E4%B9%A0/">代码复习</a>
           </div>
           
           
@@ -435,49 +435,18 @@ pre {
             
           </div>
           
-          <p class="article-info--date">创建日期：2022-09-07 12:20:56</p>
+          <p class="article-info--date">创建日期：2023-06-27 11:45:35</p>
         </div>
         <img src="https://t7.baidu.com/it/u=3652245443,3894439772&fm=193&f=GIF" alt="" class="article-cover">
       </div>
     </div>
     <article class="article-content">
-      <p>在系统中，当需要处理的数据非常大时，数据出现损坏的可能性会大很多。因此需要进行<strong>数据完整性检查</strong>；<br>Hadoop 采用 <strong>RPC</strong> 来实现进程间的通信，采用的是 <strong>Writable 序列化机制</strong>。序列化有两个目的：<strong>进程间通信与数据持久性存储</strong>。<br>在传输之前，可以对文件先进行压缩，这样做有两大好处，这俩好处也对于处理大量数据十分重要：<strong>减少存储空间与加速数据在网络和磁盘上的传输</strong>。<br>对于某些应用，往往需要一种特殊的数据结构来存储数据，所以 Hadoop 为此开发了更高层次的容器：SequenceFile 和 Mapfile.</p>
-<h2 id="一、数据完整性"><a href="#一、数据完整性" class="headerlink" title="一、数据完整性"></a>一、数据完整性</h2><p>一般情况下，可用通过<strong>验证校验和</strong>的方式来检查数据的完整性。</p>
-<blockquote>
-<p>校验和（checksum）是指再数据处理和数据通信领域用于校验一组终端数据项的和。<br>数据在传输之前会生成一个校验和，当传输过去后会再次计算校验和，若不一致，则判定数据<strong>已损坏</strong>。<br>另外，文件系统重启时也会计算校验和。</p>
-</blockquote>
-<h3 id="1-HDFS-的数据完整性"><a href="#1-HDFS-的数据完整性" class="headerlink" title="1. HDFS 的数据完整性"></a>1. HDFS 的数据完整性</h3><p>除了在写入和读取时会计算验证校验和来验证数据的完整性外，HDFS 还会定期计算 block 的校验和以验证数据完整性。</p>
-<h4 id="1-向-HDFS-中写入数据时的验证"><a href="#1-向-HDFS-中写入数据时的验证" class="headerlink" title="1) 向 HDFS 中写入数据时的验证"></a>1) 向 HDFS 中写入数据时的验证</h4><p>Client 向 HDFS 发送写入请求，最后一个接收 block 副本的 DataNode 会计算校验和，并与 Client 发送的校验和进行比较，相同存入并返回信息，错误就会给 Client 抛出一个 IOException 错误。<br>此外，DataNode 复制其他数据节点的数据时，也会通过比较校验和的方式对数据进行验证。</p>
-<h4 id="2-从-HDFS-中读取数据时的验证"><a href="#2-从-HDFS-中读取数据时的验证" class="headerlink" title="2) 从 HDFS 中读取数据时的验证"></a>2) 从 HDFS 中读取数据时的验证</h4><p>每个数据节点都会将每次验证后的校验和与校验和的更新时间持久保存到某个日志中。<br>Client 从数据节点读取数据时，会将数据放置在 Client 的缓存中，然后重新计算校验和并于数据节点所存储的最新校验和进行比较。</p>
-<h4 id="3-DataNode-后台守护进程定期检测"><a href="#3-DataNode-后台守护进程定期检测" class="headerlink" title="3) DataNode 后台守护进程定期检测"></a>3) DataNode 后台守护进程定期检测</h4><p>解决的是物理存储媒介损坏的问题，每个数据节点都会在后台运行一个 DataBlockScanner 进程，该进程定期检查数据节点上的块，以便在 Client 读取损坏的块前将其及时检测并修复。<br>此外，当发现某块副本的校验和和日志中的数据不一致，数据节点就会将其标注为已损坏。当数据节点向元数据节点发送心跳时，元数据节点就会让数据节点处理损坏的数据块。</p>
-<h3 id="2-验证数据完整性"><a href="#2-验证数据完整性" class="headerlink" title="2. 验证数据完整性"></a>2. 验证数据完整性</h3><p>为了验证，用户可用去编写程序调用客户端校验类和校验和文件系统类。</p>
-<h4 id="1-客户端校验（LocalFileSystem）类"><a href="#1-客户端校验（LocalFileSystem）类" class="headerlink" title="1) 客户端校验（LocalFileSystem）类"></a>1) 客户端校验（LocalFileSystem）类</h4><p>例如，当调用该类来写入一个“a.txt”的文件时，文件系统会自动创建一个“.a.txt.crc”的隐藏文件。</p>
-<h4 id="2-校验和文件系统（ChecksumFileSystem）类"><a href="#2-校验和文件系统（ChecksumFileSystem）类" class="headerlink" title="2) 校验和文件系统（ChecksumFileSystem）类"></a>2) 校验和文件系统（ChecksumFileSystem）类</h4><h2 id="二、序列化与反序列化"><a href="#二、序列化与反序列化" class="headerlink" title="二、序列化与反序列化"></a>二、序列化与反序列化</h2><p>Java 序列化会将 Java 对象转换为字节序列的过程，Java 反序列化是将字节序列恢复到 Java 对象的过程。<br>例如，将 Java 图片对象序列化，通过网络进行传输，最后将其反序列化以获得需要的对象。</p>
-<h3 id="1-序列化"><a href="#1-序列化" class="headerlink" title="1. 序列化"></a>1. 序列化</h3><p>简单来讲，序列化就是将对象转化为便于传输的格式，例如二进制、字节数组、json、xml等。Hadoop 使用的时 Writable。</p>
-<h4 id="1-Writable-接口"><a href="#1-Writable-接口" class="headerlink" title="1) Writable 接口"></a>1) Writable 接口</h4><p>Writable 接口针对 DataOutput 和 DataInput 定义了两个方法：write() 和 readFields() 。分别实现对数据的序列化和反序列化。</p>
-<h4 id="2-Writable-类"><a href="#2-Writable-类" class="headerlink" title="2) Writable 类"></a>2) Writable 类</h4><h4 id="3-自定义-Writable-类"><a href="#3-自定义-Writable-类" class="headerlink" title="3) 自定义 Writable 类"></a>3) 自定义 Writable 类</h4><p>有时候，还是需要自己构建新类滴，因此，实现自定义的 Writable 也是十分有必要滴，下方代码构建了一个 ListWritable 类（Writable 集合类中没有提供），用于实现 Writable 接口从而达到 List 集合的效果。</p>
-<h3 id="2-反序列化"><a href="#2-反序列化" class="headerlink" title="2. 反序列化"></a>2. 反序列化</h3><p>简单来讲，是对应的，是序列化的逆过程。</p>
-<h2 id="三、数据压缩"><a href="#三、数据压缩" class="headerlink" title="三、数据压缩"></a>三、数据压缩</h2><p>Hadoop 的数据量过大，有必要对文件进行压缩，减少文件存储所使用的存储空间，也可以加快数据在网络和磁盘上的传输速度。</p>
-<h3 id="1-压缩与解压缩方法-Codec"><a href="#1-压缩与解压缩方法-Codec" class="headerlink" title="1. 压缩与解压缩方法 Codec"></a>1. 压缩与解压缩方法 Codec</h3><h4 id="1-CompressionCodec-接口"><a href="#1-CompressionCodec-接口" class="headerlink" title="1) CompressionCodec 接口"></a>1) CompressionCodec 接口</h4><p>CompressionCodec 接口定义了数据的压缩和解压缩方法，分别是 createOutputStream() 和 createInputStream()。<br>使用 createOutputStream() 方法，可以对未压缩的数据新建一个 CompressionOutputStream 对象，对输出流的数据进行压缩。<br>使用 createInputStream() 方法，可以对输入流读取的数据进行解压缩，解压缩的数据新构建一个 CompressionInputStream 对象。</p>
-<p>在 Eclipse 中运行 Compressor() 测试方法，可以在本地系统的指定位置（如“E:&#x2F;data”）生成一个压缩文件（如“c.txt.gz”）；<br>运行 UnCompressor() 测试方法，下方的“Console”窗口中会输出将压缩文件解压缩后所得的文件内容。</p>
-<h4 id="2-CompressionCodecFactory-类"><a href="#2-CompressionCodecFactory-类" class="headerlink" title="2) CompressionCodecFactory 类"></a>2) CompressionCodecFactory 类</h4><p>当读取一个压缩文件时，CompressionCodecFactory 类可以根据文件扩展名来推断使用哪个 Codec 算法。</p>
-<p>利用 CompressionCodecFactory 提供的 getCodec() 方法，可以接收一个 Path 对象，并将文件扩展名映射到相应的 Codec 方法中。<br>在 Eclipse 中运行 FileDecompressor() 测试方法，可以在与压缩文件（即 hdfs:&#x2F;&#x2F;hadoop00:9000&#x2F;mywork&#x2F;test&#x2F;c.txt.gz）相同的目录下得到一个解压缩后的文件。</p>
-<h3 id="2-压缩与输入分片"><a href="#2-压缩与输入分片" class="headerlink" title="2. 压缩与输入分片"></a>2. 压缩与输入分片</h3><p>Hadoop 的数据量过大，压缩后是否支持切分也是很有必要的。例如，一个 2GB 的文件切分成 16 个块（默认每个块128MB），如果该文件作为 MapReduce 的作业输入，将会创建 16 个分片，每个分片启动一个 Map任务单独处理分片数据。</p>
-<p>假设压缩后的文件大小为 1.6GB，那么块个数就会降低到 13 个，此时 Map 任务也会减少，由此可用提高作业效率。<br>当然压缩格式需要支持切分功能（如 bzip2），对于不支持切分的，emmm。</p>
-<h2 id="四、Hadoop-文件的数据结构"><a href="#四、Hadoop-文件的数据结构" class="headerlink" title="四、Hadoop 文件的数据结构"></a>四、Hadoop 文件的数据结构</h2><p>其中，SequenceFile 和 MapFile 较典型，MapFile 类型文件是排序后带有索引的 SequenceFile 文件。</p>
-<h3 id="1-SequemceFile"><a href="#1-SequemceFile" class="headerlink" title="1. SequemceFile"></a>1. SequemceFile</h3><p>是序列化后的二进制文件，以<strong>键值对的方式</strong>记录数据。</p>
-<p>在 Eclipse 中运行 SequemceFileWriteDemo() 测试方法，可以将数据写入到 SequemceFile 文件（即 hdfs:&#x2F;&#x2F;hadoop00:9000&#x2F;mywork&#x2F;test&#x2F;sequencedemo.seq）。</p>
-<p>在 虚拟机中，通过执行下行命令可以查看该文件内容：<code>hdfs dfs -text /mywork/test/sequencedemo.seq</code></p>
-<p>在 Eclipse 中运行 SequemceFileReadDemo() 测试方法，可以从 SequemceFile 文件中读取数据，下方的“Console”窗口中会输出日志。</p>
-<h3 id="2-MapFile"><a href="#2-MapFile" class="headerlink" title="2. MapFile"></a>2. MapFile</h3><p>在 Eclipse 中运行 MapFileWriteDemo() 测试方法，可以将数据写入到 MapFile 文件（即 hdfs:&#x2F;&#x2F;hadoop00:9000&#x2F;mywork&#x2F;test&#x2F;mapfiledemo.map）。</p>
-<p>在虚拟机中，通过执行下行命令可以分别查看该文件的 index 和 data 内容：<code>hdfs dfs -text /mywork/test/mapfiledemo.map/index</code> 和 <code>hdfs dfs -text /mywork/test/mapfiledemo.map/data</code>。</p>
-<p>在 Eclipse 中运行 MapFileReadDemo() 测试方法，可以从 MapFile 文件中读取数据，此时下方的“Console”窗口中会输出全部文件内容及 key 值为 10 的内容。</p>
-
+      <h1 id="“本代码仅用于学习交流使用，请于24小时内删除”"><a href="#“本代码仅用于学习交流使用，请于24小时内删除”" class="headerlink" title="“本代码仅用于学习交流使用，请于24小时内删除”"></a>“本代码仅用于学习交流使用，请于24小时内删除”</h1><h1 id="本代码内容带有作者个人观点，仅供参考"><a href="#本代码内容带有作者个人观点，仅供参考" class="headerlink" title="*本代码内容带有作者个人观点，仅供参考"></a>*本代码内容带有作者个人观点，仅供参考</h1><h1 id="本二维码内容为代码的详解，请查阅"><a href="#本二维码内容为代码的详解，请查阅" class="headerlink" title="*本二维码内容为代码的详解，请查阅"></a>*本二维码内容为代码的详解，请查阅</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"># 1. 归一化代码</span><br><span class="line"># (1) 最大最小归一化，公式(X-Min)/(Max-Min)</span><br><span class="line">def maxmin(list):</span><br><span class="line">    # 依照公式，获取所需值</span><br><span class="line">    max_,min_=np.max(list),np.min(list)</span><br><span class="line">    # 运用公式，处理数据</span><br><span class="line">    newlist=[]    # 用一个新列表存储归一化后的结果</span><br><span class="line">    for x in list:    # 循环源列表，依次对原数据进行归一化</span><br><span class="line">        newlist.append((x - min_) / (max_ - min_))    # 存储归一化后的结果</span><br><span class="line">    print(newlist)    # 打印查看，结果为 [0.0, 0.25, 0.5, 0.75, 1.0]</span><br><span class="line"></span><br><span class="line"># (2)Z-score归一化，公式(x-μ)/σ</span><br><span class="line">def z_score(list):</span><br><span class="line">    # 根据公式，可知需要求均值</span><br><span class="line">    mu=sum(list)/len(list)    # 计算μ(mu)：列表之和/列表长度</span><br><span class="line">    # 根据公式，可知需要求标准差</span><br><span class="line">    count=0    # 计算σ(sigma)</span><br><span class="line">    for i in list:</span><br><span class="line">        count = count + (i - mu) ** 2    # 单样本减去总体样本平均值的平方相加：Z=(x1-x)^2 +(x2-x)^2 +......(xn-x)^2</span><br><span class="line">    sigma = np.sqrt(count / len(list))    # 把上述的结果除以(n-1)后开根号：s=np.sqrt(Z/(n-1))</span><br><span class="line">    # 处理数据，与上相似，故不再赘述</span><br><span class="line">    newlist=[]</span><br><span class="line">    for i in list:</span><br><span class="line">        newlist.append((i - mu) / sigma)</span><br><span class="line">    print(newlist)  # 打印结果，结果为：[-1.41..., -0.70..., 0.0, 0.70..., 1.41...]</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">list=[1,2,3,4,5]</span><br><span class="line">maxmin(list)</span><br><span class="line">z_score(list)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 2. 多元线性回归代码</span><br><span class="line">import numpy as np</span><br><span class="line">from sklearn.linear_model import LinearRegression    # 线性回归分析模块</span><br><span class="line">from sklearn.model_selection import train_test_split    # 数据集划分工具</span><br><span class="line"></span><br><span class="line">def muti_linear_regre(X,Y):</span><br><span class="line">    X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=2,random_state=1)    # 划分数据集</span><br><span class="line">    reg=LinearRegression()    # 线性回归分析</span><br><span class="line">    reg.fit(X_train, Y_train)    # 拟合</span><br><span class="line">    print(reg.predict(X_test))    # 检验训练结果</span><br><span class="line"></span><br><span class="line">X=np.array([[1, 2, 3, 4],    # X值为6行四列</span><br><span class="line">            [5, 6, 7, 8],</span><br><span class="line">            [9, 10,11,12],</span><br><span class="line">            [13,14,15,16],</span><br><span class="line">            [17,18,19,20],</span><br><span class="line">            [21,22,23,24]])</span><br><span class="line">y=np.array([sum(x) for x in X])    # y值为每一行求和，即y=[10，26，42，58，74，90]</span><br><span class="line">if __name__==&quot;__main__&quot;:    # 当 Python 文件作为主程序运行时，运行以下代码</span><br><span class="line">    muti_linear_regre(X,y)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
     </article>
     
     <div class="read-nums">
       <!-- id 将作为查询条件 -->
-      <span id="posts/hadoop02/" class="leancloud_visitors" data-flag-title="Your Article Title">
+      <span id="posts/asdasdasdasdasdsaaa/" class="leancloud_visitors" data-flag-title="Your Article Title">
         <em class="post-meta-item-text">浏览量</em>
         <i class="leancloud-visitors-count"></i>
       </span>
@@ -493,20 +462,15 @@ pre {
     <div class="article-catelogue--wrapper">
       <div class="catelogue catelogue-1">
         <h3>目录</h3>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">一、数据完整性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-HDFS-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">1. HDFS 的数据完整性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%90%91-HDFS-%E4%B8%AD%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E6%97%B6%E7%9A%84%E9%AA%8C%E8%AF%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">1) 向 HDFS 中写入数据时的验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BB%8E-HDFS-%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E6%97%B6%E7%9A%84%E9%AA%8C%E8%AF%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">2) 从 HDFS 中读取数据时的验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-DataNode-%E5%90%8E%E5%8F%B0%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E5%AE%9A%E6%9C%9F%E6%A3%80%E6%B5%8B"><span class="toc-number">1.1.3.</span> <span class="toc-text">3) DataNode 后台守护进程定期检测</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">2. 验证数据完整性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%A0%A1%E9%AA%8C%EF%BC%88LocalFileSystem%EF%BC%89%E7%B1%BB"><span class="toc-number">1.2.1.</span> <span class="toc-text">1) 客户端校验（LocalFileSystem）类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%A0%A1%E9%AA%8C%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%88ChecksumFileSystem%EF%BC%89%E7%B1%BB"><span class="toc-number">1.2.2.</span> <span class="toc-text">2) 校验和文件系统（ChecksumFileSystem）类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">二、序列化与反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">1. 序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Writable-%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.1.1.</span> <span class="toc-text">1) Writable 接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Writable-%E7%B1%BB"><span class="toc-number">2.1.2.</span> <span class="toc-text">2) Writable 类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%87%AA%E5%AE%9A%E4%B9%89-Writable-%E7%B1%BB"><span class="toc-number">2.1.3.</span> <span class="toc-text">3) 自定义 Writable 类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">2.2.</span> <span class="toc-text">2. 反序列化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9"><span class="toc-number">3.</span> <span class="toc-text">三、数据压缩</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9%E6%96%B9%E6%B3%95-Codec"><span class="toc-number">3.1.</span> <span class="toc-text">1. 压缩与解压缩方法 Codec</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-CompressionCodec-%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.1.1.</span> <span class="toc-text">1) CompressionCodec 接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-CompressionCodecFactory-%E7%B1%BB"><span class="toc-number">3.1.2.</span> <span class="toc-text">2) CompressionCodecFactory 类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%BE%93%E5%85%A5%E5%88%86%E7%89%87"><span class="toc-number">3.2.</span> <span class="toc-text">2. 压缩与输入分片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Hadoop-%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">四、Hadoop 文件的数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SequemceFile"><span class="toc-number">4.1.</span> <span class="toc-text">1. SequemceFile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-MapFile"><span class="toc-number">4.2.</span> <span class="toc-text">2. MapFile</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%9C%E6%9C%AC%E4%BB%A3%E7%A0%81%E4%BB%85%E7%94%A8%E4%BA%8E%E5%AD%A6%E4%B9%A0%E4%BA%A4%E6%B5%81%E4%BD%BF%E7%94%A8%EF%BC%8C%E8%AF%B7%E4%BA%8E24%E5%B0%8F%E6%97%B6%E5%86%85%E5%88%A0%E9%99%A4%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">“本代码仅用于学习交流使用，请于24小时内删除”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E4%BB%A3%E7%A0%81%E5%86%85%E5%AE%B9%E5%B8%A6%E6%9C%89%E4%BD%9C%E8%80%85%E4%B8%AA%E4%BA%BA%E8%A7%82%E7%82%B9%EF%BC%8C%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="toc-number">2.</span> <span class="toc-text">*本代码内容带有作者个人观点，仅供参考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%86%85%E5%AE%B9%E4%B8%BA%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AF%A6%E8%A7%A3%EF%BC%8C%E8%AF%B7%E6%9F%A5%E9%98%85"><span class="toc-number">3.</span> <span class="toc-text">*本二维码内容为代码的详解，请查阅</span></a></li></ol>
       </div>
       
         <div class="catelogue catelogue-2">
-          
-            <p>
-              <span>上一篇：</span>
-              <a href="/posts/hadoop03/">第三章  MapReduce基础</a>
-            </p>
            
           
             <p>
               <span>下一篇</span>
-              <a href="/posts/hadoop01/">第一章  分布式文件系统（HDFS）概述</a>
+              <a href="/posts/asdasdasdasdasdsa/">机器学习-代码复习</a>
             </p>
           
         </div>
@@ -529,7 +493,7 @@ pre {
     recordIP: config.recordIP,
     visitor: config.visitor,
     enableQQ: config.enableQQ,
-    path: 'posts/hadoop02/'
+    path: 'posts/asdasdasdasdasdsaaa/'
   })
 </script>
 

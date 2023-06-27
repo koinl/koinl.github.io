@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第二章  磁盘I/O操作 | 锦鲤未离</title>
+  <title>小站首页 | 锦鲤未离</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
   <script src="/js/jquery.min.js"></script>
   <script src="/js/jquery.pjax.min.js"></script>
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-  <script>document.title = `第二章  磁盘I/O操作`</script>
+  <script>document.title = `小站首页`</script>
 <meta name="generator" content="Hexo 6.1.0"></head>
 
 <style>
@@ -348,236 +348,109 @@
 </div></div>
       <div id="main-container" class="main-container">
 
-
-  <style>
-/* 代码块复制按钮 */
-.highlight {
-    /* 方便copy代码按钮（btn-copy）的定位 */
-    position: relative;
-}
-.btn-copy {
-    display: inline-block;
-    cursor: pointer;
-    background-color: #eee;
-    background-image: linear-gradient(#fcfcfc, #eee);
-    border: 1px solid #d5d5d5;
-    border-radius: 3px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-appearance: none;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 20px;
-    color: #333;
-    -webkit-transition: opacity .3s ease-in-out;
-    -o-transition: opacity .3s ease-in-out;
-    transition: opacity .3s ease-in-out;
-    padding: 2px 6px;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    opacity: 0;
-}
-.btn-copy span {
-    margin-left: 5px;
-}
-.highlight:hover .btn-copy {
-    opacity: 1;
-}
-
-pre::-webkit-scrollbar {
-  width: 5px;
-  height: 10px;
-  background-color:#F5F5F5;
-}
-/*定义滚动条轨道
-内阴影+圆角*/
-pre::-webkit-scrollbar-track {
-  background-color:#F5F5F5;
-}
-/*定义滑块
-内阴影+圆角*/
-pre::-webkit-scrollbar-thumb {
-  background-color: rgb(69, 83, 100);
-}
-
-pre:active {
-  background-color: rgb(81, 95, 116);
-}
-pre {
-  width: 100% !important;
-	    float: left !important;
-	    overflow: hidden !important;
-	    text-overflow: ellipsis !important;
-	    /* white-space: normal !important; */
-}
-
-
-</style>
-
-<div class="article-container">
-  <div class="article">
-    <h1 class="article-title">第二章  磁盘I/O操作</h1>
-    <div class="article-info">
-      <div class="article-info--item">
-        <div class="article-info--info">
-          
-          <div class="article-info--categories">
-            <span>分类：</span>
-            <a class="category-link" href="/categories/Hadoop/">Hadoop</a>
-          </div>
-          
-          
-          <div class="article-info--tags">
-            <span>标签：</span>
-            
-          </div>
-          
-          <p class="article-info--date">创建日期：2022-09-07 12:20:56</p>
-        </div>
-        <img src="https://t7.baidu.com/it/u=3652245443,3894439772&fm=193&f=GIF" alt="" class="article-cover">
-      </div>
-    </div>
-    <article class="article-content">
-      <p>在系统中，当需要处理的数据非常大时，数据出现损坏的可能性会大很多。因此需要进行<strong>数据完整性检查</strong>；<br>Hadoop 采用 <strong>RPC</strong> 来实现进程间的通信，采用的是 <strong>Writable 序列化机制</strong>。序列化有两个目的：<strong>进程间通信与数据持久性存储</strong>。<br>在传输之前，可以对文件先进行压缩，这样做有两大好处，这俩好处也对于处理大量数据十分重要：<strong>减少存储空间与加速数据在网络和磁盘上的传输</strong>。<br>对于某些应用，往往需要一种特殊的数据结构来存储数据，所以 Hadoop 为此开发了更高层次的容器：SequenceFile 和 Mapfile.</p>
-<h2 id="一、数据完整性"><a href="#一、数据完整性" class="headerlink" title="一、数据完整性"></a>一、数据完整性</h2><p>一般情况下，可用通过<strong>验证校验和</strong>的方式来检查数据的完整性。</p>
-<blockquote>
-<p>校验和（checksum）是指再数据处理和数据通信领域用于校验一组终端数据项的和。<br>数据在传输之前会生成一个校验和，当传输过去后会再次计算校验和，若不一致，则判定数据<strong>已损坏</strong>。<br>另外，文件系统重启时也会计算校验和。</p>
-</blockquote>
-<h3 id="1-HDFS-的数据完整性"><a href="#1-HDFS-的数据完整性" class="headerlink" title="1. HDFS 的数据完整性"></a>1. HDFS 的数据完整性</h3><p>除了在写入和读取时会计算验证校验和来验证数据的完整性外，HDFS 还会定期计算 block 的校验和以验证数据完整性。</p>
-<h4 id="1-向-HDFS-中写入数据时的验证"><a href="#1-向-HDFS-中写入数据时的验证" class="headerlink" title="1) 向 HDFS 中写入数据时的验证"></a>1) 向 HDFS 中写入数据时的验证</h4><p>Client 向 HDFS 发送写入请求，最后一个接收 block 副本的 DataNode 会计算校验和，并与 Client 发送的校验和进行比较，相同存入并返回信息，错误就会给 Client 抛出一个 IOException 错误。<br>此外，DataNode 复制其他数据节点的数据时，也会通过比较校验和的方式对数据进行验证。</p>
-<h4 id="2-从-HDFS-中读取数据时的验证"><a href="#2-从-HDFS-中读取数据时的验证" class="headerlink" title="2) 从 HDFS 中读取数据时的验证"></a>2) 从 HDFS 中读取数据时的验证</h4><p>每个数据节点都会将每次验证后的校验和与校验和的更新时间持久保存到某个日志中。<br>Client 从数据节点读取数据时，会将数据放置在 Client 的缓存中，然后重新计算校验和并于数据节点所存储的最新校验和进行比较。</p>
-<h4 id="3-DataNode-后台守护进程定期检测"><a href="#3-DataNode-后台守护进程定期检测" class="headerlink" title="3) DataNode 后台守护进程定期检测"></a>3) DataNode 后台守护进程定期检测</h4><p>解决的是物理存储媒介损坏的问题，每个数据节点都会在后台运行一个 DataBlockScanner 进程，该进程定期检查数据节点上的块，以便在 Client 读取损坏的块前将其及时检测并修复。<br>此外，当发现某块副本的校验和和日志中的数据不一致，数据节点就会将其标注为已损坏。当数据节点向元数据节点发送心跳时，元数据节点就会让数据节点处理损坏的数据块。</p>
-<h3 id="2-验证数据完整性"><a href="#2-验证数据完整性" class="headerlink" title="2. 验证数据完整性"></a>2. 验证数据完整性</h3><p>为了验证，用户可用去编写程序调用客户端校验类和校验和文件系统类。</p>
-<h4 id="1-客户端校验（LocalFileSystem）类"><a href="#1-客户端校验（LocalFileSystem）类" class="headerlink" title="1) 客户端校验（LocalFileSystem）类"></a>1) 客户端校验（LocalFileSystem）类</h4><p>例如，当调用该类来写入一个“a.txt”的文件时，文件系统会自动创建一个“.a.txt.crc”的隐藏文件。</p>
-<h4 id="2-校验和文件系统（ChecksumFileSystem）类"><a href="#2-校验和文件系统（ChecksumFileSystem）类" class="headerlink" title="2) 校验和文件系统（ChecksumFileSystem）类"></a>2) 校验和文件系统（ChecksumFileSystem）类</h4><h2 id="二、序列化与反序列化"><a href="#二、序列化与反序列化" class="headerlink" title="二、序列化与反序列化"></a>二、序列化与反序列化</h2><p>Java 序列化会将 Java 对象转换为字节序列的过程，Java 反序列化是将字节序列恢复到 Java 对象的过程。<br>例如，将 Java 图片对象序列化，通过网络进行传输，最后将其反序列化以获得需要的对象。</p>
-<h3 id="1-序列化"><a href="#1-序列化" class="headerlink" title="1. 序列化"></a>1. 序列化</h3><p>简单来讲，序列化就是将对象转化为便于传输的格式，例如二进制、字节数组、json、xml等。Hadoop 使用的时 Writable。</p>
-<h4 id="1-Writable-接口"><a href="#1-Writable-接口" class="headerlink" title="1) Writable 接口"></a>1) Writable 接口</h4><p>Writable 接口针对 DataOutput 和 DataInput 定义了两个方法：write() 和 readFields() 。分别实现对数据的序列化和反序列化。</p>
-<h4 id="2-Writable-类"><a href="#2-Writable-类" class="headerlink" title="2) Writable 类"></a>2) Writable 类</h4><h4 id="3-自定义-Writable-类"><a href="#3-自定义-Writable-类" class="headerlink" title="3) 自定义 Writable 类"></a>3) 自定义 Writable 类</h4><p>有时候，还是需要自己构建新类滴，因此，实现自定义的 Writable 也是十分有必要滴，下方代码构建了一个 ListWritable 类（Writable 集合类中没有提供），用于实现 Writable 接口从而达到 List 集合的效果。</p>
-<h3 id="2-反序列化"><a href="#2-反序列化" class="headerlink" title="2. 反序列化"></a>2. 反序列化</h3><p>简单来讲，是对应的，是序列化的逆过程。</p>
-<h2 id="三、数据压缩"><a href="#三、数据压缩" class="headerlink" title="三、数据压缩"></a>三、数据压缩</h2><p>Hadoop 的数据量过大，有必要对文件进行压缩，减少文件存储所使用的存储空间，也可以加快数据在网络和磁盘上的传输速度。</p>
-<h3 id="1-压缩与解压缩方法-Codec"><a href="#1-压缩与解压缩方法-Codec" class="headerlink" title="1. 压缩与解压缩方法 Codec"></a>1. 压缩与解压缩方法 Codec</h3><h4 id="1-CompressionCodec-接口"><a href="#1-CompressionCodec-接口" class="headerlink" title="1) CompressionCodec 接口"></a>1) CompressionCodec 接口</h4><p>CompressionCodec 接口定义了数据的压缩和解压缩方法，分别是 createOutputStream() 和 createInputStream()。<br>使用 createOutputStream() 方法，可以对未压缩的数据新建一个 CompressionOutputStream 对象，对输出流的数据进行压缩。<br>使用 createInputStream() 方法，可以对输入流读取的数据进行解压缩，解压缩的数据新构建一个 CompressionInputStream 对象。</p>
-<p>在 Eclipse 中运行 Compressor() 测试方法，可以在本地系统的指定位置（如“E:&#x2F;data”）生成一个压缩文件（如“c.txt.gz”）；<br>运行 UnCompressor() 测试方法，下方的“Console”窗口中会输出将压缩文件解压缩后所得的文件内容。</p>
-<h4 id="2-CompressionCodecFactory-类"><a href="#2-CompressionCodecFactory-类" class="headerlink" title="2) CompressionCodecFactory 类"></a>2) CompressionCodecFactory 类</h4><p>当读取一个压缩文件时，CompressionCodecFactory 类可以根据文件扩展名来推断使用哪个 Codec 算法。</p>
-<p>利用 CompressionCodecFactory 提供的 getCodec() 方法，可以接收一个 Path 对象，并将文件扩展名映射到相应的 Codec 方法中。<br>在 Eclipse 中运行 FileDecompressor() 测试方法，可以在与压缩文件（即 hdfs:&#x2F;&#x2F;hadoop00:9000&#x2F;mywork&#x2F;test&#x2F;c.txt.gz）相同的目录下得到一个解压缩后的文件。</p>
-<h3 id="2-压缩与输入分片"><a href="#2-压缩与输入分片" class="headerlink" title="2. 压缩与输入分片"></a>2. 压缩与输入分片</h3><p>Hadoop 的数据量过大，压缩后是否支持切分也是很有必要的。例如，一个 2GB 的文件切分成 16 个块（默认每个块128MB），如果该文件作为 MapReduce 的作业输入，将会创建 16 个分片，每个分片启动一个 Map任务单独处理分片数据。</p>
-<p>假设压缩后的文件大小为 1.6GB，那么块个数就会降低到 13 个，此时 Map 任务也会减少，由此可用提高作业效率。<br>当然压缩格式需要支持切分功能（如 bzip2），对于不支持切分的，emmm。</p>
-<h2 id="四、Hadoop-文件的数据结构"><a href="#四、Hadoop-文件的数据结构" class="headerlink" title="四、Hadoop 文件的数据结构"></a>四、Hadoop 文件的数据结构</h2><p>其中，SequenceFile 和 MapFile 较典型，MapFile 类型文件是排序后带有索引的 SequenceFile 文件。</p>
-<h3 id="1-SequemceFile"><a href="#1-SequemceFile" class="headerlink" title="1. SequemceFile"></a>1. SequemceFile</h3><p>是序列化后的二进制文件，以<strong>键值对的方式</strong>记录数据。</p>
-<p>在 Eclipse 中运行 SequemceFileWriteDemo() 测试方法，可以将数据写入到 SequemceFile 文件（即 hdfs:&#x2F;&#x2F;hadoop00:9000&#x2F;mywork&#x2F;test&#x2F;sequencedemo.seq）。</p>
-<p>在 虚拟机中，通过执行下行命令可以查看该文件内容：<code>hdfs dfs -text /mywork/test/sequencedemo.seq</code></p>
-<p>在 Eclipse 中运行 SequemceFileReadDemo() 测试方法，可以从 SequemceFile 文件中读取数据，下方的“Console”窗口中会输出日志。</p>
-<h3 id="2-MapFile"><a href="#2-MapFile" class="headerlink" title="2. MapFile"></a>2. MapFile</h3><p>在 Eclipse 中运行 MapFileWriteDemo() 测试方法，可以将数据写入到 MapFile 文件（即 hdfs:&#x2F;&#x2F;hadoop00:9000&#x2F;mywork&#x2F;test&#x2F;mapfiledemo.map）。</p>
-<p>在虚拟机中，通过执行下行命令可以分别查看该文件的 index 和 data 内容：<code>hdfs dfs -text /mywork/test/mapfiledemo.map/index</code> 和 <code>hdfs dfs -text /mywork/test/mapfiledemo.map/data</code>。</p>
-<p>在 Eclipse 中运行 MapFileReadDemo() 测试方法，可以从 MapFile 文件中读取数据，此时下方的“Console”窗口中会输出全部文件内容及 key 值为 10 的内容。</p>
-
-    </article>
+<div class="index">
+  <div class="index-left">
     
-    <div class="read-nums">
-      <!-- id 将作为查询条件 -->
-      <span id="posts/hadoop02/" class="leancloud_visitors" data-flag-title="Your Article Title">
-        <em class="post-meta-item-text">浏览量</em>
-        <i class="leancloud-visitors-count"></i>
-      </span>
-    </div>
-    <div class="comments-intro">
-      <h2>评论区</h2>
-      <p>欢迎你留下宝贵的意见，昵称输入QQ号会显示QQ头像哦~</p>
-    </div>
-    <div id="vcomments" class="vcomments"></div>
+      <div class="index-article">
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="https://t7.baidu.com/it/u=525238175,2471219466&fm=193&f=GIF" alt="">
+        </div>
+        <div class="index-article--content">
+          
+          <a href="/posts/asdasdasdasdasdsaaa/">『代码复习』交通大数据-代码复习 </a>
+              
+          <div>
+            <p>创建于  2023-06-27 11:45:35 星期二 · </p>
+            <p></p>  
+            
+              <p>
+                <a class="category-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%A4%8D%E4%B9%A0/">代码复习</a>
+              </p>
+            
+            <!--  -->
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
     
   </div>
-  <div class="article-catelogue">
-    <div class="article-catelogue--wrapper">
-      <div class="catelogue catelogue-1">
-        <h3>目录</h3>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">一、数据完整性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-HDFS-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">1. HDFS 的数据完整性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%90%91-HDFS-%E4%B8%AD%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E6%97%B6%E7%9A%84%E9%AA%8C%E8%AF%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">1) 向 HDFS 中写入数据时的验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BB%8E-HDFS-%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E6%97%B6%E7%9A%84%E9%AA%8C%E8%AF%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">2) 从 HDFS 中读取数据时的验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-DataNode-%E5%90%8E%E5%8F%B0%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E5%AE%9A%E6%9C%9F%E6%A3%80%E6%B5%8B"><span class="toc-number">1.1.3.</span> <span class="toc-text">3) DataNode 后台守护进程定期检测</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">2. 验证数据完整性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%A0%A1%E9%AA%8C%EF%BC%88LocalFileSystem%EF%BC%89%E7%B1%BB"><span class="toc-number">1.2.1.</span> <span class="toc-text">1) 客户端校验（LocalFileSystem）类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%A0%A1%E9%AA%8C%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%88ChecksumFileSystem%EF%BC%89%E7%B1%BB"><span class="toc-number">1.2.2.</span> <span class="toc-text">2) 校验和文件系统（ChecksumFileSystem）类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">二、序列化与反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">1. 序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Writable-%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.1.1.</span> <span class="toc-text">1) Writable 接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Writable-%E7%B1%BB"><span class="toc-number">2.1.2.</span> <span class="toc-text">2) Writable 类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%87%AA%E5%AE%9A%E4%B9%89-Writable-%E7%B1%BB"><span class="toc-number">2.1.3.</span> <span class="toc-text">3) 自定义 Writable 类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">2.2.</span> <span class="toc-text">2. 反序列化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9"><span class="toc-number">3.</span> <span class="toc-text">三、数据压缩</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9%E6%96%B9%E6%B3%95-Codec"><span class="toc-number">3.1.</span> <span class="toc-text">1. 压缩与解压缩方法 Codec</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-CompressionCodec-%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.1.1.</span> <span class="toc-text">1) CompressionCodec 接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-CompressionCodecFactory-%E7%B1%BB"><span class="toc-number">3.1.2.</span> <span class="toc-text">2) CompressionCodecFactory 类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%BE%93%E5%85%A5%E5%88%86%E7%89%87"><span class="toc-number">3.2.</span> <span class="toc-text">2. 压缩与输入分片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Hadoop-%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">四、Hadoop 文件的数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SequemceFile"><span class="toc-number">4.1.</span> <span class="toc-text">1. SequemceFile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-MapFile"><span class="toc-number">4.2.</span> <span class="toc-text">2. MapFile</span></a></li></ol></li></ol>
-      </div>
+  <div class="index-center">
+    
+  </div>
+  <div class="index-right">
+    <div class="index-right-wrapper">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/">Data-Mining</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">Spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%A4%8D%E4%B9%A0/">代码复习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/">无人驾驶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E4%BB%A3%E7%A0%81%E5%A4%8D%E4%B9%A0/">机器学习-代码复习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
       
-        <div class="catelogue catelogue-2">
-          
-            <p>
-              <span>上一篇：</span>
-              <a href="/posts/hadoop03/">第三章  MapReduce基础</a>
-            </p>
-           
-          
-            <p>
-              <span>下一篇</span>
-              <a href="/posts/hadoop01/">第一章  分布式文件系统（HDFS）概述</a>
-            </p>
-          
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">2023年06月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">2023年05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">2023年03月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">2023年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">2022年11月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">2022年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">2022年09月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">2022年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">2022年07月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">2022年06月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">2022年05月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">2022年04月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">2022年02月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">2022年01月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/">1999年01月</a><span class="archive-list-count">1</span></li></ul>
+      
+        <div class="page">
+          <span class="page-number current">1</span>
         </div>
       
     </div>
   </div>
 </div>
 
-<script src="http://cdn.yangxiang.cc/prism.js"></script>
 
 <script>
-  // var定义，避免pjax重新进来造成的重复声明错误
-  var config = JSON.parse('{"enable":true,"appId":"Pf8zCXGEH1qsprnWfikVVujL-gzGzoHsz","appKey":"qOqoiUHhH1TGtLRUYURkLRQX","placeholder":"请留下你宝贵的意见吧~","meta":["nick"],"recordIP":true,"visitor":true,"enableQQ":true}')
-  new Valine({
-    el: '#vcomments',
-    appId: config.appId,
-    appKey: config.appKey,
-    placeholder: config.placeholder,
-    meta: config.meta,
-    recordIP: config.recordIP,
-    visitor: config.visitor,
-    enableQQ: config.enableQQ,
-    path: 'posts/hadoop02/'
-  })
-</script>
+  var allImgBoxs = document.querySelectorAll('.index-article--box');
+  var windowHeight = window.innerHeight;
+  var boxs = Array.from(allImgBoxs);
+  var timer = null;
+  boxs.forEach((box, idx) => {
+    if (!window.loadImageSet || !window.loadImageSet.includes(idx)) {
+      box.classList.add('img-loading');
+    } else {
+      const imgDom = box.querySelector('img');
+      imgDom.src = imgDom.dataset.cover;
+    }
+  });
 
+  function scrollFn() {
+    if (timer) {
+      return;
+    }
+    timer = setTimeout(() => {
+      loadImage();
+      timer = null;
+    }, 100)
+  }
 
-<script>
-  $(document).on('pjax:complete', function() {
-    const tocs = document.querySelector('.toc')
-    const links = tocs ? tocs.querySelectorAll('a') : []
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        const href = decodeURIComponent(e.href)
-        href.search(/#(.*)/)
-        const id = RegExp.$1
-        const target = document.querySelector('#' + id)
-        const top = target.offsetTop
-        document.documentElement.scrollTo({
-          top: top - 100,
-          behavior: 'smooth'
-        })
-        e.preventDefault()
-      })
-    })
-  })
-</script>
+  if (!window.loadedImage) {
+    document.addEventListener('scroll', scrollFn);
+  }
 
-
-<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
-<script>
-  /*页面载入完成后，创建复制按钮*/
-!function (e, t, a) { 
-/* code */
-var initCopyCode = function(){
-    var copyHtml = '';
-    copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '  <i class="fa fa-globe"></i><span>copy</span>';
-    copyHtml += '</button>';
-    $(".highlight .code").before(copyHtml);
-    new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-            return trigger.nextElementSibling;
+  function loadImage() {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop;
+    if (boxs.every(box => box.loadedImage)) {
+      document.removeEventListener('scroll', scrollFn);
+      window.loadedImage = 1;
+      return;
+    }
+    boxs.forEach((box, idx) => {
+      if (box.loadedImage) {
+        return;
+      }
+      if (box.getBoundingClientRect().top < windowHeight) {
+        const imgDom = box.querySelector('img');
+        imgDom.src = imgDom.dataset.cover;
+        imgDom.onload = () => {
+          box.classList.remove('img-loading')
+          box.loadedImage = true;
+          if (window.loadImageSet) {
+            window.loadImageSet.push(idx);
+          } else {
+            window.loadImageSet = [];
+            window.loadImageSet.push(idx);
+          }
         }
+      }
     });
-}
-initCopyCode();
-}(window, document);
-</script> 
+  }
 
+  window.loadImageFn = loadImage;
+</script>
 </div>
       <div class="main-right-wrapper"><div class="main-right">
   <div class="main-right--board">

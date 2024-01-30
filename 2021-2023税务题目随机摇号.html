@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2021-2023税务题随机摇号</title>
+</head>
+<body>
+
+  <h1>2021-2023税务题随机摇号</h1>
+  这次的题目是：<p id="randomDate" style="display: contents;color: red;font-size: xx-large;"></p >上的题
+
+  <script>
+    // 日期数组
+    const allDates = ["2023-04-12", "2023-04-13", "2023-04-14", "2023-04-15", "2023-04-16", "2023-04-17", "2023-04-18", "2023-06-17"
+                      ,"2022-03-08", "2022-03-09", "2022-03-10", "2022-03-11", "2022-03-12", "2022-03-13"
+                      ,"2022-06-12", "2022-06-13", "2022-06-14", "2022-06-15", "2022-06-16(粉笔app上面查看)"
+                      ,"2022-06-25", "2022-06-26", "2022-06-27", "2022-06-28", "2022-06-29", "2022-07-27"
+                      ,"2021-03-29", "2021-03-30", "2021-03-31", "2021-04-01", "2021-04-02"
+                    ];
+
+    // 随机选择一个日期
+    const randomIndex = Math.floor(Math.random() * allDates.length);
+    const randomDate = allDates[randomIndex];
+
+    // 显示在页面上
+    document.getElementById("randomDate").innerText = `${randomDate} `;
+  </script>
+by koinl
+</body>
+</html>

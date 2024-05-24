@@ -1,334 +1,454 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<author name="KoiNL, 锦鲤未离">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>读 TXT 文件-作者：锦鲤未离</title>
-    <style>
-        body {
-            display: flex;
-        }
-
-        pre {
-            font-family: inherit;
-            /* 继承父元素的字体样式 */
-        }
-
-        /* 去除按钮默认样式 */
-        button {
-            border: none;
-            outline: none;
-            background: none;
-            cursor: pointer;
-            border: 1px solid orange;
-            border-radius: 20px;
-            padding: 8px 16px;
-            color: orange;
-            font-size: 13px;
-        }
-
-        button:hover {
-            background-color: #ffa500;
-            color: #ffffff;
-            border-color: orange;
-        }
-
-
-        #fileListContainer {
-            width: 175px; 
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            overflow-y: auto;
-            background-color: #f8f8f8;
-            border-right: 1px solid #ddd;
-            padding: 10px;
-            box-sizing: border-box;
-   
-        }
-
-        #fileContentContainer {
-            margin-left: 140px;
-            padding: 20px;
-            width: calc(100% - 140px);
-            overflow-y: auto;
-        }
-
-        pre {
-            white-space: pre-wrap;
-            tab-size: 2;
-        }
-
-        #fileList {
-            display: block;
-        }
-
-        #fileList.hidden {
-            display: none;
-        }
-
-        #fileContent.hidden {
-            display: none;
-        }
-
-        .chapter-link {
-            display: block;
-        }
-
-        #fileList div a,
-        #chapterLinks a {
-            display: block;
-            text-decoration: none;
-            color: #b24224;
-            padding-bottom: 5px;
-            padding-top: 5px;
-        }
-
-        #fileContentContainer {
-            position: relative;
-        }
-
-        #fontSizeRange {
-            position: fixed;
-            top: 2px;
-            width: 70%;
-        }
-
-        #fileContent {
-            font-size: 20px;
-            margin-top: 20px;
-        }
-
-        /* 暗色模式样式 */
-        .dark-mode button {
-            border: 1px solid #ffa50090;
-            color: #ffa50090;
-        }
-
-        .dark-mode button:hover {
-            background-color: #ffa50090;
-            color: #ffffff90;
-            border-color: #ffa50090;
-        }
-
-        .dark-mode body {
-            background-color: #000000;
-        }
-
-        .dark-mode #fileListContainer {
-            background-color: #000000;
-        }
-
-        .dark-mode #fileList div a,
-        .dark-mode #chapterLinks a {
-            color: #b2422490;
-        }
-
-        .dark-mode #fileContentContainer {
-            color: #ffffff90;
-            background-color: #000000;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- 0A·左容器 -->
-    <div id="fileListContainer">
-        <!-- 01选择文件的输入框 -->
-        <input type="file" id="folderInput" webkitdirectory directory multiple />
-        <!-- 02返回文件列表的按钮 -->
-        <button id="backToListBtn" style="display: none;">返回文件列表</button>
-        <!-- 03文件列表容器 -->
-        <div id="fileList"></div>
-        <!-- 04章节链接容器 -->
-        <div id="chapterLinks"></div>
-    </div>
-    <!-- 0B·右文件内容容器 -->
-    <div id="fileContentContainer">
-        <input type="range" id="fontSizeRange" min="10" max="30" value="20" step="1">
-        <button id="toggleDarkModeBtn">切换暗色模式</button>
-        <pre id="fileContent" class="hidden"></pre>
-    </div>
-
-
-    <script>
-        // “01选择文件的输入框”文件选择成功后功成身退
-        var folderInput = document.getElementById('folderInput');
-        folderInput.addEventListener('change', function (evt) {
-            folderInput.style.display = 'none';
-        });
-
-        // 02何时显示返回按钮？当处于某一 txt 文件内部时
-        function showBackButton() {
-            var backButton = document.getElementById('backToListBtn');
-            backButton.style.display = 'block';// 显示返回按钮
-        }
-        // 02监听返回按钮的点击事件，即按了后怎么办？
-        document.getElementById('backToListBtn').addEventListener('click', function () {
-            var fileListDiv = document.getElementById('fileList');
-            var fileContent = document.getElementById('fileContent');
-            var chapterLinksDiv = document.getElementById('chapterLinks');
-            fileListDiv.classList.remove('hidden');// 移除文件列表的隐藏样式
-            fileContent.classList.add('hidden');// 添加文件内容的隐藏样式
-            chapterLinksDiv.innerHTML = ''; // 清除章节链接
-            fileContent.innerHTML = ''; // 清除文件内容
-            document.getElementById('backToListBtn').style.display = 'none';// 隐藏返回按钮
-        });
-
-        // 03文件选择后出现“文件列表”
-        document.getElementById('folderInput').addEventListener('change', function (e) {
-            var files = e.target.files;// 获取选择的文件列表
-            var fileListDiv = document.getElementById('fileList');// 获取文件列表容器元素
-            fileListDiv.innerHTML = "";// 清空文件列表容器
-            // 遍历文件列表
-            for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-                var listItem = document.createElement('div');// 创建文件列表项容器
-                var link = document.createElement('a');// 创建文件列表项链接
-
-                link.textContent = file.name;// 设置链接文本为文件名
-                link.href = "#"; // 使用 # 暂时占位，实际需要点击时处理
-                // 绑定点击事件
-                link.addEventListener('click', function (file) {
-                    return function () {
-                        readFileContent(file);// 读取文件内容
-                        hideFileList();// 隐藏文件列表
-                        showBackButton();// 显示返回按钮
-                    };
-                }(file));
-                listItem.appendChild(link);// 将链接添加到列表项容器中
-                fileListDiv.appendChild(listItem);// 将列表项容器添加到文件列表容器中
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>读 TXT 文件-作者：锦鲤未离</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: space-between;
+                /* 左右对齐 */
             }
-        });
 
-        // 03何时隐藏文件列表？
-        function hideFileList() {
-            var fileListDiv = document.getElementById('fileList');
-            fileListDiv.classList.add('hidden');// 添加隐藏样式
-        }
+            pre {
+                font-family: inherit;
+                /* 继承父元素的字体样式 */
+            }
 
-        var MaxcurrentChapterIndex = 0;
-        // 0B右·读取文件内容函数
-        function readFileContent(file) {
-            var reader = new FileReader();// 创建文件阅读器对象
-            reader.onload = function (e) {
-                var contents = e.target.result;// 获取文件内容
-                var fileContent = document.getElementById('fileContent');// 获取文件内容容器
-                fileContent.innerHTML = "";// 清空文件内容容器
+            /* 去除按钮默认样式 */
+            button {
+                border: none;
+                outline: none;
+                background: none;
+                cursor: pointer;
+                border: 1px solid orange;
+                border-radius: 20px;
+                padding: 8px 16px;
+                color: orange;
+                font-size: 13px;
+            }
 
-                // 清除之前的章节链接
+            button:hover {
+                background-color: #ffa500;
+                color: #ffffff;
+                border-color: orange;
+            }
+
+            /* 隐藏默认的文件选择按钮 */
+            #folderInput {
+                width: 0%;
+                opacity: 0;
+                position: absolute;
+                z-index: -1;
+            }
+
+            /* 伪元素模拟按钮外观 */
+            #folderInput+label {
+                display: inline-block;
+                border: 1px solid orange;
+                border-radius: 20px;
+                padding: 8px 16px;
+                color: orange;
+                font-size: 13px;
+                cursor: pointer;
+            }
+
+            #folderInput+label:hover {
+                background-color: #ffa500;
+                color: #ffffff;
+                border-color: orange;
+            }
+
+
+
+            #fileListContainer {
+                width: 175px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                overflow-y: auto;
+                background-color: #f8f8f8;
+                border-right: 1px solid #ddd;
+                padding: 10px;
+                box-sizing: border-box;
+                width: 175px;
+                overflow-y: auto;
+                background-color: #f8f8f8;
+                border-right: 1px solid #ddd;
+                padding: 10px;
+                box-sizing: border-box;
+
+            }
+
+
+            #fileContent h2 {
+                margin-top: 60px;
+            }
+
+            #fileContentContainer {
+                margin-left: 140px;
+                padding: 20px;
+                width: calc(100% - 140px);
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                /* 填充剩余空间 */
+                padding: 20px;
+                overflow-y: auto;
+                box-sizing: border-box;
+            }
+
+
+            #topControls {
+                position: fixed;
+                top: 10px;
+
+            }
+
+
+
+            pre {
+                white-space: pre-wrap;
+                tab-size: 2;
+            }
+
+            #fileList {
+                display: flex;
+                flex-wrap: wrap;
+                width: 65%;
+                margin: 0 auto;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            #fileList div {
+                padding: 0 5px 0 5px;
+            }
+
+
+            #fileList div:hover {
+                padding: 0 3px 0 3px;
+            }
+
+            #fileList.hidden {
+                display: none;
+            }
+
+            #fileContent.hidden {
+                display: none;
+            }
+
+            .chapter-link {
+                display: block;
+            }
+
+            #fileList div a,
+            #chapterLinks a {
+                display: block;
+                text-decoration: none;
+                color: #b24224;
+                padding-bottom: 5px;
+                padding-top: 5px;
+            }
+
+            #fileList div a:hover {
+                font-weight: bold;
+            }
+
+            #fileContent {
+                font-size: 20px;
+                margin: 0 27px 0 27px;
+                overflow-y: auto;
+            }
+
+            /* 暗色模式样式 */
+            .dark-mode button,
+            .dark-mode #folderInput+label {
+                border: 1px solid #ffa50090;
+                color: #ffa50090;
+            }
+
+            .dark-mode button:hover,
+            .dark-mode #folderInput+label:hover {
+                background-color: #ffa50090;
+                color: #ffffff90;
+                border-color: #ffa50090;
+            }
+
+
+
+            .dark-mode body {
+                background-color: #000000;
+            }
+
+            .dark-mode #fileListContainer {
+                background-color: #000000;
+            }
+
+            .dark-mode #fileList div a,
+            .dark-mode #chapterLinks a {
+                color: #b2422490;
+            }
+
+            .dark-mode #fileContentContainer {
+                color: #ffffff90;
+                background-color: #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- 0A·左容器 -->
+        <div id="fileListContainer">
+            <!-- 04章节链接容器 -->
+            <div id="chapterLinks"></div>
+        </div>
+        <!-- 0B·右文件内容容器 -->
+        <div id="fileContentContainer">
+            <div id="topControls">
+                <input type="range" id="fontSizeRange" min="10" max="30" value="20" step="1">
+                <button id="toggleDarkModeBtn">切换暗色模式</button>
+
+
+                <!-- 01选择文件的输入框 -->
+                <input type="file" id="folderInput" webkitdirectory directory multiple />
+                <label for="folderInput" id="folderInputLabel">选择文件夹</label>
+                <button id="fileReselect">重置界面</button>
+                <!-- 02返回文件列表的按钮 -->
+                <button id="backToListBtn" style="display: none;">返回文件列表</button>
+            </div>
+            <!-- 03文件列表容器 -->
+            <div id="fileList"></div>
+            <pre id="fileContent" class="hidden"></pre>
+        </div>
+
+
+        <script>
+            var chapterPattern = /([　 第]*[一二三四五六七八九十百千至到0-9]+[章篇卷梦].*?|\n番外|\n[0-9]+[．、.]|\n)(?=\n[　 第]*[一二三四五六七八九十百千至到0-9]+[章篇卷梦].*?|\n番外|\n[0-9]+[．、.]|\n?$)/gs;
+            // 获取相关元素
+            var folderInput = document.getElementById('folderInput');
+            var folderInputLabel = document.getElementById('folderInputLabel');
+            // 文件选择完毕后隐藏文件选择元素并显示重选按钮
+            folderInput.addEventListener('change', function (evt) {
+                folderInputLabel.textContent = '重选文件夹';
+            });
+
+
+            var fileReselect = document.getElementById('fileReselect');
+            // 点击“重置页面”按钮时，刷新页面并触发文件选择
+            fileReselect.addEventListener('click', function () {
+                // 刷新页面
+                location.reload();
+            });
+
+            // 02何时显示返回按钮？当处于某一 txt 文件内部时
+            function showBackButton() {
+                var backButton = document.getElementById('backToListBtn');
+                backButton.style.display = '';// 显示返回按钮
+            }
+            // 02监听返回按钮的点击事件，即按了后怎么办？
+            document.getElementById('backToListBtn').addEventListener('click', function () {
+                var fileListDiv = document.getElementById('fileList');
+                var fileContent = document.getElementById('fileContent');
                 var chapterLinksDiv = document.getElementById('chapterLinks');
-                chapterLinksDiv.innerHTML = "";
+                fileListDiv.classList.remove('hidden');// 移除文件列表的隐藏样式
+                fileContent.classList.add('hidden');// 添加文件内容的隐藏样式
+                chapterLinksDiv.innerHTML = ''; // 清除章节链接
+                fileContent.innerHTML = ''; // 清除文件内容
+                document.getElementById('backToListBtn').style.display = 'none';// 隐藏返回按钮
+            });
 
-                // 处理内容，提取章节并生成链接
-                var chapterPattern = /(第[一二三四五六七八九十百千0-9]+章.*?)(?=\n第[一二三四五六七八九十百千0-9]+章|\n?$)/gs;
-                var matches;// 存储匹配结果
-                var index = 1;// 章节索引，用于生成锚点和链接
+            // 03文件选择后出现“文件列表”
+            document.getElementById('folderInput').addEventListener('change', function (e) {
+                var files = e.target.files;// 获取选择的文件列表
+                var fileListDiv = document.getElementById('fileList');// 获取文件列表容器元素
+                fileListDiv.innerHTML = "";// 清空文件列表容器
+                // 遍历文件列表
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    var listItem = document.createElement('div');// 创建文件列表项容器
+                    var link = document.createElement('a');// 创建文件列表项链接
 
-                // 循环匹配章节标题和内容
-                while ((matches = chapterPattern.exec(contents)) !== null) {
-                    var chapterTitle = matches[1].trim();// 提取章节标题
-                    var chapterContent = matches[0].trim();// 提取章节内容
-
-                    // 创建章节链接
-                    var chapterLink = document.createElement('a');
-                    chapterLink.textContent = chapterTitle.split('\n')[0]; // 仅显示标题行作为链接文本
-                    chapterLink.href = "#chapter" + index;// 设置链接的锚点
-                    chapterLink.className = 'chapter-link';// 添加类名
-                    chapterLinksDiv.appendChild(chapterLink);// 将链接添加到章节链接容器中
-
-                    // 创建章节内容（锚点）
-                    var chapterAnchor = document.createElement('a');
-                    chapterAnchor.name = "chapter" + index;// 设置锚点名称
-                    fileContent.appendChild(chapterAnchor);// 将锚点添加到文件内容容器中
-                    // 创建章节标题
-                    var chapterHeader = document.createElement('h2');
-                    chapterHeader.textContent = chapterTitle.split('\n')[0]; // 仅显示标题行作为章节标题
-                    fileContent.appendChild(chapterHeader);// 将标题添加到文件内容容器中
-                    // 创建章节内容段落
-                    var chapterParagraph = document.createElement('pre');
-                    chapterParagraph.textContent = chapterContent;// 设置段落内容
-                    fileContent.appendChild(chapterParagraph);// 将段落添加到文件内容容器中
-                    index++;// 增加章节索引，用于下一个章节
-                    MaxcurrentChapterIndex = index;
+                    link.textContent = file.name.split('.').slice(0, -1).join('.'); // 获取文件名（去除扩展名）
+                    link.href = "#"; // 使用 # 暂时占位，实际需要点击时处理
+                    // 绑定点击事件
+                    link.addEventListener('click', function (file) {
+                        return function () {
+                            readFileContent(file);// 读取文件内容
+                            hideFileList();// 隐藏文件列表
+                            showBackButton();// 显示返回按钮
+                        };
+                    }(file));
+                    listItem.appendChild(link);// 将链接添加到列表项容器中
+                    fileListDiv.appendChild(listItem);// 将列表项容器添加到文件列表容器中
                 }
+            });
 
-                fileContent.classList.remove('hidden');// 移除文件内容隐藏样式
-            };
-            reader.readAsText(file);// 以文本格式读取文件
-        }
+            // 03何时隐藏文件列表？
+            function hideFileList() {
+                var fileListDiv = document.getElementById('fileList');
+                fileListDiv.classList.add('hidden');// 添加隐藏样式
+            }
 
-        // 获取 font size range 元素和 fileContent 元素
-        var fontSizeRange = document.getElementById('fontSizeRange');
-        var fileContent = document.getElementById('fileContent');
-        // 监听 font size range 元素的 input 事件
-        fontSizeRange.addEventListener('input', function () {
-            // 设置 fileContent 元素的字体大小
-            fileContent.style.fontSize = fontSizeRange.value + 'px';
-        });
+            var MaxcurrentChapterIndex = 0;
+            // 读取文件内容函数
+            function readFileContent(file) {
+                var reader = new FileReader(); // 创建文件阅读器对象
+                reader.onload = function (e) {
+                    var contents = e.target.result; // 获取文件内容
+                    var fileContent = document.getElementById('fileContent'); // 获取文件内容容器
+                    fileContent.innerHTML = ""; // 清空文件内容容器
 
-        // 获取切换暗色模式的按钮
-        var toggleDarkModeBtn = document.getElementById('toggleDarkModeBtn');
-        // 监听按钮的点击事件
-        toggleDarkModeBtn.addEventListener('click', function () {
-            // 切换暗色模式
-            document.body.classList.toggle('dark-mode');
-        });
+                    // 清除之前的章节链接
+                    var chapterLinksDiv = document.getElementById('chapterLinks');
+                    chapterLinksDiv.innerHTML = "";
+
+                    // 处理内容，提取章节并生成链接
+                    // var chapterPattern = /(?:([\s\S]*?))(?=\s*[第]*[一二三四五六七八九十百千至到0-9]+[章篇部卷梦]|番外|[0-9][．、.])/g;
+                    var matches; // 存储匹配结果
+                    var index = 1; // 章节索引，用于生成锚点和链接
+
+                    // 处理序幕部分，序幕更名为介绍
+                    if ((matches = chapterPattern.exec(contents)) !== null) {
+                        var prologueContent = matches[1].trim(); // 提取序幕内容
+                        if (prologueContent) {
+                            // 创建序幕标题
+                            var prologueHeader = document.createElement('h2');
+                            prologueHeader.textContent = "介绍";
+                            fileContent.appendChild(prologueHeader); // 将标题添加到文件内容容器中
+
+                            // 创建序幕内容段落
+                            var prologueParagraph = document.createElement('pre');
+                            prologueParagraph.textContent = prologueContent;
+                            fileContent.appendChild(prologueParagraph); // 将段落添加到文件内容容器中
+                        }
+                    }
+
+                    // 处理章节内容
+                    // 获取文件名并作为书名显示在章节链接容器中
+                    var fileName = file.name.split('.').slice(0, -1).join('.'); // 获取文件名（去除扩展名）
+                    var bookTitleElement = document.createElement('h1'); // 创建标题元素
+                    bookTitleElement.textContent = fileName; // 设置标题内容为文件名
+                    chapterLinksDiv.appendChild(bookTitleElement); // 将标题元素添加到章节链接容器中
+
+                    chapterPattern.lastIndex = 0; // 重置正则表达式的 lastIndex
+                    // var chapterPattern = /([　 　第]*[一二三四五六七八九十百千至到0-9]+[章篇部卷梦回].*?)(?=\n[　 　第]*[一二三四五六七八九十百千至到0-9]+[章篇部卷梦回]|\n番外|\n[0-9]+[．、.]|\n?$)/gs;
+                    while ((matches = chapterPattern.exec(contents)) !== null) {
+                        var chapterContent = matches[0].trim(); // 提取章节内容
+                        var chapterTitle = chapterContent.split('\n')[0].trim(); // 提取章节标题
+
+                        // 创建章节链接
+                        var chapterLink = document.createElement('a');
+                        chapterLink.textContent = chapterTitle; // 仅显示标题行作为链接文本
+                        chapterLink.href = "#chapter" + index; // 设置链接的锚点
+                        chapterLink.className = 'chapter-link'; // 添加类名
+                        chapterLinksDiv.appendChild(chapterLink); // 将链接添加到章节链接容器中
+
+                        // 创建章节内容（锚点）
+                        var chapterAnchor = document.createElement('a');
+                        chapterAnchor.name = "chapter" + index; // 设置锚点名称
+                        fileContent.appendChild(chapterAnchor); // 将锚点添加到文件内容容器中
+
+                        // 创建章节标题
+                        var chapterHeader = document.createElement('h2');
+                        chapterHeader.textContent = chapterTitle; // 仅显示标题行作为章节标题
+                        fileContent.appendChild(chapterHeader); // 将标题添加到文件内容容器中
+
+                        // 创建章节内容段落
+                        var chapterParagraph = document.createElement('pre');
+                        chapterParagraph.textContent = chapterContent; // 设置段落内容
+                        fileContent.appendChild(chapterParagraph); // 将段落添加到文件内容容器中
+
+                        index++; // 增加章节索引，用于下一个章节
+                        MaxcurrentChapterIndex = index;
+                    }
+
+                    fileContent.classList.remove('hidden'); // 移除文件内容隐藏样式
+                };
+                reader.readAsText(file); // 以文本格式读取文件
+            }
+
+            // 滑动来设置字体大小
+            // 获取 font size range 元素和 fileContent 元素
+            var fontSizeRange = document.getElementById('fontSizeRange');
+            var fileContent = document.getElementById('fileContent');
+            // 监听 font size range 元素的 input 事件
+            fontSizeRange.addEventListener('input', function () {
+                // 设置 fileContent 元素的字体大小
+                fileContent.style.fontSize = fontSizeRange.value + 'px';
+            });
+
+            // 获取切换暗色模式的按钮
+            var toggleDarkModeBtn = document.getElementById('toggleDarkModeBtn');
+            // 监听按钮的点击事件
+            toggleDarkModeBtn.addEventListener('click', function () {
+                // 切换暗色模式
+                document.body.classList.toggle('dark-mode');
+            });
 
 
-        // 获取当前章节的索引，默认为0
-        var currentChapterIndex = 0;
-
-        // 便捷模块：键盘左右键跳转上下章。这个为处理键盘事件的函数
-        function handleKeyboardEvent(event) {
-            if (event.keyCode === 39 || event.keyCode === 37) { // 如果按下的是右箭头键或者左箭头键
-                event.preventDefault(); // 阻止默认事件，以避免浏览器默认的滚动行为
-                var currentHash = window.location.hash; // 获取当前页面的 hash 值
-                var currentChapter;//获取当前页面章节号
-                if (currentHash.startsWith("#chapter")) { // 假设格式是"#chapterX"
-                    currentChapter = parseInt(currentHash.substring(8)); // 截取“X”
-                } else {
-                    currentChapter = 1;
+            // 获取当前章节的索引，默认为0
+            var currentChapterIndex = 0;
+            // 便捷模块：键盘左右键跳转上下章。这个为处理键盘事件的函数
+            function handleKeyboardEvent(event) {
+                if (event.keyCode === 39 || event.keyCode === 37) { // 如果按下的是右箭头键或者左箭头键
+                    event.preventDefault(); // 阻止默认事件，以避免浏览器默认的滚动行为
+                    var currentHash = window.location.hash; // 获取当前页面的 hash 值
+                    var currentChapter;//获取当前页面章节号
+                    if (currentHash.startsWith("#chapter")) { // 假设格式是"#chapterX"
+                        currentChapter = parseInt(currentHash.substring(8)); // 截取“X”
+                    } else {
+                        currentChapter = 1;
+                    }
+                    // 计算下一章或上一章的章节号
+                    var nextChapter;
+                    if (event.keyCode === 39) { // 右箭头键，下一页
+                        nextChapter = Math.min(currentChapter + 1, MaxcurrentChapterIndex - 1);
+                    } else if (event.keyCode === 37) { // 左箭头键，上一页
+                        nextChapter = Math.max(currentChapter - 1, 1);
+                    }
+                    var nextChapterAnchor = '#chapter' + nextChapter; // 构建下一章或上一章的锚点
+                    location.hash = nextChapterAnchor; // 将页面滚动到下一章或上一章的位置
                 }
-                // 计算下一章或上一章的章节号
-                var nextChapter;
-                if (event.keyCode === 39) { // 右箭头键，下一页
-                    nextChapter = Math.min(currentChapter + 1, MaxcurrentChapterIndex - 1);
-                } else if (event.keyCode === 37) { // 左箭头键，上一页
-                    nextChapter = Math.max(currentChapter - 1, 1);
+            }
+            // 监听键盘事件
+            document.addEventListener('keydown', handleKeyboardEvent);
+
+
+            // 便捷模块：当按下 Alt 键，跳转到文章列表
+            document.addEventListener('keydown', function (event) {
+                if (event.altKey) {
+                    document.getElementById('backToListBtn').click();// 触发返回按钮的点击事件
                 }
-                var nextChapterAnchor = '#chapter' + nextChapter; // 构建下一章或上一章的锚点
-                location.hash = nextChapterAnchor; // 将页面滚动到下一章或上一章的位置
-            }
-        }
-        // 监听键盘事件
-        document.addEventListener('keydown', handleKeyboardEvent);
+            });
 
+            // 便捷模块：当按下回车 Enter 键，就当点击了一开始那个按钮
+            document.addEventListener('keydown', function (event) {
+                if (event.key === "Enter") {
+                    document.getElementById('folderInput').click();
+                }
+            });
 
-        // 便捷模块：当按下 Ctrl 键或 Alt 键，跳转到文章列表
-        document.addEventListener('keydown', function (event) {
-            if (event.ctrlKey || event.altKey) {
-                document.getElementById('backToListBtn').click();// 触发返回按钮的点击事件
-            }
-        });
+            // 便捷模块：当按下 D 键，就当点击了暗色模式
+            document.addEventListener('keydown', function (event) {
+                if (event.keyCode === 68) {
+                    document.getElementById('toggleDarkModeBtn').click();
+                }
+            });
 
-        // 便捷模块：当按下回车 Enter 键，就当点击了一开始那个按钮
-        document.addEventListener('keydown', function (event) {
-            if (event.key === "Enter") {
-                document.getElementById('folderInput').click();
-            }
-        });
+            // 便捷模块：当按下 R 键，就当点击了重置界面
+            document.addEventListener('keydown', function (event) {
+                if (event.keyCode === 82) {
+                    document.getElementById('fileReselect').click();
+                }
+            });
 
-        // 便捷模块：当按下 D 键，就当点击了暗色模式
-        document.addEventListener('keydown', function (event) {
-            if (event.keyCode === 68) {
-                document.getElementById('toggleDarkModeBtn').click();
-            }
-        });
-
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>

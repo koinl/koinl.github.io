@@ -44,14 +44,16 @@
                 border-color: orange;
             }
 
-            #folderInput {
+            #folderInput,
+            #fileInput {
                 width: 0%;
                 opacity: 0;
                 position: absolute;
                 z-index: -1;
             }
 
-            #folderInput+label {
+            #folderInput+label,
+            #fileInput+label {
                 display: inline-block;
                 border: 1px solid orange;
                 border-radius: 20px;
@@ -61,7 +63,9 @@
                 cursor: pointer;
             }
 
-            #folderInput+label:hover {
+            #folderInput+label:hover,
+            ,
+            #fileInput+label:hover {
                 background-color: #ffa500;
                 color: #ffffff;
                 border-color: orange;
@@ -137,6 +141,9 @@
                 margin: 0 auto;
                 justify-content: center;
                 margin-top: 10px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
             }
 
             /* 每一个文件列表小块 */
@@ -167,7 +174,8 @@
                 padding-top: 5px;
             }
 
-            #fileList div a:hover, #fileListContainer div a:hover {
+            #fileList div a:hover,
+            #fileListContainer div a:hover {
                 font-weight: bold;
             }
 
@@ -188,13 +196,15 @@
             }
 
             .dark-mode button,
-            .dark-mode #folderInput+label {
+            .dark-mode #folderInput+label,
+            .dark-mode #fileInput+label {
                 border: 1px solid #ffa50090;
                 color: #ffa50090;
             }
 
             .dark-mode button:hover,
-            .dark-mode #folderInput+label:hover {
+            .dark-mode #folderInput+label:hover,
+            .dark-mode #fileInput+label:hover {
                 background-color: #ffa50090;
                 color: #ffffff90;
                 border-color: #ffa50090;
@@ -271,6 +281,9 @@
                 <!-- 01选择文件的输入框 -->
                 <input type="file" id="folderInput" webkitdirectory directory multiple />
                 <label for="folderInput" id="folderInputLabel">选择书库(Enter)</label>
+
+                <input type="file" id="fileInput" multiple />
+                <label for="fileInput" id="fileInputLabel">选择书籍</label>
                 <!-- 重置界面 -->
                 <button id="fileReselect">重置界面(R)</button>
                 <!-- 新增显隐目录按钮 -->
@@ -296,10 +309,21 @@
             var chapterPattern = new RegExp(`(${zzbds}|\\n)(?=\\n${zzbds}|\\n?$)`, 'gs');
             var introMatching = new RegExp(`[\\s\\S]*?(?=${zzbds})`);
 
-
+            var folderOrfileInput = 0;
             // 核心模块1a：选择文件夹后出现“文件列表”
             document.getElementById('folderInput').addEventListener('change', function (e) {
-                var files = e.target.files;// 获取选择的文件列表
+                folderOrfileInput = 0;
+                document.getElementById('fileInputLabel').style.display = 'none';// 隐藏文件夹操作
+                FilesInputAfter(e.target.files);
+            });
+
+            document.getElementById('fileInput').addEventListener('change', function (e) {
+                folderOrfileInput = 1;
+                document.getElementById('folderInputLabel').style.display = 'none';// 隐藏文件夹操作
+                FilesInputAfter(e.target.files);
+            });
+
+            function FilesInputAfter(files) {
                 var fileListDiv = document.getElementById('fileList');// 获取文件列表容器元素
                 fileListDiv.innerHTML = "";// 清空文件列表容器
                 // 遍历文件列表
@@ -323,12 +347,13 @@
                         fileListDiv.appendChild(listItem);// 将列表项容器添加到文件列表容器中
                     }
                 }
-            });
+            }
 
             // 1a➡b：隐藏文件列表
             function hideFileList() {
                 document.getElementById('fileList').classList.add('hidden');// 添加隐藏样式
                 document.getElementById('folderInputLabel').style.display = 'none';// 隐藏文件夹操作
+                document.getElementById('fileInputLabel').style.display = 'none';// 隐藏文件夹操作
             }
             // 1a➡c：显示什么按钮？
             function showButton() {
@@ -409,6 +434,10 @@
                 document.getElementById('folderInputLabel').textContent = '重选书库(Enter)';
             });
 
+            document.getElementById('fileInput').addEventListener('change', function (evt) {
+                document.getElementById('fileInputLabel').textContent = '重选书籍';
+            });
+
             // 2.按钮功能模块：重置页面 点击“重置页面”按钮时，刷新页面
             document.getElementById('fileReselect').addEventListener('click', function () {
                 location.reload();
@@ -445,7 +474,10 @@
                 document.getElementById('backToListBtn').style.display = 'none';// 隐藏返回按钮
                 document.getElementById('toggleChapterLinksBtn').style.display = 'none';// 隐藏章节目录按钮
                 document.getElementById('fontSizeRangediv').style.display = 'none';//隐藏设置字体大小按钮
-                document.getElementById('folderInputLabel').style.display = '';// 显示重选按钮
+                if (folderOrfileInput == 0) {
+                    document.getElementById('folderInputLabel').style.display = '';
+                }
+                else { document.getElementById('fileInputLabel').style.display = ''; }// 显示重选按钮
             });
 
             // 美化模块：确保fileList、fileContent不会被topControls覆盖
@@ -535,10 +567,9 @@
 
         </script>
 
-        <script src="js/echarts.min.js"></script>
+        <script src="https://koinl.github.io/js/echarts.min.js"></script>
         <script type="text/javascript">
             var chartkoinl = document.createElement('div');
-            chartkoinl.setAttribute('id', 'main4');
             chartkoinl.style.width = '80px';
             chartkoinl.style.height = '48px';
             chartkoinl.style.position = 'fixed';

@@ -8,7 +8,6 @@
         <title>读 TXT 文件-作者：锦鲤未离</title>
         <style>
             body {
-                display: flex;
                 justify-content: space-between;
                 height: 100%;
                 margin: 0;
@@ -184,6 +183,7 @@
                 font-size: 20px;
                 margin: 0 27px 0 27px;
                 overflow-y: auto;
+                overflow-x: hidden;
             }
 
             /* 暗色模式样式 */
@@ -234,7 +234,7 @@
                 }
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: 700px) {
                 #fileContent {
                     padding: 60px 100px;
                 }
@@ -254,7 +254,7 @@
                 }
             }
 
-            @media (min-width: 1440px) {
+            @media (min-width: 1366px) {
                 #fileContent {
                     padding: 15px 310px;
                 }
@@ -278,16 +278,16 @@
             <div id="topControls">
                 <!-- 暗色 -->
                 <button id="toggleDarkModeBtn">切换暗色(D)</button>
-                <!-- 01选择文件的输入框 -->
+                <!-- 01选择文件夹输入框 -->
                 <input type="file" id="folderInput" webkitdirectory directory multiple />
                 <label for="folderInput" id="folderInputLabel">选择书库(Enter)</label>
-
+                <!-- 01选择文件的输入框 -->
                 <input type="file" id="fileInput" multiple />
                 <label for="fileInput" id="fileInputLabel">选择书籍</label>
                 <!-- 重置界面 -->
                 <button id="fileReselect">重置界面(R)</button>
                 <!-- 新增显隐目录按钮 -->
-                <button id="toggleChapterLinksBtn" style="display: none;">章节目录(L)</button>
+                <button id="toggleChapterLinksBtn" style="display: none;">书籍目录(L)</button>
                 <!-- 02返回文件列表的按钮 -->
                 <button id="backToListBtn" style="display: none;">返回书库(Alt)</button>
                 <!-- 调整字体大小 -->
@@ -305,24 +305,24 @@
 
         <script>
             // 正则表达式
-            var zzbds = '[　 第]*[零一二三四五六七八九十百千 至到0-9]+[章篇卷梦].*?|\\n番外\\d*.*?|\\n[　 ]*[0-9]+[．、.].*?';
+            var zzbds = '[　 第]*[零一二三四五六七八九十百千 至到0-9]+[章篇卷梦].*?|\\n番外\\d*.*?|\\n[　 ]*[0-9]+[．、.].*?|书籍介绍.*?';
             var chapterPattern = new RegExp(`(${zzbds}|\\n)(?=\\n${zzbds}|\\n?$)`, 'gs');
             var introMatching = new RegExp(`[\\s\\S]*?(?=${zzbds})`);
 
             var folderOrfileInput = 0;
-            // 核心模块1a：选择文件夹后出现“文件列表”
+            // 核心模块1：选择文件夹后出现“文件列表”
             document.getElementById('folderInput').addEventListener('change', function (e) {
                 folderOrfileInput = 0;
                 document.getElementById('fileInputLabel').style.display = 'none';// 隐藏文件夹操作
                 FilesInputAfter(e.target.files);
             });
-
+            // 核心模块1-影：选择文件后出现“文件列表”
             document.getElementById('fileInput').addEventListener('change', function (e) {
                 folderOrfileInput = 1;
                 document.getElementById('folderInputLabel').style.display = 'none';// 隐藏文件夹操作
                 FilesInputAfter(e.target.files);
             });
-
+            // 核心模块1a
             function FilesInputAfter(files) {
                 var fileListDiv = document.getElementById('fileList');// 获取文件列表容器元素
                 fileListDiv.innerHTML = "";// 清空文件列表容器
@@ -368,13 +368,18 @@
                 var reader = new FileReader(); // 创建文件阅读器对象
                 reader.onload = function (e) {
                     // 获取+重置章节链接+正文内容
-                    var contents = e.target.result; // 获取文件内容
+                    var contents = "书籍介绍" + '\n' + e.target.result; // 获取文件内容，加上“第0章”的目的是为了让所有的文章都能正常显示，哪怕文章内部没有章节目录
 
                     var fileContent = document.getElementById('fileContent'); // 获取文件内容容器
                     fileContent.innerHTML = ""; // 清空文件内容容器
                     // 清除之前的章节链接
                     var chapterLinksDiv = document.getElementById('chapterLinks');
                     chapterLinksDiv.innerHTML = "";
+
+                    // 章节链接操作1：获取文件名并作为书名显示在章节目录顶部
+                    var bookTitleElement = document.createElement('h1'); // 创建标题元素
+                    bookTitleElement.textContent = file.name.split('.').slice(0, -1).join('.'); // 获取文件名（去除扩展名）
+                    chapterLinksDiv.appendChild(bookTitleElement); // 将标题元素添加到章节链接容器中
 
                     // 正文内容操作1：第一章前面的内容加到正文顶部
                     var introMatch = contents.match(introMatching);
@@ -384,10 +389,6 @@
                         introElement.innerHTML = introContent.replace(/\n/g, '<br>');
                         fileContent.appendChild(introElement);
                     }
-                    // 章节链接操作1：获取文件名并作为书名显示在章节目录顶部
-                    var bookTitleElement = document.createElement('h1'); // 创建标题元素
-                    bookTitleElement.textContent = file.name.split('.').slice(0, -1).join('.'); // 获取文件名（去除扩展名）
-                    chapterLinksDiv.appendChild(bookTitleElement); // 将标题元素添加到章节链接容器中
 
                     // 处理文章内容，提取章节并生成链接
                     var matches; // 存储匹配结果
@@ -425,6 +426,7 @@
 
                     fileContent.classList.remove('hidden'); // 移除文件内容隐藏样式
                 };
+
                 reader.readAsText(file); // 以文本格式读取文件
             }
 
@@ -474,7 +476,7 @@
                 document.getElementById('backToListBtn').style.display = 'none';// 隐藏返回按钮
                 document.getElementById('toggleChapterLinksBtn').style.display = 'none';// 隐藏章节目录按钮
                 document.getElementById('fontSizeRangediv').style.display = 'none';//隐藏设置字体大小按钮
-                if (folderOrfileInput == 0) {
+                if (folderOrfileInput == 0) {// 当一开始选择的是文件夹，那么就显示“重选文件夹”，反之则反
                     document.getElementById('folderInputLabel').style.display = '';
                 }
                 else { document.getElementById('fileInputLabel').style.display = ''; }// 显示重选按钮
